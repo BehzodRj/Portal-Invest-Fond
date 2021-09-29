@@ -167,3 +167,56 @@ overlay {
     font-size: 12px;
 }
  
+
+ 
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.auth__block {
+    width: 270px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+ 
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 0;
+    outline: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300; 
+    background: #E8F0FE;
+}
+.submit {
+    padding: 5px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    &:active {
+        transform: scale(.9);
+    }
+}
+ 
+.reg{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    a{
+        text-decoration: none;
+        color:#000;
+        cursor: pointer;
+        &:hover{ 
+            color:red;
+        }
+    }
+}
