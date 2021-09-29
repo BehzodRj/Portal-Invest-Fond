@@ -1,31 +1,51 @@
 .container {
-    width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #333;
-
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 250px;
-
-            input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            h1 {
-                font-size: 20px;
-                margin-top: 15px;
-                cursor: pointer;
-                color: #fff;
-            }
-            button {
-                width: 100%;
-            }
+    align-items: center;  
+}
+.auth__block {
+    width: 270px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+ 
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 0;
+    outline: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300; 
+    background: #E8F0FE;
+}
+.submit {
+    padding: 5px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    &:active {
+        transform: scale(.9);
+    }
+}
+ 
+.reg{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    a{
+        text-decoration: none;
+        color:#000;
+        cursor: pointer;
+        &:hover{ 
+            color:red;
         }
+    }
 }

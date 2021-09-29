@@ -1,8 +1,22 @@
-<div class="container">
+<!-- <div class="container">
     <form action="">
         <input type="text" placeholder="Логин">
         <input type="password" placeholder="Пароль">
         <button>Войти</button>
-        <h1 routerLink="/registration">Зарегистрироваться</h1>
+        <a routerLink="/registration">Зарегистрироваться</a>
     </form>
+</div> -->
+
+<div class="container">
+  <div class="auth__block">
+    <form action="" [formGroup]="form" (ngSubmit)="send()"> 
+      <input class="login" type="text" placeholder="Логин" required  formControlName="login">
+      <input class="password" type="password" placeholder="Пароль" required formControlName="password">
+        <button class="submit"  type="submit"  [disabled]="form.invalid">Войти</button>
+    </form>
+    <div class="reg"> 
+       <a routerLink="/registration">Зарегистрироваться</a>
+    </div>
+  </div>
 </div>
+ 

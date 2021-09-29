@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthPageComponent } from './auth-page/auth-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { AnnouncementPageComponent } from './announcement-page/announcement-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { AnnouncementPageComponent } from './announcement-page/announcement-page
     RegistrationPageComponent,
     AnnouncementPageComponent
   ],
-  imports: [
+  imports: [  
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule
   ],
