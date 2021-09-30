@@ -6,7 +6,7 @@
     align-items: center;  
 }
 .container{ 
-    width: 800px;   
+    width: 900px;   
     padding: 30px;   
 }
  
@@ -37,7 +37,7 @@
             -webkit-appearance: none;
         }
 }
-i.fas {
+i.fas{
   width: 26px;
   height: 26px;
   line-height: 26px;
@@ -46,10 +46,6 @@ i.fas {
   z-index: 1; 
   right: 10px;
   color: green;
-}
-
-i.fas + input {
-  padding-left: 26px;
 }
  
 .btn__block{  
@@ -75,7 +71,7 @@ i.fas + input {
     } 
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:850px) {
     .container{
         height: 100vh;
     }
@@ -117,8 +113,7 @@ i.fas + input {
         } 
     }
     i.fas {  
-        right: 40px;
-
+        right: 40px; 
       }
 }
 

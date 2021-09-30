@@ -7,13 +7,17 @@ import { AuthPageComponent } from './auth-page/auth-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { AnnouncementPageComponent } from './announcement-page/announcement-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SallaryComponent } from './sallary/sallary.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthPageComponent,
     RegistrationPageComponent,
-    AnnouncementPageComponent
+    AnnouncementPageComponent,
+    SallaryComponent,
+    HeaderComponent
   ],
   imports: [  
     FormsModule,
