@@ -2,13 +2,13 @@
     <form>
         <h1>Маориф</h1>
         <div class="multiselect">
-          <div class="selectBox" onclick="showCheckboxes()">
+          <div class="selectBox" (click)="showCheckboxes = !showCheckboxes">
             <select>
               <option>Лоихахо</option>
             </select>
             <div class="overSelect"></div>
           </div>
-          <div id="checkboxes">
+          <div id="checkboxes" [ngStyle]="{display: showCheckboxes ? 'block': 'none'}">
             <label  >
               <input type="checkbox" id="one" />Барномаи “Фондҳои ҷамоавӣ барои мусоидати рушди маълумоти асосӣ ва барқарорсозии инфрасохтори коммуналӣ, марҳилаи 4” 
             </label>
@@ -34,13 +34,13 @@
         </div>
         <h1>Тандурустӣ</h1>
         <div class="multiselect">
-          <div class="selectBox" onclick="showCheckboxes()">
+          <div class="selectBox" (click)="showCheckboxesS = !showCheckboxesS">
             <select>
               <option>Лоихахо</option>
             </select>
             <div class="overSelect"></div>
           </div>
-          <div id="checkboxes">
+          <div id="checkboxes" [ngStyle]="{display: showCheckboxesS ? 'block': 'none'}">
             <label >
               <input type="checkbox" id="one" />Лоиҳаи Барномаи "Ёрии таъҷилӣ ба Ҳукумати Ҷумҳурии Тоҷикистон барои ташкил ва омодагӣ ба пандемияи COVID-19 ва қобилияти тамоилҳои имконпазир" 
 
