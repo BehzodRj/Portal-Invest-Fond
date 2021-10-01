@@ -14,24 +14,24 @@
 }
 .resp-tab th, .resp-tab td {
     padding: 10px 10px;
-    font-size: 13px;
+    font-size: 18px;
     border: none;
     font-family: Verdana, sans-serif;   
-    border: 1px solid #00B2b2bf;
+    border: 1px solid #1e5bac;
 }
 .resp-tab th {
     color: #FFF;
-    background: #00B2b2bf;
+    background: #1e5bac;
     font-weight: bold;
     border: 1px solid #dddddd; 
     text-transform: uppercase;   
     text-align: center;   
 }
 .resp-tab tr:nth-child(even) {
-    background: #edf7ff;
+    background: #c2d4eb;
 } 
 .resp-tab td span {
-    background: #00B2b2bf;
+    background: #1e5bac;
     color: #FFF;
     display: none;
     font-size: 11px;
