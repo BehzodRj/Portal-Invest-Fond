@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sallary.component.scss']
 })
 export class SallaryComponent implements OnInit {
-
+  showCheckboxes = false
+  showCheckboxesS = false
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }
