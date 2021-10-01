@@ -10,7 +10,6 @@ export class SallaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    "s"
   }
 
 }
