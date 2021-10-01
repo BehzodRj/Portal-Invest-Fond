@@ -8,7 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthPageComponent implements OnInit {
  form!: FormGroup 
-  constructor() { }
+ showAlertLogin = 'Логин'
+ showAlertPassword = 'Пароль'
+
+  constructor() {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -19,7 +22,10 @@ export class AuthPageComponent implements OnInit {
   }
   send(){
     const formData = {...this.form.value}
-    console.log(formData)
+    if(formData.login == '' || formData.password == null) {
+      this.showAlertLogin = 'Поля не можеть быть пустым'
+      this.showAlertPassword = 'Поля не можеть быть пустым'
+    }
   }
   
 }

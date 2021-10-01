@@ -12,15 +12,15 @@
           </tr>
       </thead> 
       <tbody>
-          <tr >
-              <td><span>Ташкилотчии тендер</span>Lorem ipsum dolor sit.</td>
-              <td><span> Номи Лоиха</span> Lorem ipsum dolor sit.</td>
+          <tr *ngFor="let anouncements of anouncement">
+              <td><span>Ташкилотчии тендер </span>{{  '(' + anouncements.id + ')' + ' ' + anouncements.title }}</td>
+              <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
               <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-              <td><span>Мухлати охири кабули хуччатхо </span> Lorem ipsum dolor sit.</td>
-              <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td> 
+              <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
+              <td><span>Матни пурраи эълон  </span> Lorem ipsum dolor sit.</td> 
               <td class="change"><span>Изменение </span>
                 <i title="скачать файл" class="fa fa-download"></i>
-                <i title="добавить избранный " (click)="colorChange = !colorChange" class="fas fa-star" [ngStyle]="{color: colorChange ? 'orange': 'black'}" ></i> 
+                <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': 'black'}" ></i> 
                 <a href="" class="far fa-file-alt"></a>
                 <a href="" class="overlay" id="win1"></a>
                 <div class="popup">  

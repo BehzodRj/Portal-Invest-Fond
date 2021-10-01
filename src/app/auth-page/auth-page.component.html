@@ -10,9 +10,9 @@
 <div class="container">
   <div class="auth__block">
     <form action="" [formGroup]="form" (ngSubmit)="send()"> 
-      <input class="login" type="text" placeholder="Логин" required  formControlName="login">
-      <input class="password" type="password" placeholder="Пароль" required formControlName="password">
-        <button class="submit"  type="submit"  [disabled]="form.invalid">Войти</button>
+      <input class="login" type="text" [placeholder]="'Логин' ? showAlertLogin: !showAlertLogin"  formControlName="login">
+      <input class="password" type="password" [placeholder]="'Пароль' ? showAlertPassword: !showAlertPassword " formControlName="password">
+        <button class="submit"  type="submit">Войти</button>
     </form>
     <div class="reg"> 
        <a routerLink="/registration">Зарегистрироваться</a>

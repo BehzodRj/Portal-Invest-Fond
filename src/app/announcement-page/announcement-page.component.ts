@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-announcement-page',
@@ -6,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcement-page.component.scss']
 })
 export class AnnouncementPageComponent implements OnInit {
-  colorChange = false
+  anouncement: any
 
-  constructor() { }
+  constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.requests.getAnnounceData().subscribe(response => {
+      this.anouncement = response
+    })
   }
 
 }

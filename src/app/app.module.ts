@@ -7,6 +7,7 @@ import { AuthPageComponent } from './auth-page/auth-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { AnnouncementPageComponent } from './announcement-page/announcement-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
