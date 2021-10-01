@@ -1,20 +1,20 @@
 
 .container{ 
     max-width: 1000px;
-    margin: 100px auto;
+    margin: 0 auto;
     padding: 30px;
 }
-h1{
-    text-align: center;
-    padding: 20px 0;
-}
+ 
 .block{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
     h1{
         width: 20%;
         font-size: 18px;
+        text-align: center;
+        padding: 20px 0; 
     }
     .multiselect { 
         width: 70%;
