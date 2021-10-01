@@ -20,10 +20,6 @@ export class SallaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(this.showCheckboxes0 == true){
-       
-    } 
-
-    
+     
   } 
 }
