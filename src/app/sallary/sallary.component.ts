@@ -13,6 +13,4 @@ export class SallaryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-
 }
