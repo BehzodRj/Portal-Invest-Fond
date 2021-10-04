@@ -14,11 +14,11 @@
 }
 .resp-tab th, .resp-tab td {
     padding: 10px 10px;
-    font-size: 18px;
+    font-size: 14px;
     border: none;
     font-family: Verdana, sans-serif;   
     border: 1px solid #1e5bac;
-}
+} 
 .resp-tab th {
     color: #FFF;
     background: #1e5bac;
@@ -26,6 +26,7 @@
     border: 1px solid #dddddd; 
     text-transform: uppercase;   
     text-align: center;   
+    font-size: 14px;
 }
 .resp-tab tr:nth-child(even) {
     background: #c2d4eb;
