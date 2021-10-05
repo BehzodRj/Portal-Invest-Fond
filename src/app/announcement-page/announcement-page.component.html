@@ -3,18 +3,20 @@
   
     <table class="resp-tab">
       <thead>
-          <tr>
+          <tr> 
+            <th>№</th> 
             <th>Ташкилотчии тендер</th>
             <th>Номи Лоиха</th>
             <th>Мавзуи тендер</th>
             <th>Мухлати охири кабули хуччатхо</th>
             <th>Матни пурраи эълон</th> 
-            <th>Операция</th> 
+            <th>Операция</th>  
           </tr>
       </thead> 
       <tbody>
           <tr *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
-              <td><span>Ташкилотчии тендер</span>{{  '(' + anouncements.id + ')' + ' ' + anouncements.title }}</td>
+            <td>{{anouncements.id}}</td>
+              <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td>
               <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
               <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
               <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
@@ -29,6 +31,7 @@
                     <div class="container"></div>
                 </div>
               </td>
+              
           </tr> 
       </tbody>
   </table>

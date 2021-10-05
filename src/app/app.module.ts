@@ -19,7 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistrationPageComponent,
     AnnouncementPageComponent,
     SallaryComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [  
     FormsModule,
