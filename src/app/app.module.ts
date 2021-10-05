@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SallaryComponent } from './sallary/sallary.component';
 import { HeaderComponent } from './header/header.component';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeaderComponent } from './header/header.component';
     RegistrationPageComponent,
     AnnouncementPageComponent,
     SallaryComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExampleComponent
   ],
   imports: [  
     FormsModule,
