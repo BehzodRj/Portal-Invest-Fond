@@ -1,52 +1,93 @@
 .container {
+    width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
 }
-.auth__block {
-    width: 270px;
+.auth_block {
+    display: flex;
+}
+.enter_block {
+    margin-right: 81px;
+}
+.enter_block h1 {
+    margin-bottom: 9px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28,13px;
+    color: #757575;
+    cursor: pointer;
+}
+.enter_block hr {
+    padding: 1px 0;
+    background-color: #757575;
+}
+.auth_block .registration {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28,13px;
+    color: #15345C;
+    cursor: pointer;
 }
 form {
+    margin-top: 20px;
+}
+.items_block {
     display: flex;
     flex-direction: column;
-}
- 
-input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    border: 0;
-    outline: none;
-    font-family: 'Roboto',sans-serif;
-    font-weight: 300; 
-    background: #E8F0FE;
-}
-.submit {
+    border-radius: 8px;
+    width: 280px;
     padding: 5px;
-    border-radius: 15px;
+    border: 1px solid #0E131A;
+    border-radius: 8px;
+}
+.items_block label {
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    text-indent: 6px;
+    margin-bottom: 2px;
+}
+.items_block input {
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-indent: 6px;
+    outline: none;
     border: 0;
-    background-color: #222;
-    color: #fff;
-    cursor: pointer;
-    font-family: 'Roboto',sans-serif;
-    font-weight: 100;
-    &:active {
-        transform: scale(.9);
-    }
+}
+.password_block {
+    margin-top: 19px;
 }
 
-
-.reg{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    a{
-        text-decoration: none;
-        color:#000;
-        cursor: pointer;
-        &:hover{ 
-            color:red;
-        }
+.form button {
+    margin-top: 31px;
+    width: 100%;
+    padding: 13px 0;
+    background: #15345C;
+    border: 1px solid #0E131A;
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.form button:active {
+    transform: scale(.95);
+}
+@media screen and (max-width: 300px) {
+    .items_block {
+        width: 250px;
+    }
+    .enter_block {
+        margin-right: 50px;
     }
 }

@@ -1,22 +1,24 @@
-<!-- <div class="container">
-    <form action="">
-        <input type="text" placeholder="Логин">
-        <input type="password" placeholder="Пароль">
-        <button>Войти</button>
-        <a routerLink="/registration">Зарегистрироваться</a>
-    </form>
-</div> -->
-
 <div class="container">
-  <div class="auth__block">
-    <form action="" [formGroup]="form" (ngSubmit)="send()"> 
-      <input class="login" type="text" [placeholder]="'Логин' ? showAlertLogin: !showAlertLogin"  formControlName="login">
-      <input class="password" type="password" [placeholder]="'Пароль' ? showAlertPassword: !showAlertPassword " formControlName="password">
-        <button class="submit"  type="submit">Войти</button>
-    </form>
-    <div class="reg"> 
-       <a routerLink="/registration">Зарегистрироваться</a>
+
+  <div class="auth_block">
+    <div class="enter_block">
+      <h1 class="enter">Вход</h1>
+      <hr>
     </div>
+    
+    <h1 class="registration" routerLink="/registration">Регистрация</h1>
   </div>
+
+  <form class="form" action="" [formGroup]="form" (ngSubmit)="send()">
+    <div class="items_block">
+      <label for="text">Логин</label>
+      <input type="text" [placeholder]="'Логин' ? showAlertLogin: !showAlertLogin"  formControlName="login">
+    </div>
+
+    <div class="items_block password_block">
+      <label for="password">Пароль</label>
+      <input type="password" [placeholder]="'Пароль' ? showAlertPassword: !showAlertPassword " formControlName="password">
+    </div>
+    <button type="submit">ВОЙТИ</button>
+  </form>
 </div>
- 

@@ -13,8 +13,8 @@
           </tr>
       </thead> 
       <tbody>
-          <tr *ngFor="let anouncements of anouncement">
-              <td><span>Ташкилотчии тендер </span>{{  '(' + anouncements.id + ')' + ' ' + anouncements.title }}</td>
+          <tr *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
+              <td><span>Ташкилотчии тендер</span>{{  '(' + anouncements.id + ')' + ' ' + anouncements.title }}</td>
               <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
               <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
               <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
@@ -31,7 +31,8 @@
               </td>
           </tr> 
       </tbody>
-  </table> 
+  </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
     <div class="creat">
       <button >Создать</button>
     </div>  

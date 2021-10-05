@@ -1,146 +1,53 @@
-.header{  
-    display: flex;  
-    padding: 30px 0;
-    align-items: center;
-    justify-content: space-between;  
-    background: #112A4A; 
-}
-.container{    
+.container {
+    background-color: #15345c;
     display: flex;
-    align-items: center;  
-    justify-content: space-between;
-    width:100%;
-    margin: 0 20px;   
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+img {
+    margin-left: auto;
 }
 .logo {
-    margin-right: 30px;
+    width: 500px;
     cursor: pointer;
 }
-.logOut{
+.logOut {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+}
+.logOut .fas {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #fff;
+}
+.logOut h1 {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #fff;
+    font-family: 'Calibri';
+    font-weight: 300;
+}
+.menu_container {
+    background-color: #112a4a;
+    color: #fff;
+    padding: 10px;
+}
+.menu_block {
+    max-width: 1430px;
+    margin: auto;
     display: flex;
     align-items: center;
 }
-.logOut p{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.fa, .p {
-    color: #fff;
+.menu_container i {
     cursor: pointer;
 }
-
- .hamburger-menu{ 
-     width: 50px;
-     margin-left: 20px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-
- }
- /* скрываем чекбокс */
-#menu__toggle {
-    opacity: 0;
-  }
-  /* стилизуем кнопку */
-.menu__btn { 
-    display: flex; 
-    align-items: center;  
-    position: fixed;  
-    width: 35px;
-    height: 35px;
+.menu_container h1 {
+    font-family: "Calibri", sans-serif;
+    font-weight: 100;
+    margin-left: 35px;
+    font-size: 18px;
     cursor: pointer;
-    z-index: 3; 
-    position: relative;
-}
-  /* добавляем "гамбургер" */
-.menu__btn > span,
-.menu__btn > span::before,
-.menu__btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color:#fff;
-}
-.menu__btn > span::before {
-    content: '';
-    top: -8px;
-}
-.menu__btn > span::after {
-    content: '';
-    top: 8px;
-}
-  /* контейнер меню */
-.menu__box {
-    display: block;
-    position: fixed;
-    visibility: hidden; 
-    top: 0;
-    left: -100%;
-    width: 340px;
-    height: 100%;
-    margin: 0;
-    padding: 120px 0;
-    list-style: none;
-    text-align: center;
-    background-color:#15345C;
-    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-    z-index: 2;
-  }
-.menu__box img{
-    width: 300px;
-    margin-top: 150px; 
-}
-
-  /* элементы меню */
-.menu__item {
-    display: block;
-    padding: 12px 24px;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    text-decoration: none;
-}
-.menu__item:hover {
-    background-color: #284469; 
-}
-.menu__item:active {
-   transform: scale(.7); 
-}
-#menu__toggle:checked ~ .menu__btn > span {
-    transform: rotate(45deg); 
-}
-#menu__toggle:checked ~ .menu__btn > span::before {
-    top: 0; 
-    transform: rotate(0);
-}
-#menu__toggle:checked ~ .menu__btn > span::after {
-    top: 0;
-    transform: rotate(90deg); 
-} 
-#menu__toggle:checked ~ .menu__box {
-    visibility: visible;
-    left: 0;
-}   
-   
-.menu__btn > span,
-.menu__btn > span::before,
-.menu__btn > span::after {
-  transition-duration: .25s;
-}
-.menu__box {
-  transition-duration: .25s;
-}
-.menu__item {
-  transition-duration: .25s;
-} 
-
-
-@media screen  and (max-width:600px){
-    .menu__box{
-        width: 100%;
-        overflow: hidden;
-    } 
 }
