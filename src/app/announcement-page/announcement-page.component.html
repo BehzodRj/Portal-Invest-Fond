@@ -25,11 +25,6 @@
                 <i title="скачать файл" class="fa fa-download"></i>
                 <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': 'black'}" ></i> 
                 <a href="" class="far fa-file-alt"></a>
-                <a href="" class="overlay" id="win1"></a>
-                <div class="popup">  
-                    <a class="close" title="Закрыть" href="#close"></a>
-                    <div class="container"></div>
-                </div>
               </td>
               
           </tr> 
@@ -41,3 +36,4 @@
       <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>   
   </div>
+  <app-footer-page></app-footer-page>

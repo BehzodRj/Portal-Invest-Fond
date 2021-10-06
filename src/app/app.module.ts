@@ -12,6 +12,8 @@ import { SallaryComponent } from './sallary/sallary.component';
 import { HeaderComponent } from './header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProjectComponent } from './project/project.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { FooterPageComponent } from './footer-page/footer-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ProjectComponent } from './project/project.component';
     SallaryComponent,
     HeaderComponent,
     ProjectComponent,
+    ProfilePageComponent,
+    FooterPageComponent,
   ],
   imports: [  
     FormsModule,
