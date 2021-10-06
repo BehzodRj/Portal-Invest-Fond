@@ -63,7 +63,7 @@
 .about_block button {
     width: 179px;
     height: 40px;
-    margin: 39px 0 20px 0;
+    margin-top: 39px;
     background: #15345C;
     border-radius: 8px;
     color: #fff;
@@ -130,7 +130,7 @@
     text-indent: 10px;
 }
 .payment_block button {
-    margin: 32px 0 20px 0;
+    margin-top: 32px;
     width: 179px;
     height: 40px;
     background: #15345C;
@@ -158,9 +158,6 @@ button:active {
 @media screen and (max-width: 732px) {
     .content {
         flex-direction: column;
-    }
-    .about_block button {
-        margin-bottom: 0;
     }
     .payment_block {
         margin: 50px 10px 0 0;

@@ -61,3 +61,22 @@ img {
         display: none;
     }
 }
+@media screen and (max-width: 925px) {
+    .menu_block {
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    .container {
+        justify-content: center;
+        align-items: center;
+    }
+    .logOut {
+        display: none;
+    }
+}
+@media screen and (max-width: 455px) {
+    .logo {
+        width: 100%;
+    }
+}
