@@ -1,27 +1,27 @@
 <app-header></app-header>
 <div class="navbar">
   
-    <table class="resp-tab">
-      <thead>
-          <tr> 
-            <th>№</th> 
-            <th>Ташкилотчии тендер</th>
-            <th>Номи Лоиха</th>
-            <th>Мавзуи тендер</th>
-            <th>Мухлати охири кабули хуччатхо</th>
-            <th>Матни пурраи эълон</th> 
-            <th>Операция</th>  
-          </tr>
-      </thead> 
-      <tbody>
-          <tr *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
-            <td>{{anouncements.id}}</td>
+    <table class="resp-tab" >
+      <thead class="pain">
+        <tr> 
+          <th>№</th> 
+          <th>Ташкилотчии тендер</th>
+          <th>Номи Лоиха</th>
+          <th>Мавзуи тендер</th>
+          <th>Мухлати охири кабули хуччатхо</th>
+          <th>Матни пурраи эълон</th> 
+          <th>Операция</th>  
+        </tr>  
+    </thead> 
+      <tbody class="pains">
+          <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
+            <td><span>№</span>{{anouncements.id}}</td>
               <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td>
               <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
               <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
               <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
               <td><span>Матни пурраи эълон  </span> Lorem ipsum dolor sit.</td> 
-              <td class="change"><span>Изменение </span>
+              <td class="change"> 
                 <i title="скачать файл" class="fa fa-download"></i>
                 <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': 'black'}" ></i> 
                 <a href="" class="far fa-file-alt"></a>
@@ -35,8 +35,9 @@
           </tr> 
       </tbody>
   </table>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
     <div class="creat">
       <button >Создать</button>
-    </div>  
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>   
   </div>

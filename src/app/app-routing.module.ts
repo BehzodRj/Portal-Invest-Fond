@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AnnouncementPageComponent } from './announcement-page/announcement-page.component';
-import { AuthPageComponent } from './auth-page/auth-page.component';
-import { ExampleComponent } from './example/example.component';
+import { AuthPageComponent } from './auth-page/auth-page.component'; 
 import { HeaderComponent } from './header/header.component';
+import { ProjectComponent } from './project/project.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SallaryComponent } from './sallary/sallary.component';
 
@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'announcement', component: AnnouncementPageComponent },
   { path: 'sallary', component: SallaryComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'example', component: ExampleComponent}
+  { path: 'header', component: HeaderComponent }, 
+  { path: 'project', component: ProjectComponent }, 
 ];
 
 @NgModule({

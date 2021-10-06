@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SallaryComponent } from './sallary/sallary.component';
 import { HeaderComponent } from './header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AnnouncementPageComponent,
     SallaryComponent,
     HeaderComponent,
+    ProjectComponent,
   ],
   imports: [  
     FormsModule,
