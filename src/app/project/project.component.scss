@@ -1,0 +1,14 @@
+.container{
+    max-width: 1200px;
+    height: 100vh;
+    background: #ccc;
+    margin: auto;
+    padding: 30px;
+    .checkbox{
+        background: #333;
+        color: #fff; 
+    }
+    .checkboxes{
+        padding: 20px ;
+    }
+}
