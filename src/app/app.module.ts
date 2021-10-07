@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,10 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SallaryComponent } from './sallary/sallary.component';
 import { HeaderComponent } from './header/header.component';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { ProjectComponent } from './project/project.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +23,9 @@ import { FooterPageComponent } from './footer-page/footer-page.component';
     AnnouncementPageComponent,
     SallaryComponent,
     HeaderComponent,
-    ProjectComponent,
     ProfilePageComponent,
     FooterPageComponent,
+    ProjectComponent,
   ],
   imports: [  
     FormsModule,
