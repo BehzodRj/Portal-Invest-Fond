@@ -249,21 +249,44 @@ form .send {
         width: 100vw;
     }
     .form_items {
-        background-color: red;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    .form_items h1 {
+        margin-right: 0;
     }
     .form_items .fst_i {
         width: 100vw;
     }
     .form_items .sec_i {
-        margin-top: 10px;
-        width: 100vw;
-        background-color:green;
+        margin: 5px 0;
+        width: 100vw !important;
     }
     .form_items .last_i {
-        margin-top: 10px;
         width: 100vw;
+    }
+    .form_pos {
+        margin-top: 30px;
+    }
+    .last-form_items {
+        flex-direction: column;
+    }
+    .last-form_items .number_form {
+        width: 100vw;
+    }
+    .last-form_items .name_form {
+        margin: 5px 0;
+        width: 100vw;
+    }
+    .last-form_items .summa_form {
+        width: 100vw;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    form .send {
+        width: 250px;
     }
 }
