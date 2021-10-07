@@ -68,6 +68,8 @@
 }
 .form_items {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .form_pos {
     margin-top: 17px;
@@ -108,6 +110,8 @@
 }
 .last-form_items {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     margin-top: 50px;
 }
@@ -208,4 +212,58 @@
 }
 .last-form_items button:active {
     transform: scale(.99);
+}
+form .send {
+    margin: 80px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 40px;
+    background: #15345C;
+    border: 1px solid #0E131A;
+    border-radius: 8px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 700px) {
+    .fail_block {
+        width: 500px;
+    }
+    .sec_i {
+        width: 300px !important;
+    }
+    .name_form {
+        width: 248px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .fail_block {
+        width: 100vw;
+    }
+    .form_items {
+        background-color: red;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form_items .fst_i {
+        width: 100vw;
+    }
+    .form_items .sec_i {
+        margin-top: 10px;
+        width: 100vw;
+        background-color:green;
+    }
+    .form_items .last_i {
+        margin-top: 10px;
+        width: 100vw;
+    }
 }
