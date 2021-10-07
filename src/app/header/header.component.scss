@@ -51,6 +51,9 @@ img {
     font-size: 18px;
     cursor: pointer;
 }
+.active {
+    color: #b6b2b2;
+}
 @media screen and (max-width: 1350px) {
     .logo {
         width: 450px;
