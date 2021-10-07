@@ -7,6 +7,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ProjectComponent } from './project/project.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SallaryComponent } from './sallary/sallary.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'application', component: AplicationPageComponent },
+  { path: 'header', component: HeaderComponent },
 ];
 
 @NgModule({
