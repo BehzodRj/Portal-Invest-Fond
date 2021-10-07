@@ -9,6 +9,7 @@ import { RequestService } from '../all.service';
 })
 export class AnnouncementPageComponent implements OnInit {
   anouncement: any
+  page: any
 
   constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 

@@ -1,58 +1,60 @@
-<div class="content">
-    
-    <div class="container">
-        <div class="blank"> 
-            <label  for="">Фамилия <b>*</b></label>
-            <input type="text" placeholder="Фамилия" >
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">Имя <b>*</b></label>
-            <input type="text" placeholder="Имя">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">Отчества <b>*</b></label>
-            <input type="text" placeholder="Отчества">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">Должность <b>*</b></label>
-            <input type="text" placeholder="Должность">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">Наименю<br> Компании <b>*</b></label>
-            <input type="text" placeholder="Наименю компании">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">ИНН<b>*</b></label>
-            <input type="text" placeholder="ИНН">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="blank">
-            <label for="">e-mail <b>*</b></label>
-            <input type="text" placeholder="e-mail">
-            <i  class="fas fa-check"></i> 
-        </div>
-        
-        <div class="blank">
-            <label class="reg" for="">Место<br> регистрация  <b>*</b></label>
-            <input type="text" placeholder="Место регистрация ">
-            <i  class="fas fa-check"></i> 
-        </div>
-        
-        <div class="blank">
-            <label for="">Телефон <b>*</b></label>
-            <input type="number" placeholder="Телефон">
-            <i  class="fas fa-check"></i> 
-        </div>
-        <div class="btn__block">
-            <button type="submit">отправить</button> 
-            <button type="submit">дoбавить избранный</button> 
-        </div>
-    </div>
-  </div>  
+<div class="container">
 
- 
+  <div class="auth_block">
+    <h1 class="enter" routerLink="/">Вход</h1>
+
+    <div class="registration_block">
+      <h1 class="registration" routerLink="/registration">Регистрация</h1>
+      <hr>
+    </div>
+
+  </div>
+
+  <form class="form" action="">
+    <div class="items_block">
+      <label for="text">Имя</label>
+      <input type="text" placeholder="Имя">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Фамилия</label>
+      <input type="password" placeholder="Фамилия">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Пароль</label>
+      <input type="password" placeholder="Пароль">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Отчество</label>
+      <input type="password" placeholder="Отчество">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Должность</label>
+      <input type="password" placeholder="Должность">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Наименование компании</label>
+      <input type="password" placeholder="Наименование компании">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">ИНН</label>
+      <input type="password" placeholder="ИНН">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Место Регистрации</label>
+      <input type="password" placeholder="Место Регистрации">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="password">Ваш E-mail</label>
+      <input type="password" placeholder="Ваш E-mail">
+    </div>
+    <button type="submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+  </form>
+</div>
