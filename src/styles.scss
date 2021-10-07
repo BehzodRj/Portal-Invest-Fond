@@ -8,3 +8,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
  
+@media screen and (max-width:961px){
+    .ngx-pagination{
+        margin-top: -180px; 
+    }
+}
