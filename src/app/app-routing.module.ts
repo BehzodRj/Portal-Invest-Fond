@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'application', component: AplicationPageComponent },
+  { path: 'header', component: HeaderComponent },
 ];
 
 @NgModule({
