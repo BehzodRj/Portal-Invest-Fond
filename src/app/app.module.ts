@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
 import { ProjectComponent } from './project/project.component';
+import { AplicationPageComponent } from './aplication-page/aplication-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProjectComponent } from './project/project.component';
     ProfilePageComponent,
     FooterPageComponent,
     ProjectComponent,
+    AplicationPageComponent,
   ],
   imports: [  
     FormsModule,

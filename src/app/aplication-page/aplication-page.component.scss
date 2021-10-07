@@ -1,0 +1,211 @@
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+.container .title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #112A4A;
+}
+.fail_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    width: 680px;
+    height: 40px;
+    border: 1px solid #15345C;
+    border-radius: 8px;
+}
+.fail_block .failImg {
+    margin-left: auto;
+}
+.fail_block .fileChoose {
+    position: relative;
+    right: 10px;
+    width: 10px;
+    opacity: 0;
+}
+.fail_block .file_title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    text-indent: 20px;
+    margin-top: 7px;
+}
+.fail_block .file_description {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+    color: #757575;
+    text-indent: 20px;
+    margin-top: 4px;
+}
+.container .lots {
+    margin-top: 22px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #112A4A;
+}
+.forms {
+    margin-top: 13px;
+}
+.form_items {
+    display: flex;
+}
+.form_pos {
+    margin-top: 17px;
+}
+.form_items h1 {
+    margin-right: 12px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #112A4A;
+}
+.form_items .fst_i {
+    width: 57px;
+    height: 40px;
+    border: 1px solid #15345C;
+    border-radius: 8px;
+    text-indent: 10px;
+    outline: none;
+}
+.form_items .sec_i {
+    margin: 0 11px;
+    width: 479px;
+    height: 40px;
+    border: 1px solid #15345C;
+    border-radius: 8px;
+    text-indent: 20px;
+    outline: none;
+}
+.form_items .last_i {
+    width: 90px;
+    height: 40px;
+    border: 1px solid #15345C;
+    box-sizing: border-box;
+    border-radius: 8px;
+    text-indent: 10px;
+    outline: none;
+}
+.last-form_items {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+.number_form {
+    width: 61px;
+    height: 40px;
+    border: 1px solid #15345C;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.number_form h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    margin-top: 5px;
+    text-indent: 10px;
+}
+.number_form input {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 14px;
+    margin-top: 3px;
+    text-indent: 10px;
+    color: #757575;
+    border: 0;
+    outline: 0;
+}
+.name_form {
+    width: 427px;
+    height: 40px;
+    border: 1px solid #15345C;
+    border-radius: 8px;
+    margin: 0 17px;
+}
+.name_form h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    margin-top: 5px;
+    text-indent: 25px;
+}
+.name_form input {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 12px;
+    color: #000000;
+    text-indent: 25px;
+    margin-top: 3px;
+    border: 0;
+    outline: none;
+}
+.summa_form {
+    width: 90px;
+    height: 40px;
+    border: 1px solid #15345C;
+    border-radius: 8px;
+    margin-right: 17px;
+}
+.summa_form h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    margin-top: 5px;
+    text-indent: 15px;
+}
+.summa_form input {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 14px;
+    color: #757575;
+    margin-top: 3px;
+    text-indent: 15px;
+    border: 0;
+    outline: none;
+}
+.last-form_items button {
+    width: 57px;
+    height: 40px;
+    background: #15345C;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 25px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+.last-form_items button:active {
+    transform: scale(.99);
+}

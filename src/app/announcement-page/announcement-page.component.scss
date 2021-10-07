@@ -1,5 +1,7 @@
 .navbar{   
-    padding: 30px;   
+    max-width: 1430px;
+    padding-top: 30px;
+    margin: auto;
     .resp-tab {
         width: 100%;     
         margin: 50px auto ;
@@ -14,7 +16,7 @@
                 border-bottom: 1px solid #000;
 
                 th{
-                    padding: 5px 5px;
+                    padding-bottom: 29px;
                     font-family: 'Roboto',sans-serif; 
                     font-weight: 400;
                     font-size: 15px;
@@ -53,7 +55,8 @@
                     font-weight: 400;
                     font-size: 15px;
                     position: relative;
-                    top: 20px; 
+                    top: 29px;
+                    padding: 3px 10px;
                     span{
                         background: #1e5bac;
                         color: #FFF;
@@ -99,7 +102,7 @@
                         color: #fff;
                     } 
                 }
-            } 
+            }
             .train:nth-child(1n+2){  
                 position: relative;
                 top: 10px;
@@ -154,9 +157,9 @@
 }
 .creat {
     max-width: 100%;
-    margin: 150px auto; 
+    margin: 170px auto; 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     button {
         height: 30px;
         padding: 5px 30px;
