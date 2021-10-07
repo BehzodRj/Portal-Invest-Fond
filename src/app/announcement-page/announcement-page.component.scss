@@ -12,7 +12,7 @@
         .pain{  
             tr{ 
                 position: relative;
-                bottom: 10px;
+                bottom: 20px;
                 border-bottom: 1px solid #000;
 
                 th{
@@ -57,6 +57,7 @@
                     position: relative;
                     top: 29px;
                     padding: 3px 10px;
+                    border-right: 2px solid;
                     span{
                         background: #1e5bac;
                         color: #FFF;
@@ -178,8 +179,29 @@
 }
 
 
-@media(max-width: 961px) { 
-    .navbar{
+@media(max-width: 961px) {
+    // .resp-tab thead {
+    //     display: none;
+    // }
+    // .resp-tab tr {
+    //     display: flex;
+    //     flex-direction: row;
+    //     flex-wrap: wrap;
+    //     margin-bottom: 30px;
+    // }
+    // .resp-tab td {
+    //     margin: 0 -1px -1px 0;
+    //     padding-top: 35px;
+    //     position: relative;
+    //     width: 100%;
+    // }
+    // .resp-tab td span {
+    //     display: block;
+    // }
+    // .change{   
+    //     justify-content: space-around;   
+    // }
+    .navbar{     
         .resp-tab { 
             .pain{  
                 display: none;
