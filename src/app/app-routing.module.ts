@@ -6,12 +6,14 @@ import { ProjectComponent } from './project/project.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SallaryComponent } from './sallary/sallary.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'announcement', component: AnnouncementPageComponent },
   { path: 'sallary', component: SallaryComponent },
+  { path: 'header', component: HeaderComponent },
   { path: 'project', component: ProjectComponent }, 
   { path: 'profile', component: ProfilePageComponent },
 ];
