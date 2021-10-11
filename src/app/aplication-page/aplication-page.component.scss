@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
 }
 .content {
     display: flex;
@@ -10,6 +11,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 10px;
+    padding: 30px;
 }
 .container .title {
     font-family: "Roboto", sans-serif;
@@ -66,10 +68,22 @@
 .forms {
     margin-top: 13px;
 }
+.remove p{ 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;  
+    cursor: pointer;
+    color: #000; 
+    padding-right: 10px; 
+    &:hover{
+        opacity: .5;
+    } 
+     
+}
 .form_items {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 }
 .form_pos {
     margin-top: 17px;
@@ -83,7 +97,7 @@
     color: #112A4A;
 }
 .form_items .fst_i {
-    width: 57px;
+    width: 10%;
     height: 40px;
     border: 1px solid #15345C;
     border-radius: 8px;
@@ -113,10 +127,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 .number_form {
-    width: 61px;
+    width: 15%;
     height: 40px;
     border: 1px solid #15345C;
     box-sizing: border-box;
@@ -157,7 +171,7 @@
     line-height: 12px;
     color: #000000;
     margin-top: 5px;
-    text-indent: 25px;
+    text-indent: 10px; 
 }
 .name_form input {
     width: 100%;
@@ -166,17 +180,16 @@
     font-size: 11px;
     line-height: 12px;
     color: #000000;
-    text-indent: 25px;
+    text-indent: 10px;
     margin-top: 3px;
     border: 0;
     outline: none;
 }
-.summa_form {
-    width: 90px;
+.summa_form{
+    width: 15%;
     height: 40px;
     border: 1px solid #15345C;
     border-radius: 8px;
-    margin-right: 17px;
 }
 .summa_form h1 {
     font-family: "Roboto", sans-serif;
@@ -209,12 +222,18 @@
     border: 0;
     outline: none;
     cursor: pointer;
+   
 }
-.last-form_items button:active {
+button:active {
     transform: scale(.99);
 }
+.btn{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
 form .send {
-    margin: 80px auto 0;
+    margin: 10px auto ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,18 +254,15 @@ form .send {
 @media screen and (max-width: 700px) {
     .fail_block {
         width: 500px;
-    }
-    .sec_i {
-        width: 300px !important;
-    }
+    } 
     .name_form {
-        width: 248px;
+        width: 300px;
     }
 }
 
 @media screen and (max-width: 520px) {
     .fail_block {
-        width: 100vw;
+        width: 90vw;
     }
     .form_items {
         flex-direction: column;
@@ -257,14 +273,14 @@ form .send {
         margin-right: 0;
     }
     .form_items .fst_i {
-        width: 100vw;
+        width: 90vw;
     }
     .form_items .sec_i {
         margin: 5px 0;
-        width: 100vw !important;
+        width: 90vw !important;
     }
     .form_items .last_i {
-        width: 100vw;
+        width: 90vw;
     }
     .form_pos {
         margin-top: 30px;
@@ -273,14 +289,14 @@ form .send {
         flex-direction: column;
     }
     .last-form_items .number_form {
-        width: 100vw;
+        width: 90vw;
     }
     .last-form_items .name_form {
         margin: 5px 0;
-        width: 100vw;
+        width: 90vw;
     }
     .last-form_items .summa_form {
-        width: 100vw;
+        width: 90vw;
         margin: 0 0 10px 0;
     }
 }
