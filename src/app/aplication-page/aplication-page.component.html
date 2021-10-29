@@ -16,8 +16,8 @@
     <h1 class="lots">Лоты:</h1>
 
     <form class="forms" action="">
-      <div class="remove">
-        <p>удалить лот</p>  
+      <div class="remove" *ngFor="let lotF of lots">
+        <p (click)="deleted()">удалить лот</p>  
       <div class="last-form_items">
         <div class="number_form">
           <h1>Номер</h1>
@@ -36,7 +36,7 @@
       </div>
     </div> 
       <div class="btn">
-        <button class="send">ДОБАВИТЬ ЛОТ</button>
+        <button class="send" (click)="add()">ДОБАВИТЬ ЛОТ</button>
       <button class="send">ОТПРАВИТЬ</button>
       </div>
     </form>

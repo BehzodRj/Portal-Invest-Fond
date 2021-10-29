@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -12,7 +13,7 @@ export class AuthPageComponent implements OnInit {
  showAlertLogin = 'Логин'
  showAlertPassword = 'Пароль'
 
-  constructor(private router: Router) {}
+  constructor(private requests: RequestService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -27,7 +28,11 @@ export class AuthPageComponent implements OnInit {
       this.showAlertLogin = 'Поля не можеть быть пустым'
       this.showAlertPassword = 'Поля не можеть быть пустым'
     } else {
-      this.router.navigate(["/announcement"])
+      this.requests.authRequests(formData.login, formData.password).subscribe(response => {
+        this.router.navigate(["/announcement"])
+      }, error => {
+        alert(error.error.Error);
+      })
     }
   }
   
