@@ -12,12 +12,12 @@
   <form class="form" action="" [formGroup]="form" (ngSubmit)="send()">
     <div class="items_block">
       <label for="text">Логин</label>
-      <input type="text" [placeholder]="'Логин' ? showAlertLogin: !showAlertLogin"  formControlName="login">
+      <input type="text" [placeholder]="showAlertLogin" *ngIf="showAlertLogin"  formControlName="login">
     </div>
 
     <div class="items_block password_block">
       <label for="password">Пароль</label>
-      <input type="password" [placeholder]="'Пароль' ? showAlertPassword: !showAlertPassword " formControlName="password">
+      <input type="password" [placeholder]="showAlertPassword" *ngIf="showAlertPassword" formControlName="password">
     </div>
     <button type="submit">ВОЙТИ</button>
   </form>
