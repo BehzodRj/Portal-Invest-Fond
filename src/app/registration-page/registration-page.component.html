@@ -10,51 +10,61 @@
 
   </div>
 
-  <form class="form" action="">
+  <form class="form" [formGroup]="registerForm">
     <div class="items_block">
       <label for="text">Имя</label>
-      <input type="text" placeholder="Имя">
+      <input type="text" [placeholder]="showAlertsName" formControlName="name">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Фамилия</label>
-      <input type="password" placeholder="Фамилия">
+      <label for="text">Фамилия</label>
+      <input type="text" [placeholder]="showAlertsLast_name" formControlName="last_name">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="text">Отчество</label>
+      <input type="text" [placeholder]="showAlertsMiddle_name" formControlName="middle_name">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="text">Логин</label>
+      <input type="text" [placeholder]="showAlertsLogin" formControlName="login">
     </div>
 
     <div class="items_block regist_block">
       <label for="password">Пароль</label>
-      <input type="password" placeholder="Пароль">
+      <input type="password" [placeholder]="showAlertsPassword" formControlName="password">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Отчество</label>
-      <input type="password" placeholder="Отчество">
+      <label for="text">Должность</label>
+      <input type="text" [placeholder]="showAlertsDivision" formControlName="division">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Должность</label>
-      <input type="password" placeholder="Должность">
+      <label for="text">Наименование компании</label>
+      <input type="text" [placeholder]="showAlertsCompanyName" formControlName="company_name">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Наименование компании</label>
-      <input type="password" placeholder="Наименование компании">
+      <label for="number">ИНН</label>
+      <input type="number" [placeholder]="showAlertsInn" formControlName="inn">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">ИНН</label>
-      <input type="password" placeholder="ИНН">
+      <label for="text">Место Рождения</label>
+      <input type="text" [placeholder]="showAlertsBirth_city" formControlName="birth_city">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Место Регистрации</label>
-      <input type="password" placeholder="Место Регистрации">
+      <label for="email">Номер Телефона</label>
+      <input type="number" [placeholder]="showAlertsPhone" formControlName="phone">
     </div>
 
     <div class="items_block regist_block">
-      <label for="password">Ваш E-mail</label>
-      <input type="password" placeholder="Ваш E-mail">
+      <label for="email">Ваш E-mail</label>
+      <input type="email" [placeholder]="showAlertsEmail" formControlName="email">
     </div>
-    <button type="submit">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+    <button type="submit" (click)="registration()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
   </form>
 </div>

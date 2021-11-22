@@ -1,49 +1,51 @@
 <app-header></app-header>
 <div class="container">
-    <h1 class="user_name">Рахмонов Рахмон Рахмонович</h1>
+    <h1 class="user_name">{{ userData.name + ' ' +  userData.last_name + ' ' + userData.middle_name}}</h1>
 
     <div class="content">
         <div class="about_block">
 
             <div class="user_img">
-                <img src="assets/img/photo.jpg" alt="">
+                <input type="file" class="photo" (change)="getFilePhoto($event)">
+                <img [src]="getPhoto" *ngIf="userImage" alt="">
+                <i class="far fa-user fa-6x" *ngIf="userIcon"></i>
             </div>
 
             <div class="items_parent">
                 <h1 class="title">Занимаемые должности:</h1>
-                <h1 class="description">Должность</h1>
+                <h1 class="description">{{ userData.division }}</h1>
             </div>
 
             <div class="items_block">
                 <h1 class="title">Наименование компании:</h1>
-                <h1 class="description">Компания</h1>
+                <h1 class="description">{{ userData.company_name }}</h1>
             </div>
             
             <div class="items_block">
                 <h1 class="title">ИНН:</h1>
-                <h1 class="description">88805553535</h1>
+                <h1 class="description">{{ userData.inn }}</h1>
             </div>
 
             <div class="items_block">
                 <h1 class="title">email:</h1>
-                <h1 class="description">email@email.ru</h1>
+                <h1 class="description">{{ userData.email }}</h1>
             </div>
 
             <div class="items_block">
-                <h1 class="title">Место регистрации:</h1>
-                <h1 class="description">Место регистрации</h1>
+                <h1 class="title">Место рождения:</h1>
+                <h1 class="description">{{ userData.birth_city }}</h1>
             </div>
 
             <div class="items_block">
                 <h1 class="title">Телефон:</h1>
-                <h1 class="description">88805553535</h1>
+                <h1 class="description">{{ userData.phone }}</h1>
             </div>
 
             <button>Редактировать</button>
 
         </div>
 
-        <div class="payment_block">
+        <!-- <div class="payment_block">
 
             <div class="balance_items">
                 <h1 class="balance">Баланс:</h1>
@@ -62,7 +64,7 @@
 
             <button>Продолжить</button>
 
-        </div>
+        </div> -->
     </div>
 </div>
 <app-footer-page></app-footer-page>

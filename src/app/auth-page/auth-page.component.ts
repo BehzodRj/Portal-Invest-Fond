@@ -21,14 +21,22 @@ export class AuthPageComponent implements OnInit {
       password: new FormControl(null,Validators.required)
     })
 
+    if(localStorage.getItem('access_token')) {
+      this.router.navigate(['/announcement'])
+    } else {
+      this.router.navigate(['/'])
+    }
+
   }
   send(){
     const formData = {...this.form.value}
     if(formData.login == '' || formData.password == null) {
-      this.showAlertLogin = 'Поля не можеть быть пустым'
-      this.showAlertPassword = 'Поля не можеть быть пустым'
+      this.showAlertLogin = 'Поля не может быть пустым'
+      this.showAlertPassword = 'Поля не может быть пустым'
     } else {
-      this.requests.authRequests(formData.login, formData.password).subscribe(response => {
+      this.requests.authRequests(formData.login, formData.password).subscribe( (response: any) => {
+        localStorage.setItem('access_token', response.access_token)
+        localStorage.setItem('user', response.user)
         this.router.navigate(["/announcement"])
       }, error => {
         alert(error.error.Error);

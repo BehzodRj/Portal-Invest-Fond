@@ -2,7 +2,7 @@
   <img class="logo" src="assets/img/weblogo.png" alt="">
   <img class="citat" src="assets/img/citatatj03.png" alt="">
 
-  <div class="logOut" routerLink="/">
+  <div class="logOut" (click)="logOut()">
     <i class="fas fa-sign-out-alt"></i>
     <h1>Выход</h1>
   </div>
@@ -11,11 +11,12 @@
   <div class="menu_block">
     <i class="fa fas fa-home" routerLink="/announcement" routerLinkActive="active"></i>
     <h1 routerLink="/profile" routerLinkActive="active">Сахифаи Ман</h1>
-    <h1 routerLink="/application" routerLinkActive="active">Форма</h1>
+    <h1 routerLink="/application" routerLinkActive="active">Заявки</h1>
     <h1 routerLinkActive="active">Сармоягузорӣ</h1>
     <h1 routerLinkActive="active">Соҳибкорӣ</h1>
     <h1 routerLinkActive="active">Моликияти давлатӣ</h1>
     <h1 routerLinkActive="active">Қонунгузорӣ</h1>
+    <h1 class="izbrannoe" routerLinkActive="active">Избранное <i class="fas fa-star"></i></h1>
   </div>
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />
@@ -24,12 +25,13 @@
     </label> 
     <ul class="menu__box">
       <li><a class="menu__item" routerLink="/profile">Сахифаи Ман</a></li>
-      <li><a class="menu__item" routerLink="/application">Форма</a></li>
+      <li><a class="menu__item" routerLink="/application">Заявки</a></li>
       <li><a class="menu__item" href="#">Сармоягузорӣ</a></li>
       <li><a class="menu__item" href="#">Соҳибкорӣ</a></li> 
       <li><a class="menu__item" href="#">Моликияти давлатӣ</a></li> 
       <li><a class="menu__item" href="#">Қонунгузорӣ</a></li> 
-      <li><a class="menu__item signup" href="#">Выход</a></li> 
+      <li><a class="menu__item" href="#">Избранное</a></li> 
+      <li><a class="menu__item signup" (click)="logOut()">Выход</a></li> 
     </ul> 
     
   </div>

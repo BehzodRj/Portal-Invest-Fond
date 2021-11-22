@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -6,10 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
+  userData: any = []
+  getPhoto: any
+  userIcon = true
+  userImage = false
 
-  constructor() { }
+  constructor(private request: RequestService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.request.getProfileRequest().subscribe(response => {
+      console.log(response);
+      this.userData = response
+    })
+  }
+
+  getFilePhoto(image: any) {    
+    let reader = new FileReader;
+    reader.readAsDataURL(image.target.files[0])
+    reader.onload = () => {
+      this.getPhoto = reader.result
+      this.userIcon = false
+      this.userImage = true
+    }
+
   }
 
 }
