@@ -10,14 +10,11 @@ import { RequestService } from '../all.service';
 export class AnnouncementPageComponent implements OnInit {
   anouncement: any
   page: any
-
   constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.requests.getAnnounceData().subscribe(response => {
       this.anouncement = response
-      console.log(response);
-      
     })
   }
 

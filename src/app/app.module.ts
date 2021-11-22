@@ -9,7 +9,6 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { AnnouncementPageComponent } from './announcement-page/announcement-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SallaryComponent } from './sallary/sallary.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
@@ -22,7 +21,6 @@ import { AplicationPageComponent } from './aplication-page/aplication-page.compo
     AuthPageComponent,
     RegistrationPageComponent,
     AnnouncementPageComponent,
-    SallaryComponent,
     HeaderComponent,
     ProfilePageComponent,
     FooterPageComponent,
