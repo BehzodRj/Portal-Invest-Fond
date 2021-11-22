@@ -16,14 +16,14 @@
          position: relative;
          bottom: 10px;
          border-bottom: 1px solid #000;
-
+        
          th {
            padding-bottom: 29px;
            font-family: 'Roboto', sans-serif;
            font-weight: 400;
            font-size: 15px;
            color: #000;
-           text-transform: uppercase;
+           text-transform: uppercase; 
 
            &:first-child {
              position: relative;
@@ -35,7 +35,7 @@
 
      .pains {
        tr {
-
+        
          .change {
            display: flex;
            justify-content: space-around;
@@ -69,6 +69,7 @@
            position: relative;
            top: 29px;
            padding: 3px 10px;
+           
 
            span {
              background: #1e5bac;
@@ -87,37 +88,37 @@
            &:first-child {
              position: relative;
              right: 10px;
-             background: #071E3C;
+             background: #7A8593;
              color: #fff;
            }
 
            &:nth-child(2) {
-             background: #092852;
+             background: #8494A8;
              color: #fff;
            }
 
            &:nth-child(3) {
-             background: #15345C;
+             background: #8A99AD;
              color: #fff;
            }
 
            &:nth-child(4) {
-             background: #1A4072;
+             background: #8C9FB8;
              color: #fff;
            }
 
            &:nth-child(5) {
-             background: #20508E;
+             background: #90A7C7;
              color: #fff;
            }
 
            &:nth-child(6) {
-             background: #2A67B5;
+             background: #95B3DA;
              color: #fff;
            }
 
            &:nth-child(7) {
-             background: #397Ed7;
+             background: #9CBEEB;
              color: #fff;
            }
          }
@@ -125,7 +126,7 @@
 
        .train:nth-child(1n+2) {
          position: relative;
-         top: 10px;
+         top: 10px;  ;
        }
 
        .train:nth-child(1n+3) {
