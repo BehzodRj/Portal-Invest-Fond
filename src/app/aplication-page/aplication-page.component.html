@@ -6,41 +6,60 @@
     <div class="fail_block">
       <div class="fail_items">
         <h1 class="file_title">Файл</h1>
-        <h1 class="file_description">Файл</h1>
+        <h1 class="file_description" *ngIf="show">Файл</h1>
+        <h1 class="file_description">{{fileName}}</h1>
       </div>
-
       <img class="failImg" src="assets/img/file.svg" alt="">
-      <input class="fileChoose" type="file">
+      <input class="fileChoose" type="file" (change)="getFileName($event)">
     </div>
 
     <h1 class="lots">Лоты:</h1>
 
-    <form class="forms" action="">
-      <div class="remove" *ngFor="let lotF of lots">
-        <p (click)="deleted()">удалить лот</p>  
-      <div class="last-form_items">
+    <form class="forms" [formGroup]="formApl">
+      <div class="remove">
+        <div class="last-form_items">
         <div class="number_form">
           <h1>Номер</h1>
-          <input type="number" placeholder="Номер">
+          <input type="number" placeholder="Номер" formControlName="number">
         </div>
 
         <div class="name_form">
           <h1>Название</h1>
-          <input type="text" placeholder="Название">
+          <input type="text" placeholder="Название" formControlName="name">
         </div>
 
         <div class="summa_form">
           <h1>Сумма</h1>
-          <input type="number" placeholder="Сумма">
-        </div> 
+          <input type="number" placeholder="Сумма" formControlName="summa">
+        </div>
       </div>
-    </div> 
+    </div>
+
+    
+    <div class="remove" *ngFor="let lotsFor of formApl.get('lots').controls; let idx = index" [formGroup]="lotsFor">
+      <p (click)="deleted(idx)">удалить лот</p>
+      <div class="last-form_items">
+      <div class="number_form">
+        <h1>Номер</h1>
+        <input type="number" placeholder="Номер" formControlName="number">
+      </div>
+
+      <div class="name_form">
+        <h1>Название</h1>
+        <input type="text" placeholder="Название" formControlName="name">
+      </div>
+
+      <div class="summa_form">
+        <h1>Сумма</h1>
+        <input type="number" placeholder="Сумма" formControlName="summa">
+      </div>
+    </div>
+  </div>
       <div class="btn">
         <button class="send" (click)="add()">ДОБАВИТЬ ЛОТ</button>
-      <button class="send">ОТПРАВИТЬ</button>
+      <button class="send" (click)="send()">ОТПРАВИТЬ</button>
       </div>
     </form>
-
   </div>
 </div>
 <app-footer-page></app-footer-page>

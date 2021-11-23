@@ -53,6 +53,15 @@ img {
     font-size: 18px;
     cursor: pointer;
 }
+.izbrannoe {
+    display: flex;
+    align-items: center;
+}
+.izbrannoe .fa-star {
+    color: orange;
+    font-size: 10px;
+    margin-left: 5px;
+}
 .active {
     color: #b6b2b2;
 }
