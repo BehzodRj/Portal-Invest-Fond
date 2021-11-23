@@ -55,7 +55,20 @@
     line-height: 21px;
     color: #000000;
 }
-
+.edit_block {
+    margin-top: 10px;
+    text-align: center;
+    width: 180px;
+    height: 40px;
+    border: 1px solid #0E131A;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
 .items_block {
     margin-top: 16px;
 }
@@ -86,6 +99,10 @@
     font-weight: 400;
     font-size: 18px;
     border: 0;
+    cursor: pointer;
+}
+.about_block button:active {
+    transform: scale(.95);
 }
 
 // .payment_block {
