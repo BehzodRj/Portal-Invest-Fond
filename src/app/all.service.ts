@@ -10,7 +10,7 @@ export class RequestService {
     // Authenticate
     authRequests(login: string, password: string) {
         let header: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         })
         return this.http.post( this.url + "/api/auth/login", {"login": login, "password": password}, {headers: header})
     }
