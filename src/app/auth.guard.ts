@@ -8,10 +8,11 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if(localStorage.getItem('access_token')) {
-            return true
-        }
-        this.router.navigate(['/'])
-        return false
+        return true
+        // if(localStorage.getItem('access_token')) {
+        //     return true
+        // }
+        // this.router.navigate(['/'])
+        // return false
     }
 }

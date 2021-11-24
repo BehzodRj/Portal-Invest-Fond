@@ -42,6 +42,12 @@
         </div>
 
         <div class="items_block">
+          <h1 class="title">Место регистрация компании:</h1>
+          <h1 class="description" *ngIf="showDatas">{{ userData.birth_city }}</h1>
+          <input type="text" class="edit_block" *ngIf="editDatas" [placeholder]="userData.birth_city" formControlName="regCompany">
+        </div>
+
+        <div class="items_block">
           <h1 class="title">Телефон:</h1>
           <h1 class="description" *ngIf="showDatas">{{ userData.phone }}</h1>
           <input type="number" class="edit_block" *ngIf="editDatas" [placeholder]="userData.phone" formControlName="phone">
@@ -74,31 +80,27 @@
         </div> -->
 
 
-        <div class="container__application">
-          <table class="resp-tab" > 
-            <thead class="pain"> 
-              <tr>  
-                <th>№</th>  
-                <th>Ташкилотчии тендер</th> 
-                <th>Номи Лоиха</th> 
-                <th>Мавзуи тендер</th> 
-                <th>Мухлати охири кабули хуччатхо</th> 
-                <th>Матни пурраи эълон</th>     
-              </tr>   
-          </thead>  
+        <div class="navbar" *ngIf="showApl"> 
+          <h1 class="title">Мои Заявки</h1>
+
+          <table class="resp-tab" >  
             <tbody class="pains"> 
-                <tr class="train"> 
-                  <td>Lorem, ipsum dolor.</td> 
-                    <td>Lorem, ipsum dolor. </td> 
-                    <td>Lorem, ipsum dolor. </td> 
-                    <td> Lorem ipsum dolor sit.</td> 
-                    <td> Lorem ipsum dolor sit.</td> 
-                    <td> Lorem ipsum dolor sit.</td>  
-                    
-                     
-                </tr>  
+                <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 6, currentPage: page}"> 
+                  <td>{{anouncements.id}}</td> 
+                    <td>{{anouncements.title }}</td> 
+                    <td>{{ anouncements.userId }}</td> 
+                    <td>Lorem ipsum dolor sit.</td> 
+                    <td>Lorem ipsum dolor sit.</td>
+                    <td>Lorem ipsum dolor sit.</td>  
+                    <input type="checkbox" class="checkbox">  
+                </tr>
             </tbody> 
         </table> 
+        
+          <div class="creat"> 
+            <!-- <button >Создать</button> --> 
+            <pagination-controls (pageChange)="page = $event"></pagination-controls> 
+          </div>    
         </div>
         
   </div>

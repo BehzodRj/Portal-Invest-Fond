@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://192.168.2.85'
+    private url = 'http://192.168.2.85/new'
     constructor(private http: HttpClient) { }
 
     
@@ -15,15 +15,15 @@ export class RequestService {
         return this.http.post( this.url + "/api/auth/login", {"login": login, "password": password}, {headers: header})
     }
 
-    regRequest(name: string, last_name: string, middle_name: string, login: string, company_name: string, division: string, birth_city: string, inn: number, email: string, phone: number, password: string) {
-        return this.http.post(this.url + '/api/auth/register',  {"name": name, "last_name": last_name, "middle_name": middle_name, "login": login, "company_name": company_name, "division": division, "birth_city": birth_city, "inn": inn, "phone": phone, "email": email, "password": password})
+    regRequest(name: string, last_name: string, middle_name: string, login: string, company_name: string, division: string, birth_city: string, company_country: string, inn: number, email: string, phone: number, password: string) {
+        return this.http.post(this.url + '/api/auth/register',  {"name": name, "last_name": last_name, "middle_name": middle_name, "login": login, "company_name": company_name, "division": division, "birth_city": birth_city, "company_country": company_country, "inn": inn, "phone": phone, "email": email, "password": password})
     }
     // End of Authenticate
 
 
     // Announcement
     getAnnounceData() {
-        return this.http.get("https://jsonplaceholder.typicode.com/todos?_start=0&_limit=100" + '/todos' )
+        return this.http.get("https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10" + '/todos' )
     }
     // End of Announcement
 

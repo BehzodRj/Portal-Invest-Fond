@@ -19,12 +19,13 @@
             <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td> 
             <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td> 
             <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td> 
-            <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td> 
+            <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
             <td><span>Матни пурраи эълон  </span> Lorem ipsum dolor sit.</td>  
             <td class="change">  
-              <i title="скачать файл" class="fa fa-download"></i> 
-              <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': '#fff'}" ></i>  
-              <a href="" class="far fa-file-alt"></a> 
+              <i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.completed"></i>
+              <i title="скачать файл" class="fas fa-dollar-sign" *ngIf="anouncements.completed"></i>
+              <i title="добавить избранный "(click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': '#4F4F4F'}" ></i>  
+              <i routerLink="/application" class="far fa-file-alt"></i>
             </td> 
              
         </tr>  

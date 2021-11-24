@@ -12,10 +12,13 @@ export class ProfilePageComponent implements OnInit {
   editForm!: FormGroup
   userData: any = []
   getPhoto: any
+  anouncement: any
+  page: any
   userIcon = true
   userImage = false
   showDatas = true
   editDatas = false
+  showApl = false
 
   constructor(private request: RequestService) { }
 
@@ -27,13 +30,22 @@ export class ProfilePageComponent implements OnInit {
       inn: new FormControl(''),
       email: new FormControl('', Validators.email),
       birth_city: new FormControl(''),
+      regCompany: new FormControl(''),
       phone: new FormControl('')
     })
 
     this.request.getProfileRequest().subscribe(response => {
-      console.log(response);
       this.userData = response
     })
+
+
+    this.request.getAnnounceData().subscribe(response => {
+      this.anouncement = response
+      if(this.anouncement.length >= 1) {
+        this.showApl = true
+      }
+    })
+
   }
 
   getFilePhoto(image: any) {    

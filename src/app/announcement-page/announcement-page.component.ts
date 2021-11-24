@@ -12,7 +12,7 @@ export class AnnouncementPageComponent implements OnInit {
   page: any
   constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.requests.getAnnounceData().subscribe(response => {
       this.anouncement = response
     })

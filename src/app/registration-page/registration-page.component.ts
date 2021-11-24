@@ -16,10 +16,11 @@ export class RegistrationPageComponent implements OnInit {
   showAlertsLogin = 'Логин'
   showAlertsCompanyName = "Наименование компании"
   showAlertsDivision = "Должность"
-  showAlertsBirth_city = "Место Рождения"
+  showAlertsBirth_city = "Место тождения"
+  showAlertsRegCompany = "Место регистрация компании"
   showAlertsInn = "ИНН"
   showAlertsEmail = "Ваш E-mail"
-  showAlertsPhone = "Номер Телефона"
+  showAlertsPhone = "Номер телефона"
   showAlertsPassword = "Пароль"
 
   constructor(private request: RequestService, private router: Router) { }
@@ -33,6 +34,7 @@ export class RegistrationPageComponent implements OnInit {
       company_name: new FormControl(''),
       division: new FormControl(''),
       birth_city: new FormControl(''),
+      regCompany: new FormControl(''),
       inn: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
@@ -42,7 +44,7 @@ export class RegistrationPageComponent implements OnInit {
 
   registration() {
     const registerFormData = {...this.registerForm.value}
-    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.login == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.birth_city == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '') {
+    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.login == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.birth_city == '' || registerFormData.regCompany == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '') {
       this.showAlertsName = 'Поля не может быть пустым'
       this.showAlertsLast_name = 'Поля не может быть пустым'
       this.showAlertsMiddle_name = 'Поля не может быть пустым'
@@ -50,6 +52,7 @@ export class RegistrationPageComponent implements OnInit {
       this.showAlertsCompanyName = 'Поля не может быть пустым'
       this.showAlertsDivision = 'Поля не может быть пустым'
       this.showAlertsBirth_city = 'Поля не может быть пустым'
+      this.showAlertsRegCompany = 'Поля не может быть пустым'
       this.showAlertsInn = 'Поля не может быть пустым'
       this.showAlertsEmail = 'Поля не может быть пустым'
       this.showAlertsPassword = 'Поля не может быть пустым',
@@ -58,7 +61,7 @@ export class RegistrationPageComponent implements OnInit {
     } else {
       console.log(registerFormData);
       
-      this.request.regRequest(registerFormData.name, registerFormData.last_name, registerFormData.middle_name, registerFormData.login, registerFormData.company_name, registerFormData.division, registerFormData.birth_city, registerFormData.inn, registerFormData.email, registerFormData.phone, registerFormData.password).subscribe(response => {
+      this.request.regRequest(registerFormData.name, registerFormData.last_name, registerFormData.middle_name, registerFormData.login, registerFormData.company_name, registerFormData.division, registerFormData.birth_city, registerFormData.regCompany, registerFormData.inn, registerFormData.email, registerFormData.phone, registerFormData.password).subscribe(response => {
         alert('Вы успешно зарегистрировались')
         this.router.navigate(['/'])
         
