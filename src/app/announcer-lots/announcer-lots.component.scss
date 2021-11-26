@@ -1,0 +1,38 @@
+.container{  
+    margin: 50px auto ; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .block{
+        width: 70%;
+        height: 60px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-around; 
+        margin-top: 20px;
+        input{
+            width: 70%;
+            height: 50px;
+            border-radius: 10px; 
+            text-indent: 10px;
+            font-size: 18px;
+        }
+    }
+
+    .btn{
+        button{ 
+            padding: 10px 60px;
+            background: #15345C;
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-size: 16px;   
+            cursor: pointer;
+            margin-top: 30px;
+            &:active{
+                transform:scale(.99);
+            }
+        }
+    }
+}
