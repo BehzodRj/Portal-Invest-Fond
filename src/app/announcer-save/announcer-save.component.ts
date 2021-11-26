@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcer-save.component.scss']
 })
 export class AnnouncerSaveComponent implements OnInit {
+  page:any
 
   constructor() { }
 
