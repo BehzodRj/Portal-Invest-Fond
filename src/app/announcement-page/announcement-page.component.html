@@ -1,40 +1,43 @@
 <app-header></app-header>
-<div class="navbar"> 
-   
-  <table class="resp-tab" > 
-    <thead class="pain"> 
-      <tr>  
-        <th>№</th>  
-        <th>Ташкилотчии тендер</th> 
-        <th>Номи Лоиха</th> 
-        <th>Мавзуи тендер</th> 
-        <th>Мухлати охири кабули хуччатхо</th> 
-        <th>Матни муфассал</th>  
-        <th>Операция</th>   
-      </tr>   
-  </thead>  
-    <tbody class="pains"> 
-        <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}"> 
-          <td><span>№</span>{{anouncements.id}}</td> 
-            <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td> 
-            <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td> 
-            <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td> 
-            <td><span>Мухлати охири кабули хуччатхо  </span> Lorem ipsum dolor sit.</td>
-            <td><span>Матни пурраи эълон  </span> Lorem ipsum dolor sit.</td>  
-            <td class="change">  
-              <i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.completed"></i>
-              <i title="скачать файл" class="fas fa-dollar-sign" *ngIf="anouncements.completed"></i>
-              <i title="добавить избранный "(click)="anouncements.completed = !anouncements.completed" class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': '#4F4F4F'}" ></i>  
-              <i routerLink="/application" class="far fa-file-alt"></i>
-            </td> 
-             
-        </tr>  
-    </tbody> 
-</table> 
+<div class="container">
+  <div class="navbar">
 
-  <div class="creat"> 
-    <!-- <button >Создать</button> --> 
-    <pagination-controls (pageChange)="page = $event"></pagination-controls> 
-  </div>    
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Ташкилотчии тендер</th>
+          <th>Номи Лоиха</th>
+          <th>Мавзуи тендер</th>
+          <th>Мухлати охири кабули хуччатхо</th>
+          <th>Матни муфассал</th>
+          <th>Операция</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
+          <td><span>№</span>{{anouncements.id}}</td>
+          <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td>
+          <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
+          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
+          <td><span>Мухлати охири кабули хуччатхо </span> Lorem ipsum dolor sit.</td>
+          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
+          <td class="change">
+            <i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.completed"></i>
+            <i title="скачать файл" class="fas fa-dollar-sign" *ngIf="anouncements.completed"></i>
+            <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed"
+              class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': '#4F4F4F'}"></i>
+            <i routerLink="/application" class="far fa-file-alt"></i>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
 </div>
-  <app-footer-page></app-footer-page>
+<app-footer-page></app-footer-page>

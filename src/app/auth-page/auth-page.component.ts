@@ -12,6 +12,7 @@ export class AuthPageComponent implements OnInit {
  form!: FormGroup 
  showAlertLogin = 'Логин'
  showAlertPassword = 'Пароль'
+ isLoading = false
 
   constructor(private requests: RequestService, private router: Router) {}
 
@@ -34,12 +35,17 @@ export class AuthPageComponent implements OnInit {
       this.showAlertLogin = 'Поля не может быть пустым'
       this.showAlertPassword = 'Поля не может быть пустым'
     } else {
+      this.isLoading = true
       this.requests.authRequests(formData.login, formData.password).subscribe( (response: any) => {
+        console.log(response);
+        
+        this.isLoading = false
         localStorage.setItem('access_token', response.access_token)
         localStorage.setItem('user', response.user)
         this.router.navigate(["/announcement"])
       }, error => {
-        alert(error.error.Error);
+        this.isLoading = false
+        alert(error.statusText)
       })
     }
   }

@@ -1,3 +1,6 @@
+.container {
+  min-height: calc(100vh - 480px);
+}
  .navbar {
    max-width: 1430px;
    margin: auto;

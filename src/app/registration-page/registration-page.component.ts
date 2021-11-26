@@ -9,6 +9,7 @@ import { RequestService } from '../all.service';
   styleUrls: ['./registration-page.component.scss']
 })
 export class RegistrationPageComponent implements OnInit {
+  isLoading = false
   registerForm!: FormGroup
   showAlertsName = "Имя"
   showAlertsLast_name = "Фамилия"
@@ -59,13 +60,14 @@ export class RegistrationPageComponent implements OnInit {
       this.showAlertsPhone = 'Поля не может быть пустым'
 
     } else {
-      console.log(registerFormData);
-      
+      this.isLoading = true
       this.request.regRequest(registerFormData.name, registerFormData.last_name, registerFormData.middle_name, registerFormData.login, registerFormData.company_name, registerFormData.division, registerFormData.birth_city, registerFormData.regCompany, registerFormData.inn, registerFormData.email, registerFormData.phone, registerFormData.password).subscribe(response => {
         alert('Вы успешно зарегистрировались')
+        this.isLoading = false
         this.router.navigate(['/'])
         
       }, error => {
+        this.isLoading = false
         alert(error.error)
       })
     }
