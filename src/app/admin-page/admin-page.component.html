@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let items of tableData">
+        <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}">
           <td><span>№</span>{{ items.id }}</td>
           <td>
             <span>Название</span>

@@ -10,6 +10,8 @@ import { AnnouncerPageComponent } from './announcer-page/announcer-page.componen
 import { AnnouncerSaveComponent } from './announcer-save/announcer-save.component';
 import { AnnouncerLotsComponent } from './announcer-lots/announcer-lots.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminCheckComponent } from './admin-check/admin-check.component';
+import { AdminCreatComponent } from './admin-creat/admin-creat.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'announcersave', component: AnnouncerSaveComponent, canActivate: [AuthGuard] },
   { path: 'announcerlots', component: AnnouncerLotsComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard] },
+  { path: 'admincheck', component: AdminCheckComponent, canActivate: [AuthGuard] },
+  { path: 'admincreat', component: AdminCreatComponent, canActivate: [AuthGuard] },
   { path: '**', component: AuthPageComponent }
 ];
 

@@ -19,6 +19,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminLotsPageComponent } from './admin-lots-page/admin-lots-page.component';
 import { AnnouncerSaveComponent } from './announcer-save/announcer-save.component';
 import { AnnouncerLotsComponent } from './announcer-lots/announcer-lots.component';
+import { AdminCheckComponent } from './admin-check/admin-check.component';
+import { AdminCreatComponent } from './admin-creat/admin-creat.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { AnnouncerLotsComponent } from './announcer-lots/announcer-lots.componen
     AdminLotsPageComponent,
     AnnouncerSaveComponent,
     AnnouncerLotsComponent,
+    AdminCheckComponent,
+    AdminCreatComponent,
   ],
   imports: [  
     FormsModule,
