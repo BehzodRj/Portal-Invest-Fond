@@ -1,1 +1,60 @@
-<p>announcer-save works!</p>
+<app-header></app-header>
+<div class="container">
+  <div class="navbar">
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>ФИО</th>
+          <th>Компания</th>
+          <th>?</th>
+          <th>Скачать</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+            <td>
+                <span>№</span>
+                <div class="td_block">
+                  <h1>1</h1>
+                </div>
+              </td>
+          <td>
+            <span>ФИО</span>
+            <div class="td_block">
+              <h1>Lorem, ipsum dolor.</h1>
+            </div>
+          </td>
+          <td>
+            <span>Компания</span>
+            <div class="td_block">
+              <h1>Lorem, ipsum dolor.</h1>
+            </div>
+          </td>
+
+          <td>
+            <span>?</span>
+            <div class="td_block">
+              <h1>Lorem, ipsum dolor.</h1>
+            </div>
+          </td>
+
+          <td class="change">
+            <span>Скачать</span>
+            <div class="trash_block">
+              <i class="fas fa-download"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>
+
+
