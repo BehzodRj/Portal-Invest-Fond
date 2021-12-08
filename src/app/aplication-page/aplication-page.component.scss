@@ -1,7 +1,6 @@
-.container {
-  width: 800px;
+.container { 
   margin: 30px auto;
-
+  padding: 30px;
   .content {
     h1 {
       text-align: center;
@@ -72,10 +71,12 @@
   }
 
   .cont__form {
+      width: 100%;
     .form__block {
       margin: 50px 0;
 
       .inp__block {
+          width: 100%;
         display: flex;
         justify-content: space-between;
 
