@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RequestService } from '../all.service';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-auth-page',
@@ -10,36 +11,64 @@ import { RequestService } from '../all.service';
 })
 export class AuthPageComponent implements OnInit {
  form!: FormGroup 
- showAlertLogin = 'Логин'
+ showAlertEmail = 'Ваш E-mail'
  showAlertPassword = 'Пароль'
+ isLoading = false
 
   constructor(private requests: RequestService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      login: new FormControl("",Validators.required),
-      password: new FormControl(null,Validators.required)
+      email: new FormControl("", Validators.required),
+      password: new FormControl(null, Validators.required)
     })
-
+    
     if(localStorage.getItem('access_token')) {
-      this.router.navigate(['/announcement'])
-    } else {
-      this.router.navigate(['/'])
+      var token: any = localStorage.getItem('access_token')
+      var decoded: any = jwt_decode(token);
     }
-
+    
+    if(localStorage.getItem('access_token') && decoded[0][0].role == "subscribers") {
+      this.router.navigate(['/profile'])
+    }
+    else if(localStorage.getItem('access_token') && decoded[0][0].role == "admin") {
+      this.router.navigate(['/announcement'])
+    }
+     else if(localStorage.getItem('access_token') && decoded[0][0].role == "anouncer") {
+      this.router.navigate(['/announcer'])
+    }
+    else {
+      this.router.navigate(['/announcer'])
+    }
   }
   send(){
     const formData = {...this.form.value}
-    if(formData.login == '' || formData.password == null) {
-      this.showAlertLogin = 'Поля не может быть пустым'
+    if(formData.email == '' || formData.password == null) {
+      this.showAlertEmail = 'Поля не может быть пустым'
       this.showAlertPassword = 'Поля не может быть пустым'
     } else {
-      this.requests.authRequests(formData.login, formData.password).subscribe( (response: any) => {
+      this.isLoading = true
+      this.requests.authRequests(formData.email, formData.password).subscribe( (response: any) => {
+        this.isLoading = false
         localStorage.setItem('access_token', response.access_token)
         localStorage.setItem('user', response.user)
-        this.router.navigate(["/announcement"])
+        var token: any = localStorage.getItem('access_token')
+        var decoded:any = jwt_decode(token);
+
+        if(decoded[0][0].role == "subscribers") {
+          this.router.navigate(["/profile"])
+        } 
+        else if(decoded[0][0].role == "admin") {
+          this.router.navigate(["/announcement"])
+        } 
+        else if(decoded[0][0].role == "anouncer") {
+          this.router.navigate(["/announcer"])
+        } else {
+          this.router.navigate(["/"])
+        }
       }, error => {
-        alert(error.error.Error);
+        this.isLoading = false
+        alert(error.statusText)
       })
     }
   }

@@ -9,18 +9,22 @@ import { RequestService } from '../all.service';
   styleUrls: ['./registration-page.component.scss']
 })
 export class RegistrationPageComponent implements OnInit {
+  isLoading = false
   registerForm!: FormGroup
   showAlertsName = "Имя"
   showAlertsLast_name = "Фамилия"
   showAlertsMiddle_name = "Отчество"
-  showAlertsLogin = 'Логин'
   showAlertsCompanyName = "Наименование компании"
   showAlertsDivision = "Должность"
-  showAlertsBirth_city = "Место Рождения"
+  showAlertsRegCompany = "Место регистрация 1"
   showAlertsInn = "ИНН"
   showAlertsEmail = "Ваш E-mail"
-  showAlertsPhone = "Номер Телефона"
+  showAlertsPhone = "Номер телефона"
   showAlertsPassword = "Пароль"
+  showAlertsCountry = "Страна"
+  showAlertsCity = "Город"
+  showAlertsPostal = "Почтовый индекс"
+
 
   constructor(private request: RequestService, private router: Router) { }
 
@@ -29,40 +33,48 @@ export class RegistrationPageComponent implements OnInit {
       name: new FormControl(''),
       last_name: new FormControl(''),
       middle_name: new FormControl(''),
-      login: new FormControl(''),
       company_name: new FormControl(''),
       division: new FormControl(''),
-      birth_city: new FormControl(''),
+      regCompany1: new FormControl(''),
+      regCompany2: new FormControl(''),
+      regCompany3: new FormControl(''),
       inn: new FormControl(''),
       email: new FormControl(''),
       phone: new FormControl(''),
-      password: new FormControl('')
+      password: new FormControl(''),
+      country: new FormControl(''),
+      city: new FormControl(''),
+      postalCode: new FormControl('')
     })
   }
 
   registration() {
     const registerFormData = {...this.registerForm.value}
-    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.login == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.birth_city == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '') {
+    console.log(registerFormData);
+    
+    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.regCompany == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '' || registerFormData.country == '' || registerFormData.city == '' || registerFormData.postalCode == '') {
       this.showAlertsName = 'Поля не может быть пустым'
       this.showAlertsLast_name = 'Поля не может быть пустым'
       this.showAlertsMiddle_name = 'Поля не может быть пустым'
-      this.showAlertsLogin = 'Поля не может быть пустым'
       this.showAlertsCompanyName = 'Поля не может быть пустым'
       this.showAlertsDivision = 'Поля не может быть пустым'
-      this.showAlertsBirth_city = 'Поля не может быть пустым'
+      this.showAlertsRegCompany = 'Поля не может быть пустым'
       this.showAlertsInn = 'Поля не может быть пустым'
       this.showAlertsEmail = 'Поля не может быть пустым'
       this.showAlertsPassword = 'Поля не может быть пустым',
       this.showAlertsPhone = 'Поля не может быть пустым'
-
+      this.showAlertsCountry = 'Поля не может быть пустым'
+      this.showAlertsCity = 'Поля не может быть пустым'
+      this.showAlertsPostal = 'Поля не может быть пустым'
     } else {
-      console.log(registerFormData);
-      
-      this.request.regRequest(registerFormData.name, registerFormData.last_name, registerFormData.middle_name, registerFormData.login, registerFormData.company_name, registerFormData.division, registerFormData.birth_city, registerFormData.inn, registerFormData.email, registerFormData.phone, registerFormData.password).subscribe(response => {
+      this.isLoading = true
+      this.request.regRequest(registerFormData.name, registerFormData.middle_name, registerFormData.last_name, registerFormData.email, registerFormData.password, registerFormData.phone, registerFormData.company_name, registerFormData.country, registerFormData.city, registerFormData.regCompany1, registerFormData.regCompany2, registerFormData.regCompany3, registerFormData.postalCode, registerFormData.inn, registerFormData.division).subscribe(response => {
         alert('Вы успешно зарегистрировались')
+        this.isLoading = false
         this.router.navigate(['/'])
         
       }, error => {
+        this.isLoading = false
         alert(error.error)
       })
     }

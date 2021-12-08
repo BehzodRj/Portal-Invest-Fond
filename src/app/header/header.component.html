@@ -1,5 +1,5 @@
 <div class="container">
-  <img class="logo" src="assets/img/weblogo.png" alt="">
+  <img class="logo" src="assets/img/weblogo.png" routerLink="/announcement">
   <img class="citat" src="assets/img/citatatj03.png" alt="">
 
   <div class="logOut" (click)="logOut()">
@@ -9,14 +9,12 @@
 </div>
 <div class="menu_container"> 
   <div class="menu_block">
-    <i class="fa fas fa-home" routerLink="/announcement" routerLinkActive="active"></i>
+    <i class="fa fas fa-home" routerLinkActive="active" routerLink="/announcement"></i>
     <h1 routerLink="/profile" routerLinkActive="active">Сахифаи Ман</h1>
     <h1 routerLink="/application" routerLinkActive="active">Заявки</h1>
-    <h1 routerLinkActive="active">Сармоягузорӣ</h1>
-    <h1 routerLinkActive="active">Соҳибкорӣ</h1>
-    <h1 routerLinkActive="active">Моликияти давлатӣ</h1>
-    <h1 routerLinkActive="active">Қонунгузорӣ</h1>
-    <h1 class="izbrannoe" routerLinkActive="active">Избранное <i class="fas fa-star"></i></h1>
+    <h1 routerLink="/admin" routerLinkActive="active">Админ</h1>
+    <h1 routerLink="/announcer" routerLinkActive="active">Анонсер</h1>
+    <h1 class="izbrannoe" routerLink="/favourites" routerLinkActive="active">Избранное <i class="fas fa-star"></i></h1>
   </div>
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />
@@ -24,13 +22,12 @@
       <span></span>
     </label> 
     <ul class="menu__box">
+      <li><a class="menu__item" routerLink="/announcement">Сахифаи Аввал</a></li>
       <li><a class="menu__item" routerLink="/profile">Сахифаи Ман</a></li>
       <li><a class="menu__item" routerLink="/application">Заявки</a></li>
-      <li><a class="menu__item" href="#">Сармоягузорӣ</a></li>
-      <li><a class="menu__item" href="#">Соҳибкорӣ</a></li> 
-      <li><a class="menu__item" href="#">Моликияти давлатӣ</a></li> 
-      <li><a class="menu__item" href="#">Қонунгузорӣ</a></li> 
-      <li><a class="menu__item" href="#">Избранное</a></li> 
+      <li><a class="menu__item" routerLink="/admin">Админ</a></li>
+      <li><a class="menu__item" routerLink="/announcer">Анонсер</a></li>
+      <li><a class="menu__item" routerLink="/favourites">Избранное</a></li> 
       <li><a class="menu__item signup" (click)="logOut()">Выход</a></li> 
     </ul> 
     

@@ -1,6 +1,8 @@
+.container {
+  min-height: calc(100vh - 480px);
+}
  .navbar {
    max-width: 1430px;
-   padding: 30px;
    margin: auto;
 
    .resp-tab {
@@ -9,33 +11,27 @@
      font-family: 'Roboto', sans-serif;
      font-weight: 300;
      text-align: center;
-     border-collapse: collapse;
-
+     border-collapse: separate;
+     border-spacing: 0px 12px;
      .pain {
        tr {
-         position: relative;
-         bottom: 10px;
          border-bottom: 1px solid #000;
-
+        
          th {
-           padding-bottom: 29px;
+           height: 70px;
+           background-color: #D4DEEA;
            font-family: 'Roboto', sans-serif;
            font-weight: 400;
            font-size: 15px;
            color: #000;
-           text-transform: uppercase;
-
-           &:first-child {
-             position: relative;
-             right: 10px;
-           }
+           text-transform: uppercase; 
          }
        }
      }
 
      .pains {
        tr {
-
+        
          .change {
            display: flex;
            justify-content: space-around;
@@ -44,15 +40,14 @@
 
            .fa-download,
            .fa-star,
+           .fa-dollar-sign,
            .fa-file-alt {
-             color: #fff;
+             color: #4F4F4F;
              display: flex;
              align-items: center;
              font-size: 16px;
              cursor: pointer;
              margin: 0 5px;
-             text-shadow: 0 0 3px #000;
-
            }
 
            .fa:active,
@@ -66,12 +61,11 @@
            font-family: 'Roboto';
            font-weight: 400;
            font-size: 15px;
-           position: relative;
-           top: 29px;
            padding: 3px 10px;
+           
 
            span {
-             background: #1e5bac;
+             background: rgba(7, 30, 60, 0.5);;
              color: #FFF;
              display: none;
              font-size: 11px;
@@ -85,112 +79,69 @@
            }
 
            &:first-child {
-             position: relative;
-             right: 10px;
-             background: #071E3C;
-             color: #fff;
+             color: #000;
+             background-color: rgba(7, 30, 60, 0.5);;
+             border: 1px solid #000;
            }
 
            &:nth-child(2) {
-             background: #092852;
-             color: #fff;
+             border: 1px solid #000;
+             border-right: 0;
+             border-left: 0;
+             color: #000;
            }
 
            &:nth-child(3) {
-             background: #15345C;
-             color: #fff;
+             border: 1px solid #000;
+             color: #000;
            }
 
            &:nth-child(4) {
-             background: #1A4072;
-             color: #fff;
+             border: 1px solid #000;
+             border-right: 0;
+             border-left: 0;
+             color: #000;
            }
 
            &:nth-child(5) {
-             background: #20508E;
-             color: #fff;
+             border: 1px solid #000;
+             color: #000;
            }
 
            &:nth-child(6) {
-             background: #2A67B5;
-             color: #fff;
+             border: 1px solid #000;
+             border-right: 0;
+             border-left: 0;
+             color: #000;
            }
 
            &:nth-child(7) {
-             background: #397Ed7;
-             color: #fff;
+             border: 1px solid;
+             color: #000;
            }
+           &:nth-child(8) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
+          &:nth-child(9) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
+          &:nth-child(10) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
          }
        }
-
-       .train:nth-child(1n+2) {
-         position: relative;
-         top: 10px;
-       }
-
-       .train:nth-child(1n+3) {
-         position: relative;
-         top: 20px;
-       }
-
-       .train:nth-child(1n+4) {
-         position: relative;
-         top: 30px;
-       }
-
-       .train:nth-child(1n+5) {
-         position: relative;
-         top: 40px;
-       }
-
-
-       .train:nth-child(1n+6) {
-         position: relative;
-         top: 50px;
-       }
-
-       .train:nth-child(1n+7) {
-         position: relative;
-         top: 60px;
-       }
-
-       .train:nth-child(1n+8) {
-         position: relative;
-         top: 70px;
-       }
-
-       .train:nth-child(1n+9) {
-         position: relative;
-         top: 80px;
-       }
-
-       .train:nth-child(1n+10) {
-         position: relative;
-         top: 90px;
-       }
-
-       .train:nth-child(1n+11) {
-         position: relative;
-         top: 100px;
-       }
-
-       .train:nth-child(1n+12) {
-         position: relative;
-         top: 110px;
-       }
-
-       .train:nth-child(1n+13) {
-         position: relative;
-         top: 120px;
-       }
-
      }
    }
  }
 
  .creat {
    max-width: 100%;
-   margin: 170px auto;
    display: flex;
    justify-content: flex-end;
 
@@ -212,7 +163,11 @@
    }
  }
 
-
+@media screen and (max-width: 1461px) {
+  .navbar {
+    margin: 0px 20px;
+  }
+}
  @media(max-width: 961px) {
 
    // .resp-tab thead { 
@@ -237,6 +192,7 @@
    //     justify-content: space-around;    
    // }  
    .navbar {
+     margin: 0 20px;
      .resp-tab {
        .pain {
          display: none;
@@ -262,7 +218,7 @@
            display: flex;
            flex-direction: row;
            flex-wrap: wrap;
-           margin-bottom: 100px;
+           margin-bottom: 40px;
 
            td {
              margin: 0 -1px -1px 0;
@@ -287,6 +243,7 @@
                background: #fff;
                color: #000;
                padding-bottom: 10px;
+               border-right: 1px solid #000;
              }
 
              &:nth-child(3) {
@@ -299,19 +256,21 @@
                background: #fff;
                color: #000;
                padding-bottom: 10px;
-
+               border-right: 1px solid #000;
              }
 
              &:nth-child(5) {
                background: #fff;
                color: #000;
                padding-bottom: 10px;
+               border-right: 1px solid #000;
              }
 
              &:nth-child(6) {
                background: #fff;
                color: #000;
                padding-bottom: 10px;
+               border-right: 1px solid #000;
              }
 
              &:nth-child(7) {
@@ -323,9 +282,9 @@
          }
 
          .train:nth-child(1n+2) {
-           position: relative;
-           top: 0;
-         }
+          position: relative;
+          top: 0;
+        }
        }
      }
    }

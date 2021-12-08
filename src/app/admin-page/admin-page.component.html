@@ -1,0 +1,81 @@
+<app-header></app-header>
+<div class="container">
+  <div class="navbar">
+
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Название</th>
+          <th>ID</th>
+          <th colspan="3">Действие</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="add_block" *ngIf="pencil">
+          <td style="border: #fff;"></td>
+          <td colspan="2" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addError ? '1px solid red' : '1px solid #000'}">
+            <form [formGroup]="addForm">
+              <h1>Название</h1>
+              <input type="text" [placeholder]="addText" formControlName="addName">
+            </form>
+          </td>
+          <td colspan="3" style="border: none;"><button (click)="addButton()">Добавить</button></td>
+        </tr>
+        <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}">
+          <td><span>№</span>{{ items.id }}</td>
+          <td>
+            <span>Название</span>
+            <div class="td_block">
+              <h1 *ngIf="items.editShow">{{ items.name }}</h1>
+
+              <form [formGroup]="editForm" *ngIf="!items.editShow">
+                <input type="text" [placeholder]="items.name" formControlName="name">
+              </form>
+            </div>
+          </td>
+
+
+          <td><span>ID</span>
+            <div class="td_block">
+              <h1 *ngIf="items.editShow">{{ items.ID }}</h1>
+
+              <form [formGroup]="editForm" *ngIf="!items.editShow">
+                <input type="text" [placeholder]="items.ID" formControlName="ID">
+              </form>
+            </div>
+          </td>
+
+          <td class="change" *ngIf="pencil" (click)="items.editShow = false || pencil = false">
+            <div class="trash_block" *ngIf="items.editShow">
+              <i class="td_i fas fa-pencil-alt"></i>
+            </div>
+          </td>
+
+          <td class="change" *ngIf="pencil">
+            <div class="trash_block" *ngIf="items.editShow" (click)="adminPro()">
+              <i class="td_i fas fa-chevron-right"></i>
+            </div>
+          </td>
+
+          <td class="change">
+            <div class="trash_block" *ngIf="items.editShow" (click)="deleteItem(items.id)">
+              <i class="fas fa-trash"></i>
+            </div>
+
+            <div class="trash_block" *ngIf="!items.editShow" (click)="changeButton()">
+              <i>ОК</i>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>
+

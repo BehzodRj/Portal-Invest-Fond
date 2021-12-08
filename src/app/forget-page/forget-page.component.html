@@ -1,0 +1,29 @@
+<div class="modal-message_block" *ngIf="modalMes">
+    <div class="modal-message_items">
+        <h1>На вашу почту были отправлены данные для входа в аккаунт</h1>
+        <button (click)="modalBut()">ОК</button>
+    </div>
+</div>
+<div class="lazy-loading_block" *ngIf="isLoading">
+    <img src="assets/img/loader.gif" alt="">
+  </div>
+  
+  <div class="container">
+  
+    <div class="auth_block">
+      <div class="enter_block">
+        <h1 class="enter">Забыли пароль</h1>
+        <hr>
+      </div>
+  
+      <h1 class="registration" routerLink="/">Вход</h1>
+    </div>
+  
+    <form class="form" action="" [formGroup]="formForget" (ngSubmit)="send(formForget.valid)">
+      <div class="items_block">
+        <label for="text">Логин</label>
+        <input type="email" [placeholder]="showAlertEmail" *ngIf="showAlertEmail" formControlName="email">
+      </div>
+      <button type="submit">ВОЙТИ</button>
+    </form>
+  </div>
