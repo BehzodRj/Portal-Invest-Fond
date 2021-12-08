@@ -14,15 +14,15 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { FooterPageComponent } from './footer-page/footer-page.component';
 import { ProjectComponent } from './project/project.component';
 import { AplicationPageComponent } from './aplication-page/aplication-page.component';
-import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
-import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
-import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminProjectComponent } from './admin-project/admin-project.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
-import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
+import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
+import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
+import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
 import { ForgetPageComponent } from './forget-page/forget-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
