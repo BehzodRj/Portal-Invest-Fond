@@ -1,64 +1,174 @@
 <app-header></app-header>
 <div class="container">
   <div class="content">
-    <h1 class="title">Форма отправки заявки</h1>
+    <h1>Лоты:</h1>
 
-    <div class="fail_block">
-      <div class="fail_items">
-        <h1 class="file_title">Файл</h1>
-        <h1 class="file_description" *ngIf="show">Файл</h1>
-        <h1 class="file_description">{{fileName}}</h1>
-      </div>
-      <img class="failImg" src="assets/img/file.svg" alt="">
-      <input class="fileChoose" type="file" (change)="getFileName($event)">
+    <div class="table-wrap">
+      <table class="table-1">
+        <tr>
+          <td>
+            <span>
+              <p>номер лота</p>
+              <h4>1344</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <p>Название лота</p>
+              <h4>название лота</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <p>Скидка</p>
+              <h4>1344</h4>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>
+              <p>Сомони</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <h3>Сумма без учета НДС</h3>
+              <p>Доллар</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <p>Евро</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>
+              <p>Сомони</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <h3>Сумма без учета НДС</h3>
+              <p>Доллар</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+          <td>
+            <span>
+              <p>Евро</p>
+              <h4>1234</h4>
+            </span>
+          </td>
+        </tr>
+      </table>
     </div>
 
-    <h1 class="lots">Лоты:</h1>
+    <h1 style="padding: 20px 0">Партнеры:</h1>
 
-    <form class="forms" [formGroup]="formApl">
-      <div class="remove">
-        <div class="last-form_items">
-        <div class="number_form">
-          <h1>Номер</h1>
-          <input type="number" placeholder="Номер" formControlName="number">
-        </div>
-
-        <div class="name_form">
-          <h1>Название</h1>
-          <input type="text" placeholder="Название" formControlName="name">
-        </div>
-
-        <div class="summa_form">
-          <h1>Сумма</h1>
-          <input type="number" placeholder="Сумма" formControlName="summa">
-        </div>
-      </div>
+    <div class="table-wrap">
+      <table class="table-1">
+        <tr>
+          <td style="width: 70%; text-align: left">
+            <span style="text-indent: 10px">
+              <p>Партнер</p>
+              <h4>Партнер</h4>
+            </span>
+          </td>
+          <td>
+            <h4>Лидер</h4>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 70%; text-align: left">
+            <span style="text-indent: 10px">
+              <p>Партнер</p>
+              <h4>Партнер</h4>
+            </span>
+          </td>
+          <td>
+            <h4>Лидер</h4>
+          </td>
+        </tr>
+      </table>
     </div>
-
-    
-    <div class="remove" *ngFor="let lotsFor of formApl.get('lots').controls; let idx = index" [formGroup]="lotsFor">
-      <p (click)="deleted(idx)">удалить лот</p>
-      <div class="last-form_items">
-      <div class="number_form">
-        <h1>Номер</h1>
-        <input type="number" placeholder="Номер" formControlName="number">
-      </div>
-
-      <div class="name_form">
-        <h1>Название</h1>
-        <input type="text" placeholder="Название" formControlName="name">
-      </div>
-
-      <div class="summa_form">
-        <h1>Сумма</h1>
-        <input type="number" placeholder="Сумма" formControlName="summa">
-      </div>
+    <div class="btn">
+      <button>УДАЛИТЬ ЛОТ</button>
     </div>
   </div>
-      <div class="btn">
-        <button class="send" (click)="add()">ДОБАВИТЬ ЛОТ</button>
-      <button class="send" (click)="send()">ОТПРАВИТЬ</button>
+
+  <div class="cont__form">
+    <form action="">
+      <div class="form__block">
+        <div class="inp__block">
+          <div class="inp">
+            <h1>Номер лота</h1>
+              <input type="text" placeholder="Номер лота">
+          </div>
+          <div class="inp lots-name">
+            <h1>Название лота</h1>
+              <input type="text" placeholder="Название лота">
+          </div>
+        </div>
+        <h2>Сумма без учета НДС</h2>
+        <div class="inp__block currency">
+          <div class="inp">
+            <h1>Сомони</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+          <div class="inp">
+            <h1>Доллар</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+          <div class="inp">
+            <h1>Евро</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+        </div>
+        <h2>Сумма без учета НДС</h2>
+        <div class="inp__block currency">
+          <div class="inp">
+            <h1>Сомони</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+          <div class="inp">
+            <h1>Доллар</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+          <div class="inp">
+            <h1>Евро</h1>
+              <input type="text" placeholder="Описание">
+          </div>  
+        </div>
+        <div class="discount">
+          <h1>Скидка</h1>
+          <input type="text">
+        </div>  
+      </div> 
+      <h2>Партнеры:</h2>
+      <div class="partners__block"> 
+        <div class="lider__block"> 
+          <div class="inp">
+            <h1>Партнер</h1>
+              <input type="text" placeholder="Партнер">
+          </div>
+          <div class="inp check" > 
+              <input type="text" placeholder="Лидер">
+              <input type="checkbox" class="checkbox">
+          </div> 
+            <button>ОК</button> 
+        </div>
+        <div class="btn">
+          <button>ДОБАВИТЬ ЛОТ</button>
+        </div>
       </div>
+      
     </form>
   </div>
 </div>
