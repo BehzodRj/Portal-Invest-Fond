@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 439px);
+
+    .content {
+        
+        .title {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 250px;
+            color: #8A9AAE;
+        }
+
+        .description {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 72px;
+            line-height: 84px;
+            color: #8A9AAE;
+        }
+    }
+}
+@media screen and (max-width: 1350px) {
+    .container {
+        min-height: calc(100vh - 429px);
+    }
+}
+@media screen and (max-width: 600px) {
+    .content {
+        .title {
+            font-size: 200px !important;
+        }
+        .description {
+            font-size: 62px !important;
+        }
+    }
+}
+@media screen and (max-width: 370px) {
+    .content {
+        .title {
+            font-size: 150px !important;
+        }
+        .description {
+            font-size: 52px !important;
+        }
+    }
+}

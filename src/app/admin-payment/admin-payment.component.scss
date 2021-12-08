@@ -23,6 +23,22 @@
       text-align: center;
       border-collapse: separate;
       border-spacing: 0px 12px;
+
+      .pain {
+        tr {
+          border-bottom: 1px solid #000;
+         
+          th {
+            height: 70px;
+            background-color: #D4DEEA;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            color: #000;
+            text-transform: uppercase; 
+          }
+        }
+      }
  
       .pains {
         tr {
@@ -60,9 +76,23 @@
             font-family: 'Roboto';
             font-weight: 400;
             font-size: 15px;
-            padding: 15px 10px;
+
+            span {
+                background: rgba(7, 30, 60, 0.5);;
+                color: #FFF;
+                display: none;
+                font-size: 11px;
+                font-weight: bold;
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                padding: 5px 10px;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
  
             &:first-child {
+              padding: 0 5px;
               color: #000;
               background-color: rgba(7, 30, 60, 0.5);;
               border: 1px solid #000;
@@ -93,8 +123,6 @@
             }
  
             &:nth-child(6) {
-              border: 1px solid #000;
-              border-left: 0;
               color: #000;
             }
           }
@@ -173,6 +201,23 @@
     .navbar {
       margin: 50px 20px;
       .resp-tab {
+        .pain {
+            display: none;
+   
+            tr {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              margin-bottom: 30px;
+              border: 0;
+   
+              th {
+                &:first-child {
+                  right: 0;
+                }
+              }
+            }
+          }
         .pains {
           tr {
             border: 1px solid #000;
@@ -192,7 +237,11 @@
               width: 100%;
               top: 0;
               border: 1px solid #071E3C;
- 
+
+              span {
+                display: block;
+              }
+
               &:first-child {
                 background: #fff;
                 color: #000;
@@ -231,15 +280,9 @@
               }
  
               &:nth-child(7) {
-                background: #fff;
-                color: #000;
-                padding: 20px 0;
-              }
-              &:nth-child(8) {
+                width: 100%;
                 display: flex;
                 justify-content: center;
-                width: 100%;
-                background: #fff;
                 color: #000;
                 padding: 20px 0;
               }

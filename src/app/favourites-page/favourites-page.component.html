@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container">
+  <div class="navbar">
+
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Ташкилотчии тендер</th>
+          <th>Номи Лоиха</th>
+          <th>Мавзуи тендер</th>
+          <th>Мухлати охири кабули хуччатхо</th>
+          <th>Матни муфассал</th>
+          <th>Операция</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+          <td><span>№</span>1</td>
+          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit amet.</td>
+          <td><span> Номи Лоиха </span>Lorem ipsum dolor sit amet.</td>
+          <td><span>Мавзуи тендер</span>Lorem ipsum dolor sit amet.</td>
+          <td><span>Мухлати охири кабули хуччатхо </span>Lorem ipsum dolor sit amet.</td>
+          <td><span>Матни пурраи эълон </span>Lorem ipsum dolor sit amet.</td>
+          <td class="change">
+            <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: true ? 'orange': '#4F4F4F'}"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>
+

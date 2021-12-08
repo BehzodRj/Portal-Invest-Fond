@@ -119,6 +119,21 @@
              border: 1px solid;
              color: #000;
            }
+           &:nth-child(8) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
+          &:nth-child(9) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
+          &:nth-child(10) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
          }
        }
      }

@@ -1,85 +1,49 @@
 <app-header></app-header>
 <div class="container">
+  <div class="title_block">
+    <h1>Тендеры проекта</h1>
+    <button routerLink="/announcertender">+</button>
+  </div>
   <div class="navbar">
 
     <table class="resp-tab">
       <thead class="pain">
         <tr>
           <th>№</th>
-          <th>Ташкилотчии тендер</th>
-          <th>Номи Лоиха</th>
-          <th>Мавзуи тендер</th>
-          <th>Мухлати охири кабули хуччатхо</th>
-          <th>Матни муфассал</th>
-          <th>Операция</th>
+          <th>Название</th>
+          <th>ID</th>
+          <th>Центр <br> ID</th>
+          <th>Тип <br> проведения</th>
+          <th>Взнос</th>
+          <th>Дата <br> открытия</th>
+          <th>Метод <br> проведения</th>
+          <th>Лоты</th>
+          <th>Подали <br> заявки</th>
+          <th>Действие</th>
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" routerLink="/profile">
-          <td><span>№</span>1</td>
-          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit.</td>
-          <td><span> Номи Лоиха </span> Lorem ipsum dolor sit.</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо</span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
-          <td class="change">
+        <tr class="train" *ngFor="let announcer of annpuncerData">
+          <td><span>№</span>{{announcer.id}}</td>
+          <td><span>Название</span>{{announcer.name}}</td>
+          <td><span>ID</span>{{announcer.id}}</td>
+          <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
+          <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
+          <td><span>Взнос</span>{{announcer.price}}</td>
+          <td><span>Дата открытия </span>{{announcer.open_date}}</td>
+          <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
+          <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
+          <td class="change" routerLink="/announcerform">
             <h1>123</h1>
-            <i routerLink="/admin" class="far fa-file-alt"></i>
+            <i class="fas fa-search"></i>
+          </td>
+          <td class="download" style="width: 10px;">
+            <span>Действие</span>
+            <div class="trash_block">
+              <i class="fas fa-download"></i>
+            </div>
           </td>
         </tr>
-
-        <tr class="train">
-          <td><span>№</span>1</td>
-          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit.</td>
-          <td><span> Номи Лоиха </span> Lorem ipsum dolor sit.</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо</span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
-          <td class="change">
-            <h1>123</h1>
-            <i class="far fa-file-alt"></i>
-          </td>
-        </tr>
-
-        <tr class="train">
-          <td><span>№</span>1</td>
-          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit.</td>
-          <td><span> Номи Лоиха </span> Lorem ipsum dolor sit.</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо</span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
-          <td class="change">
-            <h1>123</h1>
-            <i class="far fa-file-alt"></i>
-          </td>
-        </tr>
-
-        <tr class="train">
-          <td><span>№</span>1</td>
-          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit.</td>
-          <td><span> Номи Лоиха </span> Lorem ipsum dolor sit.</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо</span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
-          <td class="change">
-            <h1>123</h1>
-            <i class="far fa-file-alt"></i>
-          </td>
-        </tr>
-
-        <tr class="train">
-          <td><span>№</span>1</td>
-          <td><span>Ташкилотчии тендер </span>Lorem ipsum dolor sit.</td>
-          <td><span> Номи Лоиха </span> Lorem ipsum dolor sit.</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо</span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
-          <td class="change">
-            <h1>123</h1>
-            <i class="far fa-file-alt"></i>
-          </td>
-        </tr>
-
       </tbody>
     </table>
 

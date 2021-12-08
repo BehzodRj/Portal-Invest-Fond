@@ -3,22 +3,22 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.scss']
+  selector: 'app-admin-project',
+  templateUrl: './admin-project.component.html',
+  styleUrls: ['./admin-project.component.scss']
 })
-export class AdminPageComponent implements OnInit {
+export class AdminProjectComponent implements OnInit {
   addForm!: FormGroup
-  addText = 'ДОБАВИТЬ ЦЕНТР'
+  addText = 'ДОБАВИТЬ ПРОЕКТ'
   text = ''
   addError = false
   editForm!: FormGroup
   tableData = [
-    {id: '1', name: 'Бехзод', ID: 'BRJKhalif', editShow: true},
-    {id: '2', name: 'Мухаммад', ID: 'Muahammad', editShow: true},
-    {id: '3', name: 'Сухроб', ID: 'Suhrob', editShow: true},
-    {id: '4', name: 'Шоди', ID: 'Shodi', editShow: true},
-    {id: '5', name: 'Таня', ID: 'Tanya', editShow: true}
+    {id: '1', name: 'Бехзод', ID: 'BRJKhalif', pass: "1234567", editShow: true},
+    {id: '2', name: 'Мухаммад', ID: 'Muahammad', pass: "1234567", editShow: true},
+    {id: '3', name: 'Сухроб', ID: 'Suhrob', pass: "1234567", editShow: true},
+    {id: '4', name: 'Шоди', ID: 'Shodi', pass: "1234567", editShow: true},
+    {id: '5', name: 'Таня', ID: 'Tanya', pass: "1234567", editShow: true}
   ]
   pencil = true
   page: any
@@ -33,7 +33,8 @@ export class AdminPageComponent implements OnInit {
 
     this.editForm = new FormGroup({
       name: new FormControl(''),
-      ID: new FormControl(''),
+      email: new FormControl(''),
+      pass: new FormControl(''),
     })
   }
 
@@ -55,15 +56,10 @@ export class AdminPageComponent implements OnInit {
     location.reload()
   }
 
-  adminPro() {
-    this.router.navigate(['/adminproject'])
-  }
-
   deleteItem(value: any) {
     const conf = confirm(`Вы хотите удалить ${value}`)
     if(conf == true) {
       this.tableData.shift()
     }
   }
-
 }

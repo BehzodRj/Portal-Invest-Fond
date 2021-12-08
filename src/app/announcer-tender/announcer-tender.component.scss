@@ -1,0 +1,109 @@
+.container {
+    min-height: calc(100vh - 470px);
+
+    .title_block {
+        margin: 40px auto;
+        max-width: 1430px;
+
+        h1 {
+            margin: 0 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 20px;
+            color: #757575;
+        }
+
+        span {
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 20px;
+            color: #202020;
+        }
+    }
+
+    form {
+        margin-top: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            width: 280px;
+            height: 40px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+            margin-top: 23px;
+            background: #15345C;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.99);
+            }
+        }
+    }
+    .items_block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        width: 280px;
+        padding: 5px;
+        border: 1px solid #0E131A;
+        border-radius: 8px;
+
+        .file_block {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                text-indent: 6px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: normal;
+                font-size: 13px;
+                line-height: 14px;
+                color: #757575;                
+            }
+            img {
+                right: 13px;
+                position: absolute;
+                z-index: -1;
+            }
+            input {
+                margin-right: 10px;
+                opacity: 0;
+                width: 20px;
+            }
+        }
+    }
+    .items_block label {
+        font-family: "Roboto", sans-serif;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+        text-indent: 6px;
+        margin-bottom: 2px;
+    }
+    .items_block input {
+        font-family: "Roboto", sans-serif;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        text-indent: 6px;
+        outline: none;
+        border: 0;
+    }
+    .regist_block {
+        margin-top: 21px;
+    }
+}

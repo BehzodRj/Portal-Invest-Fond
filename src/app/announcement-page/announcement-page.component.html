@@ -6,30 +6,34 @@
       <thead class="pain">
         <tr>
           <th>№</th>
-          <th>Ташкилотчии тендер</th>
-          <th>Номи Лоиха</th>
-          <th>Мавзуи тендер</th>
-          <th>Мухлати охири кабули хуччатхо</th>
-          <th>Матни муфассал</th>
-          <th>Операция</th>
+          <th>Название</th>
+          <th>ID</th>
+          <th>Центр ID</th>
+          <th>Тип <br> проведения</th>
+          <th>Взнос</th>
+          <th>Дата <br> проведения</th>
+          <th>Метод <br> проведения</th>
+          <th>Лоты</th>
+          <th>Действия</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
           <td><span>№</span>{{anouncements.id}}</td>
-          <td><span>Ташкилотчии тендер </span>{{anouncements.title }}</td>
-          <td><span> Номи Лоиха </span> {{ anouncements.userId }}</td>
-          <td><span>Мавзуи тендер</span> Lorem ipsum dolor sit.</td>
-          <td><span>Мухлати охири кабули хуччатхо </span> Lorem ipsum dolor sit.</td>
-          <td><span>Матни пурраи эълон </span> Lorem ipsum dolor sit.</td>
+          <td><span>Название</span>{{anouncements.tender_owner }}</td>
+          <td><span>ID</span>{{ anouncements.lot_name }}</td>
+          <td><span>Центр ID</span>{{ anouncements.tender_title }}</td>
+          <td><span>Тип проведения</span>{{ anouncements.deadline }}</td>
+          <td><span>Взнос</span>{{ anouncements.description }}</td>
+          <td><span>Дата <br> проведения</span>{{ anouncements.description }}</td>
+          <td><span>Метод проведения</span>{{ anouncements.description }}</td>
+          <td><span>Лоты</span>{{ anouncements.description }}</td>
           <td class="change">
-            <i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.completed"></i>
-            <i title="скачать файл" class="fas fa-dollar-sign" *ngIf="anouncements.completed"></i>
-            <i title="добавить избранный " (click)="anouncements.completed = !anouncements.completed"
-              class="fas fa-star" [ngStyle]="{color: anouncements.completed ? 'orange': '#4F4F4F'}"></i>
+            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.favourite" (click)="download(anouncements.file)" ></i></a>
+            <i class="fas fa-dollar-sign" *ngIf="anouncements.favourite"></i>
+            <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.favourite ? 'orange': '#4F4F4F'}" (click)="anouncements.favourite = !anouncements.favourite" (click)="star(anouncements.favourite, anouncements.id)"></i>
             <i routerLink="/application" class="far fa-file-alt"></i>
           </td>
-
         </tr>
       </tbody>
     </table>

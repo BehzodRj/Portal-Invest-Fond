@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="modal-datas_container" *ngIf="showModal">
+  <div class="modal-datas_block">
+    <h1 class="title">Рахмонов Рахмон Рахмонович</h1>
+
+    <div class="modal-items">
+      <h1>Занимаемые должности:</h1>
+      <h2>Должность</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Наименование компании:</h1>
+      <h2>Компания</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>ИНН:</h1>
+      <h2>88805553535</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Место регистрации:</h1>
+      <div class="reg_place">
+        <h2>1Место регистрации</h2>
+        <h2>2Место регистрации</h2>
+        <h2>3Место регистрации</h2>
+      </div>
+    </div>
+
+    <div class="modal-items">
+      <h1>email:</h1>
+      <h2>email@email.ru</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Телефон:</h1>
+      <h2>88805553535</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Страна:</h1>
+      <h2>Таджикистан</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Город:</h1>
+      <h2>Душанбе</h2>
+    </div>
+
+    <div class="modal-items">
+      <h1>Почтовый индекс:</h1>
+      <h2>88805553535</h2>
+    </div>
+
+    <button (click)="closeModal()">ВЕРНУТЬСЯ</button>
+
+  </div>
+</div>
+<div class="container">
+  <div class="title_block">
+    <h1>Тендеры проекта > <span>Список заявок</span></h1>
+  </div>
+  <div class="navbar">
+
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Компания</th>
+          <th colspan="2">Действия</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+          <td><span>№</span>1</td>
+          <td><span>Компания</span>Lorem ipsum dolor sit.</td>
+          <td class="download">
+            <span>Действие</span>
+            <div class="trash_block" (click)="openModal()">
+              <i class="fas fa-search"></i>
+            </div>
+          </td>
+
+          <td class="download">
+            <span>Действие</span>
+            <div class="trash_block">
+              <i class="fas fa-download"></i>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-announcer-page',
@@ -6,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcer-page.component.scss']
 })
 export class AnnouncerPageComponent implements OnInit {
+  annpuncerData: any = []
   page: any
 
-  constructor() { }
+  constructor(private request: RequestService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.request.getAnnouncerLots().subscribe(response => {
+      this.annpuncerData = response
+      console.log(response);
+    })
   }
 
 }

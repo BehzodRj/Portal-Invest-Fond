@@ -1,0 +1,59 @@
+<app-header></app-header>
+<div class="container">
+  <div class="title_block">
+    <h1>Тендеры проекта > <span>Добавить тендер</span></h1>
+  </div>
+
+  <form class="form" [formGroup]="formTender">
+    <div class="items_block">
+      <label for="text">Название</label>
+      <input type="text" [placeholder]="showAlertName" formControlName="name">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Центр ID</label>
+      <input type="number" [placeholder]="showAlertCenterID" formControlName="centerID">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="text">Метод</label>
+      <input type="text" [placeholder]="showAlertMethod" formControlName="method">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="select">Тип проведения</label>
+      <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="sendType">
+        <option>однофазный</option>
+        <option>двухфазный</option>
+      </select>
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="date">Дата проведения</label>
+      <input type="date" style="text-indent: 3px;" formControlName="sendDate">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="file">Файл</label>
+      <div class="file_block">
+        <h1>{{showAlertFile}}</h1>
+        <input type="file" accept=".pdf" (change)="getFile($event)" formControlName="file">
+        <img src="assets/img/file.svg" alt="">
+      </div>
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Колличество лотов</label>
+      <input type="number" [placeholder]="showAlertLots" formControlName="lots">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Взнос</label>
+      <input type="number" [placeholder]="showAlertPrice" formControlName="price">
+    </div>
+
+    <button (click)="send()">ДОБАВИТЬ ЛОТ</button>
+
+  </form>
+</div>
+<app-footer-page></app-footer-page>

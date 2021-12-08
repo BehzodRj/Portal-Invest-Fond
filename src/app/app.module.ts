@@ -15,12 +15,14 @@ import { FooterPageComponent } from './footer-page/footer-page.component';
 import { ProjectComponent } from './project/project.component';
 import { AplicationPageComponent } from './aplication-page/aplication-page.component';
 import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
+import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
+import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
+import { AdminProjectComponent } from './admin-project/admin-project.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ForgetPageComponent } from './forget-page/forget-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AdminLotsPageComponent } from './admin-lots-page/admin-lots-page.component';
-import { AnnouncerSaveComponent } from './announcer-save/announcer-save.component';
-import { AnnouncerLotsComponent } from './announcer-lots/announcer-lots.component';
-import { AdminCheckComponent } from './admin-check/admin-check.component';
-import { AdminCreatComponent } from './admin-creat/admin-creat.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,14 @@ import { AdminCreatComponent } from './admin-creat/admin-creat.component';
     ProjectComponent,
     AplicationPageComponent,
     AnnouncerPageComponent,
+    FavouritesPageComponent,
+    ErrorPageComponent,
+    ForgetPageComponent,
+    AdminProjectComponent,
+    AdminPaymentComponent,
+    AnnouncerFormComponent,
+    AnnouncerTenderComponent,
     AdminPageComponent,
-    AdminLotsPageComponent,
-    AnnouncerSaveComponent,
-    AnnouncerLotsComponent,
-    AdminCheckComponent,
-    AdminCreatComponent,
   ],
   imports: [  
     FormsModule,

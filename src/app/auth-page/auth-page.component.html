@@ -9,14 +9,14 @@
       <h1 class="enter">Вход</h1>
       <hr>
     </div>
-    
+
     <h1 class="registration" routerLink="/registration">Регистрация</h1>
   </div>
 
   <form class="form" action="" [formGroup]="form" (ngSubmit)="send()">
     <div class="items_block">
-      <label for="text">Логин</label>
-      <input type="text" [placeholder]="showAlertLogin" *ngIf="showAlertLogin"  formControlName="login">
+      <label for="text">Ваш E-mail</label>
+      <input type="text" [placeholder]="showAlertEmail" *ngIf="showAlertEmail" formControlName="email">
     </div>
 
     <div class="items_block password_block">
@@ -25,4 +25,7 @@
     </div>
     <button type="submit">ВОЙТИ</button>
   </form>
+  <div class="forget_block" routerLink="/forget">
+    <h1>Забыли пароль ?</h1>
+  </div>
 </div>

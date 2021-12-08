@@ -1,37 +1,90 @@
- 
 .container {
     min-height: calc(100vh - 480px);
-  }
-   .navbar {
-     max-width: 1430px;
-     margin: auto;
-  
-     .resp-tab {
-       width: 100%;
-       margin: 50px auto;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 300;
-       text-align: center;
-       border-collapse: separate;
-       border-spacing: 0px 12px;
-       .pain {
-         tr {
-           border-bottom: 1px solid #000;
+}
+.navbar {
+    max-width: 1430px;
+    margin: auto;
+ 
+    .resp-tab {
+      width: 100%;
+      margin: 50px auto;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      text-align: center;
+      border-collapse: separate;
+      border-spacing: 0px 12px;
+      .pain {
+        tr {
+          border-bottom: 1px solid #000;
+         
+          th {
+            height: 70px;
+            background-color: #D4DEEA;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            color: #000;
+            text-transform: uppercase; 
+          }
+        }
+      }
+ 
+      .pains {
+        .add_block {
+          background-color: red !important;
+          height: 40px;
+
+          td {
+            background-color: #fff  !important;
+          }
+
+          h1 {
+            font-family: 'Roboto', sans-serif !important;
+            font-weight: normal !important;
+            font-size: 12px !important;
+            line-height: 11px !important;
+            text-indent: 10px;
+            text-align: start;
+            color: #000000 !important;
+          }
+
+          .addText {
+            color: red !important;
+            ::placeholder {
+              color: red !important;
+            }
+          }
           
-           th {
-             height: 70px;
-             background-color: #D4DEEA;
-             font-family: 'Roboto', sans-serif;
-             font-weight: 400;
-             font-size: 15px;
-             color: #000;
-             text-transform: uppercase; 
-           }
-         }
-       
-       }
-  
-       .pains {
+          input {
+            margin-top: 5px;
+            text-align: start !important;
+            text-indent: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+          }
+          button {
+            float: right;
+            width: 92%;
+            height: 50px;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            border: none;
+            border-radius: 8px;
+            background: #15345C;
+            color: #fff;
+            cursor: pointer;
+
+            &:active {
+              transform: scale(.99);
+            }
+          }
+        }
         tr {
           .change {
             width: 0;
@@ -68,7 +121,7 @@
                 font-family: "Roboto", sans-serif;
                 font-weight: normal;
                 font-size: 15px;
-                line-height: 20px; 
+                line-height: 20px;
                 color: #202020;
             }
 
@@ -125,43 +178,26 @@
  
             &:nth-child(4) {
               border: 1px solid #000;
-              border-left: 0;
+              border-left: none;
               color: #000;
             }
           }
         }
       }
-     }
-   }
-  
-   .creat {
-     max-width: 100%;
-     display: flex;
-     justify-content: flex-end;
-  
-     button {
-       height: 30px;
-       padding: 5px 30px;
-       border: 0;
-       border-radius: 15px;
-       background-color: #333;
-       color: #fff;
-       font-size: 14px;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 100;
-       cursor: pointer;
-  
-       &:active {
-         transform: scale(.95);
-       }
-     }
-   }
-  
-  @media screen and (max-width: 1461px) {
-    .navbar {
-      margin: 0px 20px;
     }
   }
+ 
+  .creat {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+ 
+ @media screen and (max-width: 1461px) {
+   .navbar {
+     margin: 0px 20px;
+   }
+ }
   @media(max-width: 961px) {
  
     // .resp-tab thead { 
@@ -190,7 +226,7 @@
       .resp-tab {
         .pain {
           display: none;
-            
+ 
           tr {
             display: flex;
             flex-direction: row;
@@ -207,39 +243,49 @@
         }
  
         .pains {
+          .add_block {
+            border: none;
+            margin-bottom: 150px;
+
+            td:nth-child(1) {
+              display: none;
+            }
+            td:nth-child(3) {
+              border: 1px solid !important;
+            }
+            
+            button {
+              width: 250px;
+              float: none;
+            }
+
+          }
+
           tr {
             border: 1px solid #071E3C;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             margin-bottom: 40px;
-            .change {  
-                display: flex;
-                justify-content: center;
-     
-              }
+ 
             td {
               margin: 0 -1px -1px 0;
-              padding-top: 35px;
+              padding: 15px 0;
               position: relative;
               width: 100%;
               top: 0;
               border: 1px solid #071E3C;
-                h1{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
+ 
               span {
                 display: block;
-              } 
+              }
+ 
               &:first-child {
-                width: 100%;
                 background: #fff;
                 color: #000;
                 padding-bottom: 10px;
                 right: 0;
-                border: 0;
+                width: 100%;
               }
  
               &:nth-child(2) {
@@ -253,24 +299,51 @@
                 background: #fff;
                 color: #000;
                 padding-bottom: 10px;
-                border-left: 0;
               }
  
               &:nth-child(4) {
+                display: flex;
+                justify-content: center;
+                width: 100%;
                 background: #fff;
                 color: #000;
-                padding-bottom: 10px;
                 border-right: 1px solid #000;
               }
  
               &:nth-child(5) {
+                display: flex;
+                justify-content: center;
                 width: 100%;
-                border-left: 0;
-                padding-bottom: 10px;
+                border-right: 0;
+              }
+              &:nth-child(6) {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                border-right: 0;
+              }
+              &:nth-child(7) {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                border-right: 0;
               }
             }
           }
         }
+      }
+    }
+
+    @media(max-width: 460px) {
+      .add_block {
+        button {
+          width: 220px !important;
+        }
+      }
+      .creat {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
       }
     }
  
