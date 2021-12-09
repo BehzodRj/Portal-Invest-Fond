@@ -1,7 +1,17 @@
 <app-header></app-header>
 <div class="container">
   <div class="content">
-    <h1>Лоты:</h1>
+    <div class="appbar">
+      <h1></h1>
+      <h1>Лоты:</h1>
+      <h1>
+        <div class="plus">
+          <div class="plus__block">
+            <i class="fa fa-plus"></i>
+          </div>
+        </div>
+      </h1>
+    </div>
     <table class="resp-tab">
       <thead>
         <tr>
@@ -10,7 +20,7 @@
           <th rowspan="2">Скидка</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
-          <th  rowspan="2">Партнеры</th> 
+          <th  rowspan="2" style="color: #112A4A; font-weight: bold;" >Партнеры</th> 
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -53,4 +63,131 @@
       </tbody>
     </table>
   </div>
+  <div class="summa">
+    <div class="summa__nds">
+      <div class="inp-block">
+        <h2>Сумма без учета НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма без учета НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма без учета НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button>Отправить</button>
+    </div>
+  </div> 
+  <div class="cont__form">
+    <form action="">
+      <div class="form__block">
+        <div class="inp__block">
+          <div class="inp">
+            <h1>Номер лота</h1>
+            <input type="text" placeholder="Номер лота">
+          </div>
+          <div class="inp lots-name">
+            <h1>Название лота</h1>
+            <input type="text" placeholder="Название лота">
+          </div>
+        </div>
+        <h2>Сумма без учета НДС</h2>
+        <div class="inp__block currency">
+          <div class="inp">
+            <h1>Сомони</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h1>Доллар</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h1>Евро</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+        <h2>Сумма без учета НДС</h2>
+        <div class="inp__block currency">
+          <div class="inp">
+            <h1>Сомони</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h1>Доллар</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h1>Евро</h1>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+        <div class="discount">
+          <h1>Скидка</h1>
+          <input type="text">
+        </div>
+      </div>
+      <h2>Партнеры:</h2>
+      <div class="partners__block">
+        <div class="lider__block">
+          <div class="inp">
+            <h1>Партнер</h1>
+            <input type="text" placeholder="Партнер">
+          </div>
+          <div class="inp check">
+            <p>Лидер</p>
+            <input type="checkbox" >
+          </div>
+          <button>ОК</button>
+        </div>
+        <div class="btn">
+          <button>ДОБАВИТЬ ЛОТ</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
 </div>
+<app-footer-page></app-footer-page>
