@@ -20,6 +20,14 @@
     background: #FFFFFF;
     border-radius: 8px;
 
+    .fa-times {
+      font-size: 20px;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+
     .modal_check_items {
       display: flex;
       flex-direction: column;

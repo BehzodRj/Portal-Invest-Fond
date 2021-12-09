@@ -30,7 +30,6 @@ export class AdminPageComponent implements OnInit {
     })
 
     this.request.getAdminReq().subscribe(response => {
-      console.log(response); 
       this.tableData = response
     }, error => {
       alert(error.message)
@@ -62,7 +61,6 @@ export class AdminPageComponent implements OnInit {
   
   changeButton(id: number) {
     const editFormData = {...this.editForm.value}
-    console.log(editFormData);
     this.request.putAdminReq(id, editFormData.name).subscribe(response => {
       location.reload()
     }, error => {

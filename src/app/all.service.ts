@@ -25,18 +25,6 @@ export class RequestService {
     // End of Announcement
 
 
-    // Favourites
-    postFavoutitesRequests(anouncements_id: any) {
-        let header: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'token_type': 'bearer',
-            'Authorization': `${localStorage.getItem('access_token')}`
-        })
-        return this.http.post(this.url + '/favorites', {"anouncements_id": anouncements_id}, {headers:header})
-    }
-    // End of Favourites
-    
-
     // Profile
     getProfileRequest() {
         let header: HttpHeaders = new HttpHeaders({
@@ -105,7 +93,7 @@ export class RequestService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {name: name}, {headers:header})
+        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {"name": name}, {headers:header})
     }
 
     getAdminReq() {
@@ -134,6 +122,14 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/projects/create', {"project_center_id": id, "project_name": name, "email": email}, {headers:header})
     }
 
+    putAdminProReq(id: number, name: string, email: string) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.put(this.url + '/api/auth/projects/' + id, {"name": name, "email": email}, {headers:header})
+    }
+
     getAdminProReq(id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -149,4 +145,57 @@ export class RequestService {
         return this.http.delete(this.url + '/api/auth/projects/' + id, {headers:header})
     }
     // End of Admin Project
+
+
+    // Subscriber
+    getSubsciberProjects() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/projects', {headers:header})
+    }
+
+    getSubsciberProjectsID(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/anouncements/' + id, {headers:header})
+    }
+
+    // Favourites
+    postFavoutitesRequests(anouncements_id: any) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.post(this.url + '/api/auth/favorites', {"anouncements_id": anouncements_id}, {headers:header})
+    }
+    
+    deleteFavoutitesRequests(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/favorites/' + id, {headers:header})
+    }
+    // End of Favourites
+
+
+    // Announcement check
+    postAnnouncementCheck(id:number, file: any) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.post(this.url + '/api/auth/payments', {"anouncements_id": id, "file": file}, {headers:header})
+    }
+    // End of Announcement check
+
+    //  End of Subscriber
+
 }

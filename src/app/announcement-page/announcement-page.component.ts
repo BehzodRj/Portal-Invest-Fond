@@ -8,47 +8,63 @@ import { RequestService } from '../all.service';
   styleUrls: ['./announcement-page.component.scss']
 })
 export class AnnouncementPageComponent implements OnInit {
-  anouncement: any = [
-    {id: '0', tender_owner: 'ТАШКИЛОТЧИИ ТЕНДЕР', lot_name: 'НОМИ ЛОИХА', tender_title: 'МАВЗУИ ТЕНДЕР', deadline: 'МУХЛАТИ ОХИРИ КАБУЛИ ХУЧЧАТХО', description: 'МАТНИ МУФАССАЛ', favourite: false, file: 'BRJ.pdf'},
-    {id: '1', tender_owner: 'ТАШКИЛОТЧИИ ТЕНДЕР', lot_name: 'НОМИ ЛОИХА', tender_title: 'МАВЗУИ ТЕНДЕР', deadline: 'МУХЛАТИ ОХИРИ КАБУЛИ ХУЧЧАТХО', description: 'МАТНИ МУФАССАЛ', favourite: false, file: 'BRJ2.pdf'}
-  ]
+  anouncement: any
   page: any
+  favId: any
   filName = 'Чек'
+  fileData: any
   modalCheck = false
+  activeAnounsment = 0
   constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // this.requests.getAnnouncerLots().subscribe(response => {
-    //   // this.anouncement = response
-    // }, error => {
-    //   alert(error.message)
-    // })
+    this.route.params.subscribe(response => {
+      this.requests.getSubsciberProjectsID(response.id).subscribe(response => {
+        this.anouncement = response
+      }, error => {
+        alert(error.message)
+      })
+    })
   }
 
-  modalOpen() {
+  modalOpen(id: number) {
     this.modalCheck = true
+    this.activeAnounsment = id
   }
-  modalClose() {
-    this.modalCheck = false
+  modalSend() {
+    this.requests.postAnnouncementCheck( this.activeAnounsment, this.fileData).subscribe(response => {
+      this.modalCheck = false
+    }, error => {
+      alert(error.error.message)
+    })
   }
 
   getFile(value: any) {
     this.filName = value.target.files[0].name
+    let reader = new FileReader()
+    reader.readAsDataURL(value.target.files[0])
+    reader.onload = () => {
+      this.fileData = reader.result
+    }
     
   }
 
   download(value: any) {}
 
-  star(value: any, id:number) {
-    if(value == true) {         
-      this.requests.postFavoutitesRequests(id).subscribe(response => {
-        console.log(response);
-      }, error => {
-        value = false
-        alert(error.message)
-      })
-    } else if(value == false) {
-      alert('No')
-    }
+  star(favId: any, id:number) {   
+    
+      if(favId>0){
+        this.requests.deleteFavoutitesRequests(id).subscribe(response => {
+          location.reload()
+        }, error => {
+          alert(error.message)
+        })
+      }
+      else{
+        this.requests.postFavoutitesRequests(id).subscribe(response => {
+        }, error => {
+          alert(error.message)
+        })
+      }
   }
 }

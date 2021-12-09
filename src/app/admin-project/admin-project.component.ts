@@ -63,9 +63,19 @@ export class AdminProjectComponent implements OnInit {
     this.editShow = id;
   }
   
-  changeButton() {
+  changeButton(id: number) {
     const editFormData = {...this.editForm.value}
     console.log(editFormData);
+
+    if(editFormData.name == '' || editFormData.email  == '') {
+      alert('Поле не может быть пустым')
+    } else {
+      this.request.putAdminProReq(id, editFormData.name, editFormData.email).subscribe(response => {
+        location.reload()    
+      }, error => {
+        alert(error.error.message)
+      })
+    }
   }
   
   deleteItem(id: number, name: string) {

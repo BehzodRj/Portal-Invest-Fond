@@ -50,7 +50,7 @@
               <h1 *ngIf="editShow != items.id">{{ items.email }}</h1>
 
               <form [formGroup]="editForm" *ngIf="editShow == items.id">
-                <input type="text" [placeholder]="items.name" formControlName="email">
+                <input type="text" [placeholder]="items.email" formControlName="email">
               </form>
             </div>
           </td>
@@ -66,7 +66,7 @@
               <i class="fas fa-trash"></i>
             </div>
 
-            <div class="trash_block" *ngIf="editShow == items.id" (click)="changeButton()">
+            <div class="trash_block" *ngIf="editShow == items.id" (click)="changeButton(items.id)">
               <i>ОК</i>
             </div>
           </td>

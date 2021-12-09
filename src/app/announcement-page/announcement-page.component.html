@@ -1,5 +1,6 @@
 <div class="modal_check" *ngIf="modalCheck">
   <div class="modal_check-items_block">
+    <i class="fas fa-times" (click)="modalCheck = false"></i>
     <div class="modal_check_items">
       <h1 class="title">Требуется прикрепить чек об оплате </h1>
 
@@ -11,8 +12,7 @@
           <input type="file" accept=".pdf" (change)="getFile($event)">
         </div>
       </div>
-
-      <button (click)="modalClose()">Отправить</button>
+      <button (click)="modalSend()">Отправить</button>
     </div>
   </div>
 </div>
@@ -36,24 +36,22 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}">
-          <td><span>№</span>{{anouncements.id}}</td>
-          <td><span>Название</span>{{anouncements.tender_owner }}</td>
-          <td><span>ID</span>{{ anouncements.lot_name }}</td>
-          <td><span>Центр ID</span>{{ anouncements.tender_title }}</td>
-          <td><span>Тип проведения</span>{{ anouncements.deadline }}</td>
-          <td><span>Взнос</span>{{ anouncements.description }}</td>
-          <td><span>Дата <br> проведения</span>{{ anouncements.description }}</td>
-          <td><span>Метод проведения</span>{{ anouncements.description }}</td>
-          <td><span>Лоты</span>{{ anouncements.description }}</td>
+        <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}; let idx = index">
+          <td><span>№</span>{{ idx }}</td>
+          <td><span>Название</span>{{anouncements.tender_title }}</td>
+          <td><span>ID</span>{{ anouncements.id }}</td>
+          <td><span>Центр ID</span>{{ anouncements.project_center_anouncement_id }}</td>
+          <td><span>Тип проведения</span>{{ anouncements.type_of_procurement }}</td>
+          <td><span>Взнос</span>{{ anouncements.price }}</td>
+          <td><span>Дата <br> проведения</span>{{ anouncements.open_date }}</td>
+          <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
+          <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
           <td class="change">
-            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download"
-                *ngIf="!anouncements.favourite" (click)="download(anouncements.file)"></i></a>
-            <i class="fas fa-dollar-sign" *ngIf="anouncements.favourite" (click)="modalOpen()"></i>
+            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download" (click)="download(anouncements.file)"></i></a>
+            <i class="fas fa-dollar-sign" (click)="modalOpen(anouncements.id)"></i>
             <i title="добавить избранный " class="fas fa-star"
-              [ngStyle]="{color: anouncements.favourite ? 'orange': '#4F4F4F'}"
-              (click)="anouncements.favourite = !anouncements.favourite"
-              (click)="star(anouncements.favourite, anouncements.id)"></i>
+              [ngStyle]="{color: anouncements.fav_id>0 ? 'orange': '#4F4F4F'}"
+              (click)="star(anouncements.fav_id, anouncements.id)"></i>
             <i routerLink="/application" class="far fa-file-alt"></i>
           </td>
         </tr>

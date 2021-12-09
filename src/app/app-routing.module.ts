@@ -28,15 +28,14 @@ const routes: Routes = [
   { path: 'announcer', component: AnnouncerPageComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcerform', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
-  { path: 'admin', component: AdminPageComponent, canActivate: [AnnouncerGuard] },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: 'adminpayment', component: AdminPaymentComponent, canActivate: [AnnouncerGuard] },
   { path: 'adminproject/:id', component: AdminProjectComponent, canActivate: [AnnouncerGuard] },
-  { path: 'subscribertender', component: SubscriberTenderComponent, canActivate: [AnnouncerGuard] },
-  { path: 'announcement', component: AnnouncementPageComponent, canActivate: [AnnouncerGuard] },
-  { path: 'profile', component: ProfilePageComponent, canActivate: [AnnouncerGuard] },
-  { path: 'subscriberorders', component: SubscriberOrdersComponent, canActivate: [AnnouncerGuard] },
-  { path: 'application', component: AplicationPageComponent, canActivate: [AnnouncerGuard] },
-  { path: 'favourites', component: FavouritesPageComponent, canActivate: [AnnouncerGuard] },
+  { path: 'subscribertender', component: SubscriberTenderComponent, canActivate: [SubscribeGuard] },
+  { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
+  { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
+  { path: 'subscriberorders', component: SubscriberOrdersComponent, canActivate: [SubscribeGuard] },
+  { path: 'application', component: AplicationPageComponent, canActivate: [SubscribeGuard] },
   { path: '**', component: ErrorPageComponent }
 ];
 

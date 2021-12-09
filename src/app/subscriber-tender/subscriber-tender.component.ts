@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-subscriber-tender',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subscriber-tender.component.scss']
 })
 export class SubscriberTenderComponent implements OnInit {
+  subscriberData: any
   page: any
 
-  constructor() { }
+  constructor(private request: RequestService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.request.getSubsciberProjects().subscribe(response => {
+      this.subscriberData = response
+    }, error => {
+      alert(error.error.message)
+    })
   }
 
 }
