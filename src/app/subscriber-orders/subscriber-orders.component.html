@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container">
+  <div class="navbar">
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Название</th>
+          <th>ID</th>
+          <th>Центр ID</th>
+          <th>Тип <br> проведения</th>
+          <th>Взнос</th>
+          <th>Дата <br> открытия</th>
+          <th>Метод <br> проведения</th>
+          <th>Лоты</th>
+          <th>статус <br> проверки</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+          <td>1</td>
+          <td><span>Название</span>Lorem ipsum dolor sit.</td>
+          <td><span>ID</span>Lorem ipsum dolor sit.</td>
+          <td><span>Центр ID</span>Lorem ipsum dolor sit.</td>
+          <td><span>Тип проведения</span>Lorem ipsum dolor sit.</td>
+          <td><span>Взнос</span>Lorem ipsum dolor sit.</td>
+          <td><span>Дата открытия</span>Lorem ipsum dolor sit.</td>
+          <td><span>Метод проведения</span>Lorem ipsum dolor sit.</td>
+          <td><span>Лоты</span>Lorem ipsum dolor sit.</td>
+          <td>
+            <span>Cтатус проверки</span>
+            <input type="checkbox" class="checkbox">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>

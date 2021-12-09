@@ -23,6 +23,8 @@ import { FavouritesPageComponent } from './favourites-page/favourites-page.compo
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ForgetPageComponent } from './forget-page/forget-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { SubscriberTenderComponent } from './subscriber-tender/subscriber-tender.component';
+import { SubscriberOrdersComponent } from './subscriber-orders/subscriber-orders.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     AnnouncerFormComponent,
     AnnouncerTenderComponent,
     AdminPageComponent,
+    SubscriberTenderComponent,
+    SubscriberOrdersComponent,
   ],
   imports: [  
     FormsModule,

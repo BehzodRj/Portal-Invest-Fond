@@ -1,3 +1,21 @@
+<div class="modal_check" *ngIf="modalCheck">
+  <div class="modal_check-items_block">
+    <div class="modal_check_items">
+      <h1 class="title">Требуется прикрепить чек об оплате </h1>
+
+      <div class="check_input">
+        <h1 class="title_input">Чек</h1>
+        <div class="check_input-item">
+          <h1 class="description">{{filName}}</h1>
+          <img src="assets/img/file.svg" alt="">
+          <input type="file" accept=".pdf" (change)="getFile($event)">
+        </div>
+      </div>
+
+      <button (click)="modalClose()">Отправить</button>
+    </div>
+  </div>
+</div>
 <app-header></app-header>
 <div class="container">
   <div class="navbar">
@@ -29,9 +47,13 @@
           <td><span>Метод проведения</span>{{ anouncements.description }}</td>
           <td><span>Лоты</span>{{ anouncements.description }}</td>
           <td class="change">
-            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download" *ngIf="!anouncements.favourite" (click)="download(anouncements.file)" ></i></a>
-            <i class="fas fa-dollar-sign" *ngIf="anouncements.favourite"></i>
-            <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.favourite ? 'orange': '#4F4F4F'}" (click)="anouncements.favourite = !anouncements.favourite" (click)="star(anouncements.favourite, anouncements.id)"></i>
+            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download"
+                *ngIf="!anouncements.favourite" (click)="download(anouncements.file)"></i></a>
+            <i class="fas fa-dollar-sign" *ngIf="anouncements.favourite" (click)="modalOpen()"></i>
+            <i title="добавить избранный " class="fas fa-star"
+              [ngStyle]="{color: anouncements.favourite ? 'orange': '#4F4F4F'}"
+              (click)="anouncements.favourite = !anouncements.favourite"
+              (click)="star(anouncements.favourite, anouncements.id)"></i>
             <i routerLink="/application" class="far fa-file-alt"></i>
           </td>
         </tr>

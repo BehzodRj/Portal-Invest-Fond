@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="container">
+  <div class="title_block">
+    <h1>Тендеры проекта > <span>Список заявок</span></h1>
+  </div>
+  <div class="navbar">
+
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>Проект</th>
+          <th>Количество <br> тендеров</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+          <td><span>№</span>1</td>
+          <td><span>Проект</span>Lorem ipsum dolor sit.</td>
+          <td><span>Количество тендеров</span>Lorem ipsum dolor sit.</td>
+          <td class="download">
+            <div class="trash_block">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>
+
