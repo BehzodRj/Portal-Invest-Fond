@@ -1,0 +1,45 @@
+.container {
+  background-color: red;
+  max-width: 1050px;
+  margin: 34px auto 0 auto;
+
+  .title_block {
+    position: relative;
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      color: #112A4A;
+    }
+
+    button {
+      position: absolute;
+      width: 62px;
+      height: 26px;
+      right: 0;
+      font-size: 20px;
+      background: #15345C;
+      border-radius: 8px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+
+      &:active {
+        transform: scale(.97);
+      }
+    }
+  }
+}
+@media screen and (max-width: 1050px) {
+  .container {
+    margin: 34px 10px 0 10px;
+  }
+}
