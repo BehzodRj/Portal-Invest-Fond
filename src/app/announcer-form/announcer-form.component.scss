@@ -5,17 +5,17 @@
   height: 100vh;
   top: 0;
   z-index: 10;
+  overflow: auto;
 
   .modal-datas_block {
     position: relative;
     max-width: 1000px !important;
-    margin: 80px auto 0 auto;
-    height: 752px;
+    margin: 80px auto  ; 
     background: #FFFFFF;
     border-radius: 8px;
+    padding: 30px;
 
-    .title {
-      padding: 40px 0 29px 0;
+    .title { 
       position: relative;
       text-align: center;
       font-family: 'Roboto', sans-serif;
@@ -23,10 +23,10 @@
       font-size: 36px;
       line-height: 42px;
       color: #112A4A;   
+      margin-bottom: 30px;
     }
 
-    .modal-items {
-      margin-left: 75px;
+    .modal-items { 
       display: flex;
       align-items: center;
 
@@ -49,27 +49,28 @@
         color: #000000;
       }
     }
-
-    button {
-      position: absolute;
-      margin: auto;
-      right: 0;
-      left: 0;
-      bottom: 40px;
-      width: 230px;
-      height: 40px;
-      background: #15345C;
-      border-radius: 8px;
-      font-family: 'Roboto', sans-serif;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 21px;
-      color: #FFFFFF;
-      cursor: pointer;
-      border: none;
-
-      &:active {
-        transform: scale(.99);
+    .btn{
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      button { 
+        margin: auto; 
+        bottom: 40px;
+        width: 230px;
+        height: 40px;
+        background: #15345C;
+        border-radius: 8px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        color: #FFFFFF;
+        cursor: pointer;
+        border: none;
+  
+        &:active {
+          transform: scale(.99);
+        }
       }
     }
   }
@@ -230,25 +231,7 @@
    }
  }
   @media(max-width: 961px) {
- 
-    // .resp-tab thead { 
-    //     display: none; 
-    // } 
-    // .resp-tab tr { 
-    //     display: flex; 
-    //     flex-direction: row; 
-    //     flex-wrap: wrap; 
-    //     margin-bottom: 30px; 
-    // } 
-    // .resp-tab td { 
-    //     margin: 0 -1px -1px 0; 
-    //     padding-top: 35px; 
-    //     position: relative; 
-    //     width: 100%; 
-    // } 
-    // .resp-tab td span { 
-    //     display: block; 
-    // }  
+   
     .navbar {
       margin: 0 20px;
       .resp-tab {
@@ -338,7 +321,37 @@
   @media screen and (max-width: 1050px) {
     .modal-datas_container {
       .modal-datas_block {
-        margin: 80px 50px 0 50px
+        margin: 80px 20px 0 20px
+      }
+    }
+  }
+ 
+  @media screen and (max-width: 500px) {
+    .modal-datas_container {
+      .modal-datas_block { 
+        .title{
+          margin-bottom: 30px;
+        }
+        .modal-items{ 
+          flex-direction: column;
+          h2{
+            margin-left: 0;
+            
+          }
+          h1{
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+ 
+  @media screen and (max-width: 380px) {
+    .modal-datas_container {
+      .modal-datas_block {  
+        .modal-items{  
+          text-align: center;
+        }
       }
     }
   }
