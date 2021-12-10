@@ -31,7 +31,6 @@
  
       .pains {
         .add_block {
-          background-color: red !important;
           height: 40px;
 
           td {
@@ -39,13 +38,8 @@
           }
 
           h1 {
-            font-family: 'Roboto', sans-serif !important;
-            font-weight: normal !important;
-            font-size: 12px !important;
-            line-height: 11px !important;
             text-indent: 10px;
             text-align: start;
-            color: #000000 !important;
           }
 
           .addText {
@@ -162,23 +156,17 @@
               color: #000;
               background-color: rgba(7, 30, 60, 0.5);;
               border: 1px solid #000;
+              border-right: none;
             }
  
             &:nth-child(2) {
               border: 1px solid #000;
-              border-right: 0;
-              border-left: 0;
               color: #000;
             }
  
             &:nth-child(3) {
               border: 1px solid #000;
-              color: #000;
-            }
- 
-            &:nth-child(4) {
-              border: 1px solid #000;
-              border-left: none;
+              border-left: none !important;
               color: #000;
             }
           }
@@ -245,13 +233,16 @@
         .pains {
           .add_block {
             border: none;
-            margin-bottom: 150px;
+            margin-bottom: 270px;
 
             td:nth-child(1) {
               display: none;
             }
             td:nth-child(3) {
               border: 1px solid !important;
+            }
+            td:nth-child(4) {
+              border: 1px solid #000 !important;
             }
             
             button {

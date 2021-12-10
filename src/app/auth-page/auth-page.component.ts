@@ -32,12 +32,9 @@ export class AuthPageComponent implements OnInit {
       this.router.navigate(['/profile'])
     }
     else if(localStorage.getItem('access_token') && decoded[0][0].role == "admin") {
-      this.router.navigate(['/announcement'])
+      this.router.navigate(['/admin'])
     }
      else if(localStorage.getItem('access_token') && decoded[0][0].role == "anouncer") {
-      this.router.navigate(['/announcer'])
-    }
-    else {
       this.router.navigate(['/announcer'])
     }
   }
@@ -59,7 +56,7 @@ export class AuthPageComponent implements OnInit {
           this.router.navigate(["/profile"])
         } 
         else if(decoded[0][0].role == "admin") {
-          this.router.navigate(["/announcement"])
+          this.router.navigate(["/admin"])
         } 
         else if(decoded[0][0].role == "anouncer") {
           this.router.navigate(["/announcer"])
