@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -13,56 +14,68 @@ export class AdminPageComponent implements OnInit {
   text = ''
   addError = false
   editForm!: FormGroup
-  tableData = [
-    {id: '1', name: 'Бехзод', ID: 'BRJKhalif', editShow: true},
-    {id: '2', name: 'Мухаммад', ID: 'Muahammad', editShow: true},
-    {id: '3', name: 'Сухроб', ID: 'Suhrob', editShow: true},
-    {id: '4', name: 'Шоди', ID: 'Shodi', editShow: true},
-    {id: '5', name: 'Таня', ID: 'Tanya', editShow: true}
-  ]
-  pencil = true
+  tableData: any = []
+  editShow: number = 0
   page: any
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
   ngOnInit() {
     this.addForm = new FormGroup({
       addName: new FormControl('')
     })
     
-
     this.editForm = new FormGroup({
       name: new FormControl(''),
-      ID: new FormControl(''),
+    })
+
+    this.request.getAdminReq().subscribe(response => {
+      this.tableData = response
+    }, error => {
+      alert(error.message)
     })
   }
-
   addButton() {
     const addFormData = {...this.addForm.value}
-
     if(addFormData.addName == '') {
       this.addText = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
       this.addError = true
     } else {
-      console.log(addFormData);
+      this.request.postAdminReq(addFormData.addName).subscribe(response => {
+        alert("Вы успешно добавили центр")
+        location.reload()
+      }, error => {
+        alert(error.message)
+      })
     }
     
   }
 
-  changeButton() {
+  itemClick(id: number){
+    this.editShow = id;
+  }
+
+  adminProject(id: number) {
+    this.router.navigate(['/adminproject', id])
+  }
+  
+  changeButton(id: number) {
     const editFormData = {...this.editForm.value}
-    console.log(editFormData);
-    location.reload()
+    this.request.putAdminReq(id, editFormData.name).subscribe(response => {
+      location.reload()
+    }, error => {
+      alert(error.message);
+    })
   }
-
-  adminPro() {
-    this.router.navigate(['/adminproject'])
-  }
-
-  deleteItem(value: any) {
-    const conf = confirm(`Вы хотите удалить ${value}`)
+  
+  deleteItem(id: number, name: string) {
+    const conf = confirm(`Вы хотите удалить центр: ${name}`)
     if(conf == true) {
-      this.tableData.shift()
+      this.request.deleteAdminReq(id).subscribe(response => {
+        location.reload()
+      }, error => {
+        alert(error.message)
+      })
     }
   }
 
