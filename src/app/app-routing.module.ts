@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'forget', component: ForgetPageComponent },
   { path: 'announcer', component: AnnouncerPageComponent, canActivate: [AnnouncerGuard] },
-  { path: 'announcerform', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
+  { path: 'announcerform/:id', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: 'adminpayment', component: AdminPaymentComponent, canActivate: [AdminGuard] },
