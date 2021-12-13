@@ -346,15 +346,14 @@
     }
   }
  
-  @media screen and (max-width: 380px) {
-    .modal-datas_container {
-      .modal-datas_block {
-        margin: 80px 10px 0 10px;
+@media screen and (max-width: 380px) {
+  .modal-datas_container {
+    .modal-datas_block {
+      margin: 80px 10px 0 10px;
 
-        .modal-items{  
-          text-align: center;
-        }
+      .modal-items{  
+        text-align: center;
       }
     }
   }
- 
+}
