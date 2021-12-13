@@ -28,13 +28,13 @@ export class AuthPageComponent implements OnInit {
       var decoded: any = jwt_decode(token);
     }
     
-    if(localStorage.getItem('access_token') && decoded[0][0].role == "subscribers") {
+    if(localStorage.getItem('access_token') && decoded.role == "subscribers") {
       this.router.navigate(['/profile'])
     }
-    else if(localStorage.getItem('access_token') && decoded[0][0].role == "admin") {
+    else if(localStorage.getItem('access_token') && decoded.role == "admin") {
       this.router.navigate(['/admin'])
     }
-     else if(localStorage.getItem('access_token') && decoded[0][0].role == "anouncer") {
+     else if(localStorage.getItem('access_token') && decoded.role == "anouncer") {
       this.router.navigate(['/announcer'])
     }
   }
@@ -48,17 +48,16 @@ export class AuthPageComponent implements OnInit {
       this.requests.authRequests(formData.email, formData.password).subscribe( (response: any) => {
         this.isLoading = false
         localStorage.setItem('access_token', response.access_token)
-        localStorage.setItem('user', response.user)
         var token: any = localStorage.getItem('access_token')
         var decoded:any = jwt_decode(token);
 
-        if(decoded[0][0].role == "subscribers") {
+        if(decoded.role == "subscribers") {
           this.router.navigate(["/profile"])
         } 
-        else if(decoded[0][0].role == "admin") {
+        else if(decoded.role == "admin") {
           this.router.navigate(["/admin"])
         } 
-        else if(decoded[0][0].role == "anouncer") {
+        else if(decoded.role == "anouncer") {
           this.router.navigate(["/announcer"])
         } else {
           this.router.navigate(["/"])

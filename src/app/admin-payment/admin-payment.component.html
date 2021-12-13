@@ -14,33 +14,18 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train">
+        <tr class="train" *ngFor="let payment of paymentsData">
           <td>1</td>
-          <td><span>aa</span>Lorem ipsum dolor sit.</td>
-          <td>Lorem ipsum dolor sit.</td>
-          <td>Lorem ipsum dolor sit.</td>
-          <td>Lorem ipsum dolor sit.</td>
+          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.tender_title}}</td>
+          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.price}}</td>
+          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.users_id}}</td>
+          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.name}}</td>
           <td>
-            <input type="checkbox" class="checkbox">
+            <span>Проверка</span>
+            <input type="checkbox" class="checkbox" (change)="changeStatus($event, payment.status)">
           </td>
           <td class="change">
-            <div class="trash_block">
-              <i class="td_i fas fa-search"></i>
-            </div>
-          </td>
-        </tr>
-
-        <tr class="train">
-          <td>1</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}">Lorem ipsum dolor sit.</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}">Lorem ipsum dolor sit.</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}">Lorem ipsum dolor sit.</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}">Lorem ipsum dolor sit.</td>
-          <td>
-            <input type="checkbox" class="checkbox">
-          </td>
-          <td class="change">
-            <div class="trash_block" (click)="check()">
+            <div class="trash_block" (click)="openFile(payment.file)">
               <i class="td_i fas fa-search"></i>
             </div>
           </td>

@@ -10,7 +10,7 @@ export class SubscribeGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         var token: any = localStorage.getItem('access_token')
         var decoded:any = jwt_decode(token);
-        if(decoded[0][0].role == "subscribers") {
+        if(decoded.role == "subscribers") {
             return true
         }
         this.router.navigate(['/'])

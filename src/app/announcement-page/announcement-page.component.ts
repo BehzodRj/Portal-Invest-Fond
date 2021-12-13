@@ -14,6 +14,9 @@ export class AnnouncementPageComponent implements OnInit {
   filName = 'Чек'
   fileData: any
   modalCheck = false
+  downld = false
+  retn = false
+  pymnt = false
   activeAnounsment = 0
   constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -32,8 +35,9 @@ export class AnnouncementPageComponent implements OnInit {
     this.activeAnounsment = id
   }
   modalSend() {
-    this.requests.postAnnouncementCheck( this.activeAnounsment, this.fileData).subscribe(response => {
+    this.requests.postAnnouncementCheck( this.anouncement[this.activeAnounsment].id, this.fileData).subscribe(response => {
       this.modalCheck = false
+      this.anouncement[this.activeAnounsment].status=0;
     }, error => {
       alert(error.error.message)
     })
@@ -62,6 +66,7 @@ export class AnnouncementPageComponent implements OnInit {
       }
       else{
         this.requests.postFavoutitesRequests(id).subscribe(response => {
+          location.reload()
         }, error => {
           alert(error.message)
         })

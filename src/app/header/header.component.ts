@@ -17,22 +17,22 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.decoded = jwt_decode(`${localStorage.getItem('access_token')}`);
 
-    if(this.decoded[0][0].role == 'admin') {
+    if(this.decoded.role == 'admin') {
       this.admin = true
-    }else if(this.decoded[0][0].role == 'anouncer') {
+    }else if(this.decoded.role == 'anouncer') {
       this.anouncer = true
-    }else if(this.decoded[0][0].role == 'subscribers') {
+    }else if(this.decoded.role == 'subscribers') {
       this.subscriber = true
     }
     
   }
 
   homePage() {
-    if(this.decoded[0][0].role == 'admin') {
+    if(this.decoded.role == 'admin') {
       this.router.navigate(['/admin'])
-    }else if(this.decoded[0][0].role == 'anouncer') {
+    }else if(this.decoded.role == 'anouncer') {
       this.router.navigate(['/announcer'])
-    }else if(this.decoded[0][0].role == 'subscribers') {
+    }else if(this.decoded.role == 'subscribers') {
       this.router.navigate(['/profile'])
     }
   }
