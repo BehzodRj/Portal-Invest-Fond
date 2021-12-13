@@ -93,6 +93,7 @@
  
             &:first-child {
               padding: 0 10px;
+              height: 48px;
               color: #000;
               background-color: rgba(7, 30, 60, 0.5);;
               border: 1px solid #000;
@@ -144,6 +145,10 @@
                 border: 1px solid #000;
                 border-left: none;
                 color: #000;
+            }
+            &:nth-child(10) {
+              display: none;
+              width: 15px;
             }
           }
         }

@@ -61,11 +61,15 @@ export class AdminPageComponent implements OnInit {
   
   changeButton(id: number) {
     const editFormData = {...this.editForm.value}
-    this.request.putAdminReq(id, editFormData.name).subscribe(response => {
-      location.reload()
-    }, error => {
-      alert(error.message);
-    })
+    if(editFormData.name == '') {
+      alert('Поле не может быть пустым')
+    } else {
+      this.request.putAdminReq(id, editFormData.name).subscribe(response => {
+        location.reload()
+      }, error => {
+        alert(error.message);
+      })
+    }
   }
   
   deleteItem(id: number, name: string) {

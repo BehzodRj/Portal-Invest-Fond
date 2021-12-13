@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://10.251.2.78:8000'
+    private url = 'http://10.251.2.77'
     constructor(private http: HttpClient) { }
 
     
@@ -30,9 +30,9 @@ export class RequestService {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'token_type': 'bearer',
-            'Authorization': `${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.get(this.url + '/api/auth/profile/' + localStorage.getItem('user'), {headers:header})
+        return this.http.get(this.url + '/api/auth/profile', {headers:header})
     }
 
     // postPhotoProfile(id:any, image: any) {
@@ -46,16 +46,16 @@ export class RequestService {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'token_type': 'bearer',
-            'Authorization': `${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.put(this.url + '/api/auth/profile/update/' + localStorage.getItem('user'), {"name": name, "last_name": last_name, "middle_name": middle_name, "division": division, "company_name": company_name, "inn": inn, "email": email, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "phone": phone, "company_country": company_country, "town": town, "postal_code": postal_code}, {headers:header})
+        return this.http.put(this.url + '/api/auth/profile/update', {"name": name, "last_name": last_name, "middle_name": middle_name, "division": division, "company_name": company_name, "inn": inn, "email": email, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "phone": phone, "company_country": company_country, "town": town, "postal_code": postal_code}, {headers:header})
     }
 
     getAplProfileReq() {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'token_type': 'bearer',
-            'Authorization': `${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
         return this.http.get(this.url + '/', {headers: header})
     }
@@ -68,7 +68,7 @@ export class RequestService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.post(this.url + '/api/auth/anouncements/creat', { "user_id": localStorage.getItem('user'), "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "file": file}, {headers:header})
+        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "file": file}, {headers:header})
     }
     getAnnouncerLots() {
         let header: HttpHeaders = new HttpHeaders({
@@ -111,6 +111,25 @@ export class RequestService {
         })
         return this.http.delete(this.url + '/api/auth/projects_center/delete/' + id, {headers:header})
     }
+
+    // Admin Payment
+    getAdminPayReq() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/payments', {headers:header})
+    }
+
+    putAdminPayReq(id: number, status: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.put(this.url + '/api/auth/payments', {'id': id, 'status': status}, {headers:header})
+    }
+    // End of Admin Payment
+
     // End of Admin
 
     // Admin Project
@@ -195,6 +214,17 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/payments', {"anouncements_id": id, "file": file}, {headers:header})
     }
     // End of Announcement check
+    getOrderRequests() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/orders', {headers:header})
+    }
+    // My Orders
+    
+    // End of My Ofrders
 
     //  End of Subscriber
 
