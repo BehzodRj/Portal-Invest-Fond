@@ -10,7 +10,7 @@ import { RequestService } from '../all.service';
 })
 export class AnnouncerTenderComponent implements OnInit {
   formTender!: FormGroup
-  fileData: any
+  fileData: any = []
   showAlertName = 'Название'
   showAlertCenterID = 'Центр ID'
   showAlertMethod = 'Метод'
@@ -33,15 +33,16 @@ export class AnnouncerTenderComponent implements OnInit {
     })
   }
 
-  getFile(value: any) {
+  getFile(value: any) {   
     this.showAlertFile = value.target.files[0].name
-    let reader = new FileReader()
-    reader.readAsDataURL(value.target.files[0])
-    reader.onload = () => {
-      this.fileData = reader.result
-      console.log(reader.result);
-      
-    }
+    Object.values(value.target.files).forEach( (element: any) => {
+      let reader = new FileReader()
+      reader.readAsDataURL(element)
+      reader.onload = () => {
+        this.fileData.push(reader.result)        
+      }
+    })
+    
   }
 
   send() {

@@ -8,17 +8,34 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 export class AplicationPageComponent implements OnInit {
   page: any
-  showModal= false
+  addLotsForm!: FormGroup
+  addLotsData: any = [
+    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Первый'},
+    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Второй'},
+  ]
+  showModal = false
 
   constructor() { }
 
-  ngOnInit() {}
-
-  openModal() {
-    this.showModal = true
+  ngOnInit() {
+    this.addLotsForm = new FormGroup({
+      name: new FormControl(''), 
+      numberof_lots: new FormControl(''), 
+      discount: new FormControl(''), 
+      NoSsomoni: new FormControl(''), 
+      NoSdollar: new FormControl(''), 
+      NoSeuro: new FormControl(''), 
+      somoni: new FormControl(''), 
+      dollar: new FormControl(''),
+      euro: new FormControl(''),
+      partners: new FormControl(''),
+    })
+  }
+  
+  send() {
+    const addLotsFormData = {...this.addLotsForm.value}
+    console.log(addLotsFormData);
+    
   }
 
-  closeModal() {
-    this.showModal = false
-  }
 }

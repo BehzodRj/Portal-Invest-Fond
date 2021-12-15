@@ -1,55 +1,55 @@
 <app-header></app-header>
 <div class="modal-datas_container" *ngIf="showModal">
   <div class="modal-datas_block">
-    <h1 class="title">Рахмонов Рахмон Рахмонович</h1>
+    <h1 class="title">{{ announcerFormModalData.name }} {{announcerFormModalData.last_name}} {{announcerFormModalData.middle_name }} </h1>
 
     <div class="modal-items">
       <h1>Занимаемые должности:</h1>
-      <h2>Должность</h2>
+      <h2>{{ announcerFormModalData.division }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Наименование компании:</h1>
-      <h2>Компания</h2>
+      <h2>{{ announcerFormModalData.company_name }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>ИНН:</h1>
-      <h2>88805553535</h2>
+      <h2>{{ announcerFormModalData.inn }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Место регистрации:</h1>
       <div class="reg_place">
-        <h2>1Место регистрации</h2>
-        <h2>2Место регистрации</h2>
-        <h2>3Место регистрации</h2>
+        <h2>1) {{ announcerFormModalData.address_line1 }}</h2>
+        <h2>2) {{ announcerFormModalData.address_line2 }}</h2>
+        <h2>3) {{ announcerFormModalData.address_line3 }}</h2>
       </div>
     </div>
 
     <div class="modal-items">
       <h1>email:</h1>
-      <h2>email@email.ru</h2>
+      <h2>{{ announcerFormModalData.email }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Телефон:</h1>
-      <h2>88805553535</h2>
+      <h2>{{ announcerFormModalData.phone }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Страна:</h1>
-      <h2>Таджикистан</h2>
+      <h2>{{ announcerFormModalData.company_country }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Город:</h1>
-      <h2>Душанбе</h2>
+      <h2>{{ announcerFormModalData.town }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Почтовый индекс:</h1>
-      <h2>88805553535</h2>
+      <h2>{{ announcerFormModalData.postal_code }}</h2>
     </div>
 
     <div class="btn">
@@ -73,12 +73,12 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train">
+        <tr class="train" *ngFor="let announcerForm of announcerFormData">
           <td><span>№</span>1</td>
-          <td><span>Компания</span>Lorem ipsum dolor sit.</td>
+          <td><span>Компания</span>{{announcerForm.company_name}}</td>
           <td class="download">
             <span>Действие</span>
-            <div class="trash_block" (click)="openModal()">
+            <div class="trash_block" (click)="openModal(announcerForm.users_id)">
               <i class="fas fa-search"></i>
             </div>
           </td>

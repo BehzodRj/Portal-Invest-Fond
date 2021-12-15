@@ -1,4 +1,102 @@
+
 <app-header></app-header>
+<div class="modal-datas_container" *ngIf="showModal">
+  
+  <div class="modal-datas_block">   
+    <div class="close" (click)='showModal = false'>
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="cont__form"> 
+        <form [formGroup]="addLotsForm">
+          <h3>Добавить лот:</h3>
+          <div class="form__block">
+            
+            <div class="inp__block">
+              <div class="inp">
+                <h1>Номер Лота:</h1>
+                <input type="text" placeholder="Номер лота" formControlName="numberof_lots">
+              </div>
+              <div class="inp lots-name">
+                <h1>Название лота</h1>
+                <input type="text" placeholder="Название лота" formControlName="name">
+              </div> 
+            </div>
+            <h2>Сумма без учета НДС</h2>
+            <div class="inp__block currency">
+              <div class="inp">
+                <h1>Сомони</h1>
+                <input type="text" placeholder="Описание" formControlName="NoSsomoni">
+              </div>
+              <div class="inp">
+                <h1>Доллар</h1>
+                <input type="text" placeholder="Описание" formControlName="NoSdollar">
+              </div>
+              <div class="inp">
+                <h1>Евро</h1>
+                <input type="text" placeholder="Описание" formControlName="NoSeuro">
+              </div>
+            </div>
+            <h2>Сумма c учетом НДС</h2>
+            <div class="inp__block currency">
+              <div class="inp">
+                <h1>Сомони</h1>
+                <input type="text" placeholder="Описание" formControlName="somoni">
+              </div>
+              <div class="inp">
+                <h1>Доллар</h1>
+                <input type="text" placeholder="Описание" formControlName="dollar">
+              </div>
+              <div class="inp">
+                <h1>Евро</h1>
+                <input type="text" placeholder="Описание" formControlName="euro">
+              </div>
+            </div>
+            <div class="discount">
+              <h1>Скидка</h1>
+              <input type="text" formControlName="discount">
+            </div>
+          </div>
+          <h2>Партнеры:</h2>
+          <div class="partners__block">
+            <div class="user-part__block">
+              <div class="userP">
+                <p>Партнёр</p>
+                <div class="trash">
+                  <i class="fa fa-trash"></i>
+                </div>
+              </div>
+              <div class="userP">
+                <p>Партнёр</p>
+                <div class="trash">
+                  <i class="fa fa-trash"></i>
+                </div>
+              </div>
+              <div class="userP"></div>
+            </div>
+            <div class="lider__block">
+              <div class="inp">
+                <h1>Партнер</h1>
+                <input type="text" placeholder="Партнер" formControlName="partners">
+              </div>
+              <div class="inp check">
+                <input type="text" placeholder="Лидер">
+                <input type="checkbox" class="checkbox">
+              </div>
+              <button style="border: none; cursor: pointer;">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+            <div class="btn">
+              <button (click)="send()">СОХРАНИТЬ ЛОТ</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    
+  </div>
+
+</div>
+
 <div class="container">
   <div class="content">
     <div class="appbar">
@@ -6,7 +104,7 @@
       <h1>Лоты:</h1>
       <h1>
         <div class="plus">
-          <div class="plus__block"  (click)="openModal()">
+          <div class="plus__block"  (click)="showModal = true">
             <i class="fa fa-plus"></i>
           </div>
         </div>
@@ -19,7 +117,7 @@
           <th rowspan="2">Номер лота</th>
           <th rowspan="2">Скидка</th>
           <th colspan="3">Сумма без учета НДС</th>
-          <th colspan="3">Сумма без учета НДС</th>
+          <th colspan="3">Сумма с учетом НДС</th>
           <th  rowspan="2" style="color: #112A4A; font-weight: bold;" >Партнеры</th> 
         </tr>
         <tr>  
@@ -32,25 +130,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><span>Название лота </span>Название лота</td>  
-          <td><span>Номер лота </span>1344</td>  
-          <td><span>Скидка </span>1324</td>  
+        <tr *ngFor="let addLots of addLotsData">
+          <td><span>Название лота </span>{{ addLots.name }}</td>  
+          <td><span>Номер лота </span>{{ addLots.numberof_lots }}</td>  
+          <td><span>Скидка </span>{{ addLots.discount }}</td>  
           <td><span>Сумма без учета НДС </span><div class="currancy">
-            <i>Сомони : <p>123</p></i>
-            <i>Доллар : <p>123</p></i>
-            <i>Евро : <p>123</p></i>
-          </div> <pre>123</pre></td>      
-          <td class="hdd"> 123 </td> 
-          <td class="hdd"> 123 </td> 
-          <td><span>Сумма без учета НДС </span><div class="currancy">
-            <i>Сомони : <p>123</p></i>
-            <i>Доллар : <p>123</p></i>
-            <i>Евро : <p>123</p></i>
-          </div><pre>123</pre> </td>
-          <td class="hdd">123</td>      
-          <td class="hdd">123</td>      
-          <td><span>Партнеры </span>Первый, Второй, Третий</td>  
+            <i>Сомони : <p>{{ addLots.NoSsomoni }}</p></i>
+            <i>Доллар : <p>{{ addLots.NoSdollar }}</p></i>
+            <i>Евро : <p>{{ addLots.NoSeuro }}</p></i>
+          </div> <pre>{{ addLots.NoSsomoni }}</pre></td>      
+          <td class="hdd"> {{ addLots.NoSdollar }} </td> 
+          <td class="hdd"> {{ addLots.NoSeuro }} </td> 
+          <td><span>Сумма с учетом НДС</span><div class="currancy">
+            <i>Сомони : <p>{{ addLots.somoni }}</p></i>
+            <i>Доллар : <p>{{ addLots.dollar }}</p></i>
+            <i>Евро : <p>{{ addLots.euro }}</p></i>
+          </div><pre>{{ addLots.somoni }}</pre> </td>
+          <td class="hdd">{{ addLots.dollar }}</td>      
+          <td class="hdd">{{ addLots.euro }}</td>      
+          <td><span>Партнеры </span> {{ addLots.partners }} </td>  
           <td class="change"> 
             <div class="trash__block">
               <i class="fas fa-pencil-alt"></i>
@@ -83,7 +181,7 @@
         </div>
       </div>
       <div class="inp-block">
-        <h2>Сумма без учета НДС</h2>
+        <h2>Сумма с учетом НДС</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
@@ -100,7 +198,7 @@
         </div>
       </div>
       <div class="inp-block">
-        <h2>Сумма без учета НДС</h2>
+        <h2>Сумма с учетом скидки</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
@@ -117,104 +215,6 @@
         </div>
       </div>
     </div>
-     
-    <div class="btn">
       <button>Отправить</button>
-    </div>
   </div>  
 </div>
-<div class="modal-datas_container" *ngIf="showModal">
-  
-  <div class="modal-datas_block">   
-    <div class="close" (click)='closeModal()'>
-      <i class="fa fa-times"></i>
-    </div>
-    <div class="cont__form"> 
-        <form action="">
-          <h3>Добавить лот:</h3>
-          <div class="form__block"> 
-            <div class="inp__block">
-              <div class="inp" >
-                <h1>Лота:</h1>
-                <input type="text" placeholder="Номер лота">
-              </div>
-              <div class="inp lots-name">
-                <h1>Название лота</h1>
-                <input type="text" placeholder="Название лота">
-              </div> 
-            </div>
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-            </div>
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-            </div>
-            <div class="discount">
-              <h1>Скидка</h1>
-              <input type="text">
-            </div>
-          </div>
-          <h2>Партнеры:</h2>
-          <div class="partners__block">
-            <div class="user-part__block">
-              <div class="userP">
-                <p>Партнер </p>
-                <div class="trash">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div>
-              <div class="userP">
-                <p>Партнер</p>
-                <div class="trash">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div> 
-            </div>
-            <div class="lider__block">
-              <div class="inp">
-                <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер">
-              </div>
-              <div class="inp check">
-                <input type="text" placeholder="Лидер">
-                <input type="checkbox" class="checkbox">
-              </div>
-              <button>
-                <i class="fa fa-plus"></i>
-              </button>
-            </div>
-            <div class="btn">
-              <button>СОХРАНИТЬ ЛОТ </button>
-            </div>
-          </div>
-        </form>
-    </div>
-    
-  </div>
-
-</div>
-<app-footer-page></app-footer-page>

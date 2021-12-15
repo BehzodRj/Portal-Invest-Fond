@@ -86,6 +86,14 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
     }
+    
+    getAnnouncerFormModal(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/subscribers/' + id, {headers:header})
+    }
     // End of Announcer
 
     // Admin
@@ -223,6 +231,8 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/payments', {"anouncements_id": id, "file": file}, {headers:header})
     }
     // End of Announcement check
+    
+    // My Orders
     getOrderRequests() {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -231,8 +241,10 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders', {headers:header})
     }
-    // My Orders
-    // End of My Ofrders
+    // End of My Orders
+
+    // Add Lots
+    // End of Add Lots
 
     //  End of Subscriber
 
