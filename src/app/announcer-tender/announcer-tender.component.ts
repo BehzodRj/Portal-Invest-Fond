@@ -35,7 +35,6 @@ export class AnnouncerTenderComponent implements OnInit {
 
   getFile(value: any) {   
     this.showAlertFile = value.target.files[0].name
-<<<<<<< HEAD
     Object.values(value.target.files).forEach( (element: any) => {
       let reader = new FileReader()
       reader.readAsDataURL(element)
@@ -44,15 +43,6 @@ export class AnnouncerTenderComponent implements OnInit {
       }
     })
     
-=======
-    let reader = new FileReader()
-    reader.readAsDataURL(value.target.files[0])
-    reader.onload = () => {
-      this.fileData = reader.result
-      console.log(reader.result);
-      
-    }
->>>>>>> b01f0a643cb7346a63f6d2164ca05643fbffeb93
   }
 
   send() {

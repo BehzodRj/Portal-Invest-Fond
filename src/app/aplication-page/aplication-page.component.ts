@@ -13,7 +13,7 @@ export class AplicationPageComponent implements OnInit {
     {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Первый'},
     {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Второй'},
   ]
-  showModal= false
+  showModal = false
 
   constructor() { }
 
@@ -31,12 +31,11 @@ export class AplicationPageComponent implements OnInit {
       partners: new FormControl(''),
     })
   }
-
-  openModal() {
-    this.showModal = true
+  
+  send() {
+    const addLotsFormData = {...this.addLotsForm.value}
+    console.log(addLotsFormData);
+    
   }
 
-  closeModal() {
-    this.showModal = false
-  }
 }
