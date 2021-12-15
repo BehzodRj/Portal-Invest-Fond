@@ -33,7 +33,7 @@
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-          <td class="change" routerLink="/announcerform">
+          <td class="change" [routerLink]="['/announcerform', announcer.id]">
             <h1>123</h1>
             <i class="fas fa-search"></i>
           </td>

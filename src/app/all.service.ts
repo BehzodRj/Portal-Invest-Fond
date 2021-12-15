@@ -70,12 +70,21 @@ export class RequestService {
         })
         return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "file": file}, {headers:header})
     }
+
     getAnnouncerLots() {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
         return this.http.get(this.url + '/api/auth/allanouncements', {headers:header})
+    }
+
+    getAnnouncerForm(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
     }
     // End of Announcer
 
@@ -223,7 +232,6 @@ export class RequestService {
         return this.http.get(this.url + '/api/auth/orders', {headers:header})
     }
     // My Orders
-    
     // End of My Ofrders
 
     //  End of Subscriber
