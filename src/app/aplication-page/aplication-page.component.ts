@@ -9,18 +9,15 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 export class AplicationPageComponent implements OnInit {
   page: any
   addLotsForm!: FormGroup
-  addLotsData: any = [
-    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Первый'},
-    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Второй'},
-  ]
-  showModal= false
+  addLotsData: any = []
+  showModal = false
 
   constructor() { }
 
   ngOnInit() {
     this.addLotsForm = new FormGroup({
       name: new FormControl(''), 
-      numberof_lots: new FormControl(''), 
+      number_of_lots: new FormControl(''), 
       discount: new FormControl(''), 
       NoSsomoni: new FormControl(''), 
       NoSdollar: new FormControl(''), 
@@ -31,12 +28,11 @@ export class AplicationPageComponent implements OnInit {
       partners: new FormControl(''),
     })
   }
-
-  openModal() {
-    this.showModal = true
+  
+  send() {
+    const addLotsFormData = {...this.addLotsForm.value}
+    console.log(addLotsFormData);
+    this.addLotsData.push( {name: addLotsFormData.name, number_of_lots: addLotsFormData.number_of_lots, discount: addLotsFormData.discount, NoSsomoni: addLotsFormData.NoSsomoni, NoSdollar: addLotsFormData.NoSdollar, NoSeuro: addLotsFormData.NoSEuro, somoni: addLotsFormData.somoni, dollar: addLotsFormData.dollar, euro: addLotsFormData.euro})  
   }
 
-  closeModal() {
-    this.showModal = false
-  }
 }

@@ -3,7 +3,7 @@
 <div class="modal-datas_container" *ngIf="showModal">
   
   <div class="modal-datas_block">   
-    <div class="close" (click)='closeModal()'>
+    <div class="close" (click)='showModal = false'>
       <i class="fa fa-times"></i>
     </div>
     <div class="cont__form"> 
@@ -87,7 +87,7 @@
               </button>
             </div>
             <div class="btn">
-              <button>СОХРАНИТЬ ЛОТ</button>
+              <button (click)="send()">СОХРАНИТЬ ЛОТ</button>
             </div>
           </div>
         </form>
@@ -104,109 +104,118 @@
       <h1>Лоты:</h1>
       <h1>
         <div class="plus">
-          <div class="plus__block"  (click)="openModal()">
+          <div class="plus__block"  (click)="showModal = true">
             <i class="fa fa-plus"></i>
           </div>
         </div>
       </h1>
     </div>
-     
-    <div class="btn">
-      <button>Отправить</button>
+    <table class="resp-tab">
+      <thead>
+        <tr>
+          <th rowspan="2">Название лота</th>
+          <th rowspan="2">Номер лота</th>
+          <th rowspan="2">Скидка</th>
+          <th colspan="3">Сумма без учета НДС</th>
+          <th colspan="3">Сумма с учетом НДС</th>
+          <th  rowspan="2" style="color: #112A4A; font-weight: bold;" >Партнеры</th> 
+        </tr>
+        <tr>  
+          <th>Сомони</th>
+          <th>Доллар</th>
+          <th>Евро</th>
+          <th>Сомони</th>
+          <th>Доллар</th>
+          <th>Евро</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let addLots of addLotsData">
+          <td><span>Название лота </span>{{ addLots.name }}</td>  
+          <td><span>Номер лота </span>{{ addLots.number_of_lots }}</td>  
+          <td><span>Скидка </span>{{ addLots.discount }}</td>  
+          <td><span>Сумма без учета НДС </span><div class="currancy">
+            <i>Сомони : <p>{{ addLots.NoSsomoni }}</p></i>
+            <i>Доллар : <p>{{ addLots.NoSdollar }}</p></i>
+            <i>Евро : <p>{{ addLots.NoSeuro }}</p></i>
+          </div> <pre>{{ addLots.NoSsomoni }}</pre></td>      
+          <td class="hdd"> {{ addLots.NoSdollar }} </td> 
+          <td class="hdd"> {{ addLots.NoSeuro }} </td> 
+          <td><span>Сумма с учетом НДС</span><div class="currancy">
+            <i>Сомони : <p>{{ addLots.somoni }}</p></i>
+            <i>Доллар : <p>{{ addLots.dollar }}</p></i>
+            <i>Евро : <p>{{ addLots.euro }}</p></i>
+          </div><pre>{{ addLots.somoni }}</pre> </td>
+          <td class="hdd">{{ addLots.dollar }}</td>      
+          <td class="hdd">{{ addLots.euro }}</td>      
+          <td><span>Партнеры </span> <h1 [ngStyle]="{'color': 'grey'}">Первый</h1> </td>  
+          <td class="change"> 
+            <div class="trash__block">
+              <i class="fas fa-pencil-alt"></i>
+            </div>
+            <div class="trash__block"> 
+            <i class="fas fa-trash"></i>
+            </div>
+          </td>  
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+  <div class="summa">
+    <div class="summa__nds">
+      <div class="inp-block">
+        <h2>Сумма без учета НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма с учетом НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма с учетом скидки</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="text" placeholder="Описание">
+          </div>
+        </div>
+      </div>
     </div>
+      <button>Отправить</button>
   </div>  
 </div>
-<div class="modal-datas_container" *ngIf="showModal">
-  
-  <div class="modal-datas_block">   
-    <div class="close" (click)='closeModal()'>
-      <i class="fa fa-times"></i>
-    </div>
-    <div class="cont__form"> 
-        <form action="">
-          <h3>Добавить лот:</h3>
-          <div class="form__block"> 
-            <div class="inp__block">
-              <div class="inp" >
-                <h1>Лота:</h1>
-                <input type="text" placeholder="Номер лота">
-              </div>
-              <div class="inp lots-name">
-                <h1>Название лота</h1>
-                <input type="text" placeholder="Название лота">
-              </div> 
-            </div>
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-            </div>
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="text" placeholder="Описание">
-              </div>
-            </div>
-            <div class="discount">
-              <h1>Скидка</h1>
-              <input type="text">
-            </div>
-          </div>
-          <h2>Партнеры:</h2>
-          <div class="partners__block">
-            <div class="user-part__block">
-              <div class="userP">
-                <p>Партнер </p>
-                <div class="trash">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div>
-              <div class="userP">
-                <p>Партнер</p>
-                <div class="trash">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div> 
-            </div>
-            <div class="lider__block">
-              <div class="inp">
-                <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер">
-              </div>
-              <div class="inp check">
-                <input type="text" placeholder="Лидер">
-                <input type="checkbox" class="checkbox">
-              </div>
-              <button>
-                <i class="fa fa-plus"></i>
-              </button>
-            </div>
-            <div class="btn">
-              <button>СОХРАНИТЬ ЛОТ</button>
-            </div>
-          </div>
-        </form>
-    </div>
-    
-  </div>
-
-</div>
+ 
