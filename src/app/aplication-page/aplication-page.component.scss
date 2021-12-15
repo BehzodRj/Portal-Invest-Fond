@@ -116,7 +116,12 @@
       }
     }
 
-
+    td:nth-child(10) {
+      h1 {
+        font-size: 13px;
+        font-family: 'Roboto', sans-serif;
+      }
+    }
 
     .resp-tab tr td:last-child {
       border: none;
@@ -372,7 +377,6 @@
     h2 {
       text-align: center;
     }
-  
     .partners__block {
       margin-top: 30px;
       display: flex;

@@ -132,7 +132,7 @@
       <tbody>
         <tr *ngFor="let addLots of addLotsData">
           <td><span>Название лота </span>{{ addLots.name }}</td>  
-          <td><span>Номер лота </span>{{ addLots.numberof_lots }}</td>  
+          <td><span>Номер лота </span>{{ addLots.number_of_lots }}</td>  
           <td><span>Скидка </span>{{ addLots.discount }}</td>  
           <td><span>Сумма без учета НДС </span><div class="currancy">
             <i>Сомони : <p>{{ addLots.NoSsomoni }}</p></i>
@@ -148,7 +148,7 @@
           </div><pre>{{ addLots.somoni }}</pre> </td>
           <td class="hdd">{{ addLots.dollar }}</td>      
           <td class="hdd">{{ addLots.euro }}</td>      
-          <td><span>Партнеры </span> {{ addLots.partners }} </td>  
+          <td><span>Партнеры </span> <h1 [ngStyle]="{'color': 'grey'}">Первый</h1> </td>  
           <td class="change"> 
             <div class="trash__block">
               <i class="fas fa-pencil-alt"></i>
