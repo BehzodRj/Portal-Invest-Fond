@@ -7,38 +7,36 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./aplication-page.component.scss']
 })
 export class AplicationPageComponent implements OnInit {
-  formApl!: any
-  fileName!: string
-  show = true
+  page: any
+  addLotsForm!: FormGroup
+  addLotsData: any = [
+    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Первый'},
+    {name: "MyLot", numberof_lots: '12', discount: "300", NoSsomoni: "2000", NoSdollar: "200", NoSeuro: "180", somoni: "2500", dollar: "250", euro: "230", partners: 'Второй'},
+  ]
+  showModal= false
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    this.formApl = new FormGroup({
-      number: new FormControl(''),
-      name: new FormControl(''),
-      summa: new FormControl(''),
-      lots: new FormArray([])
+    this.addLotsForm = new FormGroup({
+      name: new FormControl(''), 
+      numberof_lots: new FormControl(''), 
+      discount: new FormControl(''), 
+      NoSsomoni: new FormControl(''), 
+      NoSdollar: new FormControl(''), 
+      NoSeuro: new FormControl(''), 
+      somoni: new FormControl(''), 
+      dollar: new FormControl(''),
+      euro: new FormControl(''),
+      partners: new FormControl(''),
     })
   }
 
-  getFileName(value: any) {
-    this.fileName = value.target.files[0].name
-    this.show = false
-    console.log(value.target.files);
+  openModal() {
+    this.showModal = true
   }
 
-  add() {
-    (this.formApl.get('lots') as FormArray).push(new FormGroup( {number: new FormControl(''), name: new FormControl(''), summa: new FormControl('')} ))
+  closeModal() {
+    this.showModal = false
   }
-
-  deleted(idx: any) {
-    (this.formApl.get('lots') as FormArray).removeAt(idx)
-  }
-
-  send() {
-    const formAplData = {...this.formApl.value}
-    console.log(formAplData);
-  }
-
 }

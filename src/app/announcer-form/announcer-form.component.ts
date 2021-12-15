@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-announcer-form',
@@ -8,13 +10,28 @@ import { Component, OnInit } from '@angular/core';
 export class AnnouncerFormComponent implements OnInit {
   page: any
   showModal= false
+  announcerFormData: any
+  announcerFormModalData: any
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private request: RequestService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe( (response: any) => {
+      this.request.getAnnouncerForm(response.id).subscribe(response => {
+        this.announcerFormData = response
+      }, error => {
+        alert(error.error.Error)
+      })
+    })
+  }
 
-  openModal() {
+  openModal(id: number) {
     this.showModal = true
+    this.request.getAnnouncerFormModal(id).subscribe(response => {
+      this.announcerFormModalData = response
+    }, error => {
+      alert(error.error.Error)
+    })
   }
 
   closeModal() {
