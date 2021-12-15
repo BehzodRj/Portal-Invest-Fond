@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-admin-project',
@@ -9,57 +10,82 @@ import { Router } from '@angular/router';
 })
 export class AdminProjectComponent implements OnInit {
   addForm!: FormGroup
-  addText = 'ДОБАВИТЬ ПРОЕКТ'
+  placeName = 'ДОБАВИТЬ ПРОЕКТ'
+  placeEmail = 'ДОБАВИТЬ EMAIL'
   text = ''
   addError = false
   editForm!: FormGroup
-  tableData = [
-    {id: '1', name: 'Бехзод', ID: 'BRJKhalif', pass: "1234567", editShow: true},
-    {id: '2', name: 'Мухаммад', ID: 'Muahammad', pass: "1234567", editShow: true},
-    {id: '3', name: 'Сухроб', ID: 'Suhrob', pass: "1234567", editShow: true},
-    {id: '4', name: 'Шоди', ID: 'Shodi', pass: "1234567", editShow: true},
-    {id: '5', name: 'Таня', ID: 'Tanya', pass: "1234567", editShow: true}
-  ]
-  pencil = true
+  tableData: any = []
+  editShow: number = 0
   page: any
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
   ngOnInit() {
     this.addForm = new FormGroup({
-      addName: new FormControl('')
+      addName: new FormControl(''),
+      addEmail: new FormControl(''),
     })
     
-
     this.editForm = new FormGroup({
       name: new FormControl(''),
       email: new FormControl(''),
-      pass: new FormControl(''),
+    })
+
+    this.route.params.subscribe(response => {
+      this.request.getAdminProReq(response.id).subscribe(response => {
+        this.tableData = response
+      }, error => {
+        alert(error.error.message)
+      })
+
     })
   }
-
   addButton() {
     const addFormData = {...this.addForm.value}
-
-    if(addFormData.addName == '') {
-      this.addText = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
+    if(addFormData.addName == '' || addFormData.addEmail == '') {
+      this.placeName = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
+      this.placeEmail = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
       this.addError = true
     } else {
-      console.log(addFormData);
+      this.route.params.subscribe(response => {
+        this.request.postAdminProReq(response.id, addFormData.addName, addFormData.addEmail).subscribe(response => {
+          location.reload()
+      }, error => {
+        alert(error.error.message)
+      })
+      })
     }
     
   }
 
-  changeButton() {
+  itemClick(id: number){
+    this.editShow = id;
+  }
+  
+  changeButton(id: number) {
     const editFormData = {...this.editForm.value}
     console.log(editFormData);
-    location.reload()
-  }
 
-  deleteItem(value: any) {
-    const conf = confirm(`Вы хотите удалить ${value}`)
+    if(editFormData.name == '' || editFormData.email  == '') {
+      alert('Поле не может быть пустым')
+    } else {
+      this.request.putAdminProReq(id, editFormData.name, editFormData.email).subscribe(response => {
+        location.reload()    
+      }, error => {
+        alert(error.error.message)
+      })
+    }
+  }
+  
+  deleteItem(id: number, name: string) {
+    const conf = confirm(`Вы хотите удалить проект: ${name}`)
     if(conf == true) {
-      this.tableData.shift()
+      this.request.deleteAdminProReq(id).subscribe(response => {
+        location.reload()
+      }, error => {
+        alert(error.error.message)
+      })
     }
   }
 }

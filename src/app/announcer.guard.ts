@@ -8,13 +8,12 @@ export class AnnouncerGuard implements CanActivate {
     constructor(private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        return true;
-        // var token: any = localStorage.getItem('access_token')
-        // var decoded:any = jwt_decode(token);
-        // if(decoded[0][0].role == "anouncer") {
-        //     return true
-        // }
-        // this.router.navigate(['/'])
-        // return false
+        var token: any = localStorage.getItem('access_token')
+        var decoded:any = jwt_decode(token);
+        if(decoded.role == "anouncer") {
+            return true
+        }
+        this.router.navigate(['/'])
+        return false
     }
 }

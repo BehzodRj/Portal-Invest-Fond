@@ -39,6 +39,8 @@ export class AnnouncerTenderComponent implements OnInit {
     reader.readAsDataURL(value.target.files[0])
     reader.onload = () => {
       this.fileData = reader.result
+      console.log(reader.result);
+      
     }
   }
 
@@ -54,7 +56,7 @@ export class AnnouncerTenderComponent implements OnInit {
     }else if(formTenderData.sendDate == '') {
       alert(' "Дата проведения" не можеть быть пустым')
     } else {
-      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price).subscribe(response => {
+      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData).subscribe(response => {
         alert('Вы успешно добавили тендер')
         this.router.navigate(['/announcer'])
       }, error => {
