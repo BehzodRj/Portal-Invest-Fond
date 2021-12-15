@@ -86,6 +86,7 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
     }
+<<<<<<< HEAD
     getAnnouncerFormModal(id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -93,6 +94,8 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/subscribers/' + id, {headers:header})
     }
+=======
+>>>>>>> b01f0a643cb7346a63f6d2164ca05643fbffeb93
     // End of Announcer
 
     // Admin

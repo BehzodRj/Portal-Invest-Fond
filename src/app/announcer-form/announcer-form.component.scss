@@ -322,6 +322,7 @@
     .modal-datas_container {
       .modal-datas_block {
         margin: 80px 20px 0 20px
+<<<<<<< HEAD
       }
     }
   }
@@ -354,7 +355,40 @@
         .modal-items{  
           text-align: center;
         }
+=======
+>>>>>>> b01f0a643cb7346a63f6d2164ca05643fbffeb93
       }
     }
   }
  
+  @media screen and (max-width: 500px) {
+    .modal-datas_container {
+      .modal-datas_block { 
+        .title{
+          margin-bottom: 30px;
+        }
+        .modal-items{ 
+          flex-direction: column;
+          h2{
+            margin-left: 0;
+            
+          }
+          h1{
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+ 
+@media screen and (max-width: 380px) {
+  .modal-datas_container {
+    .modal-datas_block {
+      margin: 80px 10px 0 10px;
+
+      .modal-items{  
+        text-align: center;
+      }
+    }
+  }
+}
