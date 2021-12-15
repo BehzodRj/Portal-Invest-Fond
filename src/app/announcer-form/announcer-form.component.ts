@@ -18,11 +18,7 @@ export class AnnouncerFormComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe( (response: any) => {
       this.request.getAnnouncerForm(response.id).subscribe(response => {
-<<<<<<< HEAD
         this.announcerFormData = response
-=======
-        console.log(response);
->>>>>>> b01f0a643cb7346a63f6d2164ca05643fbffeb93
       }, error => {
         alert(error.error.Error)
       })
