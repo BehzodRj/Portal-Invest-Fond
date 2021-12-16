@@ -244,6 +244,8 @@ export class RequestService {
     // End of My Orders
 
     // Add Lots
+    addLotsData: any = []
+    addPartners: any = []
     // End of Add Lots
 
     //  End of Subscriber

@@ -6,7 +6,7 @@
   height: 100vh;
   top: 0;
   z-index: 10; 
-  overflow: auto; 
+  overflow: auto;
   
   .modal-datas_block {
     position: relative;
@@ -104,7 +104,6 @@
             font-size: 15px;
           }
         }
-    
       }
     
       h2 {
@@ -117,10 +116,13 @@
         flex-direction: column;
         .user-part__block{
           display: flex; 
+          align-items: center;
+          justify-content: center;
           .userP{
             display: flex;
             align-items: center; 
             margin-left: 30px;
+            margin-bottom: 10px;
             .trash{
               margin-left: 20px;
               width: 60px;
@@ -133,6 +135,8 @@
               justify-content: center;
               align-items: center;
               padding: 3px ;
+              cursor: pointer;
+              
                &:active{
                  transform: scale(.95);
                }
@@ -213,6 +217,8 @@
             color: #fff;
             font-size: 18px;
             margin-top: 50px;
+            border: none;
+            cursor: pointer;
     
             &:active {
               transform: scale(.96);

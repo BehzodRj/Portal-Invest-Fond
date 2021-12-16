@@ -14,7 +14,7 @@
             <div class="inp__block">
               <div class="inp">
                 <h1>Номер Лота:</h1>
-                <input type="text" placeholder="Номер лота" formControlName="numberof_lots">
+                <input type="number" placeholder="Номер лота" formControlName="numberof_lots">
               </div>
               <div class="inp lots-name">
                 <h1>Название лота</h1>
@@ -25,49 +25,43 @@
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
-                <input type="text" placeholder="Описание" formControlName="NoSsomoni">
+                <input type="number" placeholder="Описание" formControlName="NoSsomoni">
               </div>
               <div class="inp">
                 <h1>Доллар</h1>
-                <input type="text" placeholder="Описание" formControlName="NoSdollar">
+                <input type="number" placeholder="Описание" formControlName="NoSdollar">
               </div>
               <div class="inp">
                 <h1>Евро</h1>
-                <input type="text" placeholder="Описание" formControlName="NoSeuro">
+                <input type="number" placeholder="Описание" formControlName="NoSeuro">
               </div>
             </div>
             <h2>Сумма c учетом НДС</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
-                <input type="text" placeholder="Описание" formControlName="somoni">
+                <input type="number" placeholder="Описание" formControlName="somoni">
               </div>
               <div class="inp">
                 <h1>Доллар</h1>
-                <input type="text" placeholder="Описание" formControlName="dollar">
+                <input type="number" placeholder="Описание" formControlName="dollar">
               </div>
               <div class="inp">
                 <h1>Евро</h1>
-                <input type="text" placeholder="Описание" formControlName="euro">
+                <input type="number" placeholder="Описание" formControlName="euro">
               </div>
             </div>
             <div class="discount">
               <h1>Скидка</h1>
-              <input type="text" formControlName="discount">
+              <input type="number" formControlName="discount">
             </div>
           </div>
           <h2>Партнеры:</h2>
           <div class="partners__block">
-            <div class="user-part__block">
-              <div class="userP">
-                <p>Партнёр</p>
-                <div class="trash">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div>
-              <div class="userP">
-                <p>Партнёр</p>
-                <div class="trash">
+            <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
+              <div class="userP" *ngFor="let addPartner of AddPartnerData">
+                <p>{{addPartner.partners}}</p>
+                <div class="trash" (click)="deletePartner()">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
@@ -79,15 +73,15 @@
                 <input type="text" placeholder="Партнер" formControlName="partners">
               </div>
               <div class="inp check">
-                <input type="text" placeholder="Лидер">
-                <input type="checkbox" class="checkbox">
+                <input type="text" placeholder="Лидер" readonly>
+                <input type="checkbox" class="checkbox" (change)="check($event)">
               </div>
-              <button style="border: none; cursor: pointer;">
+              <button style="border: none; cursor: pointer;" (click)="addP()">
                 <i class="fa fa-plus"></i>
               </button>
             </div>
             <div class="btn">
-              <button (click)="send()">СОХРАНИТЬ ЛОТ</button>
+              <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
             </div>
           </div>
         </form>
@@ -130,9 +124,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let addLots of addLotsData">
+        <tr *ngFor="let addLots of addLotsLocalData">
           <td><span>Название лота </span>{{ addLots.name }}</td>  
-          <td><span>Номер лота </span>{{ addLots.number_of_lots }}</td>  
+          <td><span>Номер лота </span>{{ addLots.numberof_lots }}</td>  
           <td><span>Скидка </span>{{ addLots.discount }}</td>  
           <td><span>Сумма без учета НДС </span><div class="currancy">
             <i>Сомони : <p>{{ addLots.NoSsomoni }}</p></i>
@@ -148,7 +142,7 @@
           </div><pre>{{ addLots.somoni }}</pre> </td>
           <td class="hdd">{{ addLots.dollar }}</td>      
           <td class="hdd">{{ addLots.euro }}</td>      
-          <td><span>Партнеры </span> <h1 [ngStyle]="{'color': 'grey'}">Первый</h1> </td>  
+          <td><span>Партнеры </span> <h1 *ngFor="let addPartner of AddPartnerData" [ngStyle]="{'color': addPartner.status ? '#000' : '#757575'}">{{ addPartner.partners }}</h1> </td>  
           <td class="change"> 
             <div class="trash__block">
               <i class="fas fa-pencil-alt"></i>
@@ -215,7 +209,7 @@
         </div>
       </div>
     </div>
-      <button>Отправить</button>
+      <button (click)="send()">Отправить</button>
   </div>  
 </div>
  
