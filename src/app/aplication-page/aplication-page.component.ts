@@ -12,6 +12,7 @@ export class AplicationPageComponent implements OnInit {
   addLotsForm!: FormGroup
   addLotsLocalData: any = []
   AddPartnerData:  any = []
+  status: any
   column = false
   showModal = false
 
@@ -31,53 +32,37 @@ export class AplicationPageComponent implements OnInit {
       partners: new FormControl(''),
     })
   }
-  
-  save() {
-    const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
-      alert('Заполните поле')
-    } else {
-      this.request.addLotsData.push({name: addLotsFormData.name, numberof_lots: addLotsFormData.numberof_lots, discount: addLotsFormData.discount, NoSsomoni: addLotsFormData.NoSsomoni, NoSdollar: addLotsFormData.NoSdollar, NoSeuro: addLotsFormData.NoSeuro, somoni: addLotsFormData.somoni, dollar: addLotsFormData.dollar, euro: addLotsFormData.euro})
-      this.addLotsLocalData = this.request.addLotsData
-      this.showModal = false
-      console.log(this.addLotsForm)
-    }
-  }
 
   addP() {
     const addLotsFormData = {...this.addLotsForm.value}
     if(addLotsFormData.partners == '') {
       alert('Заполните поле')
     } else {
-      this.request.addPartners.push( {partners: addLotsFormData.partners, status: true} )
-      this.AddPartnerData = this.request.addPartners
-      this.addLotsForm.controls['partners'].reset()
-      if(this.AddPartnerData.length == 5) {
-        this.column = true
-      }
-      console.log(this.request.addPartners);
-      
-      
+      this.AddPartnerData.push({partners: addLotsFormData.partners})
     }
     
   }
-  
-  check(value: any) {  
-    const addLotsFormData = {...this.addLotsForm.value}
-    if(value.target.checked == true) {
-      this.request.addPartners.push( {partners: addLotsFormData.partners, status: false} )
-    } else if(value.target.checked == false) {
-      this.request.addPartners.push( {partners: addLotsFormData.partners, status: true} )
-    }
+
+  check(value: any) {
+    
   }
   
-  deletePartner() {
-    this.request.addPartners.shift()
+  deletePartner() {}
+
+  save() {
+    const addLotsFormData = {...this.addLotsForm.value}
+    if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
+      alert('Заполните поле')
+    } else {
+      this.request.addLotsData.push({name: addLotsFormData.name, numberof_lots: addLotsFormData.numberof_lots, discount: addLotsFormData.discount, NoSsomoni: addLotsFormData.NoSsomoni, NoSdollar: addLotsFormData.NoSdollar, NoSeuro: addLotsFormData.NoSeuro, somoni: addLotsFormData.somoni, dollar: addLotsFormData.dollar, euro: addLotsFormData.euroб, partners: this.AddPartnerData})
+      this.addLotsLocalData = this.request.addLotsData
+      console.log(this.addLotsLocalData);
+      this.showModal = false
+    }
   }
 
   send() {
     console.log(this.request.addLotsData);
-    console.log(this.request.addPartners);
   }
 
 }
