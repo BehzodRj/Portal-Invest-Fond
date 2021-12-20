@@ -61,7 +61,7 @@ export class AplicationPageComponent implements OnInit {
     }
     
   }
-
+  
   check(value: any) {  
     const addLotsFormData = {...this.addLotsForm.value}
     if(value.target.checked == true) {

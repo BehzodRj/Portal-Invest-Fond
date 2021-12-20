@@ -113,16 +113,16 @@
       .partners__block {
         margin-top: 10px;
         display: flex;
-        flex-direction: column;
-        .user-part__block{
-          display: flex; 
-          align-items: center;
+        flex-direction: column; 
+        .user-part__block{   
+          display: flex;
+          flex-wrap: wrap; 
           justify-content: center;
           .userP{
             display: flex;
-            align-items: center; 
-            margin-left: 30px;
-            margin-bottom: 10px;
+            align-items: center;    
+            margin-top: 20px;
+            margin-left: 20px;
             .trash{
               margin-left: 20px;
               width: 60px;
