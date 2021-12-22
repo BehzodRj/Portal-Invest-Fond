@@ -20,6 +20,7 @@ import { AplicationPageComponent } from './aplication-page/aplication-page.compo
 import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
 import { SubscribeGuard } from './subscribe.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscriberorders', component: SubscriberOrdersComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] },
+  { path: 'result', component: ResultPageComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 
