@@ -16,14 +16,14 @@
         <tr class="add_block" *ngIf="editShow==0">
           <td style="border: #fff;"></td>
 
-          <td [ngStyle]="{'border': addError ? '1px solid red' : '1px solid #000'}">
+          <td [ngStyle]="{'border': addForm.get('addName').invalid ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Название</h1>
               <input type="text" [placeholder]="placeName" formControlName="addName">
             </form>
           </td>
 
-          <td [ngStyle]="{'border': addError ? '1px solid red' : '1px solid #000'}">
+          <td [ngStyle]="{'border': addForm.get('addEmail').invalid ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Email</h1>
               <input type="text" [placeholder]="placeEmail" formControlName="addEmail">

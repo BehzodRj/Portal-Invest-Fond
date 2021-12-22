@@ -1,4 +1,10 @@
 <app-header></app-header>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeModal()"></i>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+  </div>
+</div>
 <div class="container">
   <div class="navbar">
     <table class="resp-tab">
@@ -22,10 +28,10 @@
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.name}}</td>
           <td>
             <span>Проверка</span>
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" (change)="statusChange($event, payment.id)">
           </td>
           <td class="change">
-            <div class="trash_block" (click)="openFile(payment.file, payment.id, payment.status)">
+            <div class="trash_block" (click)="openModal(payment.files)">
               <i class="td_i fas fa-search"></i>
             </div>
           </td>

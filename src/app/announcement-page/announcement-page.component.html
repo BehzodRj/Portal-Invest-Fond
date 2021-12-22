@@ -17,6 +17,12 @@
     </div>
   </div>
 </div>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeModal()"></i>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+  </div>
+</div>
 <app-header></app-header>
 <div class="container">
   <div class="navbar">
@@ -39,7 +45,7 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 13, currentPage: page}; let idx = index">
           <td><span>№</span>{{ idx }}</td>
-          <td><span>Название</span>{{anouncements.tender_title }}</td>
+          <td><span>Название</span>{{ anouncements.name }}</td>
           <td><span>ID</span>{{ anouncements.id }}</td>
           <td><span>Центр ID</span>{{ anouncements.project_center_anouncement_id }}</td>
           <td><span>Тип проведения</span>{{ anouncements.type_of_procurement }}</td>
@@ -48,7 +54,7 @@
           <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
           <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
           <td class="change">
-            <i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.status>0" (click)="download(anouncements.file)"></i>
+            <i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.status>0" (click)="openModal(anouncements.files)"></i>
             <i class="fas fa-dollar-sign"  *ngIf="anouncements.price>0 && anouncements.status==null" (click)="modalOpen(idx)"></i>
             <i class="fas fa-undo-alt" *ngIf="anouncements.price>0 && anouncements.status==0"></i>
             <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.fav_id>0 ? 'orange': '#4F4F4F'}" (click)="star(anouncements.fav_id, anouncements.id)"></i>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from '../all.service';
 
@@ -9,7 +9,7 @@ import { RequestService } from '../all.service';
   styleUrls: ['./admin-project.component.scss']
 })
 export class AdminProjectComponent implements OnInit {
-  addForm!: FormGroup
+  addForm!: any
   placeName = 'ДОБАВИТЬ ПРОЕКТ'
   placeEmail = 'ДОБАВИТЬ EMAIL'
   text = ''
@@ -24,8 +24,8 @@ export class AdminProjectComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = new FormGroup({
-      addName: new FormControl(''),
-      addEmail: new FormControl(''),
+      addName: new FormControl('', Validators.required),
+      addEmail: new FormControl('', Validators.required),
     })
     
     this.editForm = new FormGroup({

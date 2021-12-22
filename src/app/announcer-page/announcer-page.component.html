@@ -1,4 +1,10 @@
 <app-header></app-header>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeModal()"></i>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+  </div>
+</div>
 <div class="container">
   <div class="title_block">
     <h1>Тендеры проекта</h1>
@@ -39,8 +45,8 @@
           </td>
           <td class="download" style="width: 10px;">
             <span>Действие</span>
-            <div class="trash_block">
-              <i class="fas fa-download"></i>
+            <div class="trash_block" (click)="openModal(announcer.files)">
+            <i class="fas fa-download"></i>
             </div>
           </td>
         </tr>

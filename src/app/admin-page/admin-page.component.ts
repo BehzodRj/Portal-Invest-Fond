@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from '../all.service';
 
@@ -9,7 +9,7 @@ import { RequestService } from '../all.service';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
-  addForm!: FormGroup
+  addForm!: any
   addText = 'ДОБАВИТЬ ЦЕНТР'
   text = ''
   addError = false
@@ -23,7 +23,7 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = new FormGroup({
-      addName: new FormControl('')
+      addName: new FormControl('', Validators.required)
     })
     
     this.editForm = new FormGroup({

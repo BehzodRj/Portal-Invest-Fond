@@ -6,22 +6,22 @@
   </div>
 
   <form class="form" [formGroup]="formTender">
-    <div class="items_block">
+    <div class="items_block" [ngStyle]="{border: formTender.get('name').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Название</label>
       <input type="text" [placeholder]="showAlertName" formControlName="name">
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('centerID').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Центр ID</label>
       <input type="number" [placeholder]="showAlertCenterID" formControlName="centerID">
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Метод</label>
       <input type="text" [placeholder]="showAlertMethod" formControlName="method">
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendType').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="select">Тип проведения</label>
       <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="sendType">
         <option>однофазный</option>
@@ -29,12 +29,12 @@
       </select>
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="date">Дата проведения</label>
       <input type="date" style="text-indent: 3px;" formControlName="sendDate">
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="file">Файл</label>
       <div class="file_block">
         <h1>{{showAlertFile}}</h1>
@@ -43,12 +43,12 @@
       </div>
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('lots').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Колличество лотов</label>
       <input type="number" [placeholder]="showAlertLots" formControlName="lots">
     </div>
 
-    <div class="items_block regist_block">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('price').invalid ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Взнос</label>
       <input type="number" [placeholder]="showAlertPrice" formControlName="price">
     </div>
