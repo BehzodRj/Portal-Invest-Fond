@@ -1,0 +1,81 @@
+.container{
+    max-width: 1000px;
+    margin: 30px auto;  
+    padding: 30px;
+    .content__opening{ 
+        h3{
+            margin: 30px 0;
+        }
+        .table{
+            display: flex;
+            justify-content: space-between; 
+            .blockLeft{
+                width: 50%;
+                border: 1px solid #000;
+                padding: 4px 5px;
+                background: #ddd;
+            }
+            .blockRight{
+                width: 50%;
+                border: 1px solid #000;
+                padding: 4px 5px;
+            }
+        }
+    }
+    .content__details{
+        margin: 30px auto 0;
+        .response_details{  
+            margin: 30px 0 15px;
+            .details-block{ 
+                width: 99%;
+                display: flex;
+                justify-content: space-between;
+                margin-left: 1%;  
+                padding: 5px 0;
+                .blockLeft{
+                    width: 50%;
+                }
+                .blockRight{
+                    width: 50%;
+                }
+            }
+        }
+        .response_address{ 
+            .details-block{ 
+                width: 99%;
+                display: flex;
+                justify-content: space-between;
+                margin-left: 1%;  
+                padding: 5px 0;
+                .blockLeft{
+                    width: 50%;
+                }
+                .blockRight{
+                    width: 50%;
+                }
+            }
+        }
+    }
+    .content__lots{  
+        h3{
+            margin: 30px 0;
+        }
+        .lots__block{
+            margin: 30px 0;
+            .lots-table{
+                display: flex;
+                justify-content: space-between; 
+                .blockLeft{
+                    width: 50%;
+                    border: 1px solid #000;
+                    padding: 4px 5px; 
+                }
+                .blockRight{
+                    width: 50%;
+                    border: 1px solid #000;
+                    padding: 4px 5px;
+                }
+            }
+        }
+    }
+}
