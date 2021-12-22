@@ -52,17 +52,17 @@ export class AplicationPageComponent implements OnInit {
   save() {
     const addLotsFormData = {...this.addLotsForm.value}
     if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
-      alert('Заполните поле')
+      alert('Заполните поле') 
     } else {
       this.request.addLotsData.push({name: addLotsFormData.name, numberof_lots: addLotsFormData.numberof_lots, discount: addLotsFormData.discount, NoSsomoni: addLotsFormData.NoSsomoni, NoSdollar: addLotsFormData.NoSdollar, NoSeuro: addLotsFormData.NoSeuro, somoni: addLotsFormData.somoni, dollar: addLotsFormData.dollar, euro: addLotsFormData.euroб, partners: this.AddPartnerData})
       this.addLotsLocalData = this.request.addLotsData
       console.log(this.addLotsLocalData);
       this.showModal = false
     }
-  }
+  }   
 
   send() {
     console.log(this.request.addLotsData);
   }
 
-}
+}   
