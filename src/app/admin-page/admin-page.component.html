@@ -15,7 +15,7 @@
       <tbody class="pains">
         <tr class="add_block" *ngIf="editShow==0">
           <td style="border: #fff;"></td>
-          <td colspan="2" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addError ? '1px solid red' : '1px solid #000'}">
+          <td colspan="2" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addForm.get('addName').invalid ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Название</h1>
               <input type="text" [placeholder]="addText" formControlName="addName">

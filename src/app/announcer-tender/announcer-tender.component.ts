@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RequestService } from '../all.service';
 
@@ -9,7 +9,7 @@ import { RequestService } from '../all.service';
   styleUrls: ['./announcer-tender.component.scss']
 })
 export class AnnouncerTenderComponent implements OnInit {
-  formTender!: FormGroup
+  formTender!: any
   fileData: any = []
   showAlertName = 'Название'
   showAlertCenterID = 'Центр ID'
@@ -23,14 +23,14 @@ export class AnnouncerTenderComponent implements OnInit {
 
   ngOnInit() {
     this.formTender = new FormGroup({
-      name: new FormControl(''),
-      centerID: new FormControl(''),
-      method: new FormControl(''),
-      sendType: new FormControl('однофазный'),
-      sendDate: new FormControl(''),
-      file: new FormControl(''),
-      lots: new FormControl(''),
-      price: new FormControl('')
+      name: new FormControl('', Validators.required),
+      centerID: new FormControl('', Validators.required),
+      method: new FormControl('', Validators.required),
+      sendType: new FormControl('однофазный', Validators.required),
+      sendDate: new FormControl('', Validators.required),
+      file: new FormControl('', Validators.required),
+      lots: new FormControl('', Validators.required),
+      price: new FormControl('', Validators.required)
     })
   }
 

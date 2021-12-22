@@ -10,7 +10,7 @@ import { RequestService } from '../all.service';
 })
 export class RegistrationPageComponent implements OnInit {
   isLoading = false
-  registerForm!: FormGroup
+  registerForm!: any
   showAlertsName = "Имя"
   showAlertsLast_name = "Фамилия"
   showAlertsMiddle_name = "Отчество"
@@ -30,21 +30,21 @@ export class RegistrationPageComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      name: new FormControl(''),
-      last_name: new FormControl(''),
-      middle_name: new FormControl(''),
-      company_name: new FormControl(''),
-      division: new FormControl(''),
-      regCompany1: new FormControl(''),
-      regCompany2: new FormControl(''),
-      regCompany3: new FormControl(''),
-      inn: new FormControl(''),
-      email: new FormControl(''),
-      phone: new FormControl(''),
-      password: new FormControl(''),
-      country: new FormControl(''),
-      city: new FormControl(''),
-      postalCode: new FormControl('')
+      name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      middle_name: new FormControl('', Validators.required),
+      company_name: new FormControl('', Validators.required),
+      division: new FormControl('', Validators.required),
+      regCompany1: new FormControl('', Validators.required),
+      regCompany2: new FormControl('', Validators.required),
+      regCompany3: new FormControl('', Validators.required),
+      inn: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      postalCode: new FormControl('', Validators.required)
     })
   }
 

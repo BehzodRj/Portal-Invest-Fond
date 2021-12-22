@@ -9,6 +9,8 @@ import { RequestService } from '../all.service';
 export class AnnouncerPageComponent implements OnInit {
   annpuncerData: any = []
   page: any
+  dowFile: any = []
+  showFileModal = false
 
   constructor(private request: RequestService) { }
 
@@ -27,6 +29,26 @@ export class AnnouncerPageComponent implements OnInit {
         alert(error.message)
       }
     })
+  }
+
+  openModal(file: any) {
+    if(file < 1) {
+      alert('Нет никаких файлов для скачивания')
+    } else {
+        this.showFileModal = true
+        file.split(",").forEach((element:any) => {
+          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+        });
+    }
+  }
+
+  download(file: any) {
+    window.open(file)
+  }
+
+  closeModal() {
+    this.showFileModal = false
+    this.dowFile = []
   }
 
 }

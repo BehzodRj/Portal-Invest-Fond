@@ -13,12 +13,14 @@ export class AnnouncementPageComponent implements OnInit {
   favId: any
   filName = 'Чек'
   fileData: any =  []
+  dowFile: any = []
   modalCheck = false
   downld = false
   retn = false
   pymnt = false
-  activeAnounsment = 0
   isLoading = false
+  showFileModal = false
+  activeAnounsment = 0
   constructor(private request: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -77,11 +79,29 @@ export class AnnouncementPageComponent implements OnInit {
       let reader = new FileReader()
       reader.readAsDataURL(value.target.files[0])
       reader.onload = () => {
-      this.fileData =  reader.result
+      this.fileData = reader.result
     }
   }
 
-  download(value: any) {}
+  openModal(file: any) {
+    if(file < 1) {
+      alert('Нет никаких файлов для скачивания')
+    } else {
+        this.showFileModal = true
+        file.split(",").forEach((element:any) => {
+          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+        });
+    }
+  }
+
+  download(file: any) {
+    window.open(file)
+  }
+
+  closeModal() {
+    this.showFileModal = false
+    this.dowFile = []
+  }
 
   star(favId: any, id:number) {   
     
