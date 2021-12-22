@@ -244,7 +244,39 @@ export class RequestService {
     // End of My Orders
 
     // Add Lots
-    addLotsData: any = []
+    postOrderRequests(
+        anouncements_id: number, 
+        total: number, 
+        total_dol: number, 
+        total_euro: number, 
+        vat: number, 
+        vat_dol: number,
+        vat_euro: number,
+        discount: number,
+        discount_dol: number,
+        discount_euro: number,
+        lots: any
+
+        ) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.post(this.url + '/api/auth/orders', {
+            "anouncements_id": anouncements_id, 
+            "total": total, 
+            "total_dol": total_dol, 
+            "total_euro": total_euro,
+            "vat": vat,
+            "vat_dol": vat_dol,
+            "vat_euro": vat_euro,
+            "discount": discount, 
+            "discount_dol": discount,
+            "discount_euro": discount,
+            'lots': lots
+        }, {headers:header})
+    }
     // End of Add Lots
 
     //  End of Subscriber
