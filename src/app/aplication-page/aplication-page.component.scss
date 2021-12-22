@@ -113,16 +113,15 @@
       .partners__block {
         margin-top: 10px;
         display: flex;
-        flex-direction: column;
-        .user-part__block{
-          display: flex; 
-          align-items: center;
-          justify-content: center;
+        flex-direction: column; 
+        .user-part__block{   
+          display: flex;
+          flex-wrap: wrap; 
           .userP{
             display: flex;
-            align-items: center; 
-            margin-left: 30px;
-            margin-bottom: 10px;
+            align-items: center;    
+            margin-top: 20px;
+            margin-left: 20px;
             .trash{
               margin-left: 20px;
               width: 60px;
@@ -440,6 +439,7 @@
       line-height: 15px;
       color: #fff;
     }
+
     @media(max-width: 1200px) {
       .resp-tab thead {
         display: none;

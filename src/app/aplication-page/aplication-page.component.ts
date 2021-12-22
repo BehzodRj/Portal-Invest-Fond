@@ -102,8 +102,8 @@ export class AplicationPageComponent implements OnInit {
 
   save() {
     const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.title == '' || addLotsFormData.lot_number == '' || addLotsFormData.total == '' || addLotsFormData.vat == '' ||  addLotsFormData.discount == '' ) {
-      alert('Заполните поле')
+    if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
+      alert('Заполните поле') 
     } else {
       this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, partners: this.AddPartnerData})
       this.editLotsData = this.addLotsData
@@ -111,7 +111,7 @@ export class AplicationPageComponent implements OnInit {
       this.AddPartnerData = [];
       this.addLotsForm.reset()
     }
-  }
+  }   
 
   cahngeEdit() {
     this.addLotsData[this.activeEditIndex] = this.editLotsForm.value
