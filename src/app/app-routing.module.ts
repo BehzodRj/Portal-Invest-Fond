@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscriberorders', component: SubscriberOrdersComponent, canActivate: [SubscribeGuard] },
-  { path: 'application', component: AplicationPageComponent, canActivate: [SubscribeGuard] },
+  { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] },
   { path: '**', component: ErrorPageComponent }
 ];
 

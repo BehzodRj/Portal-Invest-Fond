@@ -50,8 +50,6 @@ export class RegistrationPageComponent implements OnInit {
 
   registration() {
     const registerFormData = {...this.registerForm.value}
-    console.log(registerFormData);
-    
     if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.regCompany == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '' || registerFormData.country == '' || registerFormData.city == '' || registerFormData.postalCode == '') {
       this.showAlertsName = 'Поля не может быть пустым'
       this.showAlertsLast_name = 'Поля не может быть пустым'
@@ -69,15 +67,13 @@ export class RegistrationPageComponent implements OnInit {
     } else {
       this.isLoading = true
       this.request.regRequest(registerFormData.name, registerFormData.middle_name, registerFormData.last_name, registerFormData.email, registerFormData.password, registerFormData.phone, registerFormData.company_name, registerFormData.country, registerFormData.city, registerFormData.regCompany1, registerFormData.regCompany2, registerFormData.regCompany3, registerFormData.postalCode, registerFormData.inn, registerFormData.division).subscribe(response => {
-        alert('Вы успешно зарегистрировались')
         this.isLoading = false
+        alert('Вы успешно зарегистрировались')
         this.router.navigate(['/'])
-        
       }, error => {
         this.isLoading = false
         alert(error.error)
       })
     }
   }
-
 }

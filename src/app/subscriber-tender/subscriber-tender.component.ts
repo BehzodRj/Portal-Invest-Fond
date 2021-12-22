@@ -16,7 +16,16 @@ export class SubscriberTenderComponent implements OnInit {
     this.request.getSubsciberProjects().subscribe(response => {
       this.subscriberData = response
     }, error => {
-      alert(error.error.message)
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 

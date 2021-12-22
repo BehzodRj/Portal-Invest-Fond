@@ -17,6 +17,7 @@ export class AnnouncerTenderComponent implements OnInit {
   showAlertFile = 'Файл'
   showAlertLots = 'Колличество лотов'
   showAlertPrice = 'Взнос'
+  isLoading = false
 
   constructor(private router: Router, private request: RequestService) { }
 
@@ -42,7 +43,6 @@ export class AnnouncerTenderComponent implements OnInit {
         this.fileData.push(reader.result)        
       }
     })
-    
   }
 
   send() {
@@ -57,11 +57,26 @@ export class AnnouncerTenderComponent implements OnInit {
     }else if(formTenderData.sendDate == '') {
       alert(' "Дата проведения" не можеть быть пустым')
     } else {
+      this.isLoading = true
       this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData).subscribe(response => {
+        this.isLoading = false
         alert('Вы успешно добавили тендер')
         this.router.navigate(['/announcer'])
       }, error => {
-        alert(error.message)
+        this.isLoading = false
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
+            location.reload()
+          }, errorToken => {
+            this.isLoading = false
+            alert(errorToken.message)
+          })
+        } else {
+          this.isLoading = false
+          alert(error.message)
+        }
       })
     }
 

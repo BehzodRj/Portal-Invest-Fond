@@ -546,6 +546,61 @@
       }
     }
 
+    .items_block {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #0E131A;
+      border-radius: 8px;
+      margin-top: 25px;
+
+      .file_block {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          h1 {
+              text-indent: 6px;
+              font-family: 'Roboto', sans-serif;
+              font-weight: normal;
+              font-size: 13px;
+              line-height: 14px;
+              color: #757575;                
+          }
+          img {
+              right: 13px;
+              position: absolute;
+              z-index: -1;
+          }
+          input {
+              margin-right: 10px;
+              opacity: 0;
+              width: 20px;
+          }
+      }
+          label {
+              font-family: "Roboto", sans-serif;
+              font-weight: normal;
+              font-size: 13px;
+              line-height: 20px;
+              text-indent: 6px;
+              margin-bottom: 2px;
+          }
+          input {
+              font-family: "Roboto", sans-serif;
+              font-weight: normal;
+              font-size: 12px;
+              line-height: 14px;
+              text-indent: 6px;
+              outline: none;
+              border: 0;
+          }
+    }
+
     .btn {
       width: 250px;
       height: 30px;

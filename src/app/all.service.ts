@@ -18,6 +18,15 @@ export class RequestService {
     regRequest(name: string, middle_name: string, last_name: string, email: string, password: string, phone: number, company_name: string, company_country: string, town: string, address_line1: string, address_line2: string, address_line3: string, postal_code: number, inn: number, division: string) {
         return this.http.post(this.url + '/api/auth/register',  {"name": name, "middle_name": middle_name, "last_name": last_name, "email": email, "password": password, "phone": phone, "company_name": company_name, "company_country": company_country, "town": town, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "postal_code": postal_code, "inn": inn, "division": division})
     }
+
+    refreshToken() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/refresh', {headers: header})
+    }
     // End of Authenticate
 
 
@@ -66,7 +75,8 @@ export class RequestService {
     postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, file: any ) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            'Accept': "application/json"
         })
         return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "file": file}, {headers:header})
     }
@@ -255,7 +265,8 @@ export class RequestService {
         discount: number,
         discount_dol: number,
         discount_euro: number,
-        lots: any
+        lots: any,
+        file: any
 
         ) {
         let header: HttpHeaders = new HttpHeaders({
@@ -272,9 +283,10 @@ export class RequestService {
             "vat_dol": vat_dol,
             "vat_euro": vat_euro,
             "discount": discount, 
-            "discount_dol": discount,
-            "discount_euro": discount,
-            'lots': lots
+            "discount_dol": discount_dol,
+            "discount_euro": discount_euro,
+            'lots': lots,
+            'files': file
         }, {headers:header})
     }
     // End of Add Lots
