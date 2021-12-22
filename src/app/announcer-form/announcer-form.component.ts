@@ -20,7 +20,16 @@ export class AnnouncerFormComponent implements OnInit {
       this.request.getAnnouncerForm(response.id).subscribe(response => {
         this.announcerFormData = response
       }, error => {
-        alert(error.error.Error)
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+            location.reload()
+          }, errorToken => {
+            alert(errorToken.message)
+          })
+        } else {
+          alert(error.message)
+        }
       })
     })
   }
@@ -30,7 +39,16 @@ export class AnnouncerFormComponent implements OnInit {
     this.request.getAnnouncerFormModal(id).subscribe(response => {
       this.announcerFormModalData = response
     }, error => {
-      alert(error.error.Error)
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 

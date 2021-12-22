@@ -18,6 +18,7 @@ export class ProfilePageComponent implements OnInit {
   // userImage = false
   showDatas = true
   editDatas = false
+  isLoading = false
 
   constructor(private request: RequestService) { }
 
@@ -25,8 +26,6 @@ export class ProfilePageComponent implements OnInit {
     
     this.request.getProfileRequest().subscribe(response => {
       this.userData = response
-      console.log(response);
-      
 
       this.editForm = new FormGroup({
         name: new FormControl(this.userData.name),
@@ -44,7 +43,17 @@ export class ProfilePageComponent implements OnInit {
         city: new FormControl(this.userData.town),
         postalCode: new FormControl(this.userData.postal_code),
       })
-      
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 
@@ -73,11 +82,27 @@ export class ProfilePageComponent implements OnInit {
 
   change() {
     const editFormData = {...this.editForm.value}
-    
+    this.isLoading = true
     this.request.changeProfileData(editFormData.name, editFormData.last_name, editFormData.middle_name, editFormData.division, editFormData.company_name, editFormData.inn, editFormData.email, editFormData.regCompany1, editFormData.regCompany2, editFormData.regCompany3, editFormData.phone, editFormData.country, editFormData.city, editFormData.postalCode).subscribe(response => {
+      this.isLoading = false
       location.reload()
       this.showDatas = true
       this.editDatas = false
+    },  error => {
+      this.isLoading = false
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
+          location.reload()
+        }, errorToken => {
+          this.isLoading = false
+          alert(errorToken.message)
+        })
+      } else {
+        this.isLoading = false
+        alert(error.message)
+      }
     })
   }
 

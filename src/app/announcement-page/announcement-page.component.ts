@@ -12,20 +12,30 @@ export class AnnouncementPageComponent implements OnInit {
   page: any
   favId: any
   filName = 'Чек'
-  fileData: any
+  fileData: any =  []
   modalCheck = false
   downld = false
   retn = false
   pymnt = false
   activeAnounsment = 0
-  constructor(private requests: RequestService, private route: ActivatedRoute, private router: Router) { }
+  isLoading = false
+  constructor(private request: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(response => {
-      this.requests.getSubsciberProjectsID(response.id).subscribe(response => {
+      this.request.getSubsciberProjectsID(response.id).subscribe(response => {
         this.anouncement = response
       }, error => {
-        alert(error.message)
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+            location.reload()
+          }, errorToken => {
+            alert(errorToken.message)
+          })
+        } else {
+          alert(error.message)
+        }
       })
     })
   }
@@ -35,22 +45,40 @@ export class AnnouncementPageComponent implements OnInit {
     this.activeAnounsment = id
   }
   modalSend() {
-    this.requests.postAnnouncementCheck( this.anouncement[this.activeAnounsment].id, this.fileData).subscribe(response => {
-      this.modalCheck = false
-      this.anouncement[this.activeAnounsment].status=0;
-    }, error => {
-      alert(error.error.message)
-    })
+    if(this.fileData.length < 1) {
+      alert('Поле не может быть пустым')
+    } else {
+      this.isLoading = true
+      this.request.postAnnouncementCheck( this.anouncement[this.activeAnounsment].id, this.fileData).subscribe(response => {
+        this.isLoading = false
+        this.modalCheck = false
+        this.anouncement[this.activeAnounsment].status=0;
+      }, error => {
+        if(error.status == '401') {
+          this.isLoading = false
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
+            location.reload()
+          }, errorToken => {
+            this.isLoading = false
+            alert(errorToken.message)
+          })
+        } else {
+          this.isLoading = false
+          alert(error.message)
+        }
+      })
+    }
   }
 
   getFile(value: any) {
     this.filName = value.target.files[0].name
-    let reader = new FileReader()
-    reader.readAsDataURL(value.target.files[0])
-    reader.onload = () => {
-      this.fileData = reader.result
+      let reader = new FileReader()
+      reader.readAsDataURL(value.target.files[0])
+      reader.onload = () => {
+      this.fileData =  reader.result
     }
-    
   }
 
   download(value: any) {}
@@ -58,17 +86,35 @@ export class AnnouncementPageComponent implements OnInit {
   star(favId: any, id:number) {   
     
       if(favId>0){
-        this.requests.deleteFavoutitesRequests(id).subscribe(response => {
+        this.request.deleteFavoutitesRequests(id).subscribe(response => {
           location.reload()
         }, error => {
-          alert(error.message)
+          if(error.status == '401') {
+            this.request.refreshToken().subscribe( (response: any) =>  {
+              localStorage.setItem('access_token', response.access_token)
+              location.reload()
+            }, errorToken => {
+              alert(errorToken.message)
+            })
+          } else {
+            alert(error.message)
+          }
         })
       }
       else{
-        this.requests.postFavoutitesRequests(id).subscribe(response => {
+        this.request.postFavoutitesRequests(id).subscribe(response => {
           location.reload()
         }, error => {
-          alert(error.message)
+          if(error.status == '401') {
+            this.request.refreshToken().subscribe( (response: any) =>  {
+              localStorage.setItem('access_token', response.access_token)
+              location.reload()
+            }, errorToken => {
+              alert(errorToken.message)
+            })
+          } else {
+            alert(error.message)
+          }
         })
       }
   }

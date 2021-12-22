@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let order of orderData; let idx = index">
+        <tr class="train" *ngFor="let order of orderData | paginate: {itemsPerPage: 11, currentPage: page}; let idx = index">
           <td>{{ idx }}</td>
           <td><span>Название</span>{{order.tender_title}}</td>
           <td><span>ID</span>{{ order.id }}</td>

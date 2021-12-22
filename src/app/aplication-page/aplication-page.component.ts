@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from '../all.service';
 
 @Component({
@@ -19,9 +20,13 @@ export class AplicationPageComponent implements OnInit {
   column = false
   showModal = false
   showEditModal = false
-  numId = 2
+  numId = 1
+  activeEditIndex = 0
+  showAlertFile = 'Файл'
+  fileData: any = []
+  isLoading = false
 
-  constructor(private request: RequestService) { }
+  constructor(private request: RequestService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.addLotsForm = new FormGroup({
@@ -75,11 +80,24 @@ export class AplicationPageComponent implements OnInit {
       this.AddPartnerData.push({name: addLotsFormData.name, leader: addLotsFormData.leader})
       this.addLotsForm.controls['name'].reset()
     }
-    
+  }
+
+  addEditP() {
+    const editLotsFormData = {...this.editLotsForm.value}
+    if(editLotsFormData.name == '') {
+      alert('Заполните поле')
+    } else {
+      this.editFormData.partners.push({name: editLotsFormData.name, leader: editLotsFormData.leader})
+      this.editLotsForm.controls['name'].reset()
+    }
   }
   
   deletePartner(index: number) {
   this.AddPartnerData.splice(index, 1)
+  }
+
+  deleteEdit(index: number) {
+    this.editFormData.partners.splice(index, 1)
   }
 
   save() {
@@ -95,58 +113,73 @@ export class AplicationPageComponent implements OnInit {
     }
   }   
 
-  closeEditModal() {
+  cahngeEdit() {
+    this.addLotsData[this.activeEditIndex] = this.editLotsForm.value
+    this.addLotsData[this.activeEditIndex].partners = this.editFormData.partners
     this.showEditModal = false
+      
   }
 
   editButton(id: number) {
     this.showEditModal = true
-    this.editFormData = this.editLotsData.filter( (res: any) => res.id == id)[0]
+    this.editFormData = this.editLotsData[id]
     this.editLotsForm.patchValue(this.editFormData)
     this.editLotsForm.controls['name'].reset()
+    this.activeEditIndex = id
   }
 
-  deleteEdit(index: number) {
-    this.editFormData.name.splice(index, 1)
-  }
-
-  addEditP() {
-    const editLotsFormData = {...this.editLotsForm.value}
-    console.log(editLotsFormData);
-    if(editLotsFormData.name == '') {
-      alert('Заполните поле')
-    } else {
-      this.editFormData.name.push({name: editLotsFormData.name, leader: editLotsFormData.leader})
-      this.editLotsForm.controls['name'].reset()
-    }
-  }
-
-  cahngeEdit() {
-    console.log(this.editFormData);
-    
-    // let idData = this.addLotsData.filter( (res: any) => res.id == this.editLotsData[0].id)
-    // console.log(idData);
+  getFile(value: any) {
+    this.showAlertFile = value.target.files[0].name
+    Object.values(value.target.files).forEach( (element: any) => {
+      let reader = new FileReader()
+      reader.readAsDataURL(element)
+      reader.onload = () => {
+        this.fileData.push(reader.result)
+      }
+    })
   }
 
   send() {
     const addLotsFormData = {...this.addLotsForm.value}
-    this.request.postOrderRequests(
-      1,
-      addLotsFormData.Gtotal,
-      addLotsFormData.Gtotal_dol,
-      addLotsFormData.Gtotal_euro,
-      addLotsFormData.Gvat,
-      addLotsFormData.Gvat_dol,
-      addLotsFormData.Gvat_euro,
-      addLotsFormData.Gdiscount,
-      addLotsFormData.Gdiscount_dol,
-      addLotsFormData.Gdiscount_euro,
-      this.addLotsData
-    ).subscribe(response => {
-      console.log(response);
-    }, error => {
-      alert(error.message)
-    })
-  }
-
-}   
+    if(addLotsFormData.Gtotal == '' || addLotsFormData.Gtotal_dol == '' || addLotsFormData.Gtotal_euro == '' || addLotsFormData.Gvat == '' || addLotsFormData.Gvat_dol == '' || addLotsFormData.Gvat_euro == '' || addLotsFormData.Gdiscount == '' || addLotsFormData.Gdiscount_dol == '' || addLotsFormData.Gdiscount_euro == '') {
+      alert('Поле не может быть пустым')
+    } else {
+      this.route.params.subscribe((param: any) => {
+          this.isLoading = true
+          this.request.postOrderRequests(
+            param.id,
+            addLotsFormData.Gtotal,
+            addLotsFormData.Gtotal_dol,
+            addLotsFormData.Gtotal_euro,
+            addLotsFormData.Gvat,
+            addLotsFormData.Gvat_dol,
+            addLotsFormData.Gvat_euro,
+            addLotsFormData.Gdiscount,
+            addLotsFormData.Gdiscount_dol,
+            addLotsFormData.Gdiscount_euro,
+            this.addLotsData,
+            this.fileData
+          ).subscribe(response => {
+            this.isLoading = false
+            alert("Вы успешно добавили")
+            this.router.navigate(['/subscriberorders'])
+          }, error => {
+            this.isLoading = false
+            if(error.status == '401') {
+              this.request.refreshToken().subscribe( (response: any) =>  {
+                localStorage.setItem('access_token', response.access_token)
+                this.isLoading = false
+                location.reload()
+              }, errorToken => {
+                this.isLoading = false
+                alert(errorToken.message)
+              })
+            } else {
+              this.isLoading = false
+              alert(error.message)
+            }
+          })
+        })
+      }
+    }
+}

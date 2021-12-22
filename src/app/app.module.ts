@@ -25,6 +25,7 @@ import { ForgetPageComponent } from './forget-page/forget-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { SubscriberTenderComponent } from './subscriber-tender/subscriber-tender.component';
 import { SubscriberOrdersComponent } from './subscriber-orders/subscriber-orders.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SubscriberOrdersComponent } from './subscriber-orders/subscriber-orders
     AdminPageComponent,
     SubscriberTenderComponent,
     SubscriberOrdersComponent,
+    LoadingComponent,
   ],
   imports: [  
     FormsModule,

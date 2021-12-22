@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <div class="modal_check" *ngIf="modalCheck">
   <div class="modal_check-items_block">
     <i class="fas fa-times" (click)="modalCheck = false"></i>
@@ -47,11 +48,11 @@
           <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
           <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
           <td class="change">
-            <a href="#" [download]="anouncements.file"><i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.status>0" (click)="download(anouncements.file)"></i></a>
+            <i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.status>0" (click)="download(anouncements.file)"></i>
             <i class="fas fa-dollar-sign"  *ngIf="anouncements.price>0 && anouncements.status==null" (click)="modalOpen(idx)"></i>
             <i class="fas fa-undo-alt" *ngIf="anouncements.price>0 && anouncements.status==0"></i>
             <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.fav_id>0 ? 'orange': '#4F4F4F'}" (click)="star(anouncements.fav_id, anouncements.id)"></i>
-            <i routerLink="/application" class="far fa-file-alt"></i>
+            <i [routerLink]="['/application', anouncements.id]" class="far fa-file-alt" *ngIf="anouncements.price<1 || anouncements.status>0"></i>
           </td>
         </tr>
       </tbody>

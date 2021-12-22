@@ -16,16 +16,16 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let payment of paymentsData">
           <td>1</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.tender_title}}</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.price}}</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.users_id}}</td>
-          <td [ngStyle]="{'background': checked ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.price}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.users_id}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.name}}</td>
           <td>
             <span>Проверка</span>
-            <input type="checkbox" class="checkbox" (change)="changeStatus($event, payment.status)">
+            <input type="checkbox" class="checkbox">
           </td>
           <td class="change">
-            <div class="trash_block" (click)="openFile(payment.file)">
+            <div class="trash_block" (click)="openFile(payment.file, payment.id, payment.status)">
               <i class="td_i fas fa-search"></i>
             </div>
           </td>

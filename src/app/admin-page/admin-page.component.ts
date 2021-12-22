@@ -17,6 +17,7 @@ export class AdminPageComponent implements OnInit {
   tableData: any = []
   editShow: number = 0
   page: any
+  isLoading = false
 
   constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
@@ -32,7 +33,15 @@ export class AdminPageComponent implements OnInit {
     this.request.getAdminReq().subscribe(response => {
       this.tableData = response
     }, error => {
-      alert(error.message)
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
   addButton() {
@@ -41,11 +50,26 @@ export class AdminPageComponent implements OnInit {
       this.addText = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
       this.addError = true
     } else {
+      this.isLoading = true
       this.request.postAdminReq(addFormData.addName).subscribe(response => {
         alert("Вы успешно добавили центр")
+        this.isLoading = false
         location.reload()
       }, error => {
-        alert(error.message)
+        this.isLoading = false
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
+            location.reload()
+          }, errorToken => {
+            this.isLoading = false
+            alert(errorToken.message)
+          })
+        } else {
+          this.isLoading = false
+          alert(error.message)
+        }
       })
     }
     
@@ -67,7 +91,15 @@ export class AdminPageComponent implements OnInit {
       this.request.putAdminReq(id, editFormData.name).subscribe(response => {
         location.reload()
       }, error => {
-        alert(error.message);
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+          }, errorToken => {
+            alert(errorToken.message)
+          })
+        } else {
+          alert(error.message)
+        }
       })
     }
   }
@@ -78,7 +110,15 @@ export class AdminPageComponent implements OnInit {
       this.request.deleteAdminReq(id).subscribe(response => {
         location.reload()
       }, error => {
-        alert(error.message)
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+          }, errorToken => {
+            alert(errorToken.message)
+          })
+        } else {
+          alert(error.message)
+        }
       })
     }
   }

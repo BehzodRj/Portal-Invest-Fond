@@ -7,13 +7,12 @@
     <h1>Выход</h1>
   </div>
 </div>
-<div class="menu_container"> 
+<div class="menu_container">
   <div class="menu_block">
     <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()" ></i>
     <h1 routerLink="/adminpayment" routerLinkActive="active" *ngIf="admin">Оплата</h1>
     <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
     <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
-    <h1 routerLink="/application" routerLinkActive="active" *ngIf="subscriber">Добавить лот</h1>
   </div>
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />
@@ -27,7 +26,6 @@
       <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
       <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
       <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>
-      <li><a class="menu__item" routerLink="/application" *ngIf="subscriber">Добавить лот</a></li>
       <li><a class="menu__item signup" (click)="logOut()">Выход</a></li> 
     </ul> 
     

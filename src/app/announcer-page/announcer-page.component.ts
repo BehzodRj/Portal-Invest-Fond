@@ -15,7 +15,17 @@ export class AnnouncerPageComponent implements OnInit {
   ngOnInit() {
     this.request.getAnnouncerLots().subscribe(response => {
       this.annpuncerData = response
-      console.log(response);
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 
