@@ -69,10 +69,10 @@
           </div>
           <h2>Партнеры:</h2>
           <div class="partners__block">
-            <div class="user-part__block"  >
-              <div class="userP" *ngFor="let addPartner of AddPartnerData">
-                <p>{{addPartner.partners}}</p>
-                <div class="trash" (click)="deletePartner()">
+            <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
+              <div class="userP" *ngFor="let addPartner of AddPartnerData; let idx = index">
+                <p [ngStyle]="{'font-weight': addPartner.leader ? 'bold' : 'thin'}">{{addPartner.name}}</p>
+                <div class="trash" (click)="deletePartner(idx)">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
