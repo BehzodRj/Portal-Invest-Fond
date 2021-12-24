@@ -100,6 +100,10 @@ export class AplicationPageComponent implements OnInit {
     this.editFormData.partners.splice(index, 1)
   }
 
+  deleteLots(index: number) {
+    this.addLotsData.splice(index, 1)
+  }
+
   save() {
     const addLotsFormData = {...this.addLotsForm.value}
     if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {

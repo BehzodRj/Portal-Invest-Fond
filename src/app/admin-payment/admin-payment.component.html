@@ -24,8 +24,8 @@
           <td>1</td>
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.name}}</td>
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.price}}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.users_id}}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.payment_id}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.company_name}}</td>
           <td>
             <span>Проверка</span>
             <input type="checkbox" class="checkbox" (change)="statusChange($event, payment.payment_id)">

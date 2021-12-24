@@ -251,6 +251,18 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders', {headers:header})
     }
+
+    // Show OrderLots 
+    getOrderLotsRequests(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/order/' + id, {headers:header})
+    }
+    // End of Show OrderLots 
+
     // End of My Orders
 
     // Add Lots

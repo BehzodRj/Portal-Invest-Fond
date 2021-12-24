@@ -1,0 +1,121 @@
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeFileModal()"></i>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+  </div>
+</div>
+<app-header></app-header>
+<div class="container">
+  <div class="content">
+    <div class="appbar">
+      <h1>Лоты:</h1>
+    </div>
+    <table class="resp-tab">
+      <thead>
+        <tr>
+          <th rowspan="2">Название лота</th>
+          <th rowspan="2">Номер лота</th>
+          <th colspan="3">Сумма без учета НДС</th>
+          <th colspan="3">Сумма без учета НДС</th>
+          <th colspan="3">Сумма с учетом скидки</th>
+          <th  rowspan="2" style="color: #112A4A; font-weight: bold;" >Партнеры</th> 
+        </tr>
+        <tr>  
+          <th>Сомони</th>
+          <th>Доллар</th>
+          <th>Евро</th>
+          <th>Сомони</th>
+          <th>Доллар</th>
+          <th>Евро</th>
+          <th>Сомони</th>
+          <th>Доллар</th>
+          <th>Евро</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orderLots of orderData.lots">
+          <td><span>Название лота </span>{{ orderLots.title }}</td>  
+          <td><span>Номер лота </span>{{ orderLots.lot_number }}</td>
+          <td><span>Сумма без учета НДС </span><div class="currancy">
+            <i>Сомони : <p>{{ orderLots.total }}</p></i>
+            <i>Доллар : <p>{{ orderLots.total_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.total_euro }}</p></i>
+          </div> <pre>{{ orderLots.total }}</pre></td>      
+          <td class="hdd">{{ orderLots.total_dol }}</td> 
+          <td class="hdd">{{ orderLots.total_euro }}</td>
+          <td><span>Сумма с учетом НДС</span><div class="currancy">
+            <i>Сомони : <p>{{ orderLots.vat }}</p></i>
+            <i>Доллар : <p>{{ orderLots.vat_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.vat_euro }}</p></i>
+          </div><pre>{{ orderLots.vat }}</pre> </td>
+          <td class="hdd">{{ orderLots.vat_dol }}</td>      
+          <td class="hdd">{{ orderLots.vat_euro }}</td>
+          <td><span>Сумма с учетом скидки</span><div class="currancy">
+            <i>Сомони : <p>{{ orderLots.discount }}</p></i>
+            <i>Доллар : <p>{{ orderLots.discount_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.discount_euro }}</p></i>
+          </div><pre>{{ orderLots.discount }}</pre> </td>
+          <td class="hdd">{{ orderLots.discount_dol }}</td>      
+          <td class="hdd">{{ orderLots.discount_euro }}</td>  
+          <td><span>Партнеры </span> <h1 style="font-size: 13px;" *ngFor="let orderPartners of orderLots.partners" [ngStyle]="{color: orderPartners.is_lead ? '#000' : '#757575'}">{{ orderPartners.name }}</h1> </td>   
+        </tr> 
+      </tbody>
+    </table>
+  </div>
+  <div class="summa">
+    <form class="summa__nds">
+      <div class="inp-block">
+        <h2>Сумма без учета НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="number" [value]="orderData.total" readonly>
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="number" [value]="orderData.total_dol" readonly>
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="number" [value]="orderData.total_euro" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма с учетом НДС</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="number" [value]="orderData.vat" readonly>
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="number" [value]="orderData.vat_dol" readonly>
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="number" [value]="orderData.vat_euro" readonly>
+          </div>
+        </div>
+      </div>
+      <div class="inp-block">
+        <h2>Сумма с учетом скидки</h2>
+        <div class="space-inp">
+          <div class="inp">
+            <h3>Сомони</h3>
+            <input type="number" [value]="orderData.discount" readonly>
+          </div>
+          <div class="inp">
+            <h3>Доллар</h3>
+            <input type="number" [value]="orderData.discount_dol" readonly>
+          </div>
+          <div class="inp">
+            <h3>Евро</h3>
+            <input type="number" [value]="orderData.discount_euro" readonly>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button class="items_block regist_block" (click)="openFileModal(orderData.order_files)">Файлы</button>
+  </div>  
+</div>

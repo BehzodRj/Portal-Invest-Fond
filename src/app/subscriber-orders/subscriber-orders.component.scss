@@ -147,6 +147,26 @@
                 color: #000;
             }
             &:nth-child(10) {
+              border: 1px solid #000;
+              border-left: none;
+              color: #000;
+
+              i {
+                &:active {
+                  transform: scale(.95);
+                }
+              }
+
+              .fa-eye {
+                cursor: pointer;
+              }
+
+              .fa-edit {
+                margin-left: 20px;
+                cursor: pointer;
+              }
+          }
+            &:nth-child(11) {
               display: none;
               width: 15px;
             }

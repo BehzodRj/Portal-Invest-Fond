@@ -24,7 +24,7 @@
           <td colspan="3" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-          <td><span>№</span>{{ idx }}</td>
+          <td><span>№</span>{{ idx + 1 }}</td>
           <td>
             <span>Название</span>
             <div class="td_block">

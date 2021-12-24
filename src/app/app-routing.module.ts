@@ -21,6 +21,8 @@ import { FavouritesPageComponent } from './favourites-page/favourites-page.compo
 import { SubscribeGuard } from './subscribe.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
+import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscriberorders', component: SubscriberOrdersComponent, canActivate: [SubscribeGuard] },
+  { path: 'subscriberorderslot/:id', component: SubscriberorderslotPageComponent, canActivate: [SubscribeGuard] },
+  { path: 'subscriberorderslotchange/:id', component: SubscriberorderslotchangePageComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] },
   { path: 'result', component: ResultPageComponent },
   { path: '**', component: ErrorPageComponent }

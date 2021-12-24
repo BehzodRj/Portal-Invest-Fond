@@ -1,13 +1,22 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeFileModal()"></i>
+    <!--  " -->
+    <div class="editFile_block" *ngFor="let fle of dowFile; let idx = index">
+      <h1 (click)="download(fle.file)">Файл {{idx + 1}}</h1>
+      <i class="fas fas fa-trash"></i>
+    </div>
+  </div>
+</div>
 <app-header></app-header>
-<div class="modal-datas_container" *ngIf="showModal">
+<div class="modal-datas_container" *ngIf="creatModalShow">
   
   <div class="modal-datas_block">   
-    <div class="close" (click)='showModal = false'>
-      <i class="fa fa-times"></i>
+    <div class="close">
+      <i class="fa fa-times" (click)="creatModalShow = false"></i>
     </div>
     <div class="cont__form"> 
-        <form [formGroup]="addLotsForm">
+        <form [formGroup]="addOrderForm">
           <h3>Добавить лот:</h3>
           <div class="form__block">
             <div class="inp__block">
@@ -68,10 +77,10 @@
           </div>
           <h2>Партнеры:</h2>
           <div class="partners__block">
-            <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
-              <div class="userP" *ngFor="let addPartner of AddPartnerData; let idx = index">
-                <p [ngStyle]="{'font-weight': addPartner.leader ? 'bold' : 'thin'}">{{addPartner.name}}</p>
-                <div class="trash" (click)="deletePartner(idx)">
+            <div class="user-part__block">
+              <div class="userP" *ngFor="let addPartners of partnersLocalData; let idx = index">
+                <p [ngStyle]="{color: addPartners.is_lead ? '#000' : '#757575'}">{{ addPartners.name }}</p>
+                <div class="trash" (click)="deleteLocalPartners(idx)">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
@@ -80,18 +89,18 @@
             <div class="lider__block">
               <div class="inp">
                 <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер" formControlName="name">
+                <input type="text" placeholder="Партнер" formControlName="partners">
               </div>
               <div class="inp check">
                 <input type="text" placeholder="Лидер" readonly>
                 <input type="checkbox" class="checkbox" formControlName="leader">
               </div>
-              <button style="border: none; cursor: pointer;" (click)="addP()">
+              <button style="border: none; cursor: pointer;" (click)="addLocalPartners()">
                 <i class="fa fa-plus"></i>
               </button>
             </div>
-            <div class="btn">
-              <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
+            <div class="btn"(click)="addLot()">
+              <button>СОХРАНИТЬ ЛОТ</button>
             </div>
           </div>
         </form>
@@ -102,25 +111,25 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal-datas_container" *ngIf="showEditModal">
+<div class="modal-datas_container" *ngIf="editModalShow">
   
   <div class="modal-datas_block">   
-    <div class="close" (click)='showEditModal = false'>
-      <i class="fa fa-times"></i>
+    <div class="close">
+      <i class="fa fa-times" (click)="editModalShow = false"></i>
     </div>
     <div class="cont__form"> 
-        <form [formGroup]="editLotsForm">
+        <form [formGroup]="editOrderForm">
           <h3>Изменить лот:</h3>
           <div class="form__block">
             
             <div class="inp__block">
               <div class="inp">
                 <h1>Номер Лота:</h1>
-                <input type="number" formControlName="lot_number">
+                <input type="number" placeholder="Описание" formControlName="lot_number">
               </div>
               <div class="inp lots-name">
                 <h1>Название лота</h1>
-                <input type="text" formControlName="title">
+                <input type="text" placeholder="Описание" formControlName="title">
               </div>
             </div>
             <h2>Сумма без учета НДС</h2>
@@ -171,10 +180,10 @@
           </div>
           <h2>Партнеры:</h2>
           <div class="partners__block">
-            <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
-              <div class="userP" *ngFor="let partners of editFormData.partners; let idx = index">
-                <p [ngStyle]="{'font-weight': partners.leader ? 'bold' : 'thin'}">{{ partners.name }}</p>
-                <div class="trash" (click)="deleteEdit(idx)">
+            <div class="user-part__block">
+              <div class="userP" *ngFor="let editPartners of editOrderData.partners">
+                <p [ngStyle]="{color: editPartners.is_lead ? '#000' : '#757575'}">{{ editPartners.name }}</p>
+                <div class="trash">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
@@ -182,18 +191,18 @@
             <div class="lider__block">
               <div class="inp">
                 <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер" formControlName="name">
+                <input type="text" placeholder="Партнер">
               </div>
               <div class="inp check">
                 <input type="text" placeholder="Лидер" readonly>
-                <input type="checkbox" class="checkbox" formControlName="leader">
+                <input type="checkbox" class="checkbox">
               </div>
-              <button style="border: none; cursor: pointer;" (click)="addEditP()">
+              <button style="border: none; cursor: pointer;">
                 <i class="fa fa-plus"></i>
               </button>
             </div>
             <div class="btn">
-              <button (click)="cahngeEdit()">ИЗМЕНИТЬ ЛОТ</button>
+              <button>ИЗМЕНИТЬ ЛОТ</button>
             </div>
           </div>
         </form>
@@ -211,7 +220,7 @@
       <h1>Лоты:</h1>
       <h1>
         <div class="plus">
-          <div class="plus__block"  (click)="showModal = true">
+          <div class="plus__block" (click)="creatModalShow = true">
             <i class="fa fa-plus"></i>
           </div>
         </div>
@@ -241,33 +250,33 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let addLots of addLotsData; let idx = index">
-          <td><span>Название лота </span>{{ addLots.title }}</td>  
-          <td><span>Номер лота </span>{{ addLots.lot_number }}</td>
+        <tr *ngFor="let orderLots of orderData[0]?.lots; let idx = index">
+          <td><span>Название лота </span>{{ orderLots.title }}</td>  
+          <td><span>Номер лота </span>{{ orderLots.lot_number }}</td>
           <td><span>Сумма без учета НДС </span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.total }}</p></i>
-            <i>Доллар : <p>{{ addLots.total_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.total_euro }}</p></i>
-          </div> <pre>{{ addLots.total }}</pre></td>      
-          <td class="hdd"> {{ addLots.total_dol }} </td> 
-          <td class="hdd"> {{ addLots.total_euro }} </td>
+            <i>Сомони : <p>{{ orderLots.total }}</p></i>
+            <i>Доллар : <p>{{ orderLots.total_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.total_euro }}</p></i>
+          </div> <pre>{{ orderLots.total }}</pre></td>      
+          <td class="hdd">{{ orderLots.total_dol }}</td> 
+          <td class="hdd">{{ orderLots.total_euro }}</td>
           <td><span>Сумма с учетом НДС</span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.vat }}</p></i>
-            <i>Доллар : <p>{{ addLots.vat_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.vat_euro }}</p></i>
-          </div><pre>{{ addLots.vat }}</pre> </td>
-          <td class="hdd">{{ addLots.vat_dol }}</td>      
-          <td class="hdd">{{ addLots.vat_euro }}</td>
+            <i>Сомони : <p>{{ orderLots.vat }}</p></i>
+            <i>Доллар : <p>{{ orderLots.vat_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.vat_euro }}</p></i>
+          </div><pre>{{ orderLots.vat }}</pre> </td>
+          <td class="hdd">{{ orderLots.vat_dol }}</td>      
+          <td class="hdd">{{ orderLots.vat_euro }}</td>
           <td><span>Сумма с учетом скидки</span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.discount }}</p></i>
-            <i>Доллар : <p>{{ addLots.discount_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.discount_euro }}</p></i>
-          </div><pre>{{ addLots.discount }}</pre> </td>
-          <td class="hdd">{{ addLots.discount_dol }}</td>      
-          <td class="hdd">{{ addLots.discount_euro }}</td>  
-          <td><span>Партнеры </span> <h1 style="font-size: 13px;" *ngFor="let item of addLots.partners" [ngStyle]="{'color': item.leader ? '#000' : '#757575'}">{{item.name}}</h1> </td>  
+            <i>Сомони : <p>{{ orderLots.discount }}</p></i>
+            <i>Доллар : <p>{{ orderLots.discount_dol }}</p></i>
+            <i>Евро : <p>{{ orderLots.discount_euro }}</p></i>
+          </div><pre>{{ orderLots.discount }}</pre> </td>
+          <td class="hdd">{{ orderLots.discount_dol }}</td>      
+          <td class="hdd">{{ orderLots.discount_euro }}</td>  
+          <td><span>Партнеры </span> <h1 style="font-size: 13px;" *ngFor="let orderPartners of orderLots.partners" [ngStyle]="{color: orderPartners.is_lead ? '#000' : '#757575'}">{{ orderPartners.name }}</h1> </td>  
           <td class="change"> 
-            <div class="trash__block" (click)="editButton(idx)">
+            <div class="trash__block" (click)="openEditModal(idx)">
               <i class="fas fa-pencil-alt"></i>
             </div>
             <div class="trash__block" (click)="deleteLots(idx)"> 
@@ -279,21 +288,21 @@
     </table>
   </div>
   <div class="summa">
-    <form class="summa__nds" [formGroup]="addLotsForm">
+    <form class="summa__nds" [formGroup]="globalOrderForm">
       <div class="inp-block">
         <h2>Сумма без учета НДС</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
-            <input type="number" placeholder="Описание" formControlName="Gtotal">
+            <input type="number" placeholder="Описание" formControlName="total">
           </div>
           <div class="inp">
             <h3>Доллар</h3>
-            <input type="number" placeholder="Описание" formControlName="Gtotal_dol">
+            <input type="number" placeholder="Описание" formControlName="total_dol">
           </div>
           <div class="inp">
             <h3>Евро</h3>
-            <input type="number" placeholder="Описание" formControlName="Gtotal_euro">
+            <input type="number" placeholder="Описание" formControlName="total_euro">
           </div>
         </div>
       </div>
@@ -302,15 +311,15 @@
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
-            <input type="number" placeholder="Описание" formControlName="Gvat">
+            <input type="number" placeholder="Описание" formControlName="vat">
           </div>
           <div class="inp">
             <h3>Доллар</h3>
-            <input type="number" placeholder="Описание" formControlName="Gvat_dol">
+            <input type="number" placeholder="Описание" formControlName="vat_dol">
           </div>
           <div class="inp">
             <h3>Евро</h3>
-            <input type="number" placeholder="Описание" formControlName="Gvat_euro">
+            <input type="number" placeholder="Описание" formControlName="vat_euro">
           </div>
         </div>
       </div>
@@ -319,15 +328,15 @@
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
-            <input type="number" placeholder="Описание" formControlName="Gdiscount">
+            <input type="number" placeholder="Описание" formControlName="discount">
           </div>
           <div class="inp">
             <h3>Доллар</h3>
-            <input type="number" placeholder="Описание" formControlName="Gdiscount_dol">
+            <input type="number" placeholder="Описание" formControlName="discount_dol">
           </div>
           <div class="inp">
             <h3>Евро</h3>
-            <input type="number" placeholder="Описание" formControlName="Gdiscount_euro">
+            <input type="number" placeholder="Описание" formControlName="discount_euro">
           </div>
         </div>
       </div>
@@ -335,12 +344,14 @@
     <div class="items_block regist_block">
       <label for="file">Файл</label>
       <div class="file_block">
-        <h1>{{showAlertFile}}</h1>
-        <input type="file" multiple accept=".pdf" (change)="getFile($event)" formControlName="file">
+        <h1>Файл</h1>
+        <input type="file" multiple accept=".pdf">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
-      <button (click)="send()">Отправить</button>
+    <div class="filesData_block">
+      <button (click)="openFileModal(orderData[0].order_files)">Файлы</button>
+    </div>
+      <button>Отправить</button>
   </div>  
 </div>
- 
