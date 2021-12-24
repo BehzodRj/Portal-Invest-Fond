@@ -6,22 +6,22 @@
   </div>
 
   <form class="form" [formGroup]="formTender">
-    <div class="items_block" [ngStyle]="{border: formTender.get('name').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block" [ngStyle]="{border: formTender.get('name').invalid && formTender.get('name').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Название</label>
       <input type="text" [placeholder]="showAlertName" formControlName="name">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('centerID').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('centerID').invalid && formTender.get('centerID').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Центр ID</label>
       <input type="number" [placeholder]="showAlertCenterID" formControlName="centerID">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid && formTender.get('method').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Метод</label>
       <input type="text" [placeholder]="showAlertMethod" formControlName="method">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendType').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendType').invalid && formTender.get('sendType').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="select">Тип проведения</label>
       <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="sendType">
         <option>однофазный</option>
@@ -29,12 +29,12 @@
       </select>
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid && formTender.get('sendDate').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="date">Дата проведения</label>
       <input type="date" style="text-indent: 3px;" formControlName="sendDate">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid && formTender.get('file').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="file">Файл</label>
       <div class="file_block">
         <h1>{{showAlertFile}}</h1>
@@ -43,17 +43,17 @@
       </div>
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('lots').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('lots').invalid && formTender.get('lots').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Колличество лотов</label>
       <input type="number" [placeholder]="showAlertLots" formControlName="lots">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('price').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('price').invalid && formTender.get('price').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Взнос</label>
       <input type="number" [placeholder]="showAlertPrice" formControlName="price">
     </div>
 
-    <button (click)="send()">ДОБАВИТЬ ЛОТ</button>
+    <button [disabled]="formTender.invalid" (click)="send()">ДОБАВИТЬ ЛОТ</button>
 
   </form>
 </div>

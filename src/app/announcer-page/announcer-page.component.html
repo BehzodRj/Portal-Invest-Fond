@@ -30,22 +30,22 @@
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let announcer of annpuncerData">
-          <td><span>№</span>{{announcer.id}}</td>
+          <td><span>№</span>{{announcer.anouncement_id}}</td>
           <td><span>Название</span>{{announcer.name}}</td>
-          <td><span>ID</span>{{announcer.id}}</td>
+          <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
           <td><span>Взнос</span>{{announcer.price}}</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-          <td class="change" [routerLink]="['/announcerform', announcer.id]">
-            <h1>123</h1>
+          <td class="change" [routerLink]="['/announcerform', announcer.anouncement_id]">
+            <h1>{{ announcer.total }}</h1>
             <i class="fas fa-search"></i>
           </td>
           <td class="download" style="width: 10px;">
             <span>Действие</span>
-            <div class="trash_block" (click)="openModal(announcer.files)">
+            <div class="trash_block" (click)="openModal(announcer.anouncement_files)">
             <i class="fas fa-download"></i>
             </div>
           </td>

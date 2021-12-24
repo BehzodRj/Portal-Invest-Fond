@@ -11,6 +11,7 @@
   <div class="menu_block">
     <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()" ></i>
     <h1 routerLink="/adminpayment" routerLinkActive="active" *ngIf="admin">Оплата</h1>
+    <h1 routerLink="/result" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
     <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
     <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
   </div>
@@ -23,6 +24,7 @@
       <li><a class="menu__item" routerLink="/admin" *ngIf="admin">Центры</a></li>
       <li><a class="menu__item" routerLink="/adminpayment" *ngIf="admin">Оплата</a></li>
       <li><a class="menu__item" routerLink="/announcer" *ngIf="anouncer">Обявления</a></li>
+      <li><a class="menu__item" routerLink="/result" *ngIf="anouncer">Результат</a></li>
       <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
       <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
       <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>

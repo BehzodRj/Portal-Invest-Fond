@@ -78,7 +78,7 @@ export class RequestService {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Accept': "application/json"
         })
-        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "file": file}, {headers:header})
+        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "files": file}, {headers:header})
     }
 
     getAnnouncerLots() {
@@ -165,7 +165,7 @@ export class RequestService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.post(this.url + '/api/auth/projects/create', {"project_center_id": id, "project_name": name, "email": email}, {headers:header})
+        return this.http.post(this.url + '/api/auth/projects/create', {"projects_center_id": id, "project_name": name, "email": email}, {headers:header})
     }
 
     putAdminProReq(id: number, name: string, email: string) {
@@ -217,7 +217,7 @@ export class RequestService {
             'token_type': 'bearer',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.post(this.url + '/api/auth/favorites', {"anouncements_id": anouncements_id}, {headers:header})
+        return this.http.post(this.url + '/api/auth/favorites', {"anouncement_id": anouncements_id}, {headers:header})
     }
     
     deleteFavoutitesRequests(id: number) {
@@ -275,7 +275,7 @@ export class RequestService {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
         return this.http.post(this.url + '/api/auth/orders', {
-            "anouncements_id": anouncements_id, 
+            "anouncement_id": anouncements_id, 
             "total": total, 
             "total_dol": total_dol, 
             "total_euro": total_euro,
@@ -292,5 +292,16 @@ export class RequestService {
     // End of Add Lots
 
     //  End of Subscriber
+
+    // Result Page
+    getResultReq(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/protokol/' + id, {headers: header})
+    }
+    // End of Result Page
 
 }

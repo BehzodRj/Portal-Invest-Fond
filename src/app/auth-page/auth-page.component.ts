@@ -11,6 +11,7 @@ import jwt_decode from "jwt-decode";
 })
 export class AuthPageComponent implements OnInit {
  form!: FormGroup 
+ changeType: any = 'password'
  showAlertEmail = 'Ваш E-mail'
  showAlertPassword = 'Пароль'
  isLoading = false

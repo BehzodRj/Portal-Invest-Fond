@@ -11,71 +11,76 @@
   </div>
 
   <form class="form" [formGroup]="registerForm">
-    <div class="items_block" [ngStyle]="{border: registerForm.get('name').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block" [ngStyle]="{border: registerForm.get('name').invalid && registerForm.get('name').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Имя</label>
       <input type="text" [placeholder]="showAlertsName" formControlName="name">
     </div>
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('last_name').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('last_name').invalid && registerForm.get('last_name').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Фамилия</label>
       <input type="text" [placeholder]="showAlertsLast_name" formControlName="last_name">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('middle_name').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('middle_name').invalid && registerForm.get('middle_name').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Отчество</label>
       <input type="text" [placeholder]="showAlertsMiddle_name" formControlName="middle_name">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('password').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('password').invalid && registerForm.get('password').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="password">Пароль</label>
       <input type="password" [placeholder]="showAlertsPassword" formControlName="password">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('division').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('return_password').invalid && registerForm.get('return_password').touched ? '1px  solid red' : '1px  solid #000'}">
+      <label for="return_password">Подтверждение пароля</label>
+      <input type="password" [placeholder]="showAlertsReturnPassword" formControlName="return_password">
+    </div>
+
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('division').invalid && registerForm.get('division').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Должность</label>
       <input type="text" [placeholder]="showAlertsDivision" formControlName="division">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('company_name').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('company_name').invalid && registerForm.get('company_name').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Наименование компании</label>
       <input type="text" [placeholder]="showAlertsCompanyName" formControlName="company_name">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('inn').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('inn').invalid && registerForm.get('inn').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">ИНН</label>
       <input type="number" [placeholder]="showAlertsInn" formControlName="inn">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('regCompany1').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('regCompany1').invalid && registerForm.get('regCompany1').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Место регистрация компании</label>
       <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" [placeholder]="showAlertsRegCompany" formControlName="regCompany1">
       <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрация 2" formControlName="regCompany2">
       <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрация 3" formControlName="regCompany3">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('phone').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('phone').invalid && registerForm.get('phone').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Номер телефона</label>
       <input type="number" [placeholder]="showAlertsPhone" formControlName="phone">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('email').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('email').invalid && registerForm.get('email').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="email">Ваш E-mail</label>
       <input type="email" [placeholder]="showAlertsEmail" formControlName="email">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('country').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('country').invalid && registerForm.get('country').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Страна</label>
       <input type="text" [placeholder]="showAlertsCountry" formControlName="country">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('city').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('city').invalid && registerForm.get('city').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Город</label>
       <input type="text" [placeholder]="showAlertsCity" formControlName="city">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('postalCode').invalid ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('postalCode').invalid && registerForm.get('postalCode').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Почтовый индекс</label>
       <input type="number" [placeholder]="showAlertsPostal" formControlName="postalCode">
     </div>
-    <button type="submit" (click)="registration()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+    <button type="submit" [disabled]="registerForm.invalid" (click)="registration()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
   </form>
 </div>

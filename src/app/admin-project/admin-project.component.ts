@@ -19,13 +19,14 @@ export class AdminProjectComponent implements OnInit {
   editShow: number = 0
   page: any
   isLoading = false
+  inputColor = false
 
   constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
   ngOnInit() {
     this.addForm = new FormGroup({
       addName: new FormControl('', Validators.required),
-      addEmail: new FormControl('', Validators.required),
+      addEmail: new FormControl('', [Validators.required, Validators.email]),
     })
     
     this.editForm = new FormGroup({
@@ -85,6 +86,10 @@ export class AdminProjectComponent implements OnInit {
 
   itemClick(id: number){
     this.editShow = id;
+    this.inputColor = true
+    let patchData = this.tableData.filter( (res: any) => res.project_id == id)[0]
+    this.editForm.controls['name'].patchValue(patchData.name)
+    this.editForm.controls['email'].patchValue(patchData.email)
   }
   
   changeButton(id: number) {

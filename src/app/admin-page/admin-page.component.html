@@ -15,23 +15,23 @@
       <tbody class="pains">
         <tr class="add_block" *ngIf="editShow==0">
           <td style="border: #fff;"></td>
-          <td colspan="2" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addForm.get('addName').invalid ? '1px solid red' : '1px solid #000'}">
+          <td colspan="2" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addForm.get('addName').invalid && addForm.get('addName').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Название</h1>
               <input type="text" [placeholder]="addText" formControlName="addName">
             </form>
           </td>
-          <td colspan="3" style="border: none;"><button (click)="addButton()">Добавить</button></td>
+          <td colspan="3" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{ idx }}</td>
           <td>
             <span>Название</span>
             <div class="td_block">
-              <h1 *ngIf="editShow != items.id">{{ items.name }}</h1>
+              <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
 
-              <form [formGroup]="editForm" *ngIf="editShow == items.id">
-                <input type="text" [placeholder]="items.name" formControlName="name">
+              <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
+                <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
               </form>
             </div>
           </td>
@@ -39,28 +39,28 @@
 
           <td><span>ID</span>
             <div class="td_block">
-              <h1>{{ items.id }}</h1>
+              <h1>{{ items.projects_center_id }}</h1>
             </div>
           </td>
 
-          <td class="change" (click)="itemClick(items.id)" *ngIf="editShow != items.id">
+          <td class="change" (click)="itemClick(items.projects_center_id)" *ngIf="editShow != items.projects_center_id">
             <div class="trash_block">
               <i class="td_i fas fa-pencil-alt"></i>
             </div>
           </td>
 
-          <td class="change" *ngIf="editShow != items.id">
-            <div class="trash_block" (click)="adminProject(items.id)">
+          <td class="change" *ngIf="editShow != items.projects_center_id">
+            <div class="trash_block" (click)="adminProject(items.projects_center_id)">
               <i class="td_i fas fa-chevron-right"></i>
             </div>
           </td>
 
           <td class="change">
-            <div class="trash_block" *ngIf="editShow != items.id" (click)="deleteItem(items.id, items.name)">
+            <div class="trash_block" *ngIf="editShow != items.projects_center_id" (click)="deleteItem(items.projects_center_id, items.name)">
               <i class="fas fa-trash"></i>
             </div>
 
-            <div class="trash_block" *ngIf="editShow == items.id" (click)="changeButton(items.id)">
+            <div class="trash_block" *ngIf="editShow == items.projects_center_id" (click)="changeButton(items.projects_center_id)">
               <i>ОК</i>
             </div>
           </td>

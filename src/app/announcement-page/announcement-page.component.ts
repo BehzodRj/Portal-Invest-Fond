@@ -47,11 +47,13 @@ export class AnnouncementPageComponent implements OnInit {
     this.activeAnounsment = id
   }
   modalSend() {
+    console.log(this.anouncement[this.activeAnounsment]);
+    
     if(this.fileData.length < 1) {
       alert('Поле не может быть пустым')
     } else {
       this.isLoading = true
-      this.request.postAnnouncementCheck( this.anouncement[this.activeAnounsment].id, this.fileData).subscribe(response => {
+      this.request.postAnnouncementCheck( this.anouncement[this.activeAnounsment].anouncement_id, this.fileData).subscribe(response => {
         this.isLoading = false
         this.modalCheck = false
         this.anouncement[this.activeAnounsment].status=0;

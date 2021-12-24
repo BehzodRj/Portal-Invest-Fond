@@ -16,31 +16,31 @@
         <tr class="add_block" *ngIf="editShow==0">
           <td style="border: #fff;"></td>
 
-          <td [ngStyle]="{'border': addForm.get('addName').invalid ? '1px solid red' : '1px solid #000'}">
+          <td [ngStyle]="{'border': addForm.get('addName').invalid && addForm.get('addName').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Название</h1>
               <input type="text" [placeholder]="placeName" formControlName="addName">
             </form>
           </td>
 
-          <td [ngStyle]="{'border': addForm.get('addEmail').invalid ? '1px solid red' : '1px solid #000'}">
+          <td [ngStyle]="{'border': addForm.get('addEmail').invalid && addForm.get('addEmail').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
               <h1>Email</h1>
               <input type="text" [placeholder]="placeEmail" formControlName="addEmail">
             </form>
           </td>
 
-          <td colspan="2" style="border: none;"><button (click)="addButton()">Добавить</button></td>
+          <td colspan="2" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}">
-          <td><span>№</span>{{ items.id }}</td>
+          <td><span>№</span>{{ items.project_id }}</td>
           <td>
             <span>Название</span>
             <div class="td_block">
-              <h1 *ngIf="editShow != items.id">{{ items.name }}</h1>
+              <h1 *ngIf="editShow != items.project_id">{{ items.name }}</h1>
 
-              <form [formGroup]="editForm" *ngIf="editShow == items.id">
-                <input type="text" [placeholder]="items.name" formControlName="name">
+              <form [formGroup]="editForm" *ngIf="editShow == items.project_id">
+                <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
               </form>
             </div>
           </td>
@@ -48,26 +48,26 @@
           <td>
             <span>Email</span>
             <div class="td_block">
-              <h1 *ngIf="editShow != items.id">{{ items.email }}</h1>
+              <h1 *ngIf="editShow != items.project_id">{{ items.email }}</h1>
 
-              <form [formGroup]="editForm" *ngIf="editShow == items.id">
-                <input type="text" [placeholder]="items.email" formControlName="email">
+              <form [formGroup]="editForm" *ngIf="editShow == items.project_id">
+                <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="email">
               </form>
             </div>
           </td>
 
-          <td class="change" (click)="itemClick(items.id)" *ngIf="editShow != items.id">
+          <td class="change" (click)="itemClick(items.project_id)" *ngIf="editShow != items.project_id">
             <div class="trash_block">
               <i class="td_i fas fa-pencil-alt"></i>
             </div>
           </td>
 
           <td class="change">
-            <div class="trash_block" *ngIf="editShow != items.id" (click)="deleteItem(items.id, items.name)">
+            <div class="trash_block" *ngIf="editShow != items.project_id" (click)="deleteItem(items.project_id, items.name)">
               <i class="fas fa-trash"></i>
             </div>
 
-            <div class="trash_block" *ngIf="editShow == items.id" (click)="changeButton(items.id)">
+            <div class="trash_block" *ngIf="editShow == items.project_id" (click)="changeButton(items.project_id)">
               <i>ОК</i>
             </div>
           </td>

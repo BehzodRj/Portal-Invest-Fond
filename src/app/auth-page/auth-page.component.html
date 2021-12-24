@@ -17,7 +17,10 @@
 
     <div class="items_block password_block">
       <label for="password">Пароль</label>
-      <input type="password" [placeholder]="showAlertPassword" *ngIf="showAlertPassword" formControlName="password">
+      <div class="pass_item">
+        <input [type]="changeType ? 'password' : 'text' " [placeholder]="showAlertPassword" *ngIf="showAlertPassword" formControlName="password">
+        <i class="far fa-eye" (click)="changeType = !changeType"></i>
+      </div>
     </div>
     <button type="submit">ВОЙТИ</button>
   </form>

@@ -1,159 +1,126 @@
 <app-header></app-header>
-<div class="container">
+<div class="container" style="border: 1px solid #000;">
   <div class="content__opening">
     <h3>Minutes of ITT Opening</h3>
     <div class="table">
       <div class="blockLeft">Project Name</div>
-      <div class="blockRight">Dushanbe Public Transport Extension</div>
+      <div class="blockRight">{{ resultData.projects_center_name }}</div>
     </div>
     <div class="table">
       <div class="blockLeft">EBRD Project ID</div>
-      <div class="blockRight">39989</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Country</div>
-      <div class="blockRight">Tajikistan</div>
+      <div class="blockRight">{{ resultData.project_id }}</div>
     </div>
     <div class="table">
       <div class="blockLeft">Tender Exercise Name</div>
-      <div class="blockRight">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
+      <div class="blockRight">{{ resultData.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">ECEPP Tender Exercise ID</div>
+      <div class="blockRight">{{ resultData.project_center_anouncement_id }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Type Of Procurement</div>
+      <div class="blockRight">{{ resultData.type_of_procurement }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Procurement Method</div>
+      <div class="blockRight">{{ resultData.procurement_method }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Client Name</div>
+      <div class="blockRight">{{ resultData.project_name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Number Of Responses Received</div>
+      <div class="blockRight">{{ resultData.orders?.length }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Date and Time of Opening</div>
+      <div class="blockRight">{{ resultData.open_date }}</div>
+    </div>
+    <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
+      *ngFor="let result of resultData.orders | paginate: {itemsPerPage: 2, currentPage: page}">
+      <div class="content__details">
+        <h3>ITT details for each response:</h3>
+        <div class="response_details">
+          <h4>Response details:</h4>
+          <div class="details-block">
+            <div class="blockLeft">Time received:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Name of Respondent:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Is JVCA?:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Response Security Submitted:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+        </div>
+        <div class="response_address">
+          <h4>Respondend address:</h4>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 1:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 2:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 3:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Postal Code:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Town:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Country:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">ECEPP Tender</div>
-      <div class="blockRight">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-      </div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Project Name</div>
-      <div class="blockRight">Dushanbe Public Transport Extension</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">EBRD Project ID</div>
-      <div class="blockRight">39989</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Country</div>
-      <div class="blockRight">Tajikistan</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Tender Exercise Name</div>
-      <div class="blockRight">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-      </div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">ECEPP Tender</div>
-      <div class="blockRight">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
+      <div class="content__lots" *ngFor="let resultLots of result.lots">
+        <h3>Lots:</h3>
+        <div class="lots__block">
+          <div class="lots-table">
+            <div class="blockLeft">Lot NO</div>
+            <div class="blockRight">{{ resultLots.lot_number }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Lot Title</div>
+            <div class="blockRight">{{ resultLots.title }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Total Amount of Lot Excluding VAT and Discounts:</div>
+            <div class="blockRight">{{ resultLots.total | currency: 'TJS ' }}, {{ resultLots.total_dol | currency }},
+              {{ resultLots.total_euro | currency: 'EU ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">VAT Amount:</div>
+            <div class="blockRight">{{ resultLots.vat | currency: 'TJS ' }}, {{ resultLots.vat_dol | currency }},
+              {{ resultLots.vat_euro | currency: 'EU ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Grand Total Including VAT But Excluding Discounts:</div>
+            <div class="blockRight">{{ resultLots.discount | currency: 'TJS ' }},
+              {{ resultLots.discount_dol | currency }}, {{ resultLots.discount_euro | currency: 'EU ' }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="content__details">
-    <h3>ITT details for each response</h3>
-    <div class="response_details">
-      <h4>Response Details</h4>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-    </div>
-    <div class="response_address">
-      <h4>Response Address</h4>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-      <div class="details-block">
-        <div class="blockLeft">Time received</div>
-        <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-      </div>
-    </div>
-  </div>
-  <div class="content__lots">
-    <h3>Lots</h3>
-    <div class="lots__block">
-      <div class="lots-table">
-        <div class="blockLeft">Project Name</div>
-        <div class="blockRight">Dushanbe Public Transport Extension</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">EBRD Project ID</div>
-        <div class="blockRight">39989</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Country</div>
-        <div class="blockRight">Tajikistan</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Tender Exercise Name</div>
-        <div class="blockRight">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-        </div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Country</div>
-        <div class="blockRight">Tajikistan</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Tender Exercise Name</div>
-        <div class="blockRight">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-        </div>
-      </div>
-    </div>
-    <div class="lots__block">
-      <div class="lots-table">
-        <div class="blockLeft">Project Name</div>
-        <div class="blockRight">Dushanbe Public Transport Extension</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">EBRD Project ID</div>
-        <div class="blockRight">39989</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Country</div>
-        <div class="blockRight">Tajikistan</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Tender Exercise Name</div>
-        <div class="blockRight">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-        </div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Country</div>
-        <div class="blockRight">Tajikistan</div>
-      </div>
-      <div class="lots-table">
-        <div class="blockLeft">Tender Exercise Name</div>
-        <div class="blockRight">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta?
-        </div>
-      </div>
-    </div>
+  <div class="creat">
+    <pagination-controls previousLabel="Назад" nextLabel="Далее" (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>
 <app-footer-page></app-footer-page>

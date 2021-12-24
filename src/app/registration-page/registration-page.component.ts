@@ -11,6 +11,7 @@ import { RequestService } from '../all.service';
 export class RegistrationPageComponent implements OnInit {
   isLoading = false
   registerForm!: any
+  changeColor = false
   showAlertsName = "Имя"
   showAlertsLast_name = "Фамилия"
   showAlertsMiddle_name = "Отчество"
@@ -21,6 +22,7 @@ export class RegistrationPageComponent implements OnInit {
   showAlertsEmail = "Ваш E-mail"
   showAlertsPhone = "Номер телефона"
   showAlertsPassword = "Пароль"
+  showAlertsReturnPassword = "Подтверждение пароля"
   showAlertsCountry = "Страна"
   showAlertsCity = "Город"
   showAlertsPostal = "Почтовый индекс"
@@ -42,15 +44,17 @@ export class RegistrationPageComponent implements OnInit {
       email: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
+      return_password: new FormControl('', Validators.required),
       country: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       postalCode: new FormControl('', Validators.required)
     })
+    console.log(this.registerForm.controls['name'].invalid);
   }
 
   registration() {
     const registerFormData = {...this.registerForm.value}
-    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.regCompany == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '' || registerFormData.country == '' || registerFormData.city == '' || registerFormData.postalCode == '') {
+    if(registerFormData.name == '' || registerFormData.last_name == '' || registerFormData.middle_name == '' || registerFormData.company_name == '' || registerFormData.division == '' || registerFormData.regCompany == '' || registerFormData.inn == '' || registerFormData.email == '' || registerFormData.phone == '' || registerFormData.password == '' || registerFormData.return_password == '' || registerFormData.country == '' || registerFormData.city == '' || registerFormData.postalCode == '') {
       this.showAlertsName = 'Поля не может быть пустым'
       this.showAlertsLast_name = 'Поля не может быть пустым'
       this.showAlertsMiddle_name = 'Поля не может быть пустым'
@@ -60,10 +64,13 @@ export class RegistrationPageComponent implements OnInit {
       this.showAlertsInn = 'Поля не может быть пустым'
       this.showAlertsEmail = 'Поля не может быть пустым'
       this.showAlertsPassword = 'Поля не может быть пустым',
+      this.showAlertsReturnPassword = 'Поля не может быть пустым',
       this.showAlertsPhone = 'Поля не может быть пустым'
       this.showAlertsCountry = 'Поля не может быть пустым'
       this.showAlertsCity = 'Поля не может быть пустым'
       this.showAlertsPostal = 'Поля не может быть пустым'
+    } else if(registerFormData.password != registerFormData.return_password) {
+      alert('Введенные пароли не совпадают')
     } else {
       this.isLoading = true
       this.request.regRequest(registerFormData.name, registerFormData.middle_name, registerFormData.last_name, registerFormData.email, registerFormData.password, registerFormData.phone, registerFormData.company_name, registerFormData.country, registerFormData.city, registerFormData.regCompany1, registerFormData.regCompany2, registerFormData.regCompany3, registerFormData.postalCode, registerFormData.inn, registerFormData.division).subscribe(response => {

@@ -18,6 +18,7 @@ export class AdminPageComponent implements OnInit {
   editShow: number = 0
   page: any
   isLoading = false
+  inputColor = false
 
   constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
@@ -52,7 +53,6 @@ export class AdminPageComponent implements OnInit {
     } else {
       this.isLoading = true
       this.request.postAdminReq(addFormData.addName).subscribe(response => {
-        alert("Вы успешно добавили центр")
         this.isLoading = false
         location.reload()
       }, error => {
@@ -77,6 +77,8 @@ export class AdminPageComponent implements OnInit {
 
   itemClick(id: number){
     this.editShow = id;
+    this.inputColor = true
+    this.editForm.controls['name'].patchValue(this.tableData.filter( (res: any) => res.projects_center_id == id)[0].name)
   }
 
   adminProject(id: number) {
