@@ -13,20 +13,25 @@
           <th>Дата <br> открытия</th>
           <th>Метод <br> проведения</th>
           <th>Лоты</th>
+          <th>Действия</th>
           <th style="display: none;">статус <br> проверки</th>
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let order of orderData | paginate: {itemsPerPage: 11, currentPage: page}; let idx = index">
-          <td>{{ idx }}</td>
-          <td><span>Название</span>{{order.tender_title}}</td>
-          <td><span>ID</span>{{ order.id }}</td>
+        <tr class="train" *ngFor="let order of orderData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
+          <td>{{ idx + 1 }}</td>
+          <td><span>Название</span>{{order.name}}</td>
+          <td><span>ID</span>{{ order.order_id }}</td>
           <td><span>Центр ID</span>{{ order.project_center_anouncement_id }}</td>
           <td><span>Тип проведения</span>{{ order.type_of_procurement }}</td>
           <td><span>Взнос</span>{{ order.price }}</td>
           <td><span>Дата открытия</span>{{ order.open_date }}</td>
           <td><span>Метод проведения</span>{{ order.procurement_method }}</td>
           <td><span>Лоты</span>{{ order.number_of_lots }}</td>
+          <td><span>Действия</span>
+            <i class="far fa-eye" [routerLink]="['/subscriberorderslot', order.order_id]"></i>
+            <i class="far fa-edit" [routerLink]="['/subscriberorderslotchange', order.order_id]"></i>
+          </td>
           <td>
             <span>Cтатус проверки</span>
             <input type="checkbox" onclick="return false" [checked]='showfull' class="checkbox">

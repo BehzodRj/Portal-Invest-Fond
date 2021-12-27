@@ -27,6 +27,8 @@ import { SubscriberTenderComponent } from './subscriber-tender/subscriber-tender
 import { SubscriberOrdersComponent } from './subscriber-orders/subscriber-orders.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
+import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ResultPageComponent } from './result-page/result-page.component';
     SubscriberOrdersComponent,
     LoadingComponent,
     ResultPageComponent,
+    SubscriberorderslotPageComponent,
+    SubscriberorderslotchangePageComponent,
   ],
   imports: [  
     FormsModule,
