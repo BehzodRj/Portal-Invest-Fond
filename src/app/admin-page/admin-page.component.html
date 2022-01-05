@@ -25,7 +25,9 @@
           </td>
           <td colspan="4" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
+        
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
+<<<<<<< HEAD
           <td>
             <span>Название исполнительные агентсво | Реализующие агенство</span>
             <div class="td_block">
@@ -41,8 +43,20 @@
             <div class="td_block">
               <h1>{{ items.projects_center_id }}</h1>
             </div>
+=======
+          
+          <td *ngIf="items.parent_id>0; else elseBlock" style="border:0; text-align: left; padding:0 0 0 50px" colspan="5">
+            <div style="background:#ccc;">
+            lorem</div>
+>>>>>>> ee35800b50f76f996edff1adcd665a582855153c
           </td>
+          <ng-template #elseBlock>
+            <td>
+              <span>Название исполнительные агентсво | Реализующие агенство</span>
+              <div class="td_block">
+                <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
 
+<<<<<<< HEAD
           <td class="change" *ngIf="editShow != items.projects_center_id">
             <div class="trash_block">
               <i class="td_i fas fa-plus"></i>
@@ -54,27 +68,53 @@
               <i class="td_i fas fa-pencil-alt"></i>
             </div>
           </td>
+=======
+                <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
+                  <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
+                </form>
+              </div>
+            </td>
+            
+            <td><span>ID</span>
+              <div class="td_block">
+                <h1>{{ items.projects_center_id }}</h1>
+              </div>
+            </td>
+>>>>>>> ee35800b50f76f996edff1adcd665a582855153c
 
-          <td class="change" *ngIf="editShow != items.projects_center_id">
-            <div class="trash_block" (click)="adminProject(items.projects_center_id)">
-              <i class="td_i fas fa-chevron-right"></i>
-            </div>
-          </td>
+            <td class="change" *ngIf="editShow != items.projects_center_id">
+              <div class="trash_block">
+                <i class="td_i fas fa-plus"></i>
+              </div>
+            </td>
 
-          <td class="change">
-            <div class="trash_block" *ngIf="editShow != items.projects_center_id" (click)="deleteItem(items.projects_center_id, items.name)">
-              <i class="fas fa-trash"></i>
-            </div>
+            <td class="change" (click)="itemClick(items.projects_center_id)" *ngIf="editShow != items.projects_center_id">
+              <div class="trash_block">
+                <i class="td_i fas fa-pencil-alt"></i>
+              </div>
+            </td>
 
-            <div class="trash_block" *ngIf="editShow == items.projects_center_id" (click)="changeButton(items.projects_center_id)">
-              <i>ОК</i>
-            </div>
-          </td>
+            <td class="change" *ngIf="editShow != items.projects_center_id">
+              <div class="trash_block" (click)="adminProject(items.projects_center_id)">
+                <i class="td_i fas fa-chevron-right"></i>
+              </div>
+            </td>
 
+            <td class="change">
+              <div class="trash_block" *ngIf="editShow != items.projects_center_id" (click)="deleteItem(items.projects_center_id, items.name)">
+                <i class="fas fa-trash"></i>
+              </div>
+
+              <div class="trash_block" *ngIf="editShow == items.projects_center_id" (click)="changeButton(items.projects_center_id)">
+                <i>ОК</i>
+              </div>
+            </td>
+          </ng-template>
         </tr>
-      </tbody>
+         
+      </tbody> 
     </table>
-
+   
     <div class="creat">
       <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
