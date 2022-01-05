@@ -17,6 +17,7 @@ import { AplicationPageComponent } from './aplication-page/aplication-page.compo
 import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
 import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
 import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
+import { AnnouncerEditComponent } from './announcer-edit/announcer-edit.component';
 import { AdminProjectComponent } from './admin-project/admin-project.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
@@ -56,6 +57,7 @@ import { SubscriberorderslotchangePageComponent } from './subscriberorderslotcha
     ResultPageComponent,
     SubscriberorderslotPageComponent,
     SubscriberorderslotchangePageComponent,
+    AnnouncerEditComponent,
   ],
   imports: [  
     FormsModule,

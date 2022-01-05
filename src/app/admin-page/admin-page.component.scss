@@ -1,5 +1,19 @@
 .container {
     min-height: calc(100vh - 480px);
+
+    .title_block {
+      margin-top: 42px;
+
+      h1 {
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 28px;
+        color: #112A4A;
+        
+      }
+    }
 }
 .navbar {
     max-width: 1430px;
@@ -128,7 +142,6 @@
               position: relative;
               display: flex;
               align-items: center;
-              justify-content: center;
             }
 
             form {
@@ -136,7 +149,6 @@
             }
             
             input {
-                text-align: center;
                 border: 0;
                 width: 100%;
                 outline: none;
@@ -155,27 +167,24 @@
               top: 0;
               left: 0;
             }
- 
             &:first-child {
-              width: 30px;
-              color: #000;
-              background-color: rgba(7, 30, 60, 0.5);;
+              text-indent: 10px;
               border: 1px solid #000;
+              border-right: 0;
+              color: #000;
             }
  
             &:nth-child(2) {
+              text-indent: 10px;
               border: 1px solid #000;
-              border-right: 0;
-              border-left: 0;
               color: #000;
             }
  
             &:nth-child(3) {
+              width: 30px;
+              text-indent: 5px;
               border: 1px solid #000;
-              color: #000;
-            }
- 
-            &:nth-child(4) {
+              border-left: none;
               color: #000;
             }
           }

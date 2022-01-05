@@ -142,7 +142,7 @@
           }
 
           .download {
-            .trash_block {
+            .icons_block {
               margin-left: 10px;
               display: flex;
               align-items: center;
@@ -194,6 +194,8 @@
               border-right: 0;
               border-left: 0;
               color: #000;
+              text-align: start;
+              text-indent: 10px;
             }
  
             &:nth-child(3) {
@@ -255,14 +257,15 @@
   .creat {
     max-width: 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
  
     button {
       height: 30px;
       padding: 5px 30px;
       border: 0;
-      border-radius: 15px;
-      background-color: #333;
+      border-radius: 6px;
+      background-color: #15345C;
       color: #fff;
       font-size: 14px;
       font-family: 'Roboto', sans-serif;
@@ -270,7 +273,7 @@
       cursor: pointer;
  
       &:active {
-        transform: scale(.95);
+        transform: scale(.99);
       }
     }
   }

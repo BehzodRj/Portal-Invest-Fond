@@ -107,20 +107,20 @@ export class RequestService {
     // End of Announcer
 
     // Admin
-    postAdminReq(name: string) {
+    postAdminReq(name: string, parent_id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.post(this.url + '/api/auth/projects_center/create', {"name": name}, {headers:header})
+        return this.http.post(this.url + '/api/auth/projects_center/create', {"name": name, "parent_id": parent_id}, {headers:header})
     }
 
-    putAdminReq(id: number, name: string) {
+    putAdminReq(id: number, name: string, parent_id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {"name": name}, {headers:header})
+        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {"name": name, "parent_id": parent_id}, {headers:header})
     }
 
     getAdminReq() {
@@ -226,7 +226,7 @@ export class RequestService {
             'token_type': 'bearer',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.delete(this.url + '/api/auth/favorites/' + id, {headers:header})
+        return this.http.delete(this.url + '/api/auth/favorites/' + id, {headers: header})
     }
     // End of Favourites
 
@@ -241,29 +241,6 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/payments', {"anouncements_id": id, "file": file}, {headers:header})
     }
     // End of Announcement check
-    
-    // My Orders
-    getOrderRequests() {
-        let header: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'token_type': 'bearer',
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-        })
-        return this.http.get(this.url + '/api/auth/orders', {headers:header})
-    }
-
-    // Show OrderLots 
-    getOrderLotsRequests(id: number) {
-        let header: HttpHeaders = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'token_type': 'bearer',
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-        })
-        return this.http.get(this.url + '/api/auth/order/' + id, {headers:header})
-    }
-    // End of Show OrderLots 
-
-    // End of My Orders
 
     // Add Lots
     postOrderRequests(
@@ -302,7 +279,70 @@ export class RequestService {
         }, {headers:header})
     }
     // End of Add Lots
+    
+    // My Orders
+    getOrderRequests() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/orders', {headers:header})
+    }
 
+    deleteMyOrderRequests(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
+    }
+
+    // Show Lots 
+    getOrderLotsRequests(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/order/' + id, {headers:header})
+    }
+    // End of Show Lots 
+
+    // Change Lots
+    putOrderLotsRequests(
+        id: number,
+        total: number, 
+        total_dol: number, 
+        total_euro: number, 
+        vat: number, 
+        vat_dol: number,
+        vat_euro: number,
+        discount: number,
+        discount_dol: number,
+        discount_euro: number,
+        lots: any,
+        file: any) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.put(this.url + '/api/auth/order/' + id, {"total": total, "total_dol": total_dol, "total_euro": total_euro, "vat": vat, "vat_dol": vat_dol,"vat_euro": vat_euro,"discount": discount,"discount_dol": discount_dol,"discount_euro": discount_euro,"lots": lots,"files": file}, {headers:header})
+    }
+
+    deleteOrderRequests(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token_type': 'bearer',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/order_file/' + id, {headers: header})
+    }
+    // End of Change Lots
+    
+    // End of My Orders
     //  End of Subscriber
 
     // Result Page

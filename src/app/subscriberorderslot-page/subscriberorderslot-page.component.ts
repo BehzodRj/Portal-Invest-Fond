@@ -38,8 +38,8 @@ export class SubscriberorderslotPageComponent implements OnInit {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.showFileModal = true
-        file.split(",").forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+        file.forEach((element:any) => {
+          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`})
         });
     }
   }

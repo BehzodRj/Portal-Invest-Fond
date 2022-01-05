@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from '../all.service';
 
 @Component({
@@ -18,9 +18,13 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
   creatModalShow = false
   editModalShow = false
   showFileModal = false
-  dowFile: any = []
+  isLoading = false
+  editIndex: any
+  dowFile: any =[]
+  fileName = 'Файл'
+  getNewFile: any = []
 
-  constructor(private route: ActivatedRoute, private request: RequestService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private request: RequestService) { }
 
   ngOnInit() {
     this.addOrderForm = new FormGroup({
@@ -36,7 +40,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
       partners: new FormControl(''),
-      leader: new FormControl('')
+      is_lead: new FormControl('')
     })
 
     this.editOrderForm = new FormGroup({
@@ -52,7 +56,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
       partners: new FormControl(''),
-      leader: new FormControl('')
+      is_lead: new FormControl('')
     })
 
     this.globalOrderForm = new FormGroup({
@@ -91,12 +95,12 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     if(addOrderFormData.partners == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.partnersLocalData.push({name: addOrderFormData.partners, is_lead: addOrderFormData.leader})
+      this.partnersLocalData.push({name: addOrderFormData.partners, is_lead: addOrderFormData.is_lead})
       this.addOrderForm.controls['partners'].reset()
     }
   }
 
-  deleteLocalPartners(index: number) {
+  deleteAddLocalPartners(index: number) {
     this.partnersLocalData.splice(index, 1)
   }
 
@@ -113,9 +117,30 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
 
   openEditModal(index: number) {
     this.editModalShow = true
-    console.log(this.orderData[0].lots[index]);
     this.editOrderData = this.orderData[0].lots[index]
     this.editOrderForm.patchValue(this.editOrderData)
+    this.editOrderForm.controls['partners'].reset()
+    this.editIndex = index
+  }
+
+  editLocalPartners() {
+    const editOrderFormData = {...this.editOrderForm.value}
+    if(editOrderFormData.partners == '') {
+      alert('Поле не может быть пустым')
+    } else {
+      this.editOrderData.partners.push({name: editOrderFormData.partners, is_lead: editOrderFormData.is_lead})
+      this.editOrderForm.controls['partners'].reset()
+    }
+  }
+
+  editLots() {
+    this.orderData[0].lots[this.editIndex] = this.editOrderForm.value
+    this.orderData[0].lots[this.editIndex].partners = this.editOrderData.partners
+    this.editModalShow = false
+  }
+
+  deleteEditLocalPartners(index: number) {
+    this.editOrderData.partners.splice(index, 1)
   }
 
   deleteLots(index: number) {
@@ -127,8 +152,8 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.showFileModal = true
-        file.split(",").forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+        file.forEach((element:any) => {
+          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`, file_id: element.file_id})
         });
     }
   }
@@ -137,9 +162,83 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     window.open(file)
   }
 
+  deleteFiles(id: number) {
+    this.isLoading = true
+    this.request.deleteOrderRequests(id).subscribe(response => {
+      this.isLoading = false
+      alert('Файл успешно удален')
+      location.reload()
+    }, error => {
+      this.isLoading = false
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
+          location.reload()
+        }, errorToken => {
+          this.isLoading = false
+          alert(errorToken.message)
+        })
+      } else {
+        this.isLoading = false
+        alert(error.message)
+      }
+    })
+  }
+
   closeFileModal() {
     this.showFileModal = false
     this.dowFile = []
+  }
+
+  newFiles(event: any) {
+    this.fileName = event.target.files[0].name
+    Object.values(event.target.files).forEach( (element: any) => {
+      let reader = new FileReader
+      reader.readAsDataURL(element)
+      reader.onload = () => {
+        this.getNewFile.push(reader.result)
+      }
+    });
+  }
+
+  sendData() {
+    const globalOrderFormData = {...this.globalOrderForm.value}
+    this.route.params.subscribe( (params: any) => {
+      this.isLoading = true
+      this.request.putOrderLotsRequests(
+        params.id,
+        globalOrderFormData.total,
+        globalOrderFormData.total_dol,
+        globalOrderFormData.total_euro,
+        globalOrderFormData.vat,
+        globalOrderFormData.vat_dol,
+        globalOrderFormData.vat_euro,
+        globalOrderFormData.discount,
+        globalOrderFormData.discount_dol,
+        globalOrderFormData.discount_euro,
+        this.orderData[0].lots,
+        this.getNewFile).subscribe(response => {
+          this.isLoading = false
+          alert('Успешно изменен')
+          this.router.navigate(['/subscriberorders'])
+        }, error => {
+          this.isLoading = false
+          if(error.status == '401') {
+            this.request.refreshToken().subscribe( (response: any) =>  {
+              localStorage.setItem('access_token', response.access_token)
+              this.isLoading = false
+              location.reload()
+            }, errorToken => {
+              this.isLoading = false
+              alert(errorToken.message)
+            })
+          } else {
+            this.isLoading = false
+            alert(error.message)
+          }
+        })
+    })
   }
 
 }

@@ -107,7 +107,7 @@ export class AplicationPageComponent implements OnInit {
   save() {
     const addLotsFormData = {...this.addLotsForm.value}
     if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
-      alert('Заполните поле') 
+      alert('Заполните поле')
     } else {
       this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, partners: this.AddPartnerData})
       this.editLotsData = this.addLotsData
@@ -145,7 +145,7 @@ export class AplicationPageComponent implements OnInit {
 
   send() {
     const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.Gtotal == '' || addLotsFormData.Gtotal_dol == '' || addLotsFormData.Gtotal_euro == '' || addLotsFormData.Gvat == '' || addLotsFormData.Gvat_dol == '' || addLotsFormData.Gvat_euro == '' || addLotsFormData.Gdiscount == '' || addLotsFormData.Gdiscount_dol == '' || addLotsFormData.Gdiscount_euro == '') {
+    if(addLotsFormData.Gtotal == '' || addLotsFormData.Gvat == '' || addLotsFormData.Gdiscount == '') {
       alert('Поле не может быть пустым')
     } else {
       this.route.params.subscribe((param: any) => {
