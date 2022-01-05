@@ -65,8 +65,7 @@ import { SubscriberorderslotchangePageComponent } from './subscriberorderslotcha
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
