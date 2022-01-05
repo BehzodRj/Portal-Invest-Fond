@@ -24,11 +24,13 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = new FormGroup({
-      addName: new FormControl('', Validators.required)
+      addName: new FormControl('', Validators.required),
+      selectParent: new FormControl('', Validators.required)
     })
     
     this.editForm = new FormGroup({
       name: new FormControl(''),
+      editSelectParent: new FormControl('')
     })
 
     this.request.getAdminReq().subscribe(response => {
@@ -46,13 +48,13 @@ export class AdminPageComponent implements OnInit {
     })
   }
   addButton() {
-    const addFormData = {...this.addForm.value}
+    const addFormData = {...this.addForm.value}    
     if(addFormData.addName == '') {
       this.addText = 'ПОЛЕ НЕ МОЖЕТ БЫТЬ ПУСТЫМ'
       this.addError = true
     } else {
       this.isLoading = true
-      this.request.postAdminReq(addFormData.addName).subscribe(response => {
+      this.request.postAdminReq(addFormData.addName, addFormData.selectParent).subscribe(response => {
         this.isLoading = false
         location.reload()
       }, error => {
@@ -90,7 +92,7 @@ export class AdminPageComponent implements OnInit {
     if(editFormData.name == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.request.putAdminReq(id, editFormData.name).subscribe(response => {
+      this.request.putAdminReq(id, editFormData.name, editFormData.editSelectParent).subscribe(response => {
         location.reload()
       }, error => {
         if(error.status == '401') {

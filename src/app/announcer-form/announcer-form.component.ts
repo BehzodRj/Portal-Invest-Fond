@@ -12,6 +12,8 @@ export class AnnouncerFormComponent implements OnInit {
   showModal= false
   announcerFormData: any
   announcerFormModalData: any
+  showFileModal = false
+  dowFile: any  = []
 
   constructor(private route: ActivatedRoute, private request: RequestService) { }
 
@@ -54,5 +56,25 @@ export class AnnouncerFormComponent implements OnInit {
 
   closeModal() {
     this.showModal = false
+  }
+
+  openFileModal(file: any) {
+    if(file < 1) {
+      alert('Нет никаких файлов для скачивания')
+    } else {
+        this.showFileModal = true
+        file.forEach((element:any) => {
+          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`})
+        });
+    }
+  }
+
+  download(file: any) {
+    window.open(file)
+  }
+
+  closeFileModal() {
+    this.showFileModal = false
+    this.dowFile = []
   }
 }

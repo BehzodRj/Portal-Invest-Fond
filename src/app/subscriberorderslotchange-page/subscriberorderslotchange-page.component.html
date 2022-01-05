@@ -1,10 +1,11 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeFileModal()"></i>
     <!--  " -->
     <div class="editFile_block" *ngFor="let fle of dowFile; let idx = index">
       <h1 (click)="download(fle.file)">Файл {{idx + 1}}</h1>
-      <i class="fas fas fa-trash"></i>
+      <i class="fas fas fa-trash" (click)="deleteFiles(fle.file_id)"></i>
     </div>
   </div>
 </div>
@@ -80,7 +81,7 @@
             <div class="user-part__block">
               <div class="userP" *ngFor="let addPartners of partnersLocalData; let idx = index">
                 <p [ngStyle]="{color: addPartners.is_lead ? '#000' : '#757575'}">{{ addPartners.name }}</p>
-                <div class="trash" (click)="deleteLocalPartners(idx)">
+                <div class="trash" (click)="deleteAddLocalPartners(idx)">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
@@ -93,7 +94,7 @@
               </div>
               <div class="inp check">
                 <input type="text" placeholder="Лидер" readonly>
-                <input type="checkbox" class="checkbox" formControlName="leader">
+                <input type="checkbox" class="checkbox" formControlName="is_lead">
               </div>
               <button style="border: none; cursor: pointer;" (click)="addLocalPartners()">
                 <i class="fa fa-plus"></i>
@@ -181,9 +182,9 @@
           <h2>Партнеры:</h2>
           <div class="partners__block">
             <div class="user-part__block">
-              <div class="userP" *ngFor="let editPartners of editOrderData.partners">
+              <div class="userP" *ngFor="let editPartners of editOrderData.partners; let idx = index">
                 <p [ngStyle]="{color: editPartners.is_lead ? '#000' : '#757575'}">{{ editPartners.name }}</p>
-                <div class="trash">
+                <div class="trash" (click)="deleteEditLocalPartners(idx)">
                   <i class="fa fa-trash"></i>
                 </div>
               </div>
@@ -191,17 +192,17 @@
             <div class="lider__block">
               <div class="inp">
                 <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер">
+                <input type="text" placeholder="Партнер" formControlName="partners">
               </div>
               <div class="inp check">
                 <input type="text" placeholder="Лидер" readonly>
-                <input type="checkbox" class="checkbox">
+                <input type="checkbox" class="checkbox" formControlName="is_lead">
               </div>
-              <button style="border: none; cursor: pointer;">
+              <button style="border: none; cursor: pointer;" (click)="editLocalPartners()">
                 <i class="fa fa-plus"></i>
               </button>
             </div>
-            <div class="btn">
+            <div class="btn" (click)="editLots()">
               <button>ИЗМЕНИТЬ ЛОТ</button>
             </div>
           </div>
@@ -344,14 +345,14 @@
     <div class="items_block regist_block">
       <label for="file">Файл</label>
       <div class="file_block">
-        <h1>Файл</h1>
-        <input type="file" multiple accept=".pdf">
+        <h1>{{ fileName }}</h1>
+        <input type="file" multiple accept=".pdf" (change)="newFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
     <div class="filesData_block">
       <button (click)="openFileModal(orderData[0].order_files)">Файлы</button>
     </div>
-      <button>Отправить</button>
+      <button (click)="sendData()">Отправить</button>
   </div>  
 </div>

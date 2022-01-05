@@ -7,6 +7,7 @@ import { ForgetPageComponent } from './forget-page/forget-page.component';
 import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
 import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
 import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
+import { AnnouncerEditComponent } from './announcer-edit/announcer-edit.component';
 import { AnnouncerGuard } from './announcer.guard';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminProjectComponent } from './admin-project/admin-project.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'announcer', component: AnnouncerPageComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcerform/:id', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
+  { path: 'announceredit/:id', component: AnnouncerEditComponent, canActivate: [AnnouncerGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: 'adminpayment', component: AdminPaymentComponent, canActivate: [AdminGuard] },
   { path: 'adminproject/:id', component: AdminProjectComponent, canActivate: [AdminGuard] },

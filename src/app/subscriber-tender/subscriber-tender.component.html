@@ -1,21 +1,19 @@
 <app-header></app-header>
 <div class="container">
-  <div class="title_block">
-    <h1>Тендеры проекта > <span>Список заявок</span></h1>
-  </div>
   <div class="navbar">
 
     <table class="resp-tab">
       <thead class="pain">
         <tr>
           <th>№</th>
-          <th>Проект</th>
+          <th>Исполнительное агенство | Реализующий агенство</th>
           <th>Количество <br> тендеров</th>
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let subcr of subscriberData">
+        <tr class="train" *ngFor="let subcr of subscriberData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{ subcr.project_id }}</td>
+          <td><span>Проект</span>{{ subcr.name }}</td>
           <td><span>Проект</span>{{ subcr.name }}</td>
           <td><span>Количество тендеров</span>{{ subcr.total }}</td>
           <td class="download">

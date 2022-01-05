@@ -7,7 +7,7 @@ import { RequestService } from '../all.service';
   styleUrls: ['./announcer-page.component.scss']
 })
 export class AnnouncerPageComponent implements OnInit {
-  annpuncerData: any = []
+  announcerData: any = []
   page: any
   dowFile: any = []
   showFileModal = false
@@ -16,7 +16,7 @@ export class AnnouncerPageComponent implements OnInit {
 
   ngOnInit() {
     this.request.getAnnouncerLots().subscribe(response => {
-      this.annpuncerData = response
+      this.announcerData = response
     }, error => {
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {

@@ -162,7 +162,11 @@
               }
 
               .fa-edit {
-                margin-left: 20px;
+                margin: 0 20px;
+                cursor: pointer;
+              }
+
+              .fa-trash {
                 cursor: pointer;
               }
           }

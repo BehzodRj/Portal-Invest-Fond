@@ -1,5 +1,19 @@
 .container {
     min-height: calc(100vh - 480px);
+
+    .title_block {
+      margin-top: 42px;
+
+      h1 {
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 28px;
+        color: #112A4A;
+        
+      }
+    }
 }
 .navbar {
     max-width: 1430px;
@@ -123,7 +137,7 @@
               position: relative;
               display: flex;
               align-items: center;
-              justify-content: center;
+              text-indent: 10px;
             }
 
             form {

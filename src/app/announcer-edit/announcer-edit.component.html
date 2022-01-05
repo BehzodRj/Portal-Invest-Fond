@@ -1,0 +1,59 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<app-header></app-header>
+<div class="container">
+  <div class="title_block">
+    <h1>Тендеры проекта > <span>Изменить тендер</span></h1>
+  </div>
+
+  <form class="form">
+    <div class="items_block">
+      <label for="text">Название</label>
+      <input type="text">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Центр ID</label>
+      <input type="number">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="text">Метод</label>
+      <input type="text">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="select">Тип проведения</label>
+      <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;">
+        <option>однофазный</option>
+        <option>двухфазный</option>
+      </select>
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="date">Дата проведения</label>
+      <input type="date" style="text-indent: 3px;">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="file">Файл</label>
+      <div class="file_block">
+        <h1>Файл</h1>
+        <input type="file" multiple accept=".pdf">
+        <img src="assets/img/file.svg" alt="">
+      </div>
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Колличество лотов</label>
+      <input type="number">
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Взнос</label>
+      <input type="number">
+    </div>
+
+    <button>ИЗМЕНИТЬ ЛОТ</button>
+  </form>
+</div>
+<app-footer-page></app-footer-page>
