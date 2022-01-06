@@ -25,50 +25,48 @@
           </td>
           <td colspan="4" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
-        
-        <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-<<<<<<< HEAD
-          <td>
-            <span>Название исполнительные агентсво | Реализующие агенство</span>
-            <div class="td_block">
-              <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
-
-              <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
-                <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
-              </form>
-            </div>
-          </td>
-
-          <td><span>ID</span>
-            <div class="td_block">
-              <h1>{{ items.projects_center_id }}</h1>
-            </div>
-=======
+        <ng-container *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
+        <tr class="train" >
           
-          <td *ngIf="items.parent_id>0; else elseBlock" style="border:0; text-align: left; padding:0 0 0 50px" colspan="5">
-            <div style="background:#ccc;">
-            lorem</div>
->>>>>>> ee35800b50f76f996edff1adcd665a582855153c
+          <td *ngIf="items.parent_id>0; else elseBlock" style="border:0; text-align: left; padding:0 0 0 50px; position: relative;" colspan="3">
+            
+            <div style="border: 1px solid #000; margin-bottom: 10px; padding: 5px 0; display: flex; align-items: center;">
+                <h1 *ngIf="showParent">{{ items.name }}</h1>
+                <input *ngIf="!showParent" type="text" style="color: #726d6d; text-indent: 10px;" [value]="items.name" formControlName="name">
+
+                <div class="change" *ngIf="editShow != items.projects_center_id" style="position: absolute; right: 0;">
+                  <div class="trash_block" (click)="editShowParents()">
+                    <i class="td_i fas fa-pencil-alt"></i>
+                  </div>
+                </div>
+
+                <div class="change" style="position: absolute; right: 0;" [routerLink]="['/adminproject', items.projects_center_id]" *ngIf="showParent">
+                  <div class="trash_block" style="margin-left: 87px;">
+                    <i class="td_i fas fa-chevron-right"></i>
+                  </div>
+                </div>
+
+                <div class="change"  style="position: absolute; right: 0;" *ngIf="showParent">
+                  <div class="trash_block" style="margin-left: 162px;">
+                    <i class="td_i fas fa-trash"></i>
+                  </div>
+                </div>
+
+                <div class="change"  style="position: absolute; right: 0;" *ngIf="!showParent">
+                  <div class="trash_block" (click)="sendEditShowParents(items.projects_center_id)">
+                    <i>ОК</i>
+                  </div>
+                </div>
+            </div>
           </td>
+
+
           <ng-template #elseBlock>
             <td>
               <span>Название исполнительные агентсво | Реализующие агенство</span>
               <div class="td_block">
                 <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
 
-<<<<<<< HEAD
-          <td class="change" *ngIf="editShow != items.projects_center_id">
-            <div class="trash_block">
-              <i class="td_i fas fa-plus"></i>
-            </div>
-          </td>
-
-          <td class="change" (click)="itemClick(items.projects_center_id)" *ngIf="editShow != items.projects_center_id">
-            <div class="trash_block">
-              <i class="td_i fas fa-pencil-alt"></i>
-            </div>
-          </td>
-=======
                 <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
                   <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
                 </form>
@@ -80,10 +78,9 @@
                 <h1>{{ items.projects_center_id }}</h1>
               </div>
             </td>
->>>>>>> ee35800b50f76f996edff1adcd665a582855153c
 
             <td class="change" *ngIf="editShow != items.projects_center_id">
-              <div class="trash_block">
+              <div class="trash_block" (click)="items.adstaus = !items.adstaus">
                 <i class="td_i fas fa-plus"></i>
               </div>
             </td>
@@ -111,7 +108,22 @@
             </td>
           </ng-template>
         </tr>
-         
+        <tr>
+          <td *ngIf="items.adstaus" style="border:0; text-align: left; padding:0 0 0 50px; position: relative;" colspan="3">
+            <div class="pt_content">
+              <div class="pt_block" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addForm.get('selectParent').invalid && addForm.get('selectParent').touched ? '1px solid red' : '1px solid #000'}">
+                <form style="display: flex; justify-content: space-between;" [formGroup]="addChildForm">
+                  <div class="part_block">
+                    <h1>Название</h1>
+                    <input type="text" style="text-indent: 10px;" [placeholder]="addPar" formControlName="name">
+                </div>
+                  <button (click)="sendShowParents(items.projects_center_id)">Добавить</button>
+                </form>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
       </tbody> 
     </table>
    

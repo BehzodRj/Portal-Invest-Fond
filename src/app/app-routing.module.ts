@@ -44,7 +44,6 @@ const routes: Routes = [
   { path: 'subscriberorderslotchange/:id', component: SubscriberorderslotchangePageComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] }, 
   { path: 'result', component: ResultPageComponent }, 
-  { path: 'project', component: ProjectComponent },  
   { path: '**', component: ErrorPageComponent }
 ];
 

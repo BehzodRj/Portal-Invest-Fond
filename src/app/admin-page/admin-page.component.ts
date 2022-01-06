@@ -11,21 +11,27 @@ import { RequestService } from '../all.service';
 export class AdminPageComponent implements OnInit {
   addForm!: any
   addText = 'ДОБАВИТЬ ЦЕНТР'
+  addPar = 'ДОБАВИТЬ РОДИТЕЛЬ'
   text = ''
   addError = false
   editForm!: FormGroup
+  addChildForm!: FormGroup
   tableData: any = []
   editShow: number = 0
   page: any
   isLoading = false
   inputColor = false
+  showParent = true
 
   constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
   ngOnInit() {
     this.addForm = new FormGroup({
       addName: new FormControl('', Validators.required),
-      selectParent: new FormControl('', Validators.required)
+      selectParent: new FormControl('')
+    })
+    this.addChildForm = new FormGroup({
+      name: new FormControl('', Validators.required),
     })
     
     this.editForm = new FormGroup({
@@ -54,7 +60,7 @@ export class AdminPageComponent implements OnInit {
       this.addError = true
     } else {
       this.isLoading = true
-      this.request.postAdminReq(addFormData.addName, addFormData.selectParent).subscribe(response => {
+      this.request.postAdminReq(addFormData.addName, 0).subscribe(response => {
         this.isLoading = false
         location.reload()
       }, error => {
@@ -125,6 +131,45 @@ export class AdminPageComponent implements OnInit {
         }
       })
     }
+  }
+
+  sendShowParents(id: any) {
+    const addChildFormData = {...this.addChildForm.value}
+    console.log(addChildFormData);
+    this.request.postAdminReq(addChildFormData.name, id).subscribe(response => {
+      location.reload()
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
+    })
+  }
+
+  editShowParents() {
+    this.showParent = false
+  }
+
+  sendEditShowParents(id: any) {
+    const addChildFormData = {...this.addChildForm.value}
+    this.request.putAdminReq(id, addChildFormData.name, id).subscribe(response => {
+      this.showParent = true
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
+    })
   }
 
 }
