@@ -27,28 +27,10 @@
         </tr>
         
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-<<<<<<< HEAD
-          <td>
-            <span>Название исполнительные агентсво | Реализующие агенство</span>
-            <div class="td_block">
-              <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
-
-              <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
-                <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
-              </form>
-            </div>
-          </td>
-
-          <td><span>ID</span>
-            <div class="td_block">
-              <h1>{{ items.projects_center_id }}</h1>
-            </div>
-=======
           
           <td *ngIf="items.parent_id>0; else elseBlock" style="border:0; text-align: left; padding:0 0 0 50px" colspan="5">
             <div style="background:#ccc;">
             lorem</div>
->>>>>>> ee35800b50f76f996edff1adcd665a582855153c
           </td>
           <ng-template #elseBlock>
             <td>
@@ -56,19 +38,6 @@
               <div class="td_block">
                 <h1 *ngIf="editShow != items.projects_center_id">{{ items.name }}</h1>
 
-<<<<<<< HEAD
-          <td class="change" *ngIf="editShow != items.projects_center_id">
-            <div class="trash_block">
-              <i class="td_i fas fa-plus"></i>
-            </div>
-          </td>
-
-          <td class="change" (click)="itemClick(items.projects_center_id)" *ngIf="editShow != items.projects_center_id">
-            <div class="trash_block">
-              <i class="td_i fas fa-pencil-alt"></i>
-            </div>
-          </td>
-=======
                 <form [formGroup]="editForm" *ngIf="editShow == items.projects_center_id">
                   <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="name">
                 </form>
@@ -80,7 +49,6 @@
                 <h1>{{ items.projects_center_id }}</h1>
               </div>
             </td>
->>>>>>> ee35800b50f76f996edff1adcd665a582855153c
 
             <td class="change" *ngIf="editShow != items.projects_center_id">
               <div class="trash_block">
