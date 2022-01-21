@@ -2,7 +2,6 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeFileModal()"></i>
-    <!--  " -->
     <div class="editFile_block" *ngFor="let fle of dowFile; let idx = index">
       <h1 (click)="download(fle.file)">Файл {{idx + 1}}</h1>
       <i class="fas fas fa-trash" (click)="deleteFiles(fle.file_id)"></i>

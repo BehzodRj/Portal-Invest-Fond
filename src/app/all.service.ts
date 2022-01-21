@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://10.251.2.77'
+    private url = 'http://45.94.219.126'
     constructor(private http: HttpClient) { }
 
     
@@ -72,13 +72,22 @@ export class RequestService {
 
     
     // Announcer
-    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, file: any ) {
+    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Accept': "application/json"
         })
-        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "files": file}, {headers:header})
+        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file}, {headers:header})
+    }
+
+    putAnnouncerLots(id: number, name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            'Accept': "application/json"
+        })
+        return this.http.put(this.url + '/api/auth/anouncements/update/' + id, { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file}, {headers:header})
     }
 
     getAnnouncerLots() {
@@ -87,6 +96,22 @@ export class RequestService {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
         return this.http.get(this.url + '/api/auth/allanouncements', {headers:header})
+    }
+
+    getAnnouncerLotsById(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/anouncement/'+ id, {headers:header})
+    }
+
+    deleteAnnouncerLots(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/anouncements/'+ id, {headers:header})
     }
 
     getAnnouncerForm(id: number) {
@@ -115,12 +140,12 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/projects_center/create', {"name": name, "parent_id": parent_id}, {headers:header})
     }
 
-    putAdminReq(id: number, name: string, parent_id: number) {
+    putAdminReq(id: number, name: string) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {"name": name, "parent_id": parent_id}, {headers:header})
+        return this.http.put(this.url + '/api/auth/projects_center/update/' + id, {"name": name}, {headers:header})
     }
 
     getAdminReq() {
@@ -157,8 +182,6 @@ export class RequestService {
     }
     // End of Admin Payment
 
-    // End of Admin
-
     // Admin Project
     postAdminProReq(id: number, name: string, email: string) {
         let header: HttpHeaders = new HttpHeaders({
@@ -190,7 +213,16 @@ export class RequestService {
         })
         return this.http.delete(this.url + '/api/auth/projects/' + id, {headers:header})
     }
+
+    changePageRequest(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/authProject/' + id, {headers:header})
+    }
     // End of Admin Project
+    // End of Admin
 
 
     // Subscriber

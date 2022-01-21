@@ -1,3 +1,54 @@
+.container_file {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(7, 30, 60, 0.5);
+    z-index: 4;
+  
+    .block_file {
+      position: relative;
+      width: 260px;
+      background-color: #fff;
+      border-radius: 8px;
+  
+      .fa-times {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .editFile_block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        h1 {
+          margin: 5px 0 5px 10px;
+          font-size: 18px;
+          font-family: 'Roboto', sans-serif;
+          font-weight: normal;
+          text-decoration: underline;
+          color: #551A8B;
+          cursor: pointer;
+        }
+
+        .fa-trash {
+          margin-left: 5px;
+          cursor: pointer;
+
+          &:active {
+            transform: scale(.95);
+          }
+        }
+      }
+    }
+  }
+
 .container {
     min-height: calc(100vh - 470px);
 

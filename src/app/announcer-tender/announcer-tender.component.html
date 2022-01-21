@@ -35,10 +35,19 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid && formTender.get('file').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="file">Файл</label>
+      <label for="file">Публичный файл</label>
       <div class="file_block">
         <h1>{{showAlertFile}}</h1>
-        <input type="file" multiple accept=".pdf" (change)="getFile($event)" formControlName="file">
+        <input type="file" accept=".pdf" (change)="getFile($event)" formControlName="file">
+        <img src="assets/img/file.svg" alt="">
+      </div>
+    </div>
+
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('publicFile').invalid && formTender.get('publicFile').touched ? '1px  solid red' : '1px  solid #000'}">
+      <label for="file">Приватный файл</label>
+      <div class="file_block">
+        <h1>{{showAlertPublicFile}}</h1>
+        <input type="file" accept=".pdf" (change)="getPublicFile($event)" formControlName="publicFile">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>

@@ -2,7 +2,7 @@
 <app-header></app-header>
 <div class="container">
   <div class="title_block">
-    <h1>Марказ, гуруҳ, агентҳои иҷроия ва тадбикунандаи лоиҳаҳо</h1>
+    <h1>ЦЕНТР, ГРУППА, АГЕНТСТВО ПО ИСПОЛНЕНИЮ И РЕАЛИЗАЦИИ ПРОЕКТОВ</h1>
   </div>
   <div class="navbar">
 
@@ -26,33 +26,35 @@
           <td colspan="4" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
         <ng-container *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-        <tr class="train" >
+        <tr class="train">
           
           <td *ngIf="items.parent_id>0; else elseBlock" style="border:0; text-align: left; padding:0 0 0 50px; position: relative;" colspan="3">
             
             <div style="border: 1px solid #000; margin-bottom: 10px; padding: 5px 0; display: flex; align-items: center;">
-                <h1 *ngIf="showParent">{{ items.name }}</h1>
-                <input *ngIf="!showParent" type="text" style="color: #726d6d; text-indent: 10px;" [value]="items.name" formControlName="name">
+                <h1 *ngIf="showParent != items.projects_center_id">{{ items.name }}</h1>
+                <form [formGroup]="editForm">
+                  <input *ngIf="showParent == items.projects_center_id" type="text" style="color: #726d6d; text-indent: 10px;" [value]="items.name" formControlName="editSelectParent">
+              </form>
 
-                <div class="change" *ngIf="editShow != items.projects_center_id" style="position: absolute; right: 0;">
-                  <div class="trash_block" (click)="editShowParents()">
+                <div class="change" *ngIf="!showParent != items.projects_center_id" style="position: absolute; right: 0;">
+                  <div class="trash_block" (click)="editShowParents(items.projects_center_id)">
                     <i class="td_i fas fa-pencil-alt"></i>
                   </div>
                 </div>
 
-                <div class="change" style="position: absolute; right: 0;" [routerLink]="['/adminproject', items.projects_center_id]" *ngIf="showParent">
+                <div class="change" style="position: absolute; right: 0;" [routerLink]="['/adminproject', items.projects_center_id]" *ngIf="showParent != items.projects_center_id">
                   <div class="trash_block" style="margin-left: 87px;">
                     <i class="td_i fas fa-chevron-right"></i>
                   </div>
                 </div>
 
-                <div class="change"  style="position: absolute; right: 0;" *ngIf="showParent">
-                  <div class="trash_block" style="margin-left: 162px;">
+                <div class="change"  style="position: absolute; right: 0;" *ngIf="showParent != items.projects_center_id">
+                  <div class="trash_block" style="margin-left: 162px;" (click)="deleteEditShow(items.projects_center_id, items.name)">
                     <i class="td_i fas fa-trash"></i>
                   </div>
                 </div>
 
-                <div class="change"  style="position: absolute; right: 0;" *ngIf="!showParent">
+                <div class="change"  style="position: absolute; right: 0;" *ngIf="showParent == items.projects_center_id">
                   <div class="trash_block" (click)="sendEditShowParents(items.projects_center_id)">
                     <i>ОК</i>
                   </div>

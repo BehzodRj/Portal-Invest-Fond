@@ -11,10 +11,12 @@ import { RequestService } from '../all.service';
 export class AnnouncerTenderComponent implements OnInit {
   formTender!: any
   fileData: any = []
+  publicFileData: any = []
   showAlertName = 'Название'
   showAlertCenterID = 'Центр ID'
   showAlertMethod = 'Метод'
   showAlertFile = 'Файл'
+  showAlertPublicFile = 'Файл'
   showAlertLots = 'Колличество лотов'
   showAlertPrice = 'Взнос'
   isLoading = false
@@ -26,23 +28,33 @@ export class AnnouncerTenderComponent implements OnInit {
       name: new FormControl('', Validators.required),
       centerID: new FormControl('', Validators.required),
       method: new FormControl('', Validators.required),
-      sendType: new FormControl('однофазный', Validators.required),
+      sendType: new FormControl('одноэтапный', Validators.required),
       sendDate: new FormControl('', Validators.required),
       file: new FormControl('', Validators.required),
+      publicFile: new FormControl('', Validators.required),
       lots: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
     })
   }
 
-  getFile(value: any) {   
+  getFile(value: any) {
     this.showAlertFile = value.target.files[0].name
-    Object.values(value.target.files).forEach( (element: any) => {
-      let reader = new FileReader()
-      reader.readAsDataURL(element)
-      reader.onload = () => {
-        this.fileData.push(reader.result)        
-      }
-    })
+    let reader = new FileReader()
+    reader.readAsDataURL(value.target.files[0])
+    reader.onload = () => {
+      this.fileData = reader.result
+      console.log(reader.result);
+      
+    }
+  }
+
+  getPublicFile(value: any) {
+    this.showAlertPublicFile = value.target.files[0].name
+    let reader = new FileReader()
+    reader.readAsDataURL(value.target.files[0])
+    reader.onload = () => {
+      this.publicFileData = reader.result
+    }
   }
 
   send() {
@@ -58,7 +70,7 @@ export class AnnouncerTenderComponent implements OnInit {
       alert(' "Дата проведения" не можеть быть пустым')
     } else {
       this.isLoading = true
-      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData).subscribe(response => {
+      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData, this.publicFileData).subscribe(response => {
         this.isLoading = false
         alert('Вы успешно добавили тендер')
         this.router.navigate(['/announcer'])
