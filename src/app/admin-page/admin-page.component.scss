@@ -44,6 +44,39 @@
       }
  
       .pains {
+        
+        .pt_content {     
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          button {
+            position: relative;
+            width: 218px;
+            left: 229px;
+            height: 50px;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            border: none;
+            border-radius: 8px;
+            background: #15345C;
+            color: #fff;
+            cursor: pointer;
+
+            &:active {
+              transform: scale(.99);
+            }
+          }
+          .pt_block {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+
         .add_block {
           height: 40px;
 
@@ -80,7 +113,7 @@
           }
           button {
             float: right;
-            width: 92%;
+            width: 96%;
             height: 50px;
             text-transform: uppercase;
             font-family: 'Roboto', sans-serif;
@@ -116,6 +149,7 @@
 
               i {
                 color: #fff;
+                text-indent: 0;
               }
             }
 
@@ -136,12 +170,20 @@
                 font-size: 15px;
                 line-height: 20px;
                 color: #202020;
+                text-align: start;
+                text-indent: 10px !important;
             }
+
 
             .td_block {
               position: relative;
               display: flex;
               align-items: center;
+
+              h1 {
+                text-indent: 0;
+                width: 100%;
+              }
             }
 
             form {
@@ -168,16 +210,19 @@
               left: 0;
             }
             &:first-child {
-              text-indent: 10px;
               border: 1px solid #000;
               border-right: 0;
               color: #000;
             }
  
             &:nth-child(2) {
-              text-indent: 10px;
               border: 1px solid #000;
               color: #000;
+
+              h1 {
+                text-indent: 0 !important;
+                text-align: center !important;
+              }
             }
  
             &:nth-child(3) {

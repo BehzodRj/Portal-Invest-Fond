@@ -2,21 +2,23 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
-    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+    <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Документ</h1>
+    <h1 *ngIf="publicFilesData < 1 ? 0 : 1" (click)="download(publicDowFile)">Обявления</h1>
   </div>
 </div>
 <div class="container">
   <div class="title_block">
-    <h1>Марказ, гуруҳ, агентҳои иҷроия ва тадбикунандаи лоиҳаҳо</h1>
+    <h1>ЦЕНТР, ГРУППА, АГЕНТСТВО ПО ИСПОЛНЕНИЮ И РЕАЛИЗАЦИИ ПРОЕКТОВ</h1>
     <button routerLink="/announcertender">+</button>
   </div>
+  <h2 style="text-align: center;">Обявления и доступ к тендерним документам</h2>
   <div class="navbar">
 
     <table class="resp-tab">
       <thead class="pain">
         <tr>
           <th>№</th>
-          <th>Название проекты</th>
+          <th>Название проекта/тендера</th>
           <th>ID</th>
           <th>ID<br>Тендера</th>
           <th>Тип <br> проведения</th>
@@ -31,7 +33,7 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{announcer.anouncement_id}}</td>
-          <td><span>Название</span>{{announcer.name}}</td>
+          <td><span>Название проекта/тендера</span>{{ announcer.project_name }}/{{ announcer.name }}</td>
           <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
@@ -46,12 +48,16 @@
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>
-              <div class="icons_block" (click)="openModal(announcer.anouncement_files)">
+              <div class="icons_block" (click)="openModal(announcer.anouncement_private_file, announcer.anouncement_public_file)">
                 <i class="fas fa-download"></i>
               </div>
             
               <div class="icons_block" [routerLink]="['/announceredit', announcer.anouncement_id]">
                 <i class="far fa-edit"></i>
+              </div>
+
+              <div class="icons_block" (click)="deleteAnnouncer(announcer.anouncement_id)">
+                <i class="fas fa-trash"></i>
               </div>
           </div>
           </td>

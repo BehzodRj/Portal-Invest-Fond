@@ -1,6 +1,6 @@
 <div class="container">
-  <img class="logo" src="assets/img/weblogo.png" routerLink="/announcement">
-  <img class="citat" src="assets/img/citatatj03.png" alt="">
+  <img class="logo" src="assets/img/weblogo_ru.png" routerLink="/announcement">
+  <img class="citat" src="assets/img/ru03.png" alt="">
 
   <div class="logOut" (click)="logOut()">
     <i class="fas fa-sign-out-alt"></i>
@@ -10,7 +10,7 @@
 <div class="menu_container">
   <div class="menu_block">
     <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()" ></i>
-    <h1 routerLink="/adminpayment" routerLinkActive="active" *ngIf="admin">Оплата</h1>
+    <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
     <h1 routerLink="/result" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
     <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
     <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
@@ -22,7 +22,7 @@
     </label> 
     <ul class="menu__box">
       <li><a class="menu__item" routerLink="/admin" *ngIf="admin">Центры</a></li>
-      <li><a class="menu__item" routerLink="/adminpayment" *ngIf="admin">Оплата</a></li>
+      <li><a class="menu__item" routerLink="/announcerpayment" *ngIf="anouncer">Оплата</a></li>
       <li><a class="menu__item" routerLink="/announcer" *ngIf="anouncer">Обявления</a></li>
       <li><a class="menu__item" routerLink="/result" *ngIf="anouncer">Результат</a></li>
       <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>

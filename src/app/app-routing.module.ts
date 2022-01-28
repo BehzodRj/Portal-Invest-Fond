@@ -29,12 +29,12 @@ const routes: Routes = [
   { path: '', component: AuthPageComponent },
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'forget', component: ForgetPageComponent },
-  { path: 'announcer', component: AnnouncerPageComponent, canActivate: [AnnouncerGuard] },
+  { path: 'announcer', component: AnnouncerPageComponent,   },
   { path: 'announcerform/:id', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
   { path: 'announceredit/:id', component: AnnouncerEditComponent, canActivate: [AnnouncerGuard] },
+  { path: 'announcerpayment', component: AdminPaymentComponent, canActivate: [AnnouncerGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
-  { path: 'adminpayment', component: AdminPaymentComponent, canActivate: [AdminGuard] },
   { path: 'adminproject/:id', component: AdminProjectComponent, canActivate: [AdminGuard] },
   { path: 'subscribertender', component: SubscriberTenderComponent, canActivate: [SubscribeGuard] },
   { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
@@ -44,7 +44,6 @@ const routes: Routes = [
   { path: 'subscriberorderslotchange/:id', component: SubscriberorderslotchangePageComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] }, 
   { path: 'result', component: ResultPageComponent }, 
-  { path: 'project', component: ProjectComponent },  
   { path: '**', component: ErrorPageComponent }
 ];
 

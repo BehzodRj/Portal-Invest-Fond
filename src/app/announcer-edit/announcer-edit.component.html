@@ -5,55 +5,63 @@
     <h1>Тендеры проекта > <span>Изменить тендер</span></h1>
   </div>
 
-  <form class="form">
+  <form class="form" [formGroup]="editAnnouncerForm">
     <div class="items_block">
       <label for="text">Название</label>
-      <input type="text">
+      <input type="text" formControlName="name">
     </div>
 
     <div class="items_block regist_block">
       <label for="number">Центр ID</label>
-      <input type="number">
+      <input type="number" formControlName="project_center_anouncement_id">
     </div>
 
     <div class="items_block regist_block">
       <label for="text">Метод</label>
-      <input type="text">
+      <input type="text" formControlName="procurement_method">
     </div>
 
     <div class="items_block regist_block">
       <label for="select">Тип проведения</label>
-      <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;">
-        <option>однофазный</option>
-        <option>двухфазный</option>
+      <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="type_of_procurement">
+        <option>одноэтапный</option>
+        <option>двухэтапный</option>
       </select>
     </div>
 
     <div class="items_block regist_block">
       <label for="date">Дата проведения</label>
-      <input type="date" style="text-indent: 3px;">
+      <input type="date" style="text-indent: 3px;" formControlName="open_date">
     </div>
 
     <div class="items_block regist_block">
-      <label for="file">Файл</label>
+      <label for="file">Публичный файл </label>
       <div class="file_block">
-        <h1>Файл</h1>
-        <input type="file" multiple accept=".pdf">
+        <h1>{{  privateFileName }}</h1>
+        <input type="file" accept=".pdf" formControlName="privateFiles" (change)="privateSelectFiles($event)">
+        <img src="assets/img/file.svg" alt="">
+      </div>
+    </div>
+
+    <div class="items_block regist_block">
+      <label for="file">Приватный файл</label>
+      <div class="file_block">
+        <h1>{{  publicFileName }}</h1>
+        <input type="file" accept=".pdf" formControlName="publicFiles" (change)="publicSelectFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
 
     <div class="items_block regist_block">
       <label for="number">Колличество лотов</label>
-      <input type="number">
+      <input type="number" formControlName="number_of_lots">
     </div>
 
     <div class="items_block regist_block">
       <label for="number">Взнос</label>
-      <input type="number">
+      <input type="number" formControlName="price">
     </div>
-
-    <button>ИЗМЕНИТЬ ЛОТ</button>
+    <button (click)="chageEditLots()">ИЗМЕНИТЬ ЛОТ</button>
   </form>
 </div>
 <app-footer-page></app-footer-page>

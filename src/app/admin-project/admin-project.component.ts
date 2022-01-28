@@ -147,4 +147,22 @@ export class AdminProjectComponent implements OnInit {
       })
     }
   }
+  
+  announcerPage(id: any) {
+    this.request.changePageRequest(id).subscribe( (response: any) => {
+      localStorage.setItem('access_token', response.access_token)
+      location.reload()
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
+    })
+  }
 }

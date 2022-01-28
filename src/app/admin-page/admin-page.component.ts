@@ -11,21 +11,27 @@ import { RequestService } from '../all.service';
 export class AdminPageComponent implements OnInit {
   addForm!: any
   addText = 'ДОБАВИТЬ ЦЕНТР'
+  addPar = 'ДОБАВИТЬ РОДИТЕЛЬ'
   text = ''
   addError = false
   editForm!: FormGroup
+  addChildForm!: FormGroup
   tableData: any = []
   editShow: number = 0
   page: any
   isLoading = false
   inputColor = false
+  showParent: number = 0
 
   constructor(private route: ActivatedRoute, private router: Router, private request: RequestService) {}
 
   ngOnInit() {
     this.addForm = new FormGroup({
       addName: new FormControl('', Validators.required),
-      selectParent: new FormControl('', Validators.required)
+      selectParent: new FormControl('')
+    })
+    this.addChildForm = new FormGroup({
+      name: new FormControl('', Validators.required),
     })
     
     this.editForm = new FormGroup({
@@ -54,7 +60,7 @@ export class AdminPageComponent implements OnInit {
       this.addError = true
     } else {
       this.isLoading = true
-      this.request.postAdminReq(addFormData.addName, addFormData.selectParent).subscribe(response => {
+      this.request.postAdminReq(addFormData.addName, 0).subscribe(response => {
         this.isLoading = false
         location.reload()
       }, error => {
@@ -92,7 +98,7 @@ export class AdminPageComponent implements OnInit {
     if(editFormData.name == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.request.putAdminReq(id, editFormData.name, editFormData.editSelectParent).subscribe(response => {
+      this.request.putAdminReq(id, editFormData.name).subscribe(response => {
         location.reload()
       }, error => {
         if(error.status == '401') {
@@ -110,6 +116,66 @@ export class AdminPageComponent implements OnInit {
   
   deleteItem(id: number, name: string) {
     const conf = confirm(`Вы хотите удалить центр: ${name}`)
+    if(conf == true) {
+      this.request.deleteAdminReq(id).subscribe(response => {
+        location.reload()
+      }, error => {
+        if(error.status == '401') {
+          this.request.refreshToken().subscribe( (response: any) =>  {
+            localStorage.setItem('access_token', response.access_token)
+          }, errorToken => {
+            alert(errorToken.message)
+          })
+        } else {
+          alert(error.message)
+        }
+      })
+    }
+  }
+
+  sendShowParents(id: any) {
+    const addChildFormData = {...this.addChildForm.value}
+    console.log(addChildFormData);
+    this.request.postAdminReq(addChildFormData.name, id).subscribe(response => {
+      location.reload()
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
+    })
+  }
+
+  editShowParents(id: number) {
+    this.showParent = id
+    this.editForm.controls['editSelectParent'].patchValue(this.tableData.filter( (res: any) => res.projects_center_id == id)[0].name)
+  }
+
+  sendEditShowParents(id: any) {
+    const editFormData = {...this.editForm.value}
+    this.request.putAdminReq(id, editFormData.editSelectParent).subscribe(response => {
+      location.reload()
+      this.showParent = 0
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
+    })
+  }
+
+  deleteEditShow(id: number, name: string) {
+    let conf = confirm(`Вы хотите удалить ${name}`)
     if(conf == true) {
       this.request.deleteAdminReq(id).subscribe(response => {
         location.reload()

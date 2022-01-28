@@ -13,7 +13,7 @@
           <th>№</th>
           <th>Название проекты</th>
           <th>Email</th>
-          <th colspan="2">Действие</th>
+          <th colspan="3">Действие</th>
         </tr>
       </thead>
       <tbody class="pains">
@@ -34,7 +34,7 @@
             </form>
           </td>
 
-          <td colspan="2" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
+          <td colspan="3" style="border: none;"><button [disabled]="addForm.invalid" (click)="addButton()">Добавить</button></td>
         </tr>
         <tr class="train" *ngFor="let items of tableData | paginate: {itemsPerPage: 10, currentPage: page}">
           <td><span>№</span>{{ items.project_id }}</td>
@@ -62,7 +62,7 @@
 
           <td class="change" (click)="itemClick(items.project_id)" *ngIf="editShow != items.project_id">
             <div class="trash_block">
-              <i class="td_i fas fa-pencil-alt"></i>
+              <i class="fas fa-pencil-alt"></i>
             </div>
           </td>
 
@@ -73,6 +73,12 @@
 
             <div class="trash_block" *ngIf="editShow == items.project_id" (click)="changeButton(items.project_id)">
               <i>ОК</i>
+            </div>
+          </td>
+
+          <td class="change" *ngIf="editShow != items.project_id" (click)="announcerPage(items.project_id)">
+            <div class="trash_block">
+              <i class="fas fa-sign-in-alt"></i>
             </div>
           </td>
 
