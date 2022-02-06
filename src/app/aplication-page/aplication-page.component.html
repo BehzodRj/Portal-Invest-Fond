@@ -66,33 +66,8 @@
               </div>
             </div>
           </div>
-          <h2>Партнеры:</h2>
-          <div class="partners__block">
-            <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
-              <div class="userP" *ngFor="let addPartner of AddPartnerData; let idx = index">
-                <p [ngStyle]="{'font-weight': addPartner.leader ? 'bold' : 'thin'}">{{addPartner.name}}</p>
-                <div class="trash" (click)="deletePartner(idx)">
-                  <i class="fa fa-trash"></i>
-                </div>
-              </div>
-              <div class="userP"></div>
-            </div>
-            <div class="lider__block">
-              <div class="inp">
-                <h1>Партнер</h1>
-                <input type="text" placeholder="Партнер" formControlName="name">
-              </div>
-              <div class="inp check">
-                <input type="text" placeholder="Лидер" readonly>
-                <input type="checkbox" class="checkbox" formControlName="leader">
-              </div>
-              <button style="border: none; cursor: pointer;" (click)="addP()">
-                <i class="fa fa-plus"></i>
-              </button>
-            </div>
-            <div class="btn">
-              <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
-            </div>
+          <div class="btn">
+            <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
           </div>
         </form>
     </div>
@@ -278,6 +253,32 @@
       </tbody>
     </table>
   </div>
+  <form [formGroup]="AddPartnerForm">
+    <div class="partners__block">
+      <div class="user-part__block" [ngStyle]="{'flex-direction': column ? 'column' : 'row'}">
+        <div class="userP" *ngFor="let addPartner of AddPartnerData; let idx = index">
+          <p [ngStyle]="{'font-weight': addPartner.leader ? 'bold' : 'thin'}">{{addPartner.name}}</p>
+          <div class="trash" (click)="deletePartner(idx)">
+            <i class="fa fa-trash"></i>
+          </div>
+        </div>
+        <div class="userP"></div>
+      </div>
+      <div class="lider__block">
+        <div class="inp">
+          <h1>Партнер</h1>
+          <input type="text" placeholder="Партнер" formControlName="name">
+        </div>
+        <div class="inp check">
+          <input type="text" placeholder="Лидер" readonly>
+          <input type="checkbox" class="checkbox" formControlName="leader">
+        </div>
+        <button style="border: none; cursor: pointer;" (click)="addP()">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </form>
   <div class="summa">
     <form class="summa__nds" [formGroup]="addLotsForm">
       <div class="inp-block">
