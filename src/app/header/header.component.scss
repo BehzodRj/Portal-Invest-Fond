@@ -35,6 +35,42 @@ img {
     background-color: #112a4a;
     color: #fff;
     padding: 10px;
+
+    .drop_content {
+        position: relative;
+
+        .drop_sec {
+            margin: 14px 0 0 17px !important;
+        }
+
+        .drop_block {
+            position: absolute;
+            width: 78%;
+            padding: 10px 15px;
+            margin: 25px 0 0 17px;
+            background-color: #112a4a;
+            filter: drop-shadow(0px 4px 4px #e5e2e240);
+            cursor: pointer;
+
+            .drop_items {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                h1 {
+                    color: #fff;
+                    margin-left: 0;
+                }
+    
+                .fa-file-download {
+                    color: #fff;
+                }
+
+            }
+
+        }
+    }
 }
 .menu_block {
     max-width: 1430px;

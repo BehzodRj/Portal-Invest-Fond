@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://45.94.219.126'
+    private url = 'http://td.investcom.tj'
     constructor(private http: HttpClient) { }
 
     
@@ -72,22 +72,22 @@ export class RequestService {
 
     
     // Announcer
-    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any) {
+    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any, project_id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Accept': "application/json"
         })
-        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file}, {headers:header})
+        return this.http.post(this.url + '/api/auth/anouncements/create', { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file, 'project_id': project_id}, {headers:header})
     }
 
-    putAnnouncerLots(id: number, name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any) {
+    putAnnouncerLots(id: number, name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any, project_id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Accept': "application/json"
         })
-        return this.http.put(this.url + '/api/auth/anouncements/update/' + id, { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file}, {headers:header})
+        return this.http.put(this.url + '/api/auth/anouncements/update/' + id, { "name": name, "project_center_anouncement_id": project_center_anouncement_id, "procurement_method": procurement_method, "type_of_procurement": type_of_procurement, "open_date": open_date, "number_of_lots": number_of_lots, "price": price, "anouncement_private_file": anouncement_private_file, 'anouncement_public_file': anouncement_public_file, 'project_id': project_id}, {headers:header})
     }
 
     getAnnouncerLots() {
@@ -96,6 +96,14 @@ export class RequestService {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
         return this.http.get(this.url + '/api/auth/allanouncements', {headers:header})
+    }
+
+    getAnnouncerProjLots() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/aprojects', {headers:header})
     }
 
     getAnnouncerLotsById(id: number) {

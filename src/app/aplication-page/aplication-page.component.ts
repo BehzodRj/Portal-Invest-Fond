@@ -15,6 +15,7 @@ export class AplicationPageComponent implements OnInit {
   addLotsData: any = []
   editLotsData: any = []
   AddPartnerData:  any = []
+  AddPartnerForm: any = []
   editFormData: any
   status: any
   column = false
@@ -41,8 +42,6 @@ export class AplicationPageComponent implements OnInit {
       discount: new FormControl(''), 
       discount_dol: new FormControl(''), 
       discount_euro: new FormControl(''), 
-      name: new FormControl(''),
-      leader: new FormControl(false),
       Gtotal: new FormControl(''),
       Gtotal_dol: new FormControl(''),
       Gtotal_euro: new FormControl(''),
@@ -52,6 +51,11 @@ export class AplicationPageComponent implements OnInit {
       Gdiscount: new FormControl(''),
       Gdiscount_dol: new FormControl(''),
       Gdiscount_euro: new FormControl('')
+    })
+
+    this.AddPartnerForm = new FormGroup({
+      name: new FormControl(''),
+      leader: new FormControl(false),
     })
 
     // EditLotsForm
@@ -67,17 +71,15 @@ export class AplicationPageComponent implements OnInit {
       discount: new FormControl(''), 
       discount_dol: new FormControl(''), 
       discount_euro: new FormControl(''), 
-      name: new FormControl(''),
-      leader: new FormControl(false),
     })
   }
 
   addP() {    
-    const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.name == '') {
+    const AddPartnerFormData = {...this.AddPartnerForm.value}
+    if(AddPartnerFormData.name == '') {
       alert('Заполните поле')
     } else {
-      this.AddPartnerData.push({name: addLotsFormData.name, leader: addLotsFormData.leader})
+      this.AddPartnerData.push({name: AddPartnerFormData.name, leader: AddPartnerFormData.leader})
       this.addLotsForm.controls['name'].reset()
     }
   }

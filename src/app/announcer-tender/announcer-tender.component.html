@@ -62,6 +62,13 @@
       <input type="number" [placeholder]="showAlertPrice" formControlName="price">
     </div>
 
+    <div class="items_block regist_block">
+      <label for="number">Проекты</label>
+      <select formControlName="project">
+        <option *ngFor="let projects of projectsData" [value]="projects.project_id">{{ projects.name }}</option>
+      </select>
+    </div>
+
     <button [disabled]="formTender.invalid" (click)="send()">ДОБАВИТЬ ЛОТ</button>
 
   </form>

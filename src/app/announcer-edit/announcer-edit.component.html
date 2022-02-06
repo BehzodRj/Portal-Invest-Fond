@@ -61,6 +61,14 @@
       <label for="number">Взнос</label>
       <input type="number" formControlName="price">
     </div>
+
+    <div class="items_block regist_block">
+      <label for="number">Проекты</label>
+      <select formControlName="project">
+        <option *ngFor="let editProject of editProjectsData" [value]="editProject.project_id">{{ editProject.name }}</option>
+      </select>
+    </div>
+
     <button (click)="chageEditLots()">ИЗМЕНИТЬ ЛОТ</button>
   </form>
 </div>

@@ -47,7 +47,6 @@ export class ProfilePageComponent implements OnInit {
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
-          
         }, errorToken => {
           alert(errorToken.message)
         })

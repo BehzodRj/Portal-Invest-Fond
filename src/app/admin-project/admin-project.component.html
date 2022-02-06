@@ -52,7 +52,7 @@
           <td>
             <span>Email</span>
             <div class="td_block">
-              <h1 *ngIf="editShow != items.project_id">{{ items.email }}</h1>
+              <h1 *ngIf="editShow != items.project_id">{{ items.user.email }}</h1>
 
               <form [formGroup]="editForm" *ngIf="editShow == items.project_id">
                 <input type="text" [ngStyle]="{color: inputColor ? '#707070' : '#000'}" formControlName="email">
