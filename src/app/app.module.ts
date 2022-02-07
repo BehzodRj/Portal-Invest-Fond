@@ -30,6 +30,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
+import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { SubscriberorderslotchangePageComponent } from './subscriberorderslotcha
     SubscriberorderslotPageComponent,
     SubscriberorderslotchangePageComponent,
     AnnouncerEditComponent,
+    ResultDataPageComponent,
   ],
   imports: [  
     FormsModule,

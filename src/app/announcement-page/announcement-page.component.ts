@@ -47,7 +47,7 @@ export class AnnouncementPageComponent implements OnInit {
     this.activeAnounsment = id
   }
   modalSend() {
-    console.log(this.anouncement[this.activeAnounsment]);
+    console.log(this.anouncement[this.activeAnounsment].payments[0]);
     
     if(this.fileData.length < 1) {
       alert('Поле не может быть пустым')
@@ -85,13 +85,16 @@ export class AnnouncementPageComponent implements OnInit {
     }
   }
 
-  openModal(file: any) {
-    if(file < 1) {
+  openModal(file1: any, file2: any) {
+    if(file1 == '' || file2 == '') {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.showFileModal = true
-        file.split(",").forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+        file1.split(",").forEach((element:any) => {
+          this.dowFile.push( {name: 'Документ', file: `http://10.251.2.77/${element}`})
+        });
+        file2.split(",").forEach((element:any) => {
+          this.dowFile.push( {name: 'Обявление', file: `http://10.251.2.77/${element}`})
         });
     }
   }

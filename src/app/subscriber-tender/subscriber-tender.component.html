@@ -14,8 +14,7 @@
         <tr class="train" *ngFor="let subcr of subscriberData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{ subcr.project_id }}</td>
           <td><span>Проект</span>{{ subcr.name }}</td>
-          <td><span>Проект</span>{{ subcr.name }}</td>
-          <td><span>Количество тендеров</span>{{ subcr.total }}</td>
+          <td><span>Количество тендеров</span>{{ subcr.anouncements.length }}</td>
           <td class="download">
             <div class="trash_block" [routerLink]="['/announcement', subcr.project_id]" >
               <i class="fas fa-chevron-right"></i>

@@ -15,7 +15,7 @@ export class ResultPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( (params: any) => {
-      this.request.getResultReq(11).subscribe(response => {
+      this.request.getResultReq(params.id).subscribe(response => {
         this.resultData = response
       }, error => {
         if(error.status == '401') {

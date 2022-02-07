@@ -20,7 +20,7 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
-    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">{{ fle.name }}</h1>
   </div>
 </div>
 <app-header></app-header>
@@ -57,11 +57,11 @@
           <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
           <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
           <td class="change">
-            <i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.status>0" (click)="openModal(anouncements.anouncement_files)"></i>
-            <i class="fas fa-dollar-sign"  *ngIf="anouncements.price>0 && anouncements.status==null" (click)="modalOpen(idx)"></i>
-            <i class="fas fa-undo-alt" *ngIf="anouncements.price>0 && anouncements.status==0"></i>
+            <i title="скачать файл" class="fa fa-download" *ngIf="anouncements.price<1 || anouncements.payments[0]?.status>1" (click)="openModal(anouncements.anouncement_private_file, anouncements.anouncement_public_file)"></i>
+            <i class="fas fa-dollar-sign"  *ngIf="anouncements.price>0 && anouncements.payments[0]?.status==1 || anouncements.payments == []" (click)="modalOpen(idx)"></i>
+            <i class="fas fa-undo-alt" *ngIf="anouncements.price>0 && anouncements.payments[0]?.status==null"></i>
             <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.favorite_id>0 ? 'orange': '#4F4F4F'}" (click)="star(anouncements.favorite_id, anouncements.anouncement_id)"></i>
-            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="anouncements.price<1 || anouncements.status>0"></i>
+            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="anouncements.price<1 || anouncements.payments[0]?.status>0"></i>
           </td>
         </tr>
       </tbody>

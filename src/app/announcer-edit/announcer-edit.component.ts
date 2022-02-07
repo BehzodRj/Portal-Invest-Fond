@@ -11,6 +11,7 @@ import { RequestService } from '../all.service';
 export class AnnouncerEditComponent implements OnInit {
   editAnnouncerForm!: FormGroup
   editAnnouncerData: any
+  editProjectsData: any = []
   getprivateFiles: any = []
   getpublicFiles: any = []
   privateFileName = 'Файл'
@@ -29,7 +30,8 @@ export class AnnouncerEditComponent implements OnInit {
       number_of_lots: new FormControl(''),
       price: new FormControl(''),
       privateFiles: new FormControl(''),
-      publicFiles: new FormControl('')
+      publicFiles: new FormControl(''),
+      project: new FormControl('')
     })
     this.route.params.subscribe( (params: any) => {
       this.request.getAnnouncerLotsById(params.id).subscribe(response => {
@@ -47,6 +49,21 @@ export class AnnouncerEditComponent implements OnInit {
           alert(error.message)
         }
       })
+    })
+
+    this.request.getAnnouncerProjLots().subscribe(response => {
+      this.editProjectsData = response
+    }, error => {
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 
@@ -72,7 +89,7 @@ export class AnnouncerEditComponent implements OnInit {
     const editAnnouncerFormData = {...this.editAnnouncerForm.value}
     this.isLoading = true
     this.route.params.subscribe( (params: any) => {
-      this.request.putAnnouncerLots(params.id, editAnnouncerFormData.name, editAnnouncerFormData.project_center_anouncement_id, editAnnouncerFormData.procurement_method, editAnnouncerFormData.type_of_procurement, editAnnouncerFormData.open_date, editAnnouncerFormData.number_of_lots, editAnnouncerFormData.price, this.getprivateFiles, this.getpublicFiles).subscribe(response => {
+      this.request.putAnnouncerLots(params.id, editAnnouncerFormData.name, editAnnouncerFormData.project_center_anouncement_id, editAnnouncerFormData.procurement_method, editAnnouncerFormData.type_of_procurement, editAnnouncerFormData.open_date, editAnnouncerFormData.number_of_lots, editAnnouncerFormData.price, this.getprivateFiles, this.getpublicFiles, editAnnouncerFormData.project).subscribe(response => {
         this.isLoading = false
         this.router.navigate(['/announcer'])
       }, error => {

@@ -12,6 +12,7 @@ export class AnnouncerTenderComponent implements OnInit {
   formTender!: any
   fileData: any = []
   publicFileData: any = []
+  projectsData: any = []
   showAlertName = 'Название'
   showAlertCenterID = 'Центр ID'
   showAlertMethod = 'Метод'
@@ -33,7 +34,14 @@ export class AnnouncerTenderComponent implements OnInit {
       file: new FormControl('', Validators.required),
       publicFile: new FormControl('', Validators.required),
       lots: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required)
+      price: new FormControl('', Validators.required),
+      project: new FormControl('', Validators.required)
+    })
+
+    this.request.getAnnouncerProjLots().subscribe(response => {
+      this.projectsData = response
+    }, error => {
+      alert(error.message)
     })
   }
 
@@ -70,7 +78,7 @@ export class AnnouncerTenderComponent implements OnInit {
       alert(' "Дата проведения" не можеть быть пустым')
     } else {
       this.isLoading = true
-      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData, this.publicFileData).subscribe(response => {
+      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData, this.publicFileData, formTenderData.project).subscribe(response => {
         this.isLoading = false
         alert('Вы успешно добавили тендер')
         this.router.navigate(['/announcer'])

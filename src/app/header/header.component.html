@@ -9,9 +9,68 @@
 </div>
 <div class="menu_container">
   <div class="menu_block">
-    <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()" ></i>
+    <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()"></i>
+    <div class="drop_content">
+      <h1 *ngIf="admin" (click)="shop = !shop && !docTender && !contracts && !sogl">Шоппинг</h1>
+      <div class="drop_block" *ngIf="shop">
+        <div class="drop_items">
+          <h1>файл 1</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+
+        <div class="drop_items">
+          <h1>файл 2</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drop_content">
+      <h1 *ngIf="admin" (click)="docTender = !docTender && !shop && !contracts && !sogl">Тендерные <br> документы</h1>
+      <div class="drop_block drop_sec" *ngIf="docTender">
+        <div class="drop_items">
+          <h1>файл 1</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+
+        <div class="drop_items">
+          <h1>файл 2</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="drop_content">
+      <h1 *ngIf="admin" (click)="contracts = !contracts && !shop && !docTender && !sogl">Контракты</h1>
+      <div class="drop_block" *ngIf="contracts">
+        <div class="drop_items">
+          <h1>файл 1</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+
+        <div class="drop_items">
+          <h1>файл 2</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="drop_content">
+      <h1 *ngIf="admin" (click)="sogl = !sogl && !shop && !docTender && !contracts">Соглашение</h1>
+      <div class="drop_block" *ngIf="sogl">
+        <div class="drop_items">
+          <h1>файл 1</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+
+        <div class="drop_items">
+          <h1>файл 2</h1>
+          <i class="fas fa-file-download"></i>
+        </div>
+      </div>
+    </div>
     <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
-    <h1 routerLink="/result" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
+    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
     <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
     <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
   </div>
@@ -19,17 +78,17 @@
     <input id="menu__toggle" type="checkbox" />
     <label class="menu__btn" for="menu__toggle">
       <span></span>
-    </label> 
+    </label>
     <ul class="menu__box">
       <li><a class="menu__item" routerLink="/admin" *ngIf="admin">Центры</a></li>
       <li><a class="menu__item" routerLink="/announcerpayment" *ngIf="anouncer">Оплата</a></li>
       <li><a class="menu__item" routerLink="/announcer" *ngIf="anouncer">Обявления</a></li>
-      <li><a class="menu__item" routerLink="/result" *ngIf="anouncer">Результат</a></li>
+      <li><a class="menu__item" routerLink="/resultdata" *ngIf="anouncer">Результат</a></li>
       <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
       <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
       <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>
-      <li><a class="menu__item signup" (click)="logOut()">Выход</a></li> 
-    </ul> 
-    
+      <li><a class="menu__item signup" (click)="logOut()">Выход</a></li>
+    </ul>
+
   </div>
 </div>

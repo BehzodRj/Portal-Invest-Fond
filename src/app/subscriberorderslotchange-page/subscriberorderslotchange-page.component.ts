@@ -11,6 +11,7 @@ import { RequestService } from '../all.service';
 export class SubscriberorderslotchangePageComponent implements OnInit {
   globalOrderForm!: FormGroup
   addOrderForm!: FormGroup
+  editPartnerForm!: FormGroup
   editOrderForm!: FormGroup
   orderData: any = []
   editOrderData: any
@@ -19,6 +20,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
   editModalShow = false
   showFileModal = false
   isLoading = false
+  column = false
   editIndex: any
   dowFile: any =[]
   fileName = 'Файл'
@@ -39,8 +41,12 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount: new FormControl(''),
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
-      partners: new FormControl(''),
-      is_lead: new FormControl('')
+    })
+
+    this.editPartnerForm = new FormGroup({
+      name: new FormControl(''),
+      leader: new FormControl(false),
+      response_security_submited: new FormControl(false)
     })
 
     this.editOrderForm = new FormGroup({
@@ -55,8 +61,6 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount: new FormControl(''),
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
-      partners: new FormControl(''),
-      is_lead: new FormControl('')
     })
 
     this.globalOrderForm = new FormGroup({
@@ -73,8 +77,10 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
 
     this.route.params.subscribe( (params: any) => {
       this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
-        this.orderData.push(response)
+        this.orderData.push(response[0])
         this.globalOrderForm.patchValue(this.orderData[0])
+        this.partnersLocalData = response[0].partners
+        this.editPartnerForm.patchValue(response[0])
       }, error => {
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
@@ -91,12 +97,12 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
   }
 
   addLocalPartners() {
-    const addOrderFormData = {...this.addOrderForm.value}
-    if(addOrderFormData.partners == '') {
+    const editPartnerFormData = {...this.editPartnerForm.value}
+    if(editPartnerFormData.name == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.partnersLocalData.push({name: addOrderFormData.partners, is_lead: addOrderFormData.is_lead})
-      this.addOrderForm.controls['partners'].reset()
+      this.partnersLocalData.push({name: editPartnerFormData.name, leader: editPartnerFormData.leader})
+      this.editPartnerForm.controls['name'].reset()
     }
   }
 
@@ -109,7 +115,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     if(addOrderFormData.title == '' || addOrderFormData.lot_number == '' || addOrderFormData.total == '' || addOrderFormData.vat == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.orderData[0].lots.push({title: addOrderFormData.title, lot_number: addOrderFormData.lot_number, total: addOrderFormData.total, total_dol: addOrderFormData.total_dol, total_euro: addOrderFormData.total_euro, vat: addOrderFormData.vat, vat_dol: addOrderFormData.vat_dol, vat_euro: addOrderFormData.vat_euro, discount: addOrderFormData.discount, discount_dol: addOrderFormData.discount_dol, discount_euro: addOrderFormData.discount_euro, partners: this.partnersLocalData})
+      this.orderData[0].lots.push({title: addOrderFormData.title, lot_number: addOrderFormData.lot_number, total: addOrderFormData.total, total_dol: addOrderFormData.total_dol, total_euro: addOrderFormData.total_euro, vat: addOrderFormData.vat, vat_dol: addOrderFormData.vat_dol, vat_euro: addOrderFormData.vat_euro, discount: addOrderFormData.discount, discount_dol: addOrderFormData.discount_dol, discount_euro: addOrderFormData.discount_euro})
       this.addOrderForm.reset()
       this.creatModalShow = false
     }
@@ -119,17 +125,16 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     this.editModalShow = true
     this.editOrderData = this.orderData[0].lots[index]
     this.editOrderForm.patchValue(this.editOrderData)
-    this.editOrderForm.controls['partners'].reset()
     this.editIndex = index
   }
 
   editLocalPartners() {
-    const editOrderFormData = {...this.editOrderForm.value}
-    if(editOrderFormData.partners == '') {
+    const editPartnerFormData = {...this.editPartnerForm.value}
+    if(editPartnerFormData.name == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.editOrderData.partners.push({name: editOrderFormData.partners, is_lead: editOrderFormData.is_lead})
-      this.editOrderForm.controls['partners'].reset()
+      this.partnersLocalData.push({name: editPartnerFormData.name, leader: editPartnerFormData.leader})
+      this.editPartnerForm.controls['partners'].reset()
     }
   }
 
@@ -140,7 +145,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
   }
 
   deleteEditLocalPartners(index: number) {
-    this.editOrderData.partners.splice(index, 1)
+    this.partnersLocalData.splice(index, 1)    
   }
 
   deleteLots(index: number) {
@@ -153,9 +158,9 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`, file_id: element.file_id})
+          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`, file_id: element.order_id})
         });
-    }
+    }    
   }
 
   download(file: any) {
@@ -204,6 +209,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
 
   sendData() {
     const globalOrderFormData = {...this.globalOrderForm.value}
+    const editPartnerFormData = {...this.editPartnerForm.value}
     this.route.params.subscribe( (params: any) => {
       this.isLoading = true
       this.request.putOrderLotsRequests(
@@ -218,7 +224,10 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
         globalOrderFormData.discount_dol,
         globalOrderFormData.discount_euro,
         this.orderData[0].lots,
-        this.getNewFile).subscribe(response => {
+        this.partnersLocalData,
+        editPartnerFormData.response_security_submited,
+        this.getNewFile
+        ).subscribe(response => {
           this.isLoading = false
           alert('Успешно изменен')
           this.router.navigate(['/subscriberorders'])

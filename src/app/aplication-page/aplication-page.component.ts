@@ -15,6 +15,7 @@ export class AplicationPageComponent implements OnInit {
   addLotsData: any = []
   editLotsData: any = []
   AddPartnerData:  any = []
+  AddPartnerForm: any = []
   editFormData: any
   status: any
   column = false
@@ -41,8 +42,6 @@ export class AplicationPageComponent implements OnInit {
       discount: new FormControl(''), 
       discount_dol: new FormControl(''), 
       discount_euro: new FormControl(''), 
-      name: new FormControl(''),
-      leader: new FormControl(false),
       Gtotal: new FormControl(''),
       Gtotal_dol: new FormControl(''),
       Gtotal_euro: new FormControl(''),
@@ -52,6 +51,12 @@ export class AplicationPageComponent implements OnInit {
       Gdiscount: new FormControl(''),
       Gdiscount_dol: new FormControl(''),
       Gdiscount_euro: new FormControl('')
+    })
+
+    this.AddPartnerForm = new FormGroup({
+      name: new FormControl(''),
+      leader: new FormControl(false),
+      bank: new FormControl(false)
     })
 
     // EditLotsForm
@@ -67,37 +72,21 @@ export class AplicationPageComponent implements OnInit {
       discount: new FormControl(''), 
       discount_dol: new FormControl(''), 
       discount_euro: new FormControl(''), 
-      name: new FormControl(''),
-      leader: new FormControl(false),
     })
   }
 
   addP() {    
-    const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.name == '') {
+    const AddPartnerFormData = {...this.AddPartnerForm.value}
+    if(AddPartnerFormData.name == '') {
       alert('Заполните поле')
     } else {
-      this.AddPartnerData.push({name: addLotsFormData.name, leader: addLotsFormData.leader})
-      this.addLotsForm.controls['name'].reset()
-    }
-  }
-
-  addEditP() {
-    const editLotsFormData = {...this.editLotsForm.value}
-    if(editLotsFormData.name == '') {
-      alert('Заполните поле')
-    } else {
-      this.editFormData.partners.push({name: editLotsFormData.name, leader: editLotsFormData.leader})
-      this.editLotsForm.controls['name'].reset()
+      this.AddPartnerData.push({name: AddPartnerFormData.name, leader: AddPartnerFormData.leader})
+      this.AddPartnerForm.controls['name'].reset()
     }
   }
   
   deletePartner(index: number) {
   this.AddPartnerData.splice(index, 1)
-  }
-
-  deleteEdit(index: number) {
-    this.editFormData.partners.splice(index, 1)
   }
 
   deleteLots(index: number) {
@@ -109,7 +98,7 @@ export class AplicationPageComponent implements OnInit {
     if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
       alert('Заполните поле')
     } else {
-      this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, partners: this.AddPartnerData})
+      this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro})
       this.editLotsData = this.addLotsData
       this.showModal = false
       this.AddPartnerData = [];
@@ -145,6 +134,7 @@ export class AplicationPageComponent implements OnInit {
 
   send() {
     const addLotsFormData = {...this.addLotsForm.value}
+    const AddPartnerFormData = {...this.AddPartnerForm.value}
     if(addLotsFormData.Gtotal == '' || addLotsFormData.Gvat == '' || addLotsFormData.Gdiscount == '') {
       alert('Поле не может быть пустым')
     } else {
@@ -162,6 +152,8 @@ export class AplicationPageComponent implements OnInit {
             addLotsFormData.Gdiscount_dol,
             addLotsFormData.Gdiscount_euro,
             this.addLotsData,
+            this.AddPartnerData,
+            AddPartnerFormData.bank,
             this.fileData
           ).subscribe(response => {
             this.isLoading = false

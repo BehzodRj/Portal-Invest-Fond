@@ -8,6 +8,8 @@ import { AnnouncerPageComponent } from './announcer-page/announcer-page.componen
 import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
 import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
 import { AnnouncerEditComponent } from './announcer-edit/announcer-edit.component';
+import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 import { AnnouncerGuard } from './announcer.guard';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminProjectComponent } from './admin-project/admin-project.component';
@@ -21,7 +23,6 @@ import { AplicationPageComponent } from './aplication-page/aplication-page.compo
 import { FavouritesPageComponent } from './favourites-page/favourites-page.component';
 import { SubscribeGuard } from './subscribe.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { ResultPageComponent } from './result-page/result-page.component';
 import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 
@@ -34,8 +35,10 @@ const routes: Routes = [
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
   { path: 'announceredit/:id', component: AnnouncerEditComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcerpayment', component: AdminPaymentComponent, canActivate: [AnnouncerGuard] },
+  { path: 'resultdata', component: ResultDataPageComponent, canActivate: [AnnouncerGuard] },
+  { path: 'result/:id', component: ResultPageComponent, canActivate: [AnnouncerGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
-  { path: 'adminproject/:id', component: AdminProjectComponent, canActivate: [AdminGuard] },
+  { path: 'adminproject/:id', component: AdminProjectComponent,  canActivate: [AdminGuard] },
   { path: 'subscribertender', component: SubscriberTenderComponent, canActivate: [SubscribeGuard] },
   { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
@@ -43,7 +46,6 @@ const routes: Routes = [
   { path: 'subscriberorderslot/:id', component: SubscriberorderslotPageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscriberorderslotchange/:id', component: SubscriberorderslotchangePageComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] }, 
-  { path: 'result', component: ResultPageComponent }, 
   { path: '**', component: ErrorPageComponent }
 ];
 

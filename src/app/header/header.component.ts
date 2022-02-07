@@ -12,6 +12,10 @@ export class HeaderComponent implements OnInit {
   admin = false
   anouncer = false
   subscriber = false
+  shop = false
+  docTender = false
+  contracts = false
+  sogl = false
  
   constructor(private router: Router) { }
   ngOnInit() {

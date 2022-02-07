@@ -89,7 +89,7 @@ export class AdminProjectComponent implements OnInit {
     this.inputColor = true
     let patchData = this.tableData.filter( (res: any) => res.project_id == id)[0]
     this.editForm.controls['name'].patchValue(patchData.name)
-    this.editForm.controls['email'].patchValue(patchData.email)
+    this.editForm.controls['email'].patchValue(patchData.user.email)
   }
   
   changeButton(id: number) {

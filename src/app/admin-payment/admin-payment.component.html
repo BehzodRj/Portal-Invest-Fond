@@ -32,10 +32,10 @@
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.company_name}}</td>
           <td>
             <span>Проверка</span>
-            <input type="checkbox" class="checkbox" (change)="statusChange($event, payment.payment_id)">
+            <input type="checkbox" class="checkbox" [checked]="payment.status>0" readonly (change)="statusChange($event, payment.payment_id)">
           </td>
           <td class="change">
-            <div class="trash_block" (click)="openModal(payment.payment_files)">
+            <div class="trash_block" (click)="openModal(payment.payment_file)">
               <i class="td_i fas fa-search"></i>
             </div>
           </td>
