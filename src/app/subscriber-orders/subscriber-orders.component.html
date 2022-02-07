@@ -20,14 +20,14 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let order of orderData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td>{{ idx + 1 }}</td>
-          <td><span>Название</span>{{order.name}}</td>
+          <td><span>Название</span>{{order.anouncement.name}}</td>
           <td><span>ID</span>{{ order.order_id }}</td>
-          <td><span>Центр ID</span>{{ order.project_center_anouncement_id }}</td>
-          <td><span>Тип проведения</span>{{ order.type_of_procurement }}</td>
-          <td><span>Взнос</span>{{ order.price }}</td>
-          <td><span>Дата открытия</span>{{ order.open_date }}</td>
-          <td><span>Метод проведения</span>{{ order.procurement_method }}</td>
-          <td><span>Лоты</span>{{ order.number_of_lots }}</td>
+          <td><span>Центр ID</span>{{ order.anouncement.project_center_anouncement_id }}</td>
+          <td><span>Тип проведения</span>{{ order.anouncement.type_of_procurement }}</td>
+          <td><span>Взнос</span>{{ order.anouncement.price }}</td>
+          <td><span>Дата открытия</span>{{ order.anouncement.open_date }}</td>
+          <td><span>Метод проведения</span>{{ order.anouncement.procurement_method }}</td>
+          <td><span>Лоты</span>{{ order.anouncement.number_of_lots }}</td>
           <td><span>Действия</span>
             <i class="far fa-eye" [routerLink]="['/subscriberorderslot', order.order_id]"></i>
             <i class="far fa-edit" [routerLink]="['/subscriberorderslotchange', order.order_id]"></i>
