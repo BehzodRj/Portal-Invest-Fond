@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="drop_content">
       <h1 *ngIf="admin" (click)="docTender = !docTender && !shop && !contracts && !sogl">Тендерные <br> документы</h1>
       <div class="drop_block drop_sec" *ngIf="docTender">
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="drop_content">
       <h1 *ngIf="admin" (click)="contracts = !contracts && !shop && !docTender && !sogl">Контракты</h1>
       <div class="drop_block" *ngIf="contracts">
