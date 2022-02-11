@@ -19,7 +19,7 @@
           
           <td colspan="3" style="border-left: 1px solid; border-right: 1px solid;" [ngStyle]="{'border': addForm.get('addName').invalid && addForm.get('addName').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
-              <h1>Название</h1>
+              <h1 style="padding: 0;">Название</h1>
               <input type="text" [placeholder]="addText" formControlName="addName">
             </form>
           </td>
@@ -117,7 +117,7 @@
                 <form style="display: flex; justify-content: space-between;" [formGroup]="addChildForm">
                   <div class="part_block">
                     <h1>Название</h1>
-                    <input type="text" style="text-indent: 10px;" [placeholder]="addPar" formControlName="name">
+                    <input type="text" style="text-indent: 10px; width: 100%;" [placeholder]="addPar" formControlName="name">
                 </div>
                   <button (click)="sendShowParents(items.projects_center_id)">Добавить</button>
                 </form>

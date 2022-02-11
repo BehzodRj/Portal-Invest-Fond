@@ -18,7 +18,6 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
-          <th  rowspan="2" style="color: #112A4A; font-weight: bold;" >Партнеры</th> 
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -57,10 +56,20 @@
           </div><pre>{{ orderLots.discount }}</pre> </td>
           <td class="hdd">{{ orderLots.discount_dol }}</td>      
           <td class="hdd">{{ orderLots.discount_euro }}</td>  
-          <td><span>Партнеры </span> <h1 style="font-size: 13px;" *ngFor="let orderPartners of orderLots.partners" [ngStyle]="{color: orderPartners.is_lead ? '#000' : '#757575'}">{{ orderPartners.name }}</h1> </td>   
         </tr> 
       </tbody>
     </table>
+  </div>
+  <div class="bank-gr_block">
+    <div class="partner_items">
+      <h1>Партнёры:</h1>
+      <pre *ngFor="let partners of orderData.partners" [ngStyle]="{'font-weight': partners.leader>0 ? 'bold' : 'thin'}">{{ partners.name }},</pre>
+    </div>
+    <div class="bank_items">
+      <h1>Банковские гарантии:</h1>
+      <input type="checkbox" onclick="return false" *ngIf="orderData.response_security_submited > 0" checked>
+      <input type="checkbox" onclick="return false" *ngIf="orderData.response_security_submited < 1">
+    </div>
   </div>
   <div class="summa">
     <form class="summa__nds">
@@ -116,6 +125,6 @@
         </div>
       </div>
     </form>
-    <button class="items_block regist_block" (click)="openFileModal(orderData.order_files)">Файлы</button>
+    <button class="items_block regist_block" (click)="openFileModal(orderData.files)">Файлы</button>
   </div>  
 </div>

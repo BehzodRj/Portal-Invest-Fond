@@ -16,8 +16,8 @@ export class SubscriberorderslotPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( (params: any) => {
-      this.request.getOrderLotsRequests(params.id).subscribe(response => {
-        this.orderData = response
+      this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
+        this.orderData = response[0]
       }, error => {
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
@@ -39,7 +39,7 @@ export class SubscriberorderslotPageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`})
+          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`})
         });
     }
   }

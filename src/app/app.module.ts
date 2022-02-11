@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import {MatMenuModule} from '@angular/material/menu';
+// import {MatButtonModule} from '@angular/material/button';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,6 +72,9 @@ import { ResultDataPageComponent } from './result-data-page/result-data-page.com
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    // MatMenuModule,
+    // MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -129,6 +129,14 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
     }
+
+    deleteAnnouncer(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/orders/' + id, {headers:header})
+    }
     
     getAnnouncerFormModal(id: number) {
         let header: HttpHeaders = new HttpHeaders({
@@ -295,6 +303,8 @@ export class RequestService {
         discount_dol: number,
         discount_euro: number,
         lots: any,
+        partners: any,
+        response_security_submited: any,
         file: any
 
         ) {
@@ -315,6 +325,8 @@ export class RequestService {
             "discount_dol": discount_dol,
             "discount_euro": discount_euro,
             'lots': lots,
+            'partners': partners,
+            'response_security_submited': response_security_submited,
             'files': file
         }, {headers:header})
     }
@@ -363,13 +375,16 @@ export class RequestService {
         discount_dol: number,
         discount_euro: number,
         lots: any,
-        file: any) {
+        partners: any,
+        response_security_submited: any,
+        file: any
+        ) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'token_type': 'bearer',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.put(this.url + '/api/auth/order/' + id, {"total": total, "total_dol": total_dol, "total_euro": total_euro, "vat": vat, "vat_dol": vat_dol,"vat_euro": vat_euro,"discount": discount,"discount_dol": discount_dol,"discount_euro": discount_euro,"lots": lots,"files": file}, {headers:header})
+        return this.http.put(this.url + '/api/auth/order/' + id, {"total": total, "total_dol": total_dol, "total_euro": total_euro, "vat": vat, "vat_dol": vat_dol,"vat_euro": vat_euro,"discount": discount,"discount_dol": discount_dol,"discount_euro": discount_euro,"lots": lots,"files": file, 'response_security_submited': response_security_submited, 'partners': partners}, {headers:header})
     }
 
     deleteOrderRequests(id: number) {
