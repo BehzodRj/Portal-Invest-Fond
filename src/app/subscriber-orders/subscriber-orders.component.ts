@@ -28,5 +28,12 @@ export class SubscriberOrdersComponent implements OnInit {
       }
     })
   }
+  deleteOrder(id: any) {
+    this.request.deleteAnnouncer(id).subscribe(response => {
+      location.reload()
+    }, error => {
+      alert(error.messages)
+    })
+  }
 
 }

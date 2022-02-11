@@ -129,6 +129,14 @@ export class RequestService {
         })
         return this.http.get(this.url + '/api/auth/orders/' + id, {headers:header})
     }
+
+    deleteAnnouncer(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/orders/' + id, {headers:header})
+    }
     
     getAnnouncerFormModal(id: number) {
         let header: HttpHeaders = new HttpHeaders({

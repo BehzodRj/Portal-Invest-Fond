@@ -25,11 +25,11 @@
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let payment of paymentsData">
-          <td>1</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.name}}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.price}}</td>
+          <td>{{ payment.payment_id }}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.anouncement.name + ' | ' + payment.anouncement.project.name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.anouncement.price}}</td>
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.payment_id}}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.company_name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.user.subscriber.company_name}}</td>
           <td>
             <span>Проверка</span>
             <input type="checkbox" class="checkbox" [checked]="payment.status>0" readonly (change)="statusChange($event, payment.payment_id)">
