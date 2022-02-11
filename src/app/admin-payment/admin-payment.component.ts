@@ -58,7 +58,7 @@ export class AdminPaymentComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.split(",").forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element}`})
+          this.dowFile.push( {file: `http://td.investcom.tj/${element}`})
         })
     } 
   }

@@ -15,10 +15,10 @@
       }
     }
 }
-.navbar {
-    max-width: 1430px;
+.navbar { 
     margin: auto;
-  position: relative;
+    position: relative;
+    padding: 0 60px;
     .resp-tab {
       width: 100%;
       margin: 50px auto;
@@ -42,7 +42,7 @@
           }
         }
       }
- 
+      
       .pains {
         
         .pt_content {     
@@ -171,7 +171,7 @@
                 line-height: 20px;
                 color: #202020;
                 text-align: start;
-                text-indent: 10px !important;
+                padding: 10px;
             }
 
 
@@ -242,7 +242,9 @@
 
      
   }
- 
+  .part_block{
+    width: 130%;
+  }
   .creat {
     max-width: 100%;
     display: flex;

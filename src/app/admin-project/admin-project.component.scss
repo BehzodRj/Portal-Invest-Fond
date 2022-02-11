@@ -135,13 +135,14 @@
                 font-size: 15px;
                 line-height: 20px;
                 color: #202020;
+                text-align: start;
+                padding: 10px;
             }
 
             .td_block {
               position: relative;
               display: flex;
               align-items: center;
-              text-indent: 10px;
             }
 
             form {

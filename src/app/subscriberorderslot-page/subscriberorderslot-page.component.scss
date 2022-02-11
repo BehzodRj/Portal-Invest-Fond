@@ -191,6 +191,41 @@
   
   
     }
+
+    .bank-gr_block {
+
+      .partner_items {
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+  
+        h1 {
+          font-size: 25px;
+          font-family: 'Roboto', sans-serif;
+        }
+
+        pre {
+          margin-left: 10px;
+          font-size: 17px;
+        }
+      }
+
+      .bank_items {
+        display: flex;
+        align-items: center;
+  
+        h1 {
+          font-size: 25px;
+          font-family: 'Roboto', sans-serif;
+        }
+  
+        input {
+          margin-left: 15px;
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
   
     .summa {
       .summa__nds {

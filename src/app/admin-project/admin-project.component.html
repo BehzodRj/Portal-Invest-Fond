@@ -22,14 +22,14 @@
 
           <td [ngStyle]="{'border': addForm.get('addName').invalid && addForm.get('addName').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
-              <h1>Название</h1>
+              <h1 style="padding: 0;">Название</h1>
               <input type="text" [placeholder]="placeName" formControlName="addName">
             </form>
           </td>
 
           <td [ngStyle]="{'border': addForm.get('addEmail').invalid && addForm.get('addEmail').touched ? '1px solid red' : '1px solid #000'}">
             <form [formGroup]="addForm">
-              <h1>Email</h1>
+              <h1 style="padding: 0;">Email</h1>
               <input type="text" [placeholder]="placeEmail" formControlName="addEmail">
             </form>
           </td>
