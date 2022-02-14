@@ -183,6 +183,22 @@
         }
   
       }
+      .bank-gr_block {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+  
+        h1 {
+          font-size: 25px;
+          font-family: 'Roboto', sans-serif;
+        }
+  
+        input {
+          margin-left: 15px;
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
     .close{
       position: absolute;

@@ -2,7 +2,7 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
-    <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Документ</h1>
+    <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Тендерные документи</h1>
     <h1 *ngIf="publicFilesData < 1 ? 0 : 1" (click)="download(publicDowFile)">Обявления</h1>
   </div>
 </div>
