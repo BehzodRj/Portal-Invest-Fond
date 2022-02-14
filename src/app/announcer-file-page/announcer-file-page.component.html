@@ -1,7 +1,12 @@
 <app-header></app-header>
 <div class="container">
   <div class="title_block">
+    
+    <h1 style="opacity: 0;">Файлы</h1>
     <h1>Файлы</h1>
+    <div class="block__trush">
+      <i class="td_i fa fa-plus"></i>
+    </div>
   </div>
   
   <div class="navbar">
@@ -17,10 +22,7 @@
         <tr class="train" *ngFor="let announcer of resulData">
           <td><span>№</span>{{announcer.anouncement_id}}</td>
           <td><span>Название проекта/тендера</span>{{ announcer.project_name }}/{{ announcer.name }}</td>  
-          <td class="change">
-            <div class="trash_block"  >
-              <i class="td_i fa fa-plus"></i>
-            </div>
+          <td class="change"> 
             <div class="trash_block"  >
               <i class="td_i fas fa-download"></i>
             </div>

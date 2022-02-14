@@ -2,10 +2,24 @@
     min-height: calc(100vh - 479px);
     margin: 0 20px;
     .title_block{
+      width: 70%; 
       text-align: center;
-      margin-top: 50px;
+      justify-content: space-between;
+      display: flex;
+      margin: 50px auto; 
       h1{
         font-size: 26px; 
+        text-align: center;
+      }
+      .block__trush{  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 75px;
+        height: 32px;
+        background: #15345C;
+        border-radius: 8px;
+        color: #fff;
       }
     }
 }
@@ -52,14 +66,14 @@
         tr {
             .change { 
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-around;
                 align-items: center; 
                 height: 50px;
                 .trash_block {
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  width: 55px;
+                  width: 75px;
                   height: 32px;
                   background: #15345C;
                   border-radius: 8px;
