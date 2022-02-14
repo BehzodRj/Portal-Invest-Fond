@@ -2,7 +2,7 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
-    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Квитанция</h1>
   </div>
 </div>
 <div class="container">
@@ -26,8 +26,8 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let payment of paymentsData">
           <td>{{ payment.payment_id }}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.anouncement.name + ' | ' + payment.anouncement.project.name}}</td>
-          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.anouncement.price}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Название Проекта\тендера</span>{{payment.anouncement.name + ' | ' + payment.anouncement.project?.name}}</td>
+          <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Стоимость</span>{{payment.anouncement?.price}}</td>
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>ID Пользователя</span>{{payment.payment_id}}</td>
           <td [ngStyle]="{'background': payment.status>0 ? '' : '#97BBEB'}"><span>Статус Оплаты</span>{{payment.user.subscriber.company_name}}</td>
           <td>

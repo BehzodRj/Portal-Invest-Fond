@@ -26,6 +26,7 @@ export class AplicationPageComponent implements OnInit {
   showAlertFile = 'Файл'
   fileData: any = []
   isLoading = false
+  checkB = true
 
   constructor(private request: RequestService, private route: ActivatedRoute, private router: Router) { }
 
@@ -50,7 +51,8 @@ export class AplicationPageComponent implements OnInit {
       Gvat_euro: new FormControl(''),
       Gdiscount: new FormControl(''),
       Gdiscount_dol: new FormControl(''),
-      Gdiscount_euro: new FormControl('')
+      Gdiscount_euro: new FormControl(''),
+      lot_bank: new FormControl('')
     })
 
     this.AddPartnerForm = new FormGroup({
@@ -72,6 +74,7 @@ export class AplicationPageComponent implements OnInit {
       discount: new FormControl(''), 
       discount_dol: new FormControl(''), 
       discount_euro: new FormControl(''), 
+      lot_bank: new FormControl('')
     })
   }
 
@@ -95,10 +98,16 @@ export class AplicationPageComponent implements OnInit {
 
   save() {
     const addLotsFormData = {...this.addLotsForm.value}
+    if(addLotsFormData.lot_bank == true) {
+      this.checkB = false
+    } else if (addLotsFormData.lot_bank == false) {
+      this.checkB = true
+    }
+    
     if(addLotsFormData.name == '' || addLotsFormData.numberof_lots == '' ||  addLotsFormData.discount == '' || addLotsFormData.NoSsomoni == '' || addLotsFormData.somoni == '' ) {
       alert('Заполните поле')
     } else {
-      this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro})
+      this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, lot_bank: addLotsFormData.lot_bank})
       this.editLotsData = this.addLotsData
       this.showModal = false
       this.AddPartnerData = [];
@@ -110,7 +119,6 @@ export class AplicationPageComponent implements OnInit {
     this.addLotsData[this.activeEditIndex] = this.editLotsForm.value
     this.addLotsData[this.activeEditIndex].partners = this.editFormData.partners
     this.showEditModal = false
-      
   }
 
   editButton(id: number) {

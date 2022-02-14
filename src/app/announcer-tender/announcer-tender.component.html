@@ -34,6 +34,17 @@
       <input type="date" style="text-indent: 3px;" formControlName="sendDate">
     </div>
 
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid && formTender.get('sendDate').touched ? '1px  solid red' : '1px  solid #000'}">
+      <label for="date">Тайм</label>
+      <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;">
+        <option>9:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+      </select>
+    </div>
+
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid && formTender.get('file').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="file">Публичный файл</label>
       <div class="file_block">

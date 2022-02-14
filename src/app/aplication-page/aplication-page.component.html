@@ -66,6 +66,10 @@
               </div>
             </div>
           </div>
+          <div class="bank-gr_block">
+            <h1>Банковские гарантии:</h1>
+            <input type="checkbox" formControlName="lot_bank">
+          </div>
           <div class="btn">
             <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
           </div>
@@ -142,6 +146,10 @@
                 <h1>Евро</h1>
                 <input type="number" placeholder="Описание" formControlName="discount_euro">
               </div>
+            </div>
+            <div class="bank-gr_block">
+              <h1>Банковские гарантии:</h1>
+              <input type="checkbox" formControlName="lot_bank">
             </div>
           </div>
           <div class="btn">
@@ -251,7 +259,7 @@
         </button>
       </div>
     </div>
-    <div class="bank-gr_block">
+    <div class="bank-gr_block" *ngIf="checkB">
       <h1>Банковские гарантии:</h1>
       <input type="checkbox" formControlName="bank">
     </div>

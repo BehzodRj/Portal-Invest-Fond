@@ -41,8 +41,8 @@ export class AnnouncerPageComponent implements OnInit {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.showFileModal = true
-        this.privateDowFile = `http://10.251.2.77/${privateFile}`
-        this.publicDowFile = `http://10.251.2.77/${publicFile}`
+        this.privateDowFile = `http://td.investcom.tj/${privateFile}`
+        this.publicDowFile = `http://td.investcom.tj/${publicFile}`
     }
   }
 
