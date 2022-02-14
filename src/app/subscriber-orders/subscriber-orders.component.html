@@ -31,12 +31,12 @@
           <td><span>Действия</span>
             <i class="far fa-eye" [routerLink]="['/subscriberorderslot', order.order_id]"></i>
             <i class="far fa-edit" [routerLink]="['/subscriberorderslotchange', order.order_id]"></i>
-            <i class="fas fa-trash"></i>
+            <i class="fas fa-trash" (click)="deleteOrder(order.order_id)"></i>
           </td>
-          <td>
+          <!-- <td>
             <span>Cтатус проверки</span>
             <input type="checkbox" onclick="return false" [checked]='showfull' class="checkbox">
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>

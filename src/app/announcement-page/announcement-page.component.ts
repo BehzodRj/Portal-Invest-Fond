@@ -91,10 +91,10 @@ export class AnnouncementPageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file1.split(",").forEach((element:any) => {
-          this.dowFile.push( {name: 'Документ', file: `http://10.251.2.77/${element}`})
+          this.dowFile.push( {name: 'Документ', file: `http://td.investcom.tj/${element}`})
         });
         file2.split(",").forEach((element:any) => {
-          this.dowFile.push( {name: 'Обявление', file: `http://10.251.2.77/${element}`})
+          this.dowFile.push( {name: 'Обявление', file: `http://td.investcom.tj/${element}`})
         });
     }
   }

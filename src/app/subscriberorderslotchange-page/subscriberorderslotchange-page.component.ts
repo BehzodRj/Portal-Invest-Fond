@@ -158,7 +158,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`, file_id: element.order_id})
+          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`, file_id: element.order_file_id})
         });
     }    
   }

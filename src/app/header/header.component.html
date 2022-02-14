@@ -10,64 +10,86 @@
 <div class="menu_container">
   <div class="menu_block">
     <i class="fa fas fa-home" routerLinkActive="active" (click)="homePage()"></i>
-    <div class="drop_content">
-      <h1 *ngIf="admin" (click)="shop = !shop && !docTender && !contracts && !sogl">Шоппинг</h1>
-      <div class="drop_block" *ngIf="shop">
-        <div class="drop_items">
-          <h1>файл 1</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
+    <div class="material_block">
 
-        <div class="drop_items">
-          <h1>файл 2</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
-      </div>
-    </div>
-    
-    <div class="drop_content">
-      <h1 *ngIf="admin" (click)="docTender = !docTender && !shop && !contracts && !sogl">Тендерные <br> документы</h1>
-      <div class="drop_block drop_sec" *ngIf="docTender">
-        <div class="drop_items">
-          <h1>файл 1</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
+      <button class='mn_but' mat-button [matMenuTriggerFor]="applications">План закупок</button>
+      <mat-menu #applications="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="applicationsFiles">Аъзои кумитаи давлатии сармоягузории хамаи дунё</button>
+      </mat-menu>
+      <mat-menu #applicationsFiles="matMenu">
+        <button mat-menu-item>Файлы 11</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
 
-        <div class="drop_items">
-          <h1>файл 2</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
-      </div>
-    </div>
-    
-    <div class="drop_content">
-      <h1 *ngIf="admin" (click)="contracts = !contracts && !shop && !docTender && !sogl">Контракты</h1>
-      <div class="drop_block" *ngIf="contracts">
-        <div class="drop_items">
-          <h1>файл 1</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
 
-        <div class="drop_items">
-          <h1>файл 2</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
-      </div>
-    </div>
+      <button class='mn_but' mat-button [matMenuTriggerFor]="shoping">Шоппинг</button>
+      <mat-menu #shoping="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="shopingFiles">Кумитаи давлатии сармоягузории хамаи дунё</button>
+      </mat-menu>
+      <mat-menu #shopingFiles="matMenu">
+        <button mat-menu-item>Файлы 12</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
 
-    <div class="drop_content">
-      <h1 *ngIf="admin" (click)="sogl = !sogl && !shop && !docTender && !contracts">Соглашение</h1>
-      <div class="drop_block" *ngIf="sogl">
-        <div class="drop_items">
-          <h1>файл 1</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
 
-        <div class="drop_items">
-          <h1>файл 2</h1>
-          <i class="fas fa-file-download"></i>
-        </div>
-      </div>
+
+      <button class='mn_but' mat-button [matMenuTriggerFor]="tenderDoc">Тендерные документы</button>
+      <mat-menu #tenderDoc="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="tenderDocFiles">Давлати Чумхурии Точикистон барои хамаи халқ</button>
+      </mat-menu>
+      <mat-menu #tenderDocFiles="matMenu">
+        <button mat-menu-item>Файлы 13</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
+
+
+      <button class='mn_but' mat-button [matMenuTriggerFor]="report">Отчёты</button>
+      <mat-menu #report="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="reportFiles">Отчеты</button>
+      </mat-menu>
+      <mat-menu #reportFiles="matMenu">
+        <button mat-menu-item>Файлы 14</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
+
+
+      <button class='mn_but' mat-button [matMenuTriggerFor]="contract">Контракты</button>
+      <mat-menu #contract="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="contractFiles">Contracts</button>
+      </mat-menu>
+      <mat-menu #contractFiles="matMenu">
+        <button mat-menu-item>Файлы 15</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
+      
+
+      <button class='mn_but' mat-button [matMenuTriggerFor]="agreement">Соглашение</button>
+      <mat-menu #agreement="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="agreementFiles">Agreements</button>
+      </mat-menu>
+      <mat-menu #agreementFiles="matMenu">
+        <button mat-menu-item>Файлы 16</button>
+        <button mat-menu-item>Файлы 2</button>
+        <button mat-menu-item>Файлы 3</button>
+        <button mat-menu-item>Файлы 4</button>
+        <button mat-menu-item>Файлы 5</button>
+      </mat-menu>
+
     </div>
     <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
     <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
