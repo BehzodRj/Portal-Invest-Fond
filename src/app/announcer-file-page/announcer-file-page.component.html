@@ -1,10 +1,42 @@
 <app-header></app-header>
+<!-- Edit Modal -->
+<div class="modal-datas_container" *ngIf="showModalFilePage" >
+  
+  <div class="modal-datas_block">   
+    <div class="close"  (click)='showModalFilePage = false' >
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="cont__form"> 
+        <form >
+          <h3>Прикрепите файл</h3>
+          <div class="form__block"> 
+            <div class="inp__block"> 
+              <div class="inp">
+                <h1>Название лота</h1>
+                <input type="text" formControlName="title" placeholder="Название лота">
+              </div>
+            </div>
+            <div class="inp__block"> 
+              <div class="inp fileName">
+                <h1>Файл</h1>
+                <img src="assets/img/file.svg" alt="">
+                <input type="file" formControlName="file">
+              </div>
+            </div>
+          </div>
+        </form>
+        <button>Отправить</button>
+    </div>
+    
+  </div>
+
+</div>
 <div class="container">
   <div class="title_block">
     
     <h1 style="opacity: 0;">Файлы</h1>
     <h1>Файлы</h1>
-    <div class="block__trush">
+    <div class="block__trush" (click)='showModalFilePage = true'>
       <i class="td_i fa fa-plus"></i>
     </div>
   </div>

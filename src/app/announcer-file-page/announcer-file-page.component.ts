@@ -10,7 +10,7 @@ export class AnnouncerFilePageComponent implements OnInit {
 
   resulData: any = []
   page: any
-
+  showModalFilePage = false
   constructor(private request: RequestService) { }
 
   ngOnInit() {

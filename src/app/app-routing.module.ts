@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: '', component: AuthPageComponent },
   { path: 'registration', component: RegistrationPageComponent },
   { path: 'forget', component: ForgetPageComponent },
-  { path: 'announcer', component: AnnouncerPageComponent,   },
+  { path: 'announcer', component: AnnouncerPageComponent,   canActivate: [AnnouncerGuard]},
   { path: 'announcerform/:id', component: AnnouncerFormComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
   { path: 'announceredit/:id', component: AnnouncerEditComponent, canActivate: [AnnouncerGuard] },
