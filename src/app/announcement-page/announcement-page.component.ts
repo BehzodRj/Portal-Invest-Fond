@@ -47,8 +47,6 @@ export class AnnouncementPageComponent implements OnInit {
     this.activeAnounsment = id
   }
   modalSend() {
-    console.log(this.anouncement[this.activeAnounsment].payments[0]);
-    
     if(this.fileData.length < 1) {
       alert('Поле не может быть пустым')
     } else {
@@ -56,6 +54,7 @@ export class AnnouncementPageComponent implements OnInit {
       this.request.postAnnouncementCheck( this.anouncement[this.activeAnounsment].anouncement_id, this.fileData).subscribe(response => {
         this.isLoading = false
         this.modalCheck = false
+        location.reload()
         this.anouncement[this.activeAnounsment].status=0;
       }, error => {
         if(error.status == '401') {
@@ -108,9 +107,8 @@ export class AnnouncementPageComponent implements OnInit {
     this.dowFile = []
   }
 
-  star(favId: any, id:number) {   
-    
-      if(favId>0){
+  star(favId: any, id:number) { 
+      if(favId>0) {
         this.request.deleteFavoutitesRequests(id).subscribe(response => {
           location.reload()
         }, error => {

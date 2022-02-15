@@ -31,7 +31,8 @@ export class AnnouncerEditComponent implements OnInit {
       price: new FormControl(''),
       privateFiles: new FormControl(''),
       publicFiles: new FormControl(''),
-      project: new FormControl('')
+      project: new FormControl(''),
+      open_time: new FormControl()
     })
     this.route.params.subscribe( (params: any) => {
       this.request.getAnnouncerLotsById(params.id).subscribe(response => {
@@ -89,7 +90,7 @@ export class AnnouncerEditComponent implements OnInit {
     const editAnnouncerFormData = {...this.editAnnouncerForm.value}
     this.isLoading = true
     this.route.params.subscribe( (params: any) => {
-      this.request.putAnnouncerLots(params.id, editAnnouncerFormData.name, editAnnouncerFormData.project_center_anouncement_id, editAnnouncerFormData.procurement_method, editAnnouncerFormData.type_of_procurement, editAnnouncerFormData.open_date, editAnnouncerFormData.number_of_lots, editAnnouncerFormData.price, this.getprivateFiles, this.getpublicFiles, editAnnouncerFormData.project).subscribe(response => {
+      this.request.putAnnouncerLots(params.id, editAnnouncerFormData.name, editAnnouncerFormData.project_center_anouncement_id, editAnnouncerFormData.procurement_method, editAnnouncerFormData.type_of_procurement, editAnnouncerFormData.open_date, editAnnouncerFormData.number_of_lots, editAnnouncerFormData.price, this.getprivateFiles, this.getpublicFiles, editAnnouncerFormData.project, editAnnouncerFormData.open_time).subscribe(response => {
         this.isLoading = false
         this.router.navigate(['/announcer'])
       }, error => {

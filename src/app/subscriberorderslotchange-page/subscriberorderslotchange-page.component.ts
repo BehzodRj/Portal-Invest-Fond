@@ -41,12 +41,13 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount: new FormControl(''),
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
+      response_security_submited: new FormControl(0)
     })
 
     this.editPartnerForm = new FormGroup({
       name: new FormControl(''),
       leader: new FormControl(false),
-      response_security_submited: new FormControl(false)
+      response_security_submited: new FormControl(0)
     })
 
     this.editOrderForm = new FormGroup({
@@ -61,6 +62,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       discount: new FormControl(''),
       discount_dol: new FormControl(''),
       discount_euro: new FormControl(''),
+      response_security_submited: new FormControl(0)
     })
 
     this.globalOrderForm = new FormGroup({
@@ -72,12 +74,15 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
       vat_euro: new FormControl(''),
       discount: new FormControl(''),
       discount_dol: new FormControl(''),
-      discount_euro: new FormControl('')
+      discount_euro: new FormControl(''),
+      response_security_submited: new FormControl(0)
     })
 
     this.route.params.subscribe( (params: any) => {
       this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
         this.orderData.push(response[0])
+        console.log(this.orderData[0]);
+        
         this.globalOrderForm.patchValue(this.orderData[0])
         this.partnersLocalData = response[0].partners
         this.editPartnerForm.patchValue(response[0])
@@ -115,7 +120,9 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     if(addOrderFormData.title == '' || addOrderFormData.lot_number == '' || addOrderFormData.total == '' || addOrderFormData.vat == '') {
       alert('Поле не может быть пустым')
     } else {
-      this.orderData[0].lots.push({title: addOrderFormData.title, lot_number: addOrderFormData.lot_number, total: addOrderFormData.total, total_dol: addOrderFormData.total_dol, total_euro: addOrderFormData.total_euro, vat: addOrderFormData.vat, vat_dol: addOrderFormData.vat_dol, vat_euro: addOrderFormData.vat_euro, discount: addOrderFormData.discount, discount_dol: addOrderFormData.discount_dol, discount_euro: addOrderFormData.discount_euro})
+      this.orderData[0].lots.push({title: addOrderFormData.title, lot_number: addOrderFormData.lot_number, total: addOrderFormData.total, total_dol: addOrderFormData.total_dol, total_euro: addOrderFormData.total_euro, vat: addOrderFormData.vat, vat_dol: addOrderFormData.vat_dol, vat_euro: addOrderFormData.vat_euro, discount: addOrderFormData.discount, discount_dol: addOrderFormData.discount_dol, discount_euro: addOrderFormData.discount_euro, response_security_submited: addOrderFormData.response_security_submited})
+      console.log(this.orderData);
+      
       this.addOrderForm.reset()
       this.creatModalShow = false
     }

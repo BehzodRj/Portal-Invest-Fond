@@ -27,7 +27,7 @@
           line-height: 28px;
           color: #112A4A; 
         }
-        .form__block { 
+        .form__block {
           margin: 30px 0;
           .inp__block {
             width: 100%;
@@ -103,6 +103,39 @@
               text-indent: 10px;
               outline: none;
               font-size: 15px;
+            }
+          }
+
+          .bank-gr_block {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+      
+            h1 {
+              font-size: 25px;
+              font-family: 'Roboto', sans-serif;
+            }
+      
+            input {
+              margin-left: 15px;
+              width: 25px;
+              height: 25px;
+            }
+          }
+
+          .bank_items {
+            display: flex;
+            align-items: center;
+      
+            h1 {
+              font-size: 25px;
+              font-family: 'Roboto', sans-serif;
+            }
+      
+            input {
+              margin-left: 15px;
+              width: 25px;
+              height: 25px;
             }
           }
         }
@@ -182,6 +215,23 @@
                 }
               }
             }
+          }
+        }
+
+        .bank-gr_block {
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+    
+          h1 {
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+          }
+    
+          input {
+            margin-left: 15px;
+            width: 25px;
+            height: 25px;
           }
         }
       }

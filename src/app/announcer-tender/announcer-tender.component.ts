@@ -35,7 +35,8 @@ export class AnnouncerTenderComponent implements OnInit {
       publicFile: new FormControl('', Validators.required),
       lots: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
-      project: new FormControl('', Validators.required)
+      project: new FormControl('', Validators.required),
+      open_time: new FormControl('9:00')
     })
 
     this.request.getAnnouncerProjLots().subscribe(response => {
@@ -67,6 +68,7 @@ export class AnnouncerTenderComponent implements OnInit {
 
   send() {
     const formTenderData = {...this.formTender.value}
+    
     if(formTenderData.name == '' || formTenderData.centerID == '' || formTenderData.method == '' || formTenderData.file == '' || formTenderData.lots == '' || formTenderData.price == '') {
       this.showAlertName = 'Поля не может быть пустым'
       this.showAlertCenterID = 'Поля не может быть пустым'
@@ -78,7 +80,7 @@ export class AnnouncerTenderComponent implements OnInit {
       alert(' "Дата проведения" не можеть быть пустым')
     } else {
       this.isLoading = true
-      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData, this.publicFileData, formTenderData.project).subscribe(response => {
+      this.request.postAnnouncerLots(formTenderData.name, formTenderData.centerID, formTenderData.method, formTenderData.sendType, formTenderData.sendDate, formTenderData.lots, formTenderData.price, this.fileData, this.publicFileData, formTenderData.project, formTenderData.open_time).subscribe(response => {
         this.isLoading = false
         alert('Вы успешно добавили тендер')
         this.router.navigate(['/announcer'])

@@ -22,6 +22,7 @@
           <th>ID</th>
           <th>ID<br>Тендера</th>
           <th>Тип <br> проведения</th>
+          <th>Тайм</th>
           <th>Взнос</th>
           <th>Дата <br> открытия</th>
           <th>Метод <br> проведения</th>
@@ -33,10 +34,11 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{announcer.anouncement_id}}</td>
-          <td><span>Название проекта/тендера</span>{{ announcer.project_name }}/{{ announcer.name }}</td>
+          <td><span>Название проекта/тендера</span>{{ announcer.project?.name }} / {{ announcer.name }}</td>
           <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
+          <td><span>Тайм</span>{{ announcer.open_time }}</td>
           <td><span>Взнос</span>{{announcer.price}}</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
@@ -56,7 +58,7 @@
                 <i class="far fa-edit"></i>
               </div>
 
-              <div class="icons_block" (click)="deleteAnnouncer(announcer.anouncement_id)">
+              <div class="icons_block" (click)="deleteAnnouncer(announcer.anouncement_id, announcer.name)">
                 <i class="fas fa-trash"></i>
               </div>
           </div>

@@ -74,6 +74,10 @@
                 <input type="number" placeholder="Описание" formControlName="discount_euro">
               </div>
             </div>
+            <div class="bank-gr_block">
+              <h1>Банковские гарантии:</h1>
+              <input type="checkbox" formControlName="response_security_submited">
+            </div>
             <div class="btn"(click)="addLot()">
               <button>СОХРАНИТЬ ЛОТ</button>
             </div>
@@ -153,6 +157,10 @@
               </div>
             </div>
           </div>
+          <div class="bank-gr_block">
+            <h1>Банковские гарантии:</h1>
+            <input type="checkbox" formControlName="response_security_submited">
+          </div>
           <div class="btn" (click)="editLots()">
             <button>ИЗМЕНИТЬ ЛОТ</button>
           </div>
@@ -185,6 +193,7 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
+          <th rowspan="2">Банковские гарантии</th>
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -223,6 +232,10 @@
           </div><pre>{{ orderLots.discount }}</pre> </td>
           <td class="hdd">{{ orderLots.discount_dol }}</td>      
           <td class="hdd">{{ orderLots.discount_euro }}</td>
+          <td>
+            <i class="fas fa-check" *ngIf="orderLots.response_security_submited > 0"></i>
+            <i class="fas fa-times" *ngIf="orderLots.response_security_submited < 1"></i>
+          </td>
           <td class="change"> 
             <div class="trash__block" (click)="openEditModal(idx)">
               <i class="fas fa-pencil-alt"></i>
@@ -260,7 +273,7 @@
         </button>
       </div>
     </div>
-    <div class="bank-gr_block">
+    <div class="bank-gr_block" *ngIf="orderData[0].response_security_submited > 0">
       <h1>Банковские гарантии:</h1>
       <input type="checkbox" formControlName="response_security_submited">
     </div>

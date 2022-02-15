@@ -1,55 +1,55 @@
 <app-header></app-header>
 <div class="modal-datas_container" *ngIf="showModal">
   <div class="modal-datas_block">
-    <h1 class="title">{{ announcerFormModalData.name }} {{announcerFormModalData.last_name}} {{announcerFormModalData.middle_name }} </h1>
+    <h1 class="title">{{ announcerFormModalData[0].user.subscriber.name }} {{announcerFormModalData[0].user.subscriber.last_name}} {{announcerFormModalData[0].user.subscriber.middle_name }} </h1>
 
     <div class="modal-items">
       <h1>Занимаемые должности:</h1>
-      <h2>{{ announcerFormModalData.division }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.division }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Наименование компании:</h1>
-      <h2>{{ announcerFormModalData.company_name }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.company_name }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>ИНН:</h1>
-      <h2>{{ announcerFormModalData.inn }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.inn }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Место регистрации:</h1>
       <div class="reg_place">
-        <h2>1) {{ announcerFormModalData.address_line1 }}</h2>
-        <h2>2) {{ announcerFormModalData.address_line2 }}</h2>
-        <h2>3) {{ announcerFormModalData.address_line3 }}</h2>
+        <h2>1) {{ announcerFormModalData[0].user.subscriber.address_line1 }}</h2>
+        <h2>2) {{ announcerFormModalData[0].user.subscriber.address_line2 }}</h2>
+        <h2>3) {{ announcerFormModalData[0].user.subscriber.address_line3 }}</h2>
       </div>
     </div>
 
     <div class="modal-items">
       <h1>email:</h1>
-      <h2>{{ announcerFormModalData.email }}</h2>
+      <h2>{{ announcerFormModalData[0].user.email }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Телефон:</h1>
-      <h2>{{ announcerFormModalData.phone }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.phone }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Страна:</h1>
-      <h2>{{ announcerFormModalData.company_country }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.company_country }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Город:</h1>
-      <h2>{{ announcerFormModalData.town }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.town }}</h2>
     </div>
 
     <div class="modal-items">
       <h1>Почтовый индекс:</h1>
-      <h2>{{ announcerFormModalData.postal_code }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.postal_code }}</h2>
     </div>
 
     <div class="btn">
@@ -84,7 +84,7 @@
           <td><span>Компания</span>{{announcerForm.user.subscriber.company_name}}</td>
           <td class="download">
             <span>Действие</span>
-            <div class="trash_block" (click)="openModal(announcerForm.user_id)">
+            <div class="trash_block" (click)="openModal(announcerForm.order_id)">
               <i class="fas fa-search"></i>
             </div>
           </td>

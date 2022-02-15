@@ -149,7 +149,7 @@
             </div>
             <div class="bank-gr_block">
               <h1>Банковские гарантии:</h1>
-              <input type="checkbox" formControlName="lot_bank">
+              <input type="checkbox" formControlName="response_security_submited">
             </div>
           </div>
           <div class="btn">
@@ -184,6 +184,7 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
+          <th rowspan="2">Банковские гарантии</th>
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -221,7 +222,11 @@
             <i>Евро : <p>{{ addLots.discount_euro }}</p></i>
           </div><pre>{{ addLots.discount }}</pre> </td>
           <td class="hdd">{{ addLots.discount_dol }}</td>      
-          <td class="hdd">{{ addLots.discount_euro }}</td>  
+          <td class="hdd">{{ addLots.discount_euro }}</td>
+          <td>
+            <i class="fa fa-check" *ngIf="addLots.response_security_submited == true"></i>
+            <i class="fa fa-times" *ngIf="addLots.response_security_submited == false"></i>
+          </td>
           <td class="change"> 
             <div class="trash__block" (click)="editButton(idx)">
               <i class="fas fa-pencil-alt"></i>

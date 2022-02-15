@@ -38,20 +38,7 @@ export class AnnouncerFormComponent implements OnInit {
 
   openModal(id: number) {
     this.showModal = true
-    this.request.getAnnouncerFormModal(id).subscribe(response => {
-      this.announcerFormModalData = response
-    }, error => {
-      if(error.status == '401') {
-        this.request.refreshToken().subscribe( (response: any) =>  {
-          localStorage.setItem('access_token', response.access_token)
-          location.reload()
-        }, errorToken => {
-          alert(errorToken.message)
-        })
-      } else {
-        alert(error.message)
-      }
-    })
+    this.announcerFormModalData = this.announcerFormData.filter( (res: any) => res.order_id == id )
   }
 
   closeModal() {
@@ -64,7 +51,7 @@ export class AnnouncerFormComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://10.251.2.77/${element.name}`})
+          this.dowFile.push( {file: `http://td.investcom.tj/${element.name}`})
         });
     }
   }
