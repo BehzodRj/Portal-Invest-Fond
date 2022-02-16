@@ -7,17 +7,18 @@ import { RequestService } from '../all.service';
   styleUrls: ['./announcer-file-page.component.scss']
 })
 export class AnnouncerFilePageComponent implements OnInit {
-
-  resulData: any = []
   page: any
-  showModalFilePage = false
+  showModal = false
+  fileNames = "Файлы" 
   constructor(private request: RequestService) { }
 
-  ngOnInit() {
-    this.request.getAnnouncerLots().subscribe((response: any) => {
-      this.resulData = response
-    }, error => {
-      alert(error.error)
-    })
+  ngOnInit() {}
+
+  openModal() {
+    this.showModal = true
+  }
+  
+  closeModal() {
+    this.showModal = false
   }
 }

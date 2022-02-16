@@ -7,6 +7,7 @@ import { ForgetPageComponent } from './forget-page/forget-page.component';
 import { AnnouncerPageComponent } from './announcer-page/announcer-page.component';
 import { AnnouncerFormComponent } from './announcer-form/announcer-form.component';
 import { AnnouncerTenderComponent } from './announcer-tender/announcer-tender.component';
+import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file-page.component';
 import { AnnouncerEditComponent } from './announcer-edit/announcer-edit.component';
 import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
@@ -25,7 +26,6 @@ import { SubscribeGuard } from './subscribe.guard';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
-import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file-page.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'announcertender', component: AnnouncerTenderComponent, canActivate: [AnnouncerGuard] },
   { path: 'announceredit/:id', component: AnnouncerEditComponent, canActivate: [AnnouncerGuard] },
   { path: 'announcerpayment', component: AdminPaymentComponent, canActivate: [AnnouncerGuard] },
+  { path: 'announcerfile/:id', component: AnnouncerFilePageComponent, canActivate: [AnnouncerGuard] }, 
   { path: 'resultdata', component: ResultDataPageComponent, canActivate: [AnnouncerGuard] },
   { path: 'result/:id', component: ResultPageComponent, canActivate: [AnnouncerGuard] },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
@@ -47,7 +48,6 @@ const routes: Routes = [
   { path: 'subscriberorderslot/:id', component: SubscriberorderslotPageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscriberorderslotchange/:id', component: SubscriberorderslotchangePageComponent, canActivate: [SubscribeGuard] },
   { path: 'application/:id', component: AplicationPageComponent, canActivate: [SubscribeGuard] }, 
-  { path: 'announcerfile', component: AnnouncerFilePageComponent,  }, 
   { path: '**', component: ErrorPageComponent }
 ];
 
