@@ -11,6 +11,7 @@ export class AnnouncerFilePageComponent implements OnInit {
   page: any
   showModal = false
   fileNames = "Файлы" 
+  showFileModal = false
   constructor(private route: ActivatedRoute, private request: RequestService) { }
 
   ngOnInit() {
@@ -26,4 +27,8 @@ export class AnnouncerFilePageComponent implements OnInit {
   closeModal() {
     this.showModal = false
   }
+  closeFileModal() {
+    this.showFileModal = false
+  }
+ 
 }

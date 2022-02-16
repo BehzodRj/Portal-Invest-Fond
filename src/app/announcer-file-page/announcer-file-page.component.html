@@ -30,6 +30,13 @@
   </div>
 
 </div>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeFileModal()"></i>
+    <h1>lorem</h1>
+    <h1 > lorem1</h1>
+  </div>
+</div>
 <div class="container">
   <div class="title_block">
     <h1>Файлы план закупок</h1>
@@ -60,8 +67,8 @@
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>
-              <div class="icons_block">
-                <i class="fas fa-download"></i>
+              <div class="icons_block" (click)="showFileModal = true">
+                <i class="fas fa-download" ></i>
               </div>
 
               <div class="icons_block">
