@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RequestService } from '../all.service';
 
 @Component({
@@ -9,10 +10,14 @@ import { RequestService } from '../all.service';
 export class AnnouncerFilePageComponent implements OnInit {
   page: any
   showModal = false
-  title = 'Файлы' 
-  constructor(private request: RequestService) { }
+  fileNames = "Файлы" 
+  constructor(private route: ActivatedRoute, private request: RequestService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe( (params: any) => {
+      
+    })
+  }
 
   openModal() {
     this.showModal = true
