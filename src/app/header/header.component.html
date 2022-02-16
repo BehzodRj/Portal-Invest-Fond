@@ -91,15 +91,15 @@
     </div>
     <!-- Announcer -->
 
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">План закупок</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="router-link-active"  routerLinkActive="active" *ngIf="anouncer">Шоппинг</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Тендерные документы</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Соглашение</h1>
-    <h1 [routerLink]="['/announcerfile', 1]"[routerLink]="['/anouncerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
+    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">План закупок</h1>
+    <h1 [routerLink]="['/anouncerfile', 1]" routerLinkActive="router-link-active"  routerLinkActive="active" *ngIf="anouncer">Шоппинг</h1>
+    <h1 [routerLink]="['/anouncerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Тендерные документы</h1>
+    <h1 [routerLink]="['/anouncerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
+    <h1 [routerLink]="['/anouncerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Соглашение</h1>
+    <h1 [routerLink]="['/anouncerfile', 1]" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
+    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
+    <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
+    <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
   </div>
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />
