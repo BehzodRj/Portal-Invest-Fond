@@ -9,7 +9,7 @@ import { RequestService } from '../all.service';
 export class AnnouncerFilePageComponent implements OnInit {
   page: any
   showModal = false
-  fileNames = "Файлы" 
+  title = 'Файлы' 
   constructor(private request: RequestService) { }
 
   ngOnInit() {}
