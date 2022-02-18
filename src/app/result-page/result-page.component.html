@@ -4,7 +4,7 @@
     <h3>Minutes of ITT Opening</h3>
     <div class="table">
       <div class="blockLeft">Project Name</div>
-      <div class="blockRight">{{ resultData.projects_center_name }}</div>
+      <div class="blockRight">{{ resultData.project?.name }}</div>
     </div>
     <div class="table">
       <div class="blockLeft">Project ID</div>
@@ -36,7 +36,7 @@
     </div>
     <div class="table">
       <div class="blockLeft">Date and Time of Opening</div>
-      <div class="blockRight">{{ resultData.open_date }}</div>
+      <div class="blockRight">{{ resultData.open_date }} {{ resultData.open_time }}</div>
     </div>
     <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
       *ngFor="let result of resultData.orders | paginate: {itemsPerPage: 2, currentPage: page}">
