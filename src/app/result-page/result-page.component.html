@@ -28,7 +28,7 @@
     </div>
     <div class="table">
       <div class="blockLeft">Client Name</div>
-      <div class="blockRight">{{ resultData.project_name }}</div>
+      <div class="blockRight">{{ resultData.project?.projects_center.name }}</div>
     </div>
     <div class="table">
       <div class="blockLeft">Number Of Responses Received</div>
@@ -36,7 +36,7 @@
     </div>
     <div class="table">
       <div class="blockLeft">Date and Time of Opening</div>
-      <div class="blockRight">{{ resultData.open_date }} {{ resultData.open_time }}</div>
+      <div class="blockRight">{{ resultData.open_date }},    {{ resultData.open_time }}</div>
     </div>
     <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
       *ngFor="let result of resultData.orders">
@@ -46,69 +46,61 @@
         <div class="response_details">
           <div class="details-block">
             <div class="blockLeft">Time received:</div>
-            <div class="blockRight">{{ result.created_at.toIsoString() }}</div>
+            <div class="blockRight">{{ result.created_at | date: 'short' }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Name of Respondent:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_name }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Is JVCA?:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight" *ngIf="result.partners?.length > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.partners?.length < 1">No</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Response Security Submitted:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight" *ngIf="result.response_security_submited > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.response_security_submited < 1">No</div>
           </div>
         </div>
         <h4>Respondend address:</h4>
         <div class="response_address">
           <div class="details-block">
             <div class="blockLeft">Address Line 1:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line1 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Address Line 2:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line2 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Address Line 3:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line3 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Postal Code:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.postal_code }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Town:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.town }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Country:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_country }}</div>
           </div>
         </div>
         <div class="joint_detail">
           <h4>Joint Venture Details:</h4>
-          <div class="detail_content">
+          <div class="detail_content" *ngFor="let partners of result.partners">
             <div class="details-block">
               <div class="blockLeft">Lead Partner?</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+              <div class="blockRight" *ngIf="partners.leader > 0">Yes</div>
+              <div class="blockRight" *ngIf="partners.leader < 1">No</div>
             </div>
             <div class="details-block">
               <div class="blockLeft">Organosation:</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-          </div>
-
-          <div class="detail_content">
-            <div class="details-block">
-              <div class="blockLeft">Lead Partner?</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-            <div class="details-block">
-              <div class="blockLeft">Organosation:</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+              <div class="blockRight">{{ partners.name }}</div>
             </div>
           </div>
         </div>
