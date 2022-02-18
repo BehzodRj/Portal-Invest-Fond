@@ -145,6 +145,18 @@ export class RequestService {
     //     })
     //     return this.http.get(this.url + '/api/auth/subscribers/' + id, {headers:header})
     // }
+
+
+    // Anouncer File
+     getAnnouncerFiles() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.get(this.url + '/api/auth/anouncer_files', {headers:header})
+    }
+    // End of Anouncer File
+
     // End of Announcer
 
     // Admin

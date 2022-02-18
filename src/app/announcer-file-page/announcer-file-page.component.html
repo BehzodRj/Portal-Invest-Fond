@@ -39,11 +39,11 @@
 </div>
 <div class="container">
   <div class="title_block">
-    <h1>Файлы план закупок</h1>
-    <h1>Файлы шоппинг</h1>
-    <h1>Файлы тендерные документы</h1>
-    <h1>Файлы контракты</h1>
-    <h1>Файлы соглашение</h1>
+    <h1 *ngIf="pageId == 1">Файлы план закупок</h1>
+    <h1 *ngIf="pageId == 2">Файлы шоппинг</h1>
+    <h1 *ngIf="pageId == 3">Файлы тендерные документы</h1>
+    <h1 *ngIf="pageId == 4">Файлы контракты</h1>
+    <h1 *ngIf="pageId == 5">Файлы соглашение</h1>
     <div class="block__trush" (click)="openModal()">
       <i class="td_i fa fa-plus"></i>
     </div>
