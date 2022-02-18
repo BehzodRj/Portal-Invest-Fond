@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  adminFilesData: any = []
   decoded: any
   admin = false
   anouncer = false
@@ -16,11 +18,17 @@ export class HeaderComponent implements OnInit {
   docTender = false
   contracts = false
   sogl = false
+  files: any = [];
  
-  constructor(private router: Router) { }
+  constructor(private router: Router, private request: RequestService) {}
   ngOnInit() {
-    this.decoded = jwt_decode(`${localStorage.getItem('access_token')}`);
+    this.request.getAnnouncerFiles(1).subscribe(response => {
+      this.adminFilesData = response
+    }, error => {
+      alert(error.error)
+    })
 
+    this.decoded = jwt_decode(`${localStorage.getItem('access_token')}`);
     if(this.decoded.role == 'admin') {
       this.admin = true
     }else if(this.decoded.role == 'anouncer') {
@@ -39,6 +47,14 @@ export class HeaderComponent implements OnInit {
     }else if(this.decoded.role == 'subscribers') {
       this.router.navigate(['/profile'])
     }
+  }
+
+  getData(files:any, type: any){
+    this.files = files.filter((file:any) => file.type == type);
+  }
+
+  openFile(file: any) {
+    window.open(`http://td.investcom.tj/${file}`)
   }
 
   logOut() {

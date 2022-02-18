@@ -148,14 +148,48 @@ export class RequestService {
 
 
     // Anouncer File
-     getAnnouncerFiles() {
+     getAnnouncerFiles(id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.get(this.url + '/api/auth/anouncer_files', {headers:header})
+        return this.http.get(this.url + '/api/auth/anouncer_files/' + id, {headers:header})
+    }
+
+    postAnnouncerFiles(project_id: any, name: string, path: any, type: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.post(this.url + '/api/auth/anouncer_file/add', {"project_id": project_id, "name": name, "path": path, "type": type, }, {headers:header})
+    }
+
+    deleteAnnouncerFiles(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/anouncer_file/' + id, {headers:header})
     }
     // End of Anouncer File
+
+    // Anouncer Report
+    postAnnouncerReportFiles(anouncement_id: any, path: any) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.post(this.url + '/api/auth/anouncements/report', {"anouncement_id": anouncement_id, "path": path, }, {headers:header})
+    }
+
+    deleteAnnouncerReportFiles(id: number) {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        })
+        return this.http.delete(this.url + '/api/auth/anouncements/report/' + id, {headers:header})
+    }
+    // End of Anouncer Report
 
     // End of Announcer
 
