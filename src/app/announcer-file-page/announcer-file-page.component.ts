@@ -17,8 +17,8 @@ export class AnnouncerFilePageComponent implements OnInit {
   pageId!: number
   page: any
   showModal = false
+  fileNames = "Файлы" 
   showFileModal = false
-  fileNames = "Файлы"
   constructor(private route: ActivatedRoute, private request: RequestService) { }
 
   ngOnInit() {

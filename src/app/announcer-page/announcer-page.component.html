@@ -56,8 +56,7 @@
           <th>Взнос</th>
           <th>Дата <br> открытия</th>
           <th>Метод <br> проведения</th>
-          <th>Лоты</th>
-          <th>Подали <br> заявки</th>
+          <th>Лоты</th> 
           <th>Действие</th>
         </tr>
       </thead>
@@ -74,15 +73,14 @@
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-          <td class="change" [routerLink]="['/announcerform', announcer.anouncement_id]">
-            <h1>{{ announcer.total }}</h1>
-            <i class="fas fa-search"></i>
-          </td>
+           
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>
-              <div class="icons_block"
-                (click)="openModal(announcer.anouncement_private_file, announcer.anouncement_public_file)">
+              <div class="icons_block"  [routerLink]="['/announcerform', announcer.anouncement_id]">
+                <i class="fas fa-search"></i>
+              </div>
+              <div class="icons_block" (click)="openModal(announcer.anouncement_private_file, announcer.anouncement_public_file)">
                 <i class="fas fa-download"></i>
               </div>
 
