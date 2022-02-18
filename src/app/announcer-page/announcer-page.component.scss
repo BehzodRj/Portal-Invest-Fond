@@ -98,9 +98,10 @@
             background-color: #D4DEEA;
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
-            font-size: 15px;
+            font-size: 13px;
             color: #000;
-            text-transform: uppercase; 
+            text-transform: uppercase;
+            padding: 0 5px; 
           }
         }
       }
@@ -147,7 +148,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              width: 65px;
+              width: 35px;
               height: 32px;
               background: #15345C;
               border-radius: 8px;
@@ -196,6 +197,7 @@
               color: #000;
               text-align: start;
               text-indent: 10px;
+              width: 30%;
             }
  
             &:nth-child(3) {
@@ -252,6 +254,7 @@
               border: 1px solid #000;
               border-left: none;
               color: #000;
+              border: none;
             }
           }
         }
@@ -288,29 +291,9 @@
      margin: 0px 20px;
    }
  }
-  @media(max-width: 961px) {
+  @media(max-width: 1000px) {
  
-    // .resp-tab thead { 
-    //     display: none; 
-    // } 
-    // .resp-tab tr { 
-    //     display: flex; 
-    //     flex-direction: row; 
-    //     flex-wrap: wrap; 
-    //     margin-bottom: 30px; 
-    // } 
-    // .resp-tab td { 
-    //     margin: 0 -1px -1px 0; 
-    //     padding-top: 35px; 
-    //     position: relative; 
-    //     width: 100%; 
-    // } 
-    // .resp-tab td span { 
-    //     display: block; 
-    // } 
-    // .change{    
-    //     justify-content: space-around;    
-    // }  
+    
     .navbar {
       margin: 0 20px;
       .resp-tab {
@@ -357,6 +340,7 @@
                 color: #000;
                 padding-bottom: 10px;
                 right: 0;
+                width: 100%;
               }
  
               &:nth-child(2) {
@@ -364,12 +348,14 @@
                 color: #000;
                 padding-bottom: 10px;
                 border-right: 1px solid #000;
+                width: 100%;
               }
  
               &:nth-child(3) {
                 background: #fff;
                 color: #000;
                 padding-bottom: 10px;
+                width: 100%;
               }
  
               &:nth-child(4) {
@@ -377,6 +363,7 @@
                 color: #000;
                 padding-bottom: 10px;
                 border-right: 1px solid #000;
+                width: 100%;
               }
  
               &:nth-child(5) {
@@ -384,6 +371,7 @@
                 color: #000;
                 padding-bottom: 10px;
                 border-right: 1px solid #000;
+                width: 100%;
               }
  
               &:nth-child(6) {
@@ -391,18 +379,27 @@
                 color: #000;
                 padding-bottom: 10px;
                 border-right: 1px solid #000;
+                width: 100%;
               }
  
               &:nth-child(7) {
                 background: #fff;
                 color: #000;
                 padding-bottom: 10px;
+                width: 100%;
+              }
+              &:nth-child(8) { 
+                width: 100%;
+              }
+              &:nth-child(9) { 
+                width: 100%;
               }
               &:nth-child(11) {
                 width: 100% !important;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
               }
             }
           }

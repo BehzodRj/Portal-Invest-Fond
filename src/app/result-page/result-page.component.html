@@ -42,8 +42,8 @@
       *ngFor="let result of resultData.orders | paginate: {itemsPerPage: 2, currentPage: page}">
       <div class="content__details">
         <h3>ITT details for each response:</h3>
+        <h4>Response details:</h4>
         <div class="response_details">
-          <h4>Response details:</h4>
           <div class="details-block">
             <div class="blockLeft">Time received:</div>
             <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
@@ -61,8 +61,8 @@
             <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
           </div>
         </div>
+        <h4>Respondend address:</h4>
         <div class="response_address">
-          <h4>Respondend address:</h4>
           <div class="details-block">
             <div class="blockLeft">Address Line 1:</div>
             <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
@@ -88,6 +88,17 @@
             <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
           </div>
         </div>
+        <h4>Joint Venture Details:</h4>
+        <div class="joint_detail"> 
+          <div class="details-block">
+            <div class="blockLeft">Lead Partner?</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Organosation:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+        </div> 
       </div>
       <div class="content__lots" *ngFor="let resultLots of result.lots">
         <h3>Lots:</h3>
@@ -114,6 +125,31 @@
             <div class="blockLeft">Grand Total Including VAT But Excluding Discounts:</div>
             <div class="blockRight">{{ resultLots.discount | currency: 'TJS ' }},
               {{ resultLots.discount_dol | currency }}, {{ resultLots.discount_euro | currency: 'EU ' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tender__total" >
+        <h3>Tender Total:</h3>
+        <div class="lots__block">
+          <div class="lots-table">
+            <div class="blockLeft">lorem</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">lorem</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">lorem</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">lorem:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">lorem</div>
+            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
           </div>
         </div>
       </div>

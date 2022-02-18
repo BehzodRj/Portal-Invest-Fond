@@ -55,8 +55,45 @@
                 }
             }
         }
+        .joint_detail{ 
+            margin-left: 56px;
+            .details-block{
+                width: 99%;
+                display: flex;
+                justify-content: space-between; 
+                padding: 5px 0;
+                .blockLeft{
+                    width: 50%;
+                }
+                .blockRight{
+                    width: 50%;
+                }
+            }
+        }
     }
     .content__lots{  
+        h3{
+            margin: 30px 0;
+        }
+        .lots__block{
+            margin-top: 30px;
+            .lots-table{
+                display: flex;
+                justify-content: space-between; 
+                .blockLeft{
+                    width: 50%;
+                    border: 1px solid #000;
+                    padding: 7px 7px; 
+                }
+                .blockRight{
+                    width: 50%;
+                    border: 1px solid #000;
+                    padding: 7px 7px;
+                }
+            }
+        }
+    }
+    .tender__total{  
         h3{
             margin: 30px 0;
         }
@@ -89,10 +126,9 @@
 }
 @media screen and (max-width: 700px) {
     .container {
-        border: none !important;
-
+        border: none !important; 
         .content__details {
-            .response_details, .response_address {
+            .response_details, .response_address, .joint_detail{
                 margin-left: 0;
             }
         }
