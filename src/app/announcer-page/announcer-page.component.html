@@ -1,4 +1,34 @@
 <app-header></app-header>
+<div class="modal_check" *ngIf="modalReportFile">
+  <div class="modal_check-items_block">
+    <i class="fas fa-times" (click)="modalReportFile = false"></i>
+    <div class="modal_check_items">
+      <h1 class="title">Файл Отчёта</h1>
+
+      <div class="check_input">
+        <h1 class="title_input">Файл</h1>
+        <div class="check_input-item">
+          <h1 class="description">{{ reportFileName }}</h1>
+          <img src="assets/img/file.svg" alt="">
+          <input type="file" accept=".pdf" (change)="getReportFile($event)">
+        </div>
+      </div>
+      <button (click)="modalSend()">Отправить</button>
+    </div>
+  </div>
+</div>
+
+<div class="container_file" *ngIf="showReportFile">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="showReportFile = false"></i>
+    <div class="editFile_block">
+      <h1 (click)="downloadReportFile()">Файл 1</h1>
+      <i class="fas fas fa-trash" (click)="deleteReportFile()"></i>
+    </div>
+  </div>
+</div>
+
+
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
@@ -31,7 +61,8 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train" *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
+        <tr class="train"
+          *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{announcer.anouncement_id}}</td>
           <td><span>Название проекта/тендера</span>{{ announcer.project?.name }} / {{ announcer.name }}</td>
           <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
@@ -52,15 +83,22 @@
               <div class="icons_block" (click)="openModal(announcer.anouncement_private_file, announcer.anouncement_public_file)">
                 <i class="fas fa-download"></i>
               </div>
-            
-              <div class="icons_block" [routerLink]="['/announceredit', announcer.anouncement_id]">
+
+              <div class="icons_block" [routerLink]="['/announceredit', announcer.anouncement_id]"
+                *ngIf="announcer.open_date > date">
                 <i class="far fa-edit"></i>
               </div>
+
 
               <div class="icons_block" (click)="deleteAnnouncer(announcer.anouncement_id, announcer.name)">
                 <i class="fas fa-trash"></i>
               </div>
-          </div>
+
+              <div class="icons_block" *ngIf="announcer.open_date <= date"
+                (click)="reports(announcer.report, announcer.anouncement_id)">
+                <i class="fas fa-file-invoice"></i>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

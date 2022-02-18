@@ -1,4 +1,10 @@
 <app-header></app-header>
+<div class="container_file" *ngIf="showFileModal">
+  <div class="block_file">
+    <i class="fas fa-times" (click)="closeFileModal()"></i>
+    <h1 *ngFor="let fle of dowFile; let idx = index" (click)="download(fle.file)">Файл {{ idx+1 }}</h1>
+  </div>
+</div>
 <div class="modal-datas_container" *ngIf="showModal">
   
   <div class="modal-datas_block">   
@@ -6,36 +12,37 @@
       <i class="fa fa-times"></i>
     </div>
     <div class="cont__form"> 
-        <form >
+        <form [formGroup]="fileForm">
           <h3>Прикрепите файл</h3>
           <div class="form__block"> 
-            <div class="inp__block"> 
+            <div class="inp__block">
               <div class="inp">
                 <h1>Название файл</h1>
-                <input type="text" placeholder="Название файл">
+                <input type="text" placeholder="Название файл" formControlName="name">
               </div>
             </div>
             <div class="inp__block"> 
               <div class="inp fileName">
                 <h1>{{ fileNames }}</h1>
                 <img src="assets/img/file.svg" alt="">
-                <input type="file">
+                <input type="file" accept=".pdf, .xlsx, .xls, .docx, .doc" (change)="getFile($event)" formControlName="file">
+              </div>
+            </div>
+            <div class="inp__block">
+              <div class="inp">
+                <h1>Проект</h1>
+                <select formControlName="projects">
+                  <option *ngFor="let projects of projectData" [value]="projects.project_id">{{ projects.name }}</option>
+                </select>
               </div>
             </div>
           </div>
         </form>
-        <button>Отправить</button>
+        <button (click)="sendFiles()" [disabled]="fileForm.invalid" [ngStyle]="{'opacity': fileForm.invalid ? '.5' : '1'}">Отправить</button>
     </div>
     
   </div>
 
-</div>
-<div class="container_file" *ngIf="showFileModal">
-  <div class="block_file">
-    <i class="fas fa-times" (click)="closeFileModal()"></i>
-    <h1>lorem</h1>
-    <h1 > lorem1</h1>
-  </div>
 </div>
 <div class="container">
   <div class="title_block">
@@ -44,7 +51,7 @@
     <h1 *ngIf="pageId == 3">Файлы тендерные документы</h1>
     <h1 *ngIf="pageId == 4">Файлы контракты</h1>
     <h1 *ngIf="pageId == 5">Файлы соглашение</h1>
-    <div class="block__trush" (click)="openModal()">
+    <div class="block__trush" (click)="openAddFileModal()">
       <i class="td_i fa fa-plus"></i>
     </div>
   </div>
@@ -60,18 +67,18 @@
         </tr>
       </thead>
       <tbody class="pains">
-        <tr class="train">
-          <td><span>№</span>1</td>
-          <td><span>Название проекта/тендера</span>2</td>
-          <td><span>Название Файла</span>3</td>
+        <tr class="train" *ngFor="let files of fileData">
+          <td><span>№</span>{{ files.anouncer_file_id }}</td>
+          <td><span>Название проекта/тендера</span>{{ files.project?.name }}</td>
+          <td><span>Название Файла</span> {{ files.name }} </td>
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>
-              <div class="icons_block" (click)="showFileModal = true">
+              <div class="icons_block" (click)="openFileModal(files.path)">
                 <i class="fas fa-download" ></i>
               </div>
 
-              <div class="icons_block">
+              <div class="icons_block" (click)="deleteFiles(files.anouncer_file_id)">
                 <i class="fas fa-trash"></i>
               </div>
             </div>

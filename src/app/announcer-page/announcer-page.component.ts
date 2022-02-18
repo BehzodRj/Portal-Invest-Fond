@@ -12,8 +12,16 @@ export class AnnouncerPageComponent implements OnInit {
   privateDowFile: any = []
   publicDowFile: any = []
   showFileModal = false
+  modalReportFile = false
+  showReportFile = false
+  reportFileName = 'Файл'
+  reportFile: any
+  pro_id: any
+  reportId: any
+  setReportFile: any
   privateFilesData: any
-  publicFilesData: any 
+  publicFilesData: any
+  date: any = new Date().toISOString()
 
   constructor(private request: RequestService) { }
 
@@ -32,6 +40,7 @@ export class AnnouncerPageComponent implements OnInit {
         alert(error.message)
       }
     })
+    this.date = this.date.split('T')[0]
   }
 
   openModal(privateFile: any, publicFile: any) {
@@ -72,6 +81,47 @@ export class AnnouncerPageComponent implements OnInit {
         }
       })
     }
+  }
+
+  reports(report: any, id: number,) {
+    if(report < 1) {
+      this.modalReportFile = true
+      this.pro_id = id
+    } else if(report) {
+      this.showReportFile = true
+      this.reportFile = report.path
+      this.reportId = report.anouncement_report_id
+    }
+  }
+
+  getReportFile(elements: any) {
+    this.reportFileName = elements.target.files[0].name
+    let reader = new FileReader()
+    reader.readAsDataURL(elements.target.files[0])
+    reader.onload = () => {
+      this.setReportFile = reader.result
+    }
+  }
+
+  modalSend() {
+    this.request.postAnnouncerReportFiles(this.pro_id, this.setReportFile).subscribe(response => {
+      location.reload()
+    }, error => {
+      alert(error.error)
+    })
+  }
+
+  downloadReportFile() {
+    console.log(this.reportFile);
+    window.open(`http://td.investcom.tj/${this.reportFile}`)
+  }
+
+  deleteReportFile() {
+    this.request.deleteAnnouncerReportFiles(this.reportId).subscribe(response => {
+      location.reload()
+    }, error => {
+      alert(error.error)
+    })
   }
 
 }

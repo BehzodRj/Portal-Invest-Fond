@@ -12,82 +12,53 @@
     <div class="material_block">
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="applications">План закупок</button>
       <mat-menu #applications="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="applicationsFiles">Аъзои кумитаи давлатии сармоягузории хамаи дунё</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="applicationFile" 
+        (menuOpened)="getData(adminNames.anouncer_files, 1)">{{ adminNames.name }}</button>
       </mat-menu>
-      <mat-menu #applicationsFiles="matMenu">
-        <button mat-menu-item>Файлы 11</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
+      <mat-menu #applicationFile="matMenu">
+        <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
 
 
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="shoping">Шоппинг</button>
       <mat-menu #shoping="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="shopingFiles">Кумитаи давлатии сармоягузории хамаи дунё</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="shopingFiles" 
+        (menuOpened)="getData(adminNames.anouncer_files, 2)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #shopingFiles="matMenu">
-        <button mat-menu-item>Файлы 12</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
+        <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
+
 
 
 
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="tenderDoc">Тендерные документы</button>
       <mat-menu #tenderDoc="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="tenderDocFiles">Давлати Чумхурии Точикистон барои хамаи халқ</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="tenderDocFiles" 
+        (menuOpened)="getData(adminNames.anouncer_files, 3)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #tenderDocFiles="matMenu">
-        <button mat-menu-item>Файлы 13</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
+        <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-
-
-      <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="report">Отчёты</button>
-      <mat-menu #report="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="reportFiles">Отчеты</button>
-      </mat-menu>
-      <mat-menu #reportFiles="matMenu">
-        <button mat-menu-item>Файлы 14</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
-      </mat-menu>
-
 
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="contract">Контракты</button>
       <mat-menu #contract="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="contractFiles">Contracts</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="contractFiles" 
+        (menuOpened)="getData(adminNames.anouncer_files, 4)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #contractFiles="matMenu">
-        <button mat-menu-item>Файлы 15</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
+        <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
       
 
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="agreement">Соглашение</button>
       <mat-menu #agreement="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="agreementFiles">Agreements</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="agreementFiles" 
+        (menuOpened)="getData(adminNames.anouncer_files, 5)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #agreementFiles="matMenu">
-        <button mat-menu-item>Файлы 16</button>
-        <button mat-menu-item>Файлы 2</button>
-        <button mat-menu-item>Файлы 3</button>
-        <button mat-menu-item>Файлы 4</button>
-        <button mat-menu-item>Файлы 5</button>
+        <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-    </div>
 
     <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">План закупок</h1>
     <h1 [routerLink]="['/announcerfile', 2]" routerLinkActive="active" *ngIf="anouncer">Шоппинг</h1>
@@ -95,7 +66,7 @@
     <h1 [routerLink]="['/announcerfile', 4]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
     <h1 [routerLink]="['/announcerfile', 5]" routerLinkActive="active" *ngIf="anouncer">Соглашение</h1>
     <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
-    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Результат</h1>
+    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Протокол</h1>
     <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
     <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
   </div>
