@@ -185,4 +185,97 @@
     </div>
   </div>
 </div>
+<div class="container" style="border: 1px solid #000;">
+  <div class="content__opening">
+    <h3>Minutes of ITT Opening</h3>
+    <div class="table">
+      <div class="blockLeft">Project Name</div>
+      <div class="blockRight">{{ resultData.project?.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Project ID</div>
+      <div class="blockRight">{{ resultData.project_id }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Tender Exercise Name</div>
+      <div class="blockRight">{{ resultData.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Tender Exercise ID</div>
+      <div class="blockRight">{{ resultData.project_center_anouncement_id }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Type Of Procurement</div>
+      <div class="blockRight">{{ resultData.type_of_procurement }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Procurement Method</div>
+      <div class="blockRight">{{ resultData.procurement_method }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Client Name</div>
+      <div class="blockRight">{{ resultData.project_name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Number Of Responses Received</div>
+      <div class="blockRight">{{ resultData.orders?.length }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Date and Time of Opening</div>
+      <div class="blockRight">{{ resultData.open_date }} {{ resultData.open_time }}</div>
+    </div>
+    <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
+      *ngFor="let result of resultData.orders">
+      <div class="content__details">
+        <h3>ITT details for each response:</h3>
+        <h4>Response details:</h4>
+        <div class="response_details">
+          <div class="details-block">
+            <div class="blockLeft">Time received:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Name of Respondent:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Is JVCA?:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Response Security Submitted:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+        </div>
+        <h4>Respondend address:</h4>
+        <div class="response_address">
+          <div class="details-block">
+            <div class="blockLeft">Address Line 1:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 2:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 3:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Postal Code:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Town:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Country:</div>
+            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+          </div>
+        </div> 
+      </div> 
+    </div>
+  </div>
+</div>
 <app-footer-page></app-footer-page>
