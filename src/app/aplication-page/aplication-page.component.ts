@@ -101,31 +101,22 @@ export class AplicationPageComponent implements OnInit {
     if(addLotsFormData.lot_bank == true) {
       this.checkB = false
     }
-    
-    if(addLotsFormData.title == '' || addLotsFormData.lot_number == '' ||  (addLotsFormData.total || addLotsFormData.total_dol || addLotsFormData.total_euro) == '' || (addLotsFormData.vat || addLotsFormData.vat_dol || addLotsFormData.vat_euro) == '' || (addLotsFormData.discount || addLotsFormData.discount_dol || addLotsFormData.discount_euro) == '') {
-      alert('Заполните поле')
-    } else {
-      this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, response_security_submited: addLotsFormData.lot_bank})
-      this.editLotsData = this.addLotsData
-      this.showModal = false
-      this.AddPartnerData = [];
-      this.addLotsForm.reset()
-    }
+    this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, response_security_submited: addLotsFormData.lot_bank})
+    this.editLotsData = this.addLotsData
+    this.showModal = false
+    this.AddPartnerData = [];
+    this.addLotsForm.reset()
   }   
 
   cahngeEdit() {
     const editLotsFormData = {...this.editLotsForm.value}
-    if(editLotsFormData.title == '' || editLotsFormData.lot_number == '' ||  (editLotsFormData.total || editLotsFormData.total_dol || editLotsFormData.total_euro) == '' || (editLotsFormData.vat || editLotsFormData.vat_dol || editLotsFormData.vat_euro) == '' || (editLotsFormData.discount || editLotsFormData.discount_dol || editLotsFormData.discount_euro) == '') {
-      alert('Заполните поле')
-    } else {
-      this.addLotsData[this.activeEditIndex] = this.editLotsForm.value
-      this.addLotsData[this.activeEditIndex].partners = this.editFormData.partners
-      this.showEditModal = false
-      if(editLotsFormData.lot_bank == true) {
-        this.checkB = false
-      } else if(editLotsFormData.lot_bank == false) {
-        this.checkB = true
-      }
+    this.addLotsData[this.activeEditIndex] = this.editLotsForm.value
+    this.addLotsData[this.activeEditIndex].partners = this.editFormData.partners
+    this.showEditModal = false
+    if(editLotsFormData.lot_bank == true) {
+      this.checkB = false
+    } else if(editLotsFormData.lot_bank == false) {
+      this.checkB = true
     }
   }
 
@@ -151,47 +142,43 @@ export class AplicationPageComponent implements OnInit {
   send() {
     const addLotsFormData = {...this.addLotsForm.value}
     const AddPartnerFormData = {...this.AddPartnerForm.value}
-    if((addLotsFormData.Gtotal || addLotsFormData.Gtotal_dol || addLotsFormData.Gtotal_euro) == '' || (addLotsFormData.Gvat || addLotsFormData.Gvat_dol || addLotsFormData.Gvat_euro) == '' || (addLotsFormData.Gdiscount || addLotsFormData.Gdiscount_dol || addLotsFormData.Gdiscount_euro) == '') {
-      alert('Поле не может быть пустым')
-    } else {
       this.route.params.subscribe((param: any) => {
-          this.isLoading = true
-          this.request.postOrderRequests(
-            param.id,
-            addLotsFormData.Gtotal,
-            addLotsFormData.Gtotal_dol,
-            addLotsFormData.Gtotal_euro,
-            addLotsFormData.Gvat,
-            addLotsFormData.Gvat_dol,
-            addLotsFormData.Gvat_euro,
-            addLotsFormData.Gdiscount,
-            addLotsFormData.Gdiscount_dol,
-            addLotsFormData.Gdiscount_euro,
-            this.addLotsData,
-            this.AddPartnerData,
-            AddPartnerFormData.bank,
-            this.fileData
-          ).subscribe(response => {
-            this.isLoading = false
-            alert("Вы успешно добавили")
-            this.router.navigate(['/subscriberorders'])
-          }, error => {
-            this.isLoading = false
-            if(error.status == '401') {
-              this.request.refreshToken().subscribe( (response: any) =>  {
-                localStorage.setItem('access_token', response.access_token)
-                this.isLoading = false
-                location.reload()
-              }, errorToken => {
-                this.isLoading = false
-                alert(errorToken.message)
-              })
-            } else {
+        this.isLoading = true
+        this.request.postOrderRequests(
+          param.id,
+          addLotsFormData.Gtotal,
+          addLotsFormData.Gtotal_dol,
+          addLotsFormData.Gtotal_euro,
+          addLotsFormData.Gvat,
+          addLotsFormData.Gvat_dol,
+          addLotsFormData.Gvat_euro,
+          addLotsFormData.Gdiscount,
+          addLotsFormData.Gdiscount_dol,
+          addLotsFormData.Gdiscount_euro,
+          this.addLotsData,
+          this.AddPartnerData,
+          AddPartnerFormData.bank,
+          this.fileData
+        ).subscribe(response => {
+          this.isLoading = false
+          alert("Вы успешно добавили")
+          this.router.navigate(['/subscriberorders'])
+        }, error => {
+          this.isLoading = false
+          if(error.status == '401') {
+            this.request.refreshToken().subscribe( (response: any) =>  {
+              localStorage.setItem('access_token', response.access_token)
               this.isLoading = false
-              alert(error.message)
-            }
-          })
+              location.reload()
+            }, errorToken => {
+              this.isLoading = false
+              alert(errorToken.message)
+            })
+          } else {
+            this.isLoading = false
+            alert(error.message)
+          }
         })
-      }
+      })
     }
 }

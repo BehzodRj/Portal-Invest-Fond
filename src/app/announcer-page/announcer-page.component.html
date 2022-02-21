@@ -3,7 +3,7 @@
   <div class="modal_check-items_block">
     <i class="fas fa-times" (click)="modalReportFile = false"></i>
     <div class="modal_check_items">
-      <h1 class="title">Файл Отчёта</h1>
+      <h1 class="title">Файл Отчёт об Оценки</h1>
 
       <div class="check_input">
         <h1 class="title_input">Файл</h1>
@@ -52,11 +52,11 @@
           <th>ID</th>
           <th>ID<br>Тендера</th>
           <th>Тип <br> проведения</th>
-          <th>Тайм</th>
-          <th>Взнос</th>
-          <th>Дата <br> открытия</th>
           <th>Метод <br> проведения</th>
           <th>Лоты</th> 
+          <th>Оплата за<br> документ</th>
+          <th>Дата <br> открытия</th>
+          <th>Тайм</th>
           <th>Действие</th>
         </tr>
       </thead>
@@ -65,15 +65,14 @@
           *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{announcer.anouncement_id}}</td>
           <td><span>Название проекта/тендера</span>{{ announcer.project?.name }} / {{ announcer.name }}</td>
-          <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
+          <td><span>ID</span>{{announcer.project_id}}</td>
           <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
-          <td><span>Тайм</span>{{ announcer.open_time }}</td>
-          <td><span>Взнос</span>{{announcer.price}}</td>
-          <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-           
+          <td><span>Оплата за документ</span>{{announcer.price}}</td>
+          <td><span>Дата открытия </span>{{announcer.open_date}}</td>
+          <td><span>Тайм</span>{{ announcer.open_time }}</td>
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>

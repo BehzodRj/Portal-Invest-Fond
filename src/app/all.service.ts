@@ -72,7 +72,7 @@ export class RequestService {
 
     
     // Announcer
-    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any, project_id: number, open_time: any) {
+    postAnnouncerLots(name: string, project_center_anouncement_id: any, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: any, anouncement_private_file: any, anouncement_public_file: any, project_id: number, open_time: any) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,

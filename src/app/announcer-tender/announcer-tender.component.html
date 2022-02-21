@@ -13,7 +13,7 @@
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('centerID').invalid && formTender.get('centerID').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="number">Центр ID</label>
-      <input type="number" [placeholder]="showAlertCenterID" formControlName="centerID">
+      <input type="text" [placeholder]="showAlertCenterID" formControlName="centerID">
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid && formTender.get('method').touched ? '1px  solid red' : '1px  solid #000'}">
@@ -80,7 +80,7 @@
       </select>
     </div>
 
-    <button  (click)="send()">ДОБАВИТЬ ЛОТ</button>
+    <button  (click)="send()" [disabled]="formTender.invalid">ДОБАВИТЬ ЛОТ</button>
 
   </form>
 </div>

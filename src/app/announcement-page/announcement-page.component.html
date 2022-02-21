@@ -57,11 +57,11 @@
           <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
           <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
           <td class="change">
-            <i title="скачать файл" class="fa fa-download" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1)" (click)="openModal(anouncements.anouncement_private_file, anouncements.anouncement_public_file)"></i>
-            <i class="fas fa-dollar-sign"  *ngIf="anouncements.payments[0]?.status==1 || anouncements.payments.length < 1" (click)="modalOpen(idx)"></i>
+            <i title="скачать файл" class="fa fa-download" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1) || anouncements.price < 1" (click)="openModal(anouncements.anouncement_private_file, anouncements.anouncement_public_file)"></i>
+            <i class="fas fa-dollar-sign"  *ngIf="anouncements.payments[0]?.status==1 || (anouncements.payments.length < 1 && anouncements.price > 1)" (click)="modalOpen(idx)"></i>
             <i class="fas fa-undo-alt" *ngIf="anouncements.payments.length > 0 && anouncements.payments[0]?.status==null"></i>
             <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.favorites_exists>0 ? 'orange': '#4F4F4F'}" (click)="star(anouncements.favorites_exists, anouncements.anouncement_id)"></i>
-            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="anouncements.payments.length > 0 && anouncements.payments[0]?.status>1"></i>
+            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1) || anouncements.price < 1"></i>
           </td>
         </tr>
       </tbody>
