@@ -52,13 +52,13 @@ export class AplicationPageComponent implements OnInit {
       Gdiscount: new FormControl(''),
       Gdiscount_dol: new FormControl(''),
       Gdiscount_euro: new FormControl(''),
-      lot_bank: new FormControl(false)
+      lot_bank: new FormControl(0)
     })
 
     this.AddPartnerForm = new FormGroup({
       name: new FormControl(''),
       leader: new FormControl(false),
-      bank: new FormControl(false)
+      bank: new FormControl(0)
     })
 
     // EditLotsForm
@@ -97,10 +97,8 @@ export class AplicationPageComponent implements OnInit {
   }
 
   save() {
+    this.checkB = false
     const addLotsFormData = {...this.addLotsForm.value}
-    if(addLotsFormData.lot_bank == true) {
-      this.checkB = false
-    }
     this.addLotsData.push({id: this.numId++, title: addLotsFormData.title, lot_number: addLotsFormData.lot_number, total: addLotsFormData.total, total_dol: addLotsFormData.total_dol, total_euro: addLotsFormData.total_euro, vat: addLotsFormData.vat, vat_dol: addLotsFormData.vat_dol, vat_euro: addLotsFormData.vat_euro, discount: addLotsFormData.discount, discount_dol: addLotsFormData.discount_dol, discount_euro: addLotsFormData.discount_euro, response_security_submited: addLotsFormData.lot_bank})
     this.editLotsData = this.addLotsData
     this.showModal = false
@@ -116,7 +114,6 @@ export class AplicationPageComponent implements OnInit {
     if(editLotsFormData.lot_bank == true) {
       this.checkB = false
     } else if(editLotsFormData.lot_bank == false) {
-      this.checkB = true
     }
   }
 

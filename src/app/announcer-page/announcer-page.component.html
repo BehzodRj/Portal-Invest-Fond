@@ -3,7 +3,7 @@
   <div class="modal_check-items_block">
     <i class="fas fa-times" (click)="modalReportFile = false"></i>
     <div class="modal_check_items">
-      <h1 class="title">Файл Отчёт об Оценки</h1>
+      <h1 class="title">Отчёт об Оценке</h1>
 
       <div class="check_input">
         <h1 class="title_input">Файл</h1>
@@ -32,7 +32,7 @@
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
-    <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Тендерные документи</h1>
+    <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Тендерные документы</h1>
     <h1 *ngIf="publicFilesData < 1 ? 0 : 1" (click)="download(publicDowFile)">Обявления</h1>
   </div>
 </div>
@@ -47,32 +47,30 @@
     <table class="resp-tab">
       <thead class="pain">
         <tr>
-          <th>№</th>
-          <th>Название <br> проекта/тендера</th>
           <th>ID</th>
-          <th>ID<br>Тендера</th>
+          <th>Название <br> проекта/тендера</th>
+          <th>Номер пакета</th>
           <th>Тип <br> проведения</th>
           <th>Метод <br> проведения</th>
           <th>Лоты</th> 
-          <th>Оплата за<br> документ</th>
+          <th>Стоимость тендерного <br> документа</th>
           <th>Дата <br> открытия</th>
-          <th>Тайм</th>
+          <th>Время</th>
           <th>Действие</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train"
           *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-          <td><span>№</span>{{announcer.anouncement_id}}</td>
+          <td><span>ID</span>{{announcer.anouncement_id}}</td>
           <td><span>Название проекта/тендера</span>{{ announcer.project?.name }} / {{ announcer.name }}</td>
-          <td><span>ID</span>{{announcer.project_id}}</td>
-          <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
+          <td><span>Номер пакета</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-          <td><span>Оплата за документ</span>{{announcer.price}}</td>
+          <td><span>Стоимость тендерного документа</span>{{announcer.price}}</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
-          <td><span>Тайм</span>{{ announcer.open_time }}</td>
+          <td><span>Время</span>{{ announcer.open_time }}</td>
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>

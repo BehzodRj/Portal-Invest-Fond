@@ -14,12 +14,12 @@ export class AnnouncerTenderComponent implements OnInit {
   publicFileData: any = []
   projectsData: any = []
   showAlertName = 'Название'
-  showAlertCenterID = 'Центр ID'
+  showAlertCenterID = 'Номер пакета'
   showAlertMethod = 'Метод'
   showAlertFile = 'Файл'
   showAlertPublicFile = 'Файл'
   showAlertLots = 'Колличество лотов'
-  showAlertPrice = 'Взнос'
+  showAlertPrice = 'Стоимость тендерного документа'
   isLoading = false
 
   constructor(private router: Router, private request: RequestService) { }

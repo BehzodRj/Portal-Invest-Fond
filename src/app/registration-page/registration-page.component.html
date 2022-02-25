@@ -41,7 +41,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('company_name').invalid && registerForm.get('company_name').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="text">Наименование компании</label>
+      <label for="text">Название компании</label>
       <input type="text" [placeholder]="showAlertsCompanyName" formControlName="company_name">
     </div>
 
@@ -51,10 +51,10 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('regCompany1').invalid && registerForm.get('regCompany1').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="text">Место регистрация компании</label>
+      <label for="text">Место юридической регистрации</label>
       <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" [placeholder]="showAlertsRegCompany" formControlName="regCompany1">
-      <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрация 2" formControlName="regCompany2">
-      <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрация 3" formControlName="regCompany3">
+      <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрации 2" formControlName="regCompany2">
+      <input type="text" style="margin-bottom: 10px; border-bottom: 1px solid grey;" placeholder="Место регистрации 3" formControlName="regCompany3">
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('phone').invalid && registerForm.get('phone').touched ? '1px  solid red' : '1px  solid #000'}">

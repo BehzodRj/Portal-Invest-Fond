@@ -58,8 +58,8 @@
           <td class="hdd">{{ orderLots.discount_dol }}</td>      
           <td class="hdd">{{ orderLots.discount_euro }}</td>
           <td>
-            <i class="fa fas fa-check" *ngIf="orderLots.response_security_submited > 0"></i>
-            <i class="fa fas fas fa-times" *ngIf="orderLots.response_security_submited < 1"></i>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == false">Гарантийная деклорация</h1>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == true">Банковская гарантия</h1>
           </td>
         </tr> 
       </tbody>
@@ -70,9 +70,11 @@
       <h1>Партнёры:</h1>
       <pre *ngFor="let partners of orderData.partners" [ngStyle]="{'font-weight': partners.leader>0 ? 'bold' : 'thin'}">{{ partners.name }},</pre>
     </div>
-    <div class="bank_items" *ngIf="orderData.response_security_submited > 0">
-      <h1>Банковские гарантии:</h1>
-      <input type="checkbox" onclick="return false" checked>
+    <div class="bank-gr_block" *ngIf=" orderData.lots < 1">
+      <select formControlName="bank">
+        <option value="0" aria-readonly="true">Гарантийная деклорация</option>
+        <option value="1">Банковская гарантия</option>
+      </select>
     </div>
   </div>
   <div class="summa">
