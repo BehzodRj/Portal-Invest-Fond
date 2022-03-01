@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -76,7 +78,9 @@ import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

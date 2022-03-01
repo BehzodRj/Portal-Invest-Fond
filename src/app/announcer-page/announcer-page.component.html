@@ -48,7 +48,8 @@
       <thead class="pain">
         <tr>
           <th>ID</th>
-          <th>Название <br> проекта/тендера</th>
+          <th>Название <br> проекта</th>
+          <th>Название <br> тендера</th>
           <th>Номер пакета</th>
           <th>Тип <br> проведения</th>
           <th>Метод <br> проведения</th>
@@ -63,7 +64,8 @@
         <tr class="train"
           *ngFor="let announcer of announcerData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>ID</span>{{announcer.anouncement_id}}</td>
-          <td><span>Название проекта/тендера</span>{{ announcer.project?.name }} / {{ announcer.name }}</td>
+          <td><span>Название проекта</span>{{ announcer.project?.name }}</td>
+          <td><span>Название тендера</span>{{ announcer.name }}</td>
           <td><span>Номер пакета</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>

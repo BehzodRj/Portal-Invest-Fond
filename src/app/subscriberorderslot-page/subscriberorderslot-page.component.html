@@ -18,7 +18,7 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
-          <th rowspan="2">Банковские гарантии</th>
+          <th rowspan="2">Гарантия</th>
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -70,10 +70,10 @@
       <h1>Партнёры:</h1>
       <pre *ngFor="let partners of orderData.partners" [ngStyle]="{'font-weight': partners.leader>0 ? 'bold' : 'thin'}">{{ partners.name }},</pre>
     </div>
-    <div class="bank-gr_block" *ngIf=" orderData.lots < 1">
-      <select formControlName="bank">
-        <option value="0" aria-readonly="true">Гарантийная деклорация</option>
-        <option value="1">Банковская гарантия</option>
+    <div class="bank_items" *ngIf=" orderData.lots < 1">
+      <select aria-readonly="true">
+        <option *ngIf="orderData.response_security_submited < 1">Гарантийная деклорация</option>
+        <option *ngIf="orderData.response_security_submited > 0">Банковская гарантия</option>
       </select>
     </div>
   </div>

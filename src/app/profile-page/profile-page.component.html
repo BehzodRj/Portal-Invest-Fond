@@ -38,9 +38,9 @@
             <h1 class="description" *ngIf="showDatas">3) {{ userData.address_line3 }}</h1>
           </div>
           <div class="regCountry_block" *ngIf="editDatas">
-            <input type="text" formControlName="regCompany1">
-            <input type="text" formControlName="regCompany2">
-            <input type="text" formControlName="regCompany3">
+            <input type="text" formControlName="address_line1">
+            <input type="text" formControlName="address_line2">
+            <input type="text" formControlName="address_line3">
           </div>
         </div>
 
@@ -64,20 +64,23 @@
 
         <div class="items_block">
           <h1 class="title">Страна:</h1>
-          <h1 class="description" *ngIf="showDatas">{{ userData.company_country }}</h1>
-          <input type="text" class="edit_block" *ngIf="editDatas" formControlName="country">
+          <h1 class="description" *ngIf="showDatas">{{ userData.countrie?.name | lowercase }}</h1>
+          <input type="text" class="edit_block" *ngIf="editDatas" matInput formControlName="fullname" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let autoCompleteCountry of filteredOptions | async" [value]="autoCompleteCountry.name">{{ autoCompleteCountry.name }}</mat-option>
+          </mat-autocomplete>
         </div>
 
         <div class="items_block">
           <h1 class="title">Город:</h1>
           <h1 class="description" *ngIf="showDatas">{{ userData.town }}</h1>
-          <input type="text" class="edit_block" *ngIf="editDatas" formControlName="city">
+          <input type="text" class="edit_block" *ngIf="editDatas" formControlName="town">
         </div>
 
         <div class="items_block">
           <h1 class="title">Почтовый индекс:</h1>
           <h1 class="description" *ngIf="showDatas">{{ userData.postal_code }}</h1>
-          <input type="number" class="edit_block" *ngIf="editDatas" formControlName="postalCode">
+          <input type="number" class="edit_block" *ngIf="editDatas" formControlName="postal_code">
         </div>
       </form>
 

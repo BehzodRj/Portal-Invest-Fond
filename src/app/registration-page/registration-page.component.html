@@ -69,7 +69,11 @@
 
     <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('country').invalid && registerForm.get('country').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="text">Страна</label>
-      <input type="text" [placeholder]="showAlertsCountry" formControlName="country">
+      <input type="text" placeholder="Страна" aria-label="Number" matInput formControlName="country" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let autoCompleteCountry of filteredOptions | async" [value]="autoCompleteCountry.name">{{ autoCompleteCountry.name }}</mat-option>
+      </mat-autocomplete>
+
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: registerForm.get('city').invalid && registerForm.get('city').touched ? '1px  solid red' : '1px  solid #000'}">
