@@ -38,6 +38,7 @@ import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/sub
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
 import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file-page.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file
     AnnouncerEditComponent,
     ResultDataPageComponent,
     AnnouncerFilePageComponent,
+    MessagesComponent,
   ],
   imports: [  
     FormsModule,

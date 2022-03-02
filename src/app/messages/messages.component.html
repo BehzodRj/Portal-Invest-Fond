@@ -1,0 +1,107 @@
+
+<app-header></app-header>
+<div class="modal__message" *ngIf="modalShow">
+    <i (click)="close()" class="fa fa-times"></i>
+    <div class="modal__sender">
+        <h2>Отправить сообщение:</h2>
+        <div class="sender__select">
+            <span>Получатель:</span>
+            <select name="" id="">
+                <option value="0">Получатель</option>
+                <option value="1">Получатель</option>
+                <option value="2">Получатель</option>
+            </select>
+        </div>
+        <div class="sender__topic">
+            <span>Тема:</span>
+            <input type="text" >
+        </div>
+        <div class="sender__text">
+            <span>Собщение:</span>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="sender__file">
+            <span>Прикрепить файл:</span>
+            <div class="files">
+                <input type="file">
+                <div class="cicle">
+                    <svg width="20" height="20" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 10.875C9 11.969 8.52589 13.0182 7.68198 13.7918C6.83807 14.5654 5.69347 15 4.5 15C3.30653 15 2.16193 14.5654 1.31802 13.7918C0.474106 13.0182 0 11.969 0 10.875L0 3C0 2.20435 0.344804 1.44129 0.958559 0.87868C1.57231 0.316072 2.40475 0 3.27273 0C4.14071 0 4.97314 0.316072 5.58689 0.87868C6.20065 1.44129 6.54545 2.20435 6.54545 3L6.54545 9.375C6.54545 9.87228 6.32995 10.3492 5.94635 10.7008C5.56276 11.0525 5.04249 11.25 4.5 11.25C3.95751 11.25 3.43724 11.0525 3.05365 10.7008C2.67005 10.3492 2.45455 9.87228 2.45455 9.375L2.45455 3.75H3.68182L3.68182 9.375C3.68182 9.57391 3.76802 9.76468 3.92146 9.90533C4.0749 10.046 4.283 10.125 4.5 10.125C4.717 10.125 4.9251 10.046 5.07854 9.90533C5.23198 9.76468 5.31818 9.57391 5.31818 9.375L5.31818 3C5.31818 2.75377 5.26527 2.50995 5.16248 2.28247C5.05969 2.05498 4.90902 1.84828 4.71908 1.67418C4.52914 1.50006 4.30366 1.36195 4.05549 1.26773C3.80732 1.1735 3.54134 1.125 3.27273 1.125C3.00411 1.125 2.73813 1.1735 2.48997 1.26773C2.2418 1.36195 2.01631 1.50006 1.82637 1.67418C1.63643 1.84828 1.48577 2.05498 1.38297 2.28247C1.28018 2.50995 1.22727 2.75377 1.22727 3L1.22727 10.875C1.22727 11.6706 1.57208 12.4337 2.18583 12.9963C2.79959 13.5589 3.63202 13.875 4.5 13.875C5.36798 13.875 6.20041 13.5589 6.81417 12.9963C7.42792 12.4337 7.77273 11.6706 7.77273 10.875L7.77273 3.75H9V10.875Z" fill="#282828"/>
+                    </svg>
+                </div>
+                <input type="text" placeholder="Файл">
+            </div>
+        </div>
+        <div class="sender__button">
+            <button>Отправить</button>
+        </div>
+    </div>
+</div>
+<div class="message__content">
+    <div class="message__title">
+        <button>Новое сообщение</button>
+        <h1>Мои сообщения</h1> 
+        <span></span>
+    </div>
+
+    <div class="message__block">
+        <div class="message__container" >
+            <div class="message__stick">
+                <div class="message__name">
+                    <div  class="icon">
+                        <span (click)="plus()" ><i class="fa fa-plus" *ngIf="pluss" ></i></span>
+                        <span (click)="minus()"><i  *ngIf="minuss" class="fa fa-minus"  ></i></span>
+                    </div>
+                    <h3>Проект</h3>
+                </div>
+                <div class="message__topic">
+                    <h3>Тема проекта</h3>
+                </div>
+                <div class="message__text">
+                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+                </div>
+                <div class="message__date">
+                    <h3>23.12.21</h3>
+                    <span>1</span>
+                </div>
+            </div>
+            <div class="messages" *ngIf="allmessages"> 
+                <div class="message__recipient">
+                    <div class="recipient">
+                        <div class="title">
+                            <h3>Получатель</h3>
+                            <span>(23.12.21 15:45)</span>
+                        </div>
+                        <div class="content">
+                            Pulvinar suscipit pulvinar euismod ut diam. Aliquam viverra diam amet, suscipit tincidunt. Nullam nulla dolor quis morbi mi arcu. Pellentesque tellus nisl rhoncus justo, eget sollicitudin. Ultrices ut scelerisque fermentum malesuada quis rhoncus in. Odio hendrerit erat imperdiet ut non cursus. Urna, pulvinar tortor pellentesque lacus sodales etiam urna 
+                        </div>
+                        <!-- <div class="subtitle">
+                            <svg width="20" height="20" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 10.875C9 11.969 8.52589 13.0182 7.68198 13.7918C6.83807 14.5654 5.69347 15 4.5 15C3.30653 15 2.16193 14.5654 1.31802 13.7918C0.474106 13.0182 0 11.969 0 10.875L0 3C0 2.20435 0.344804 1.44129 0.958559 0.87868C1.57231 0.316072 2.40475 0 3.27273 0C4.14071 0 4.97314 0.316072 5.58689 0.87868C6.20065 1.44129 6.54545 2.20435 6.54545 3L6.54545 9.375C6.54545 9.87228 6.32995 10.3492 5.94635 10.7008C5.56276 11.0525 5.04249 11.25 4.5 11.25C3.95751 11.25 3.43724 11.0525 3.05365 10.7008C2.67005 10.3492 2.45455 9.87228 2.45455 9.375L2.45455 3.75H3.68182L3.68182 9.375C3.68182 9.57391 3.76802 9.76468 3.92146 9.90533C4.0749 10.046 4.283 10.125 4.5 10.125C4.717 10.125 4.9251 10.046 5.07854 9.90533C5.23198 9.76468 5.31818 9.57391 5.31818 9.375L5.31818 3C5.31818 2.75377 5.26527 2.50995 5.16248 2.28247C5.05969 2.05498 4.90902 1.84828 4.71908 1.67418C4.52914 1.50006 4.30366 1.36195 4.05549 1.26773C3.80732 1.1735 3.54134 1.125 3.27273 1.125C3.00411 1.125 2.73813 1.1735 2.48997 1.26773C2.2418 1.36195 2.01631 1.50006 1.82637 1.67418C1.63643 1.84828 1.48577 2.05498 1.38297 2.28247C1.28018 2.50995 1.22727 2.75377 1.22727 3L1.22727 10.875C1.22727 11.6706 1.57208 12.4337 2.18583 12.9963C2.79959 13.5589 3.63202 13.875 4.5 13.875C5.36798 13.875 6.20041 13.5589 6.81417 12.9963C7.42792 12.4337 7.77273 11.6706 7.77273 10.875L7.77273 3.75H9V10.875Z" fill="#282828"/>
+                            </svg>
+                            <button>скачать</button>    
+                        </div> -->
+                    </div>
+                </div> 
+                <div class="message__sender"> 
+                    <div class="sender">
+                        <div class="title">
+                            <h3>Отправитель</h3>
+                            <span>(23.12.21 15:45)</span>
+                        </div>
+                        <div class="content">
+                            Pulvinar suscipit pulvinar euismod ut diam. Aliquam viverra diam amet, suscipit tincidunt. Nullam nulla dolor quis morbi mi arcu. Pellentesque tellus nisl rhoncus justo, eget sollicitudin. Ultrices ut scelerisque fermentum malesuada quis rhoncus in. Odio hendrerit erat imperdiet ut non cursus. Urna, pulvinar tortor pellentesque lacus sodales etiam urna 
+                        </div> 
+                    </div>
+                </div>
+                <div class="message__answer">
+                    <button (click)="show()">Ответить</button>
+                    <button>Свернуть</button>
+                </div>
+
+            </div>
+        </div>
+         
+    </div>
+</div>
+<app-footer-page></app-footer-page>
