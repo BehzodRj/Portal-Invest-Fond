@@ -1,6 +1,6 @@
 .modal__message{
     width: 50%; 
-    height: 95%;
+    height: 80%;
     background: #fff;
     position:absolute;
     top: 0;
@@ -167,8 +167,8 @@
   .message__content {
     max-width: 1200px;
     margin: 50px auto 0; 
-    padding: 0 30px;  
-    padding-bottom: 10px;
+    padding: 0 10px;  
+    padding-bottom: 10px; 
     .message__title {
       display: flex;
       justify-content: space-between;
@@ -190,9 +190,12 @@
         color: #fff;
         border: none;
         border-radius: 10px;
+        cursor: pointer;
+        &:active{
+          transform: scale(.96);
+        }
       }
-    }
-  
+    } 
     .message__block {
       margin: 50px auto; 
       .message__container {
@@ -206,8 +209,7 @@
           margin-bottom: 10px;
           .message__name {
             display: flex;
-            align-items: center;
-            width: 15%;
+            align-items: center; 
   
             h3 {
               font-family: "Roboto", sans-serif;
@@ -236,23 +238,18 @@
             }
           }
   
-          .message__topic {
-            width: 20%;
-  
+          .message__topic { 
             h3 {
               font-family: "Roboto", sans-serif;
               font-style: normal;
               font-weight: 600;
               font-size: 15px;
               line-height: 20px;
-              color: #000000;
-              padding: 0 5px;
-              margin-left: 10px;
+              color: #000000; 
             }
           }
   
-          .message__text {
-            width: 55%;
+          .message__text { 
   
             h3 {
               font-family: "Roboto", sans-serif;
@@ -265,8 +262,7 @@
             }
           }
   
-          .message__date {
-            width: 10%;
+          .message__date { 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -292,8 +288,8 @@
               font-weight: 600;
               font-size: 15px;
               line-height: 20px;
-              color: #FFFFFF;
-              margin-left: 5px;
+              color: #FFFFFF; 
+              margin-left: 20px;
             }
           }
         }
@@ -428,8 +424,7 @@
           }
         }
       }
-    }
-  
+    } 
     @media screen and (max-width:800px) {
       .message__block {
         .message__container{
@@ -439,6 +434,54 @@
               // h3{
               //   font-size: 13px;
               // }
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width:600px) {
+      .message__block {
+        .message__container{
+          .message__stick {  
+            .message__text{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width:400px) {
+      .message__block {
+        .message__container{
+          .message__stick {   
+            .message__name{ 
+              h3{
+                margin-left: 0;
+                font-size: 12px;
+              }
+              .icon {
+                span {
+                  i { 
+                    padding: 1px;
+                  }  
+                } 
+    
+              }
+            }
+            .message__topic{
+              h3{
+                font-size: 12px;
+              }
+            }
+            .message__date{
+              h3{
+                font-size: 12px;
+              }
+              span{
+                width: 15px;
+                height: 15px;
+                font-size: 12px;
+              }
             }
           }
         }
