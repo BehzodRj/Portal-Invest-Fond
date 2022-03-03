@@ -11,8 +11,10 @@ export class MessagesComponent implements OnInit {
   minuss = false
   allmessages = false
   modalShow = false
-
-
+  toAnswer = false
+  send = false
+  AnswerSend = true
+ 
   constructor(){}
   ngOnInit(){
   }
@@ -29,9 +31,27 @@ export class MessagesComponent implements OnInit {
     this.minuss = false
     this.allmessages = false
   }  
-  show(){
+  showmodal(){
     this.modalShow = true
   }
+  showToAnswer(){
+    this.toAnswer = true
+    this.send = true
+    this.AnswerSend = false
+  }
+  collapse(){  
+    this.toAnswer = false
+    this.send = false
+    this.AnswerSend = true
+  }
   
+
+
+
+
+
+
+
+
 
 }
