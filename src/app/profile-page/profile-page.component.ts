@@ -50,8 +50,10 @@ export class ProfilePageComponent implements OnInit {
     }, error => {
       alert(error.error)
     })
-    
+
+    this.isLoading = true
     this.request.getProfileRequest().subscribe( (response: any) => {
+      this.isLoading = false
       this.userData = response
       this.editForm.patchValue(response)
       this.editForm.controls['fullname'].patchValue(response.countrie?.name)

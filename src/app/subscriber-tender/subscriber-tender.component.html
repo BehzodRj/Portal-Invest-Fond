@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <app-header></app-header>
 <div class="container">
   <div class="navbar">
@@ -6,15 +7,15 @@
       <thead class="pain">
         <tr>
           <th>№</th>
-          <th>Исполнительное агенство | Реализующий агенство</th>
-          <th>Количество <br> тендеров</th>
+          <th>Исполнительное агентство | Реализующее агентство</th>
+          <th>Количество <br> объявлений</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let subcr of subscriberData | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
           <td><span>№</span>{{ subcr.project_id }}</td>
           <td><span>Проект</span>{{ subcr.name }}</td>
-          <td><span>Количество тендеров</span>{{ subcr.anouncements.length }}</td>
+          <td><span>Количество объявлений</span>{{ subcr.anouncements.length }}</td>
           <td class="download">
             <div class="trash_block" [routerLink]="['/announcement', subcr.project_id]" >
               <i class="fas fa-chevron-right"></i>

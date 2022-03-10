@@ -13,13 +13,13 @@
 
       <form [formGroup]="editForm">
         <div class="items_block">
-          <h1 class="title">Занимаемые должности:</h1>
+          <h1 class="title">Занимаемая должность:</h1>
           <h1 class="description" *ngIf="showDatas">{{ userData.division }}</h1>
           <input type="text" class="edit_block" *ngIf="editDatas" formControlName="division">
         </div>
 
         <div class="items_block">
-          <h1 class="title">Наименование компании:</h1>
+          <h1 class="title">Название компании:</h1>
           <h1 class="description" *ngIf="showDatas">{{ userData.company_name }}</h1>
           <input type="text" class="edit_block" *ngIf="editDatas" formControlName="company_name">
         </div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="items_block">
-          <h1 class="title">Место регистрация:</h1>
+          <h1 class="title">Место юридической регистрации:</h1>
           <div class="regItems">
             <h1 class="description" *ngIf="showDatas">1) {{ userData.address_line1 }}</h1>
             <h1 class="description" *ngIf="showDatas">2) {{ userData.address_line2 }}</h1>

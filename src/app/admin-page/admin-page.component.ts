@@ -39,16 +39,22 @@ export class AdminPageComponent implements OnInit {
       editSelectParent: new FormControl('')
     })
 
+    this.isLoading = true
     this.request.getAdminReq().subscribe(response => {
       this.tableData = response
+      this.isLoading = false
     }, error => {
+      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
         }, errorToken => {
+          this.isLoading = false  
           alert(errorToken.message)
         })
       } else {
+        this.isLoading = false
         alert(error.message)
       }
     })
@@ -98,16 +104,22 @@ export class AdminPageComponent implements OnInit {
     if(editFormData.name == '') {
       alert('Поле не может быть пустым')
     } else {
+      this.isLoading = true
       this.request.putAdminReq(id, editFormData.name).subscribe(response => {
+        this.isLoading = false
         location.reload()
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })
@@ -117,16 +129,22 @@ export class AdminPageComponent implements OnInit {
   deleteItem(id: number, name: string) {
     const conf = confirm(`Вы хотите удалить центр: ${name}`)
     if(conf == true) {
+      this.isLoading = true
       this.request.deleteAdminReq(id).subscribe(response => {
+        this.isLoading = false
         location.reload()
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })
@@ -135,17 +153,22 @@ export class AdminPageComponent implements OnInit {
 
   sendShowParents(id: any) {
     const addChildFormData = {...this.addChildForm.value}
-    console.log(addChildFormData);
+    this.isLoading = true
     this.request.postAdminReq(addChildFormData.name, id).subscribe(response => {
+      this.isLoading = false
       location.reload()
     }, error => {
+      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
         }, errorToken => {
+          this.isLoading = false
           alert(errorToken.message)
         })
       } else {
+        this.isLoading = false
         alert(error.message)
       }
     })
@@ -158,17 +181,23 @@ export class AdminPageComponent implements OnInit {
 
   sendEditShowParents(id: any) {
     const editFormData = {...this.editForm.value}
+    this.isLoading = true
     this.request.putAdminReq(id, editFormData.editSelectParent).subscribe(response => {
+      this.isLoading = false
       location.reload()
       this.showParent = 0
     }, error => {
+      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
         }, errorToken => {
+          this.isLoading = false
           alert(errorToken.message)
         })
       } else {
+        this.isLoading = false
         alert(error.message)
       }
     })
@@ -177,16 +206,22 @@ export class AdminPageComponent implements OnInit {
   deleteEditShow(id: number, name: string) {
     let conf = confirm(`Вы хотите удалить ${name}`)
     if(conf == true) {
+      this.isLoading = true
       this.request.deleteAdminReq(id).subscribe(response => {
+        this.isLoading = false
         location.reload()
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })

@@ -289,6 +289,7 @@
            &:nth-child(7) {
              border: 1px solid;
              color: #000;
+             width: 100px;
            }
            &:nth-child(8) {
             border: 1px solid;
@@ -301,6 +302,11 @@
             color: #000;
           }
           &:nth-child(10) {
+            border: 1px solid;
+            border-left: none;
+            color: #000;
+          }
+          &:nth-child(11) {
             border: 1px solid;
             border-left: none;
             color: #000;

@@ -25,17 +25,23 @@ export class AnnouncementPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(response => {
+      this.isLoading = true
       this.request.getSubsciberProjectsID(response.id).subscribe(response => {
         this.anouncement = response
+        this.isLoading = false
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
             location.reload()
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })
@@ -90,10 +96,10 @@ export class AnnouncementPageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file1.split(",").forEach((element:any) => {
-          this.dowFile.push( {name: 'Тендерные документы', file: `http://td.investcom.tj/${element}`})
+          this.dowFile.push( {name: 'Тендерные документы', file: `https://e-td.investcom.tj/${element}`})
         });
         file2.split(",").forEach((element:any) => {
-          this.dowFile.push( {name: 'Обявление', file: `http://td.investcom.tj/${element}`})
+          this.dowFile.push( {name: 'Обявление', file: `https://e-td.investcom.tj/${element}`})
         });
     }
   }
@@ -109,33 +115,45 @@ export class AnnouncementPageComponent implements OnInit {
 
   star(favId: any, id:number) { 
       if(favId>0) {
+        this.isLoading = true
         this.request.deleteFavoutitesRequests(id).subscribe(response => {
+          this.isLoading = false
           location.reload()
         }, error => {
+          this.isLoading = false
           if(error.status == '401') {
             this.request.refreshToken().subscribe( (response: any) =>  {
               localStorage.setItem('access_token', response.access_token)
+              this.isLoading = false
               location.reload()
             }, errorToken => {
+              this.isLoading = false
               alert(errorToken.message)
             })
           } else {
+            this.isLoading = false
             alert(error.message)
           }
         })
       }
       else{
+        this.isLoading = true
         this.request.postFavoutitesRequests(id).subscribe(response => {
+          this.isLoading = false
           location.reload()
         }, error => {
+          this.isLoading = false
           if(error.status == '401') {
             this.request.refreshToken().subscribe( (response: any) =>  {
               localStorage.setItem('access_token', response.access_token)
+              this.isLoading = false
               location.reload()
             }, errorToken => {
+              this.isLoading = false
               alert(errorToken.message)
             })
           } else {
+            this.isLoading = false
             alert(error.message)
           }
         })

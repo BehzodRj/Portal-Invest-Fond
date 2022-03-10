@@ -74,7 +74,7 @@
         }
     }
 
-    form {
+    .form {
         margin-top: 70px;
         display: flex;
         flex-direction: column;
@@ -154,6 +154,11 @@
         outline: none;
         border: 0;
     }
+
+    .items_block select {
+        width: 100%;
+    }
+    
     .regist_block {
         margin-top: 21px;
     }

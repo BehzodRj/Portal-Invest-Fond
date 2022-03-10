@@ -4,7 +4,7 @@
     <h1 class="title">{{ announcerFormModalData[0].user.subscriber.name }} {{announcerFormModalData[0].user.subscriber.last_name}} {{announcerFormModalData[0].user.subscriber.middle_name }} </h1>
 
     <div class="modal-items">
-      <h1>Занимаемые должности:</h1>
+      <h1>Занимаемая должности:</h1>
       <h2>{{ announcerFormModalData[0].user.subscriber.division }}</h2>
     </div>
 
@@ -39,7 +39,7 @@
 
     <div class="modal-items">
       <h1>Страна:</h1>
-      <h2>{{ announcerFormModalData[0].user.subscriber.company_country }}</h2>
+      <h2>{{ announcerFormModalData[0].user.subscriber.countrie.name | lowercase }}</h2>
     </div>
 
     <div class="modal-items">

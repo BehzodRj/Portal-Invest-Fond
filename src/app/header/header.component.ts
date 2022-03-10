@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openFile(file: any) {
-    window.open(`http://td.investcom.tj/${file}`)
+    window.open(`https://e-td.investcom.tj/${file}`)
   }
 
   logOut() {

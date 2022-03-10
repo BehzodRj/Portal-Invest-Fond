@@ -51,7 +51,7 @@ export class AnnouncerFormComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://td.investcom.tj/${element.name}`})
+          this.dowFile.push( {file: `https://e-td.investcom.tj/${element.name}`})
         });
     }
   }

@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <app-header></app-header>
 <div class="container">
   <div class="title_block">
@@ -8,29 +9,31 @@
     <table class="resp-tab">
       <thead class="pain">
         <tr>
-          <th>№</th>
-          <th>НАЗВАНИЕ <br> ПРОЕКТА/ТЕНДЕРА </th>
           <th>ID</th>
-          <th>ID <br> ТЕНДЕРА</th>
+          <th>НАЗВАНИЕ ПРОЕКТА</th>
+          <th>НАЗВАНИЕ ТЕНДЕРА </th>
+          <th>НОМЕР ПААКЕТА</th>
           <th>ТИП <br> ПРОВЕДЕНИЯ</th>
           <th>МЕТОД <br> ПРОВЕДЕНИЯ</th>
-          <th>ВЗНОС</th>
-          <th>ДАТА <br> ОТКРЫТИЯ</th>
           <th>ЛОТЫ</th>
+          <th>СТОИМОСТЬ<br>ТЕНДЕРНОГО<br>ДОКУМЕНТА</th>
+          <th>ДАТА <br> ОТКРЫТИЯ</th>
+          <th>ВРЕМЯ</th>
           <th>ПРОТОКОЛ</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let announcer of resulData">
-          <td><span>№</span>{{announcer.anouncement_id}}</td>
-          <td><span>Название проекта/тендера</span>{{ announcer.project_name }}/{{ announcer.name }}</td>
-          <td><span>ID</span>{{announcer.project_center_anouncement_id}}</td>
-          <td><span>Центр ID</span>{{announcer.project_center_anouncement_id}}</td>
+          <td><span>ID</span>{{announcer.anouncement_id}}</td>
+          <td><span>Название проекта</span>{{ announcer.project_name }}</td>
+          <td><span>Название тендера</span>{{ announcer.name }}</td>
+          <td><span>Номер пакета</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
-          <td><span>Взнос</span>{{announcer.price}}</td>
-          <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
+          <td><span>Стоимость тендерного документа</span>{{announcer.price}}</td>
+          <td><span>Дата открытия </span>{{announcer.open_date}}</td>
+          <td><span>Время</span>{{announcer.open_time}}</td>
           <td class="change">
             <div class="trash_block" [routerLink]="['/result', announcer.anouncement_id]" routerLinkActive="router-link-active" >
               <i class="td_i fas fa-file-invoice"></i>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://e-td.investcom.tj'
+    private url = 'https://e-td.investcom.tj'
     constructor(private http: HttpClient) { }
 
     
@@ -17,6 +17,10 @@ export class RequestService {
 
     regRequest(name: string, middle_name: string, last_name: string, email: string, password: string, phone: number, company_name: string, company_country: string, town: string, address_line1: string, address_line2: string, address_line3: string, postal_code: number, inn: number, division: string) {
         return this.http.post(this.url + '/api/auth/register',  {"name": name, "middle_name": middle_name, "last_name": last_name, "email": email, "password": password, "phone": phone, "company_name": company_name, "company_country": company_country, "town": town, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "postal_code": postal_code, "inn": inn, "division": division})
+    }
+
+    forgetRequest() {
+        return this.http.post( this.url + '/api/auth/forget', {})
     }
 
     getCountryData() {

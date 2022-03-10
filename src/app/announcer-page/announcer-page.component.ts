@@ -22,21 +22,28 @@ export class AnnouncerPageComponent implements OnInit {
   privateFilesData: any
   publicFilesData: any
   date: any = new Date().toISOString()
+  isLoading = false
 
   constructor(private request: RequestService) { }
 
   ngOnInit() {
+    this.isLoading = true
     this.request.getAnnouncerLots().subscribe(response => {
       this.announcerData = response
+      this.isLoading = false
     }, error => {
+      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
+          this.isLoading = false
           location.reload()
         }, errorToken => {
+          this.isLoading = false
           alert(errorToken.message)
         })
       } else {
+        this.isLoading = false
         alert(error.message)
       }
     })
@@ -50,8 +57,8 @@ export class AnnouncerPageComponent implements OnInit {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.showFileModal = true
-        this.privateDowFile = `http://td.investcom.tj/${privateFile}`
-        this.publicDowFile = `http://td.investcom.tj/${publicFile}`
+        this.privateDowFile = `https://e-td.investcom.tj/${publicFile}`
+        this.publicDowFile = `https://e-td.investcom.tj/${privateFile}`
     }
   }
 
@@ -66,17 +73,23 @@ export class AnnouncerPageComponent implements OnInit {
   deleteAnnouncer(id: number, name: string) {
     let quest = confirm(`Вы хотите удалить ${name}`)
     if(quest == true) {
+      this.isLoading = true
       this.request.deleteAnnouncerLots(id).subscribe(response => {
+        this.isLoading = false
         location.reload()
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
             location.reload()
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })
@@ -104,22 +117,28 @@ export class AnnouncerPageComponent implements OnInit {
   }
 
   modalSend() {
+    this.isLoading = true
     this.request.postAnnouncerReportFiles(this.pro_id, this.setReportFile).subscribe(response => {
+      this.isLoading = false
       location.reload()
     }, error => {
+      this.isLoading = false
       alert(error.error)
     })
   }
 
   downloadReportFile() {
     console.log(this.reportFile);
-    window.open(`http://td.investcom.tj/${this.reportFile}`)
+    window.open(`https://e-td.investcom.tj/${this.reportFile}`)
   }
 
   deleteReportFile() {
+    this.isLoading = true
     this.request.deleteAnnouncerReportFiles(this.reportId).subscribe(response => {
+      this.isLoading = false
       location.reload()
     }, error => {
+      this.isLoading = false
       alert(error.error)
     })
   }
