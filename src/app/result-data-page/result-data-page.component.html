@@ -25,7 +25,7 @@
       <tbody class="pains">
         <tr class="train" *ngFor="let announcer of resulData">
           <td><span>ID</span>{{announcer.anouncement_id}}</td>
-          <td><span>Название проекта</span>{{ announcer.project_name }}</td>
+          <td><span>Название проекта</span>{{ announcer.project?.name }}</td>
           <td><span>Название тендера</span>{{ announcer.name }}</td>
           <td><span>Номер пакета</span>{{announcer.project_center_anouncement_id}}</td>
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
