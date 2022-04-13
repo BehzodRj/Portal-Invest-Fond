@@ -63,9 +63,11 @@ export class ProfilePageComponent implements OnInit {
           localStorage.setItem('access_token', response.access_token)
         }, errorToken => {
           alert(errorToken.message)
+          localStorage.clear()
         })
       } else {
         alert(error.message)
+        localStorage.clear()
       }
     })
 

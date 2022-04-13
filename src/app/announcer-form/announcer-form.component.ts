@@ -28,9 +28,11 @@ export class AnnouncerFormComponent implements OnInit {
             location.reload()
           }, errorToken => {
             alert(errorToken.message)
+            localStorage.clear()
           })
         } else {
           alert(error.message)
+          localStorage.clear()
         }
       })
     })
@@ -51,7 +53,7 @@ export class AnnouncerFormComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `https://e-td.investcom.tj/${element.name}`})
+          this.dowFile.push( {file: `https://e-td.investcom.tj/${element.path}`})
         });
     }
   }

@@ -41,10 +41,12 @@ export class AnnouncerPageComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          localStorage.clear()
         })
       } else {
         this.isLoading = false
         alert(error.message)
+        localStorage.clear()
       }
     })
     this.date = this.date.split('T')[0]

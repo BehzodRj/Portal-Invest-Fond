@@ -49,10 +49,12 @@ export class AdminProjectComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
           })
         } else {
           this.isLoading = false
           alert(error.message)
+          localStorage.clear()
         }
       })
 

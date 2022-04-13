@@ -58,9 +58,9 @@
       <h1 [routerLink]="['/announcerfile', 4]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
       <h1 [routerLink]="['/announcerfile', 5]" routerLinkActive="active" *ngIf="anouncer">Соглашения</h1>
       <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
-      <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Протокол</h1>
       <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
       <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
+      <h1 routerLink="/resultdata" routerLinkActive="active">Протокол</h1>
     </div>
     <div class="hamburger-menu">
       <input id="menu__toggle" type="checkbox" />
@@ -75,6 +75,7 @@
         <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
         <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
         <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>
+        <li><a class="menu__item" routerLink="/resultdata">Протокол</a></li>
         <li><a class="menu__item signup" (click)="logOut()">Выход</a></li>
       </ul>
     </div>

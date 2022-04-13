@@ -208,7 +208,14 @@ img {
 }
 @media screen and (max-width: 925px) {
     .menu_block {
-        display: none;
+        display: block;
+
+        i {
+            display: none !important;
+        }
+    }
+    .material_block {
+        display: none !important;
     }
     .hamburger-menu{
         display: block; 

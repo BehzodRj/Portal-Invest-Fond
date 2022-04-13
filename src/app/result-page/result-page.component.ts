@@ -27,9 +27,11 @@ export class ResultPageComponent implements OnInit {
             localStorage.setItem('access_token', response.access_token)
             this.isLoading = false
             location.reload()
+            localStorage.clear()
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
           })
         } else {
           this.isLoading = false
