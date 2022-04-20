@@ -50,7 +50,7 @@
       <label for="file">Файл обявления</label>
       <div class="file_block">
         <h1>{{  privateFileName }}</h1>
-        <input type="file" accept=".pdf" formControlName="privateFiles" (change)="privateSelectFiles($event)">
+        <input type="file" accept=".zip" formControlName="privateFiles" (change)="privateSelectFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
@@ -59,7 +59,7 @@
       <label for="file">Файл тендерного документа</label>
       <div class="file_block">
         <h1>{{  publicFileName }}</h1>
-        <input type="file" accept=".pdf" formControlName="publicFiles" (change)="publicSelectFiles($event)">
+        <input type="file" accept=".zip" formControlName="publicFiles" (change)="publicSelectFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>

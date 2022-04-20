@@ -19,8 +19,8 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/register',  {"name": name, "middle_name": middle_name, "last_name": last_name, "email": email, "password": password, "phone": phone, "company_name": company_name, "company_country": company_country, "town": town, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "postal_code": postal_code, "inn": inn, "division": division})
     }
 
-    forgetRequest() {
-        return this.http.post( this.url + '/api/auth/forget', {})
+    forgetRequest(email: any) {
+        return this.http.post( this.url + '/api/auth/reset', {"email": email})
     }
 
     getCountryData() {

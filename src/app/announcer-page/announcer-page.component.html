@@ -11,7 +11,7 @@
         <div class="check_input-item">
           <h1 class="description">{{ reportFileName }}</h1>
           <img src="assets/img/file.svg" alt="">
-          <input type="file" accept=".pdf" (change)="getReportFile($event)">
+          <input type="file" accept=".zip" (change)="getReportFile($event)">
         </div>
       </div>
       <button (click)="modalSend()">Отправить</button>
