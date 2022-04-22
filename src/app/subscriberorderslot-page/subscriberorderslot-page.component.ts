@@ -33,11 +33,11 @@ export class SubscriberorderslotPageComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
     })

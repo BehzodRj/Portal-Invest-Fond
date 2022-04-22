@@ -53,11 +53,11 @@ export class AdminPageComponent implements OnInit {
           this.isLoading = false  
           alert(errorToken.message)
           localStorage.clear()
+          location.reload()
         })
       } else {
         this.isLoading = false
         alert(error.message)
-        localStorage.clear()
       }
     })
   }
@@ -82,11 +82,11 @@ export class AdminPageComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
     }
@@ -122,11 +122,11 @@ export class AdminPageComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
     }
@@ -149,11 +149,11 @@ export class AdminPageComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
     }
@@ -174,6 +174,7 @@ export class AdminPageComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          location.reload()
         })
       } else {
         this.isLoading = false
@@ -203,6 +204,7 @@ export class AdminPageComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          location.reload()
         })
       } else {
         this.isLoading = false
@@ -227,6 +229,7 @@ export class AdminPageComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            location.reload()
           })
         } else {
           this.isLoading = false

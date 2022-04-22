@@ -14,6 +14,6 @@ export class SubscribeGuard implements CanActivate {
             return true
         }
         this.router.navigate(['/'])
-            return false
+        return false
     }
 }

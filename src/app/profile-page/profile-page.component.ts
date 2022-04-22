@@ -64,10 +64,10 @@ export class ProfilePageComponent implements OnInit {
         }, errorToken => {
           alert(errorToken.message)
           localStorage.clear()
+          location.reload()
         })
       } else {
         alert(error.message)
-        localStorage.clear()
       }
     })
 
@@ -124,6 +124,8 @@ export class ProfilePageComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
         })
       } else {
         this.isLoading = false

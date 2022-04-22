@@ -50,11 +50,11 @@ export class AdminProjectComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
 
@@ -82,6 +82,8 @@ export class AdminProjectComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
@@ -122,6 +124,8 @@ export class AdminProjectComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
@@ -148,6 +152,8 @@ export class AdminProjectComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
@@ -173,6 +179,8 @@ export class AdminProjectComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
         })
       } else {
         this.isLoading = false

@@ -29,10 +29,10 @@ export class AnnouncerFormComponent implements OnInit {
           }, errorToken => {
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           alert(error.message)
-          localStorage.clear()
         }
       })
     })

@@ -40,11 +40,11 @@ export class AnnouncementPageComponent implements OnInit {
             this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
           alert(error.message)
-          localStorage.clear()
         }
       })
     })
@@ -74,6 +74,8 @@ export class AnnouncementPageComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false
@@ -132,6 +134,8 @@ export class AnnouncementPageComponent implements OnInit {
             }, errorToken => {
               this.isLoading = false
               alert(errorToken.message)
+              localStorage.clear()
+              location.reload()
             })
           } else {
             this.isLoading = false
@@ -154,6 +158,8 @@ export class AnnouncementPageComponent implements OnInit {
             }, errorToken => {
               this.isLoading = false
               alert(errorToken.message)
+              localStorage.clear()
+              location.reload()
             })
           } else {
             this.isLoading = false
