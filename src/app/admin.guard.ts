@@ -8,10 +8,12 @@ export class AdminGuard implements CanActivate {
     constructor(private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        var token: any = localStorage.getItem('access_token')
-        var decoded:any = jwt_decode(token);
-        if(decoded.role == "admin") {
-            return true
+        if (localStorage.getItem('access_token')) {
+            var token: any = localStorage.getItem('access_token')
+            var decoded:any = jwt_decode(token);
+            if(decoded.role == "admin") {
+                return true
+            }
         }
         this.router.navigate(['/'])
         return false
