@@ -35,50 +35,38 @@ export class AnnouncerEditComponent implements OnInit {
       open_time: new FormControl()
     })
     this.route.params.subscribe( (params: any) => {
-      this.isLoading = true
       this.request.getAnnouncerLotsById(params.id).subscribe(response => {
         this.editAnnouncerData = response
         this.editAnnouncerForm.patchValue(this.editAnnouncerData)
-        this.isLoading = false
       }, error => {
-        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
-            this.isLoading = false
             location.reload()
           }, errorToken => {
-            this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
             location.reload()
           })
         } else {
-          this.isLoading = false
           alert(error.message)
         }
       })
     })
 
-    this.isLoading = true
     this.request.getAnnouncerProjLots().subscribe(response => {
       this.editProjectsData = response
-      this.isLoading = false
     }, error => {
-      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
-          this.isLoading = false
           location.reload()
         }, errorToken => {
-          this.isLoading = false
           alert(errorToken.message)
           localStorage.clear()
           location.reload()
         })
       } else {
-        this.isLoading = false
         alert(error.message)
       }
     })

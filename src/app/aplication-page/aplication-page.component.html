@@ -1,4 +1,9 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="prog_bar-content" *ngIf="isLoading">
+  <div class="prog_bar-block">
+    <h1>Идет загрузка файлов на сервер. Пожалуйста не закрывайте и не обнавляйте страницу!</h1>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 <app-header></app-header>
 <div class="modal-datas_container" *ngIf="showModal">
 

@@ -39,25 +39,19 @@ export class AnnouncerTenderComponent implements OnInit {
       open_time: new FormControl('9:00')
     })
 
-    this.isLoading = true
     this.request.getAnnouncerProjLots().subscribe(response => {
-      this.isLoading = false
       this.projectsData = response
     }, error => {
-      this.isLoading = false
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
           localStorage.setItem('access_token', response.access_token)
-          this.isLoading = false
           location.reload()
         }, errorToken => {
-          this.isLoading = false
           alert(errorToken.message)
           localStorage.clear()
           location.reload()
         })
       } else {
-        this.isLoading = false
         alert(error.message)
       }
     })

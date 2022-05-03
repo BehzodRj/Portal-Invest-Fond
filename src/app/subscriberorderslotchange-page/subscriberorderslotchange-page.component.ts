@@ -79,28 +79,22 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     })
 
     this.route.params.subscribe( (params: any) => {
-      this.isLoading = true
       this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
         this.orderData.push(response[0])
         this.globalOrderForm.patchValue(this.orderData[0])
         this.partnersLocalData = response[0].partners
         this.editPartnerForm.patchValue(response[0])
-        this.isLoading = false
       }, error => {
-        this.isLoading = false
         if(error.status == '401') {
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
-            this.isLoading = false
             location.reload()
           }, errorToken => {
-            this.isLoading = false
             alert(errorToken.message)
             localStorage.clear()
             location.reload()
           })
         } else {
-          this.isLoading = false
           alert(error.message)
         }
       })
