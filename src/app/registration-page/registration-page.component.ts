@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { RequestService } from '../all.service';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration-page',
@@ -15,9 +17,9 @@ export class RegistrationPageComponent implements OnInit {
   showAlertsName = "Имя"
   showAlertsLast_name = "Фамилия"
   showAlertsMiddle_name = "Отчество"
-  showAlertsCompanyName = "Наименование компании"
+  showAlertsCompanyName = "Название компания"
   showAlertsDivision = "Должность"
-  showAlertsRegCompany = "Место регистрация 1"
+  showAlertsRegCompany = "Место регистрации 1"
   showAlertsInn = "ИНН"
   showAlertsEmail = "Ваш E-mail"
   showAlertsPhone = "Номер телефона"
@@ -26,6 +28,9 @@ export class RegistrationPageComponent implements OnInit {
   showAlertsCountry = "Страна"
   showAlertsCity = "Город"
   showAlertsPostal = "Почтовый индекс"
+  autoCompleteCountryData: any = []
+  filteredOptions!: Observable<any[]>;
+
 
 
   constructor(private request: RequestService, private router: Router) { }
@@ -49,7 +54,23 @@ export class RegistrationPageComponent implements OnInit {
       city: new FormControl('', Validators.required),
       postalCode: new FormControl('', Validators.required)
     })
-    console.log(this.registerForm.controls['name'].invalid);
+
+    this.request.getCountryData().subscribe(response => {
+      this.autoCompleteCountryData = response
+    }, error => {
+      alert(error.error)
+    })
+
+    
+    this.filteredOptions = this.registerForm.controls['country'].valueChanges.pipe(
+      startWith(''),
+      map( (value: any) => this._filter(value)),
+    )
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.autoCompleteCountryData.filter( (option: any) => option.name.toLowerCase().includes(filterValue));
   }
 
   registration() {
@@ -73,7 +94,8 @@ export class RegistrationPageComponent implements OnInit {
       alert('Введенные пароли не совпадают')
     } else {
       this.isLoading = true
-      this.request.regRequest(registerFormData.name, registerFormData.middle_name, registerFormData.last_name, registerFormData.email, registerFormData.password, registerFormData.phone, registerFormData.company_name, registerFormData.country, registerFormData.city, registerFormData.regCompany1, registerFormData.regCompany2, registerFormData.regCompany3, registerFormData.postalCode, registerFormData.inn, registerFormData.division).subscribe(response => {
+      let code =  this.autoCompleteCountryData.filter( (res: any) => res.name == registerFormData.country)
+      this.request.regRequest(registerFormData.name, registerFormData.middle_name, registerFormData.last_name, registerFormData.email, registerFormData.password, registerFormData.phone, registerFormData.company_name, code[0].code, registerFormData.city, registerFormData.regCompany1, registerFormData.regCompany2, registerFormData.regCompany3, registerFormData.postalCode, registerFormData.inn, registerFormData.division).subscribe(response => {
         this.isLoading = false
         alert('Вы успешно зарегистрировались')
         this.router.navigate(['/'])

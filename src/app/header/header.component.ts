@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit {
     }else if(this.decoded.role == 'subscribers') {
       this.subscriber = true
     }
-    
   }
 
   homePage() {

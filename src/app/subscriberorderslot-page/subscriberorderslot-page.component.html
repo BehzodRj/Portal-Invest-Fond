@@ -18,7 +18,7 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
-          <th rowspan="2">Банковские гарантии</th>
+          <th rowspan="2">Гарантия</th>
         </tr>
         <tr>  
           <th>Сомони</th>
@@ -58,8 +58,8 @@
           <td class="hdd">{{ orderLots.discount_dol }}</td>      
           <td class="hdd">{{ orderLots.discount_euro }}</td>
           <td>
-            <i class="fa fas fa-check" *ngIf="orderLots.response_security_submited > 0"></i>
-            <i class="fa fas fas fa-times" *ngIf="orderLots.response_security_submited < 1"></i>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == false">Гарантийная деклорация</h1>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == true">Банковская гарантия</h1>
           </td>
         </tr> 
       </tbody>
@@ -70,9 +70,11 @@
       <h1>Партнёры:</h1>
       <pre *ngFor="let partners of orderData.partners" [ngStyle]="{'font-weight': partners.leader>0 ? 'bold' : 'thin'}">{{ partners.name }},</pre>
     </div>
-    <div class="bank_items" *ngIf="orderData.response_security_submited > 0">
-      <h1>Банковские гарантии:</h1>
-      <input type="checkbox" onclick="return false" checked>
+    <div class="bank_items" *ngIf=" orderData.lots < 1">
+      <select aria-readonly="true">
+        <option *ngIf="orderData.response_security_submited < 1">Гарантийная деклорация</option>
+        <option *ngIf="orderData.response_security_submited > 0">Банковская гарантия</option>
+      </select>
     </div>
   </div>
   <div class="summa">

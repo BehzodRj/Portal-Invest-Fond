@@ -75,9 +75,12 @@
               </div>
             </div>
             <div class="bank-gr_block">
-              <h1>Банковские гарантии:</h1>
-              <input type="checkbox" formControlName="response_security_submited">
+              <select formControlName="bank" formControlName="response_security_submited">
+                <option value="0">Гарантийная деклорация</option>
+                <option value="1">Банковская гарантия</option>
+              </select>
             </div>
+            
             <div class="btn"(click)="addLot()">
               <button>СОХРАНИТЬ ЛОТ</button>
             </div>
@@ -158,8 +161,10 @@
             </div>
           </div>
           <div class="bank-gr_block">
-            <h1>Банковские гарантии:</h1>
-            <input type="checkbox" formControlName="response_security_submited">
+            <select formControlName="bank" formControlName="response_security_submited">
+              <option value="0">Гарантийная деклорация</option>
+              <option value="1">Банковская гарантия</option>
+            </select>
           </div>
           <div class="btn" (click)="editLots()">
             <button>ИЗМЕНИТЬ ЛОТ</button>
@@ -233,8 +238,8 @@
           <td class="hdd">{{ orderLots.discount_dol }}</td>      
           <td class="hdd">{{ orderLots.discount_euro }}</td>
           <td>
-            <i class="fas fa-check" *ngIf="orderLots.response_security_submited > 0"></i>
-            <i class="fas fa-times" *ngIf="orderLots.response_security_submited < 1"></i>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == false">Гарантийная деклорация</h1>
+            <h1 style="font-size: 13px;" *ngIf="orderLots.response_security_submited == true">Банковская гарантия</h1>
           </td>
           <td class="change"> 
             <div class="trash__block" (click)="openEditModal(idx)">
@@ -265,7 +270,7 @@
           <input type="text" placeholder="Партнер" formControlName="name">
         </div>
         <div class="inp check">
-          <input type="text" placeholder="Лидер" readonly>
+          <h1>Ведущая компания</h1>
           <input type="checkbox" class="checkbox" formControlName="leader">
         </div>
         <button style="border: none; cursor: pointer;" (click)="addLocalPartners()">
@@ -273,9 +278,11 @@
         </button>
       </div>
     </div>
-    <div class="bank-gr_block" *ngIf="orderData[0].response_security_submited > 0">
-      <h1>Банковские гарантии:</h1>
-      <input type="checkbox" formControlName="response_security_submited">
+    <div class="bank-gr_block" *ngIf="orderData[0].lots < 1">
+      <select formControlName="bank" formControlName="response_security_submited">
+        <option value="0">Гарантийная деклорация</option>
+        <option value="1">Банковская гарантия</option>
+      </select>
     </div>
   </form>
   <div class="summa">

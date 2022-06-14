@@ -1,189 +1,7 @@
 <app-header></app-header>
-<div class="container" style="border: 1px solid #000;">
-  <div class="content__opening">
-    <h3>Minutes of ITT Opening</h3>
-    <div class="table">
-      <div class="blockLeft">Project Name</div>
-      <div class="blockRight">{{ resultData.project?.name }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Project ID</div>
-      <div class="blockRight">{{ resultData.project_id }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Tender Exercise Name</div>
-      <div class="blockRight">{{ resultData.name }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Tender Exercise ID</div>
-      <div class="blockRight">{{ resultData.project_center_anouncement_id }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Type Of Procurement</div>
-      <div class="blockRight">{{ resultData.type_of_procurement }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Procurement Method</div>
-      <div class="blockRight">{{ resultData.procurement_method }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Client Name</div>
-      <div class="blockRight">{{ resultData.project_name }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Number Of Responses Received</div>
-      <div class="blockRight">{{ resultData.orders?.length }}</div>
-    </div>
-    <div class="table">
-      <div class="blockLeft">Date and Time of Opening</div>
-      <div class="blockRight">{{ resultData.open_date }} {{ resultData.open_time }}</div>
-    </div>
-    <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
-      *ngFor="let result of resultData.orders">
-      <div class="content__details">
-        <h3>ITT details for each response:</h3>
-        <h4>Response details:</h4>
-        <div class="response_details">
-          <div class="details-block">
-            <div class="blockLeft">Time received:</div>
-            <div class="blockRight">{{ result.created_at.toIsoString() }}</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Name of Respondent:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Is JVCA?:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Response Security Submitted:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-        </div>
-        <h4>Respondend address:</h4>
-        <div class="response_address">
-          <div class="details-block">
-            <div class="blockLeft">Address Line 1:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Address Line 2:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Address Line 3:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Postal Code:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Town:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-          <div class="details-block">
-            <div class="blockLeft">Country:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-          </div>
-        </div>
-        <div class="joint_detail">
-          <h4>Joint Venture Details:</h4>
-          <div class="detail_content">
-            <div class="details-block">
-              <div class="blockLeft">Lead Partner?</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-            <div class="details-block">
-              <div class="blockLeft">Organosation:</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-          </div>
-
-          <div class="detail_content">
-            <div class="details-block">
-              <div class="blockLeft">Lead Partner?</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-            <div class="details-block">
-              <div class="blockLeft">Organosation:</div>
-              <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content__lots" *ngFor="let resultLots of result.lots">
-        <h3>Lots:</h3>
-        <div class="lots__block">
-          <div class="lots-table">
-            <div class="blockLeft">Lot NO</div>
-            <div class="blockRight">{{ resultLots.lot_number }}</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Lot Title</div>
-            <div class="blockRight">{{ resultLots.title }}</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Total Amount of Lot Excluding VAT and Discounts:</div>
-            <div class="blockRight">{{ resultLots.total | currency: 'TJS ' }}, {{ resultLots.total_dol | currency }},
-              {{ resultLots.total_euro | currency: 'EU ' }}</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">VAT Amount:</div>
-            <div class="blockRight">{{ resultLots.vat | currency: 'TJS ' }}, {{ resultLots.vat_dol | currency }},
-              {{ resultLots.vat_euro | currency: 'EU ' }}</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Grand Total Including VAT But Excluding Discounts:</div>
-            <div class="blockRight">{{ resultLots.discount | currency: 'TJS ' }},
-              {{ resultLots.discount_dol | currency }}, {{ resultLots.discount_euro | currency: 'EU ' }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="tender__total">
-        <h3>Tender Total:</h3>
-        <div class="lots__block">
-          <div class="lots-table">
-            <div class="blockLeft">Total Amount of Tender Excluding VAT and Discoint</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Euro Equivalent</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">VAt Amount</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Euro Equivalent</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Grand Total Incluiding VAT</div>
-            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Euro Equivalent</div>
-            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Grand Total of Any Alternative Offer Incluiding VAT but Excluiding Discoint</div>
-            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">Euro Equivalent</div>
-            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div class="lots-table">
-            <div class="blockLeft">The Discoints offered and the methodology for their applications are</div>
-            <div class="blockRight"> Lorem ipsum dolor sit amet.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="button__block">
+  <button class="btn">Этап 1</button>
+  <button class="btn">Этап 2</button>
 </div>
 <div class="container" style="border: 1px solid #000;">
   <div class="content__opening">
@@ -214,7 +32,7 @@
     </div>
     <div class="table">
       <div class="blockLeft">Client Name</div>
-      <div class="blockRight">{{ resultData.project_name }}</div>
+      <div class="blockRight">{{ resultData.project?.projects_center.name }}</div>
     </div>
     <div class="table">
       <div class="blockLeft">Number Of Responses Received</div>
@@ -222,7 +40,7 @@
     </div>
     <div class="table">
       <div class="blockLeft">Date and Time of Opening</div>
-      <div class="blockRight">{{ resultData.open_date }} {{ resultData.open_time }}</div>
+      <div class="blockRight">{{ resultData.open_date }},    {{ resultData.open_time }}</div>
     </div>
     <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
       *ngFor="let result of resultData.orders">
@@ -232,49 +50,244 @@
         <div class="response_details">
           <div class="details-block">
             <div class="blockLeft">Time received:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.created_at | date: 'short' }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Name of Respondent:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_name }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Is JVCA?:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight" *ngIf="result.partners?.length > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.partners?.length < 1">No</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Response Security Submitted:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight" *ngIf="result.response_security_submited > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.response_security_submited < 1">No</div>
           </div>
         </div>
         <h4>Respondend address:</h4>
         <div class="response_address">
           <div class="details-block">
             <div class="blockLeft">Address Line 1:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line1 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Address Line 2:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line2 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Address Line 3:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line3 }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Postal Code:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.postal_code }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Town:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.town }}</div>
           </div>
           <div class="details-block">
             <div class="blockLeft">Country:</div>
-            <div class="blockRight">Lorem ipsum dolor sit amet consectetur.</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_country }}</div>
           </div>
-        </div> 
-      </div> 
+        </div>
+        <div class="joint_detail">
+          <h4>Joint Venture Details:</h4>
+          <div class="detail_content" *ngFor="let partners of result.partners">
+            <div class="details-block">
+              <div class="blockLeft">Lead Partner?</div>
+              <div class="blockRight" *ngIf="partners.leader > 0">Yes</div>
+              <div class="blockRight" *ngIf="partners.leader < 1">No</div>
+            </div>
+            <div class="details-block">
+              <div class="blockLeft">Organosation:</div>
+              <div class="blockRight">{{ partners.name }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Lots:</h3>
+      <div class="content__lots" *ngFor="let resultLots of result.lots">
+        <div class="lots__block">
+          <div class="lots-table">
+            <div class="blockLeft">Lot NO</div>
+            <div class="blockRight">{{ resultLots.lot_number }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Lot Title</div>
+            <div class="blockRight">{{ resultLots.title }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Total Amount of Lot Excluding VAT and Discounts:</div>
+            <div class="blockRight" *ngIf="resultLots.total > 1"> {{ resultLots.total | currency: 'TJS ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.total_dol > 1"> {{ resultLots.total_dol | currency: 'USD ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.total_euro > 1"> {{ resultLots.total_euro | currency: 'EUR ' }} </div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">VAT Amount:</div>
+            <div class="blockRight" *ngIf="resultLots.vat > 1"> {{ resultLots.total | currency: 'TJS ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.vat_dol > 1"> {{ resultLots.total_dol | currency: 'USD ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.vat_euro > 1"> {{ resultLots.total_euro | currency: 'EUR ' }} </div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Grand Total Including VAT But Excluding Discounts:</div>
+            <div class="blockRight" *ngIf="resultLots.discount > 1"> {{ resultLots.discount | currency: 'TJS ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.discount_dol > 1"> {{ resultLots.discount_dol | currency: 'USD ' }} </div>
+            <div class="blockRight" *ngIf="resultLots.discount_euro > 1"> {{ resultLots.discount_euro | currency: 'EUR ' }} </div>
+          </div>
+        </div>
+      </div>
+      <div class="tender__total">
+        <h3>Tender Total:</h3>
+        <div class="lots__block">
+          <div class="lots-table">
+            <div class="blockLeft">Total Amount of Tender Excluding VAT and Discoint</div>
+            <div class="blockRight" *ngIf="result.discount > 1">{{ result.discount | currency: 'TJS '}}</div>
+            <div class="blockRight" *ngIf="result.discount_dol > 1">{{ result.discount_dol | currency: 'USD '}}</div>
+            <div class="blockRight" *ngIf="result.discount_euro > 1">{{ result.discount_euro | currency: 'EUR '}}</div>          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Euro Equivalent</div>
+            <div class="blockRight">{{ result.total_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">VAT Amount</div>
+            <div class="blockRight" *ngIf="result.vat > 1">{{ result.vat | currency: 'TJS ' }}</div>
+            <div class="blockRight" *ngIf="result.vat_dol > 1">{{ result.vat_dol | currency: 'USD ' }}</div>
+            <div class="blockRight" *ngIf="result.vat_euro > 1">{{ result.vat_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Euro Equivalent</div>
+            <div class="blockRight">{{ result.discount | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Grand Total Incluiding VAT</div>
+            <div class="blockRight"  *ngIf="result.total > 1">{{ result.total | currency: 'TJS ' }}</div>
+            <div class="blockRight"  *ngIf="result.total_dol > 1">{{ result.total_dol | currency: 'USD ' }}</div>
+            <div class="blockRight"  *ngIf="result.total_euro > 1">{{ result.total_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Euro Equivalent</div>
+            <div class="blockRight">{{ result.total_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Grand Total of Any Alternative Offer Incluiding VAT but Excluiding Discoint</div>
+            <div class="blockRight" *ngIf="result.total > 1">{{ result.total | currency: 'TJS ' }}</div>
+            <div class="blockRight" *ngIf="result.total_dol > 1">{{ result.total_dol | currency: 'USD ' }}</div>
+            <div class="blockRight" *ngIf="result.total_euro > 1">{{ result.total_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">Euro Equivalent</div>
+            <div class="blockRight">{{ result.total_euro | currency: 'EUR ' }}</div>
+          </div>
+          <div class="lots-table">
+            <div class="blockLeft">The Discoints offered and the methodology for their applications are</div>
+            <div class="blockRight" *ngIf="result.discount > 1">{{ result.discount | currency: 'TJS ' }}</div>
+            <div class="blockRight" *ngIf="result.discount_dol > 1">{{ result.discount_dol | currency: 'USD ' }}</div>
+            <div class="blockRight" *ngIf="result.discount_euro > 1">{{ result.discount_euro | currency: 'EUR ' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container" style="border: 1px solid #000; display: none;">
+  <div class="content__opening">
+    <h3>Minutes of ITT Opening</h3>
+    <div class="table">
+      <div class="blockLeft">Project Name</div>
+      <div class="blockRight">{{ resultData.project?.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Project ID</div>
+      <div class="blockRight">{{ resultData.project_id }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Tender Exercise Name</div>
+      <div class="blockRight">{{ resultData.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Tender Exercise ID</div>
+      <div class="blockRight">{{ resultData.project_center_anouncement_id }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Type Of Procurement</div>
+      <div class="blockRight">{{ resultData.type_of_procurement }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Procurement Method</div>
+      <div class="blockRight">{{ resultData.procurement_method }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Client Name</div>
+      <div class="blockRight">{{ resultData.project?.projects_center.name }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Number Of Responses Received</div>
+      <div class="blockRight">{{ resultData.orders?.length }}</div>
+    </div>
+    <div class="table">
+      <div class="blockLeft">Date and Time of Opening</div>
+      <div class="blockRight">{{ resultData.open_date }},    {{ resultData.open_time }}</div>
+    </div>
+    <div class="main-lots_block" style="border-bottom: 2px solid #000; padding-bottom: 30px;"
+      *ngFor="let result of resultData.orders">
+      <div class="content__details">
+        <h3>ITT details for each response:</h3>
+        <h4>Response details:</h4>
+        <div class="response_details">
+          <div class="details-block">
+            <div class="blockLeft">Time received:</div>
+            <div class="blockRight">{{ result.created_at | date: 'short' }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Name of Respondent:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_name }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Is JVCA?:</div>
+            <div class="blockRight" *ngIf="result.partners?.length > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.partners?.length < 1">No</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Response Security Submitted:</div>
+            <div class="blockRight" *ngIf="result.response_security_submited > 0">Yes</div>
+            <div class="blockRight" *ngIf="result.response_security_submited < 1">No</div>
+          </div>
+        </div>
+        <h4>Respondend address:</h4>
+        <div class="response_address">
+          <div class="details-block">
+            <div class="blockLeft">Address Line 1:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line1 }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 2:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line2 }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Address Line 3:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.address_line3 }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Postal Code:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.postal_code }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Town:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.town }}</div>
+          </div>
+          <div class="details-block">
+            <div class="blockLeft">Country:</div>
+            <div class="blockRight">{{ result.user?.subscriber?.company_country }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

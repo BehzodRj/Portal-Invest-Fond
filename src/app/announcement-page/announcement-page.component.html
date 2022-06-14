@@ -33,35 +33,35 @@
     <table class="resp-tab">
       <thead class="pain">
         <tr>
-          <th>№</th>
-          <th>Название</th>
           <th>ID</th>
-          <th>Центр ID</th>
+          <th>Название <br> проекта/тендера</th>
+          <th>Номер пакета</th>
           <th>Тип <br> проведения</th>
-          <th>Взнос</th>
-          <th>Дата <br> проведения</th>
           <th>Метод <br> проведения</th>
-          <th>Лоты</th>
-          <th>Действия</th>
+          <th>Лоты</th> 
+          <th>Стоимость тендерного <br> документа</th>
+          <th>Дата <br> открытия</th>
+          <th>Время</th>
+          <th>Действие</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let anouncements of anouncement | paginate: {itemsPerPage: 10, currentPage: page}; let idx = index">
-          <td><span>№</span>{{ idx }}</td>
-          <td><span>Название</span>{{ anouncements.name }}</td>
           <td><span>ID</span>{{ anouncements.anouncement_id }}</td>
-          <td><span>Центр ID</span>{{ anouncements.project_center_anouncement_id }}</td>
+          <td><span>Название проекта/тендера</span>{{ anouncements.project?.name }} / {{ anouncements.name }}</td>
+          <td><span>Номер пакета</span>{{ anouncements.project_center_anouncement_id }}</td>
           <td><span>Тип проведения</span>{{ anouncements.type_of_procurement }}</td>
-          <td><span>Взнос</span>{{ anouncements.price }}</td>
-          <td><span>Дата <br> проведения</span>{{ anouncements.open_date }}</td>
           <td><span>Метод проведения</span>{{ anouncements.procurement_method }}</td>
           <td><span>Лоты</span>{{ anouncements.number_of_lots }}</td>
+          <td><span>Стоимость тендерного документа</span>{{ anouncements.price }}</td>
+          <td><span>Дата <br> открытия</span>{{ anouncements.open_date }}</td>
+          <td><span>Время</span>{{ anouncements.open_time }}</td>
           <td class="change">
-            <i title="скачать файл" class="fa fa-download" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1)" (click)="openModal(anouncements.anouncement_private_file, anouncements.anouncement_public_file)"></i>
-            <i class="fas fa-dollar-sign"  *ngIf="anouncements.payments[0]?.status==1 || anouncements.payments.length < 1" (click)="modalOpen(idx)"></i>
+            <i title="скачать файл" class="fa fa-download" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1) || anouncements.price < 1" (click)="openModal(anouncements.anouncement_private_file, anouncements.anouncement_public_file)"></i>
+            <i class="fas fa-dollar-sign"  *ngIf="anouncements.payments[0]?.status==1 || (anouncements.payments.length < 1 && anouncements.price > 1)" (click)="modalOpen(idx)"></i>
             <i class="fas fa-undo-alt" *ngIf="anouncements.payments.length > 0 && anouncements.payments[0]?.status==null"></i>
             <i title="добавить избранный " class="fas fa-star" [ngStyle]="{color: anouncements.favorites_exists>0 ? 'orange': '#4F4F4F'}" (click)="star(anouncements.favorites_exists, anouncements.anouncement_id)"></i>
-            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="anouncements.payments.length > 0 && anouncements.payments[0]?.status>1"></i>
+            <i [routerLink]="['/application', anouncements.anouncement_id]" class="far fa-file-alt" *ngIf="(anouncements.payments.length > 0 && anouncements.payments[0]?.status>1) || anouncements.price < 1"></i>
           </td>
         </tr>
       </tbody>

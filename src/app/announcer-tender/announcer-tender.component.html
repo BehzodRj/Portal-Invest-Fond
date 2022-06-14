@@ -12,8 +12,8 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('centerID').invalid && formTender.get('centerID').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="number">Центр ID</label>
-      <input type="number" [placeholder]="showAlertCenterID" formControlName="centerID">
+      <label for="number">Номер пакета</label>
+      <input type="text" [placeholder]="showAlertCenterID" formControlName="centerID">
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid && formTender.get('method').touched ? '1px  solid red' : '1px  solid #000'}">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid && formTender.get('sendDate').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="date">Тайм</label>
+      <label for="date">Время</label>
       <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="open_time">
         <option>09:00</option>
         <option>10:00</option>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('file').invalid && formTender.get('file').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="file">Публичный файл</label>
+      <label for="file">Файл обявления</label>
       <div class="file_block">
         <h1>{{showAlertFile}}</h1>
         <input type="file" accept=".pdf" (change)="getFile($event)" formControlName="file">
@@ -55,7 +55,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('publicFile').invalid && formTender.get('publicFile').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="file">Приватный файл</label>
+      <label for="file">Файл тендерные документы</label>
       <div class="file_block">
         <h1>{{showAlertPublicFile}}</h1>
         <input type="file" accept=".pdf" (change)="getPublicFile($event)" formControlName="publicFile">
@@ -69,7 +69,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('price').invalid && formTender.get('price').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="number">Взнос</label>
+      <label for="number">Стоимость тендерного документа</label>
       <input type="number" [placeholder]="showAlertPrice" formControlName="price">
     </div>
 
@@ -80,7 +80,7 @@
       </select>
     </div>
 
-    <button  (click)="send()">ДОБАВИТЬ ЛОТ</button>
+    <button  (click)="send()" [disabled]="formTender.invalid">СОХРАНИТЬ</button>
 
   </form>
 </div>

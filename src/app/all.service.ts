@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
-    private url = 'http://td.investcom.tj'
+    private url = 'http://e-td.investcom.tj'
     constructor(private http: HttpClient) { }
 
     
@@ -17,6 +17,13 @@ export class RequestService {
 
     regRequest(name: string, middle_name: string, last_name: string, email: string, password: string, phone: number, company_name: string, company_country: string, town: string, address_line1: string, address_line2: string, address_line3: string, postal_code: number, inn: number, division: string) {
         return this.http.post(this.url + '/api/auth/register',  {"name": name, "middle_name": middle_name, "last_name": last_name, "email": email, "password": password, "phone": phone, "company_name": company_name, "company_country": company_country, "town": town, "address_line1": address_line1, "address_line2": address_line2, "address_line3": address_line3, "postal_code": postal_code, "inn": inn, "division": division})
+    }
+
+    getCountryData() {
+        let header: HttpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json',
+        })
+        return this.http.get(this.url + '/api/countries', {headers: header})
     }
 
     refreshToken() {
@@ -72,7 +79,7 @@ export class RequestService {
 
     
     // Announcer
-    postAnnouncerLots(name: string, project_center_anouncement_id: number, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: number, anouncement_private_file: any, anouncement_public_file: any, project_id: number, open_time: any) {
+    postAnnouncerLots(name: string, project_center_anouncement_id: any, procurement_method: string, type_of_procurement: string, open_date: Date, number_of_lots: number, price: any, anouncement_private_file: any, anouncement_public_file: any, project_id: number, open_time: any) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`,

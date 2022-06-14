@@ -1,163 +1,167 @@
 <app-loading *ngIf="isLoading"></app-loading>
 <app-header></app-header>
-<div class="-datas_container" *ngIf="showModal">
-  
-  <div class="modal-datas_block">   
+<div class="modal-datas_container" *ngIf="showModal">
+
+  <div class="modal-datas_block">
     <div class="close" (click)='showModal = false'>
       <i class="fa fa-times"></i>
     </div>
-    <div class="cont__form"> 
-        <form [formGroup]="addLotsForm">
-          <h3>Добавить лот:</h3>
-          <div class="form__block">
-            <div class="inp__block">
-              <div class="inp">
-                <h1>Номер Лота:</h1>
-                <input type="number" placeholder="Номер лота" formControlName="lot_number">
-              </div>
-              <div class="inp lots-name">
-                <h1>Название лота</h1>
-                <input type="text" placeholder="Название лота" formControlName="title">
-              </div> 
+    <div class="cont__form">
+      <form [formGroup]="addLotsForm">
+        <h3>Добавить лот:</h3>
+        <div class="form__block">
+          <div class="inp__block">
+            <div class="inp">
+              <h1>Номер Лота:</h1>
+              <input type="number" placeholder="Номер лота" formControlName="lot_number">
             </div>
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="total">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="total_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="total_euro">
-              </div>
-            </div>
-            <h2>Сумма c учетом НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="vat">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="vat_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="vat_euro">
-              </div>
-            </div>
-            <h2>Сумма с учетом скидки</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="discount">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="discount_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="discount_euro">
-              </div>
+            <div class="inp lots-name">
+              <h1>Название лота</h1>
+              <input type="text" placeholder="Название лота" formControlName="title">
             </div>
           </div>
-          <div class="bank-gr_block">
-            <h1>Банковские гарантии:</h1>
-            <input type="checkbox" formControlName="lot_bank">
+          <h2>Сумма без учета НДС</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="total">
+            </div>
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="total_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="total_euro">
+            </div>
           </div>
-          <div class="btn">
-            <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
+          <h2>Сумма c учетом НДС</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="vat">
+            </div>
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="vat_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="vat_euro">
+            </div>
           </div>
-        </form>
+          <h2>Сумма с учетом скидки</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="discount">
+            </div>
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="discount_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="discount_euro">
+            </div>
+          </div>
+        </div>
+        <div class="bank-gr_block">
+          <select formControlName="lot_bank">
+            <option value="0">Гарантийная деклорация</option>
+            <option value="1">Банковская гарантия</option>
+          </select>
+        </div>
+        <div class="btn">
+          <button (click)="save()">СОХРАНИТЬ ЛОТ</button>
+        </div>
+      </form>
     </div>
-    
+
   </div>
 
 </div>
 
 <!-- Edit Modal -->
 <div class="modal-datas_container" *ngIf="showEditModal">
-  
-  <div class="modal-datas_block">   
+
+  <div class="modal-datas_block">
     <div class="close" (click)='showEditModal = false'>
       <i class="fa fa-times"></i>
     </div>
-    <div class="cont__form"> 
-        <form [formGroup]="editLotsForm">
-          <h3>Изменить лот:</h3>
-          <div class="form__block">
-            
-            <div class="inp__block">
-              <div class="inp">
-                <h1>Номер Лота:</h1>
-                <input type="number" formControlName="lot_number">
-              </div>
-              <div class="inp lots-name">
-                <h1>Название лота</h1>
-                <input type="text" formControlName="title">
-              </div>
-            </div>`
-            <h2>Сумма без учета НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="total">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="total_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="total_euro">
-              </div>
+    <div class="cont__form">
+      <form [formGroup]="editLotsForm">
+        <h3>Изменить лот:</h3>
+        <div class="form__block">
+
+          <div class="inp__block">
+            <div class="inp">
+              <h1>Номер Лота:</h1>
+              <input type="number" formControlName="lot_number">
             </div>
-            <h2>Сумма c учетом НДС</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="vat">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="vat_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="vat_euro">
-              </div>
+            <div class="inp lots-name">
+              <h1>Название лота</h1>
+              <input type="text" formControlName="title">
             </div>
-            <h2>Сумма с учетом скидки</h2>
-            <div class="inp__block currency">
-              <div class="inp">
-                <h1>Сомони</h1>
-                <input type="number" placeholder="Описание" formControlName="discount">
-              </div>
-              <div class="inp">
-                <h1>Доллар</h1>
-                <input type="number" placeholder="Описание" formControlName="discount_dol">
-              </div>
-              <div class="inp">
-                <h1>Евро</h1>
-                <input type="number" placeholder="Описание" formControlName="discount_euro">
-              </div>
+          </div>`
+          <h2>Сумма без учета НДС</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="total">
             </div>
-            <div class="bank-gr_block">
-              <h1>Банковские гарантии:</h1>
-              <input type="checkbox" formControlName="response_security_submited">
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="total_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="total_euro">
             </div>
           </div>
-          <div class="btn">
-            <button (click)="cahngeEdit()">ИЗМЕНИТЬ ЛОТ</button>
+          <h2>Сумма c учетом НДС</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="vat">
+            </div>
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="vat_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="vat_euro">
+            </div>
           </div>
-        </form>
+          <h2>Сумма с учетом скидки</h2>
+          <div class="inp__block currency">
+            <div class="inp">
+              <h1>Сомони</h1>
+              <input type="number" placeholder="Описание" formControlName="discount">
+            </div>
+            <div class="inp">
+              <h1>Доллар</h1>
+              <input type="number" placeholder="Описание" formControlName="discount_dol">
+            </div>
+            <div class="inp">
+              <h1>Евро</h1>
+              <input type="number" placeholder="Описание" formControlName="discount_euro">
+            </div>
+          </div>
+          <div class="bank-gr_block">
+            <select formControlName="response_security_submited">
+              <option value="0">Гарантийная деклорация</option>
+              <option value="1">Банковская гарантия</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn">
+          <button (click)="cahngeEdit()">ИЗМЕНИТЬ ЛОТ</button>
+        </div>
+      </form>
     </div>
-    
+
   </div>
 
 </div>
@@ -170,7 +174,7 @@
       <h1>Лоты:</h1>
       <h1>
         <div class="plus">
-          <div class="plus__block"  (click)="showModal = true">
+          <div class="plus__block" (click)="showModal = true">
             <i class="fa fa-plus"></i>
           </div>
         </div>
@@ -184,9 +188,9 @@
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма без учета НДС</th>
           <th colspan="3">Сумма с учетом скидки</th>
-          <th rowspan="2">Банковские гарантии</th>
+          <th rowspan="2">Гарантия</th>
         </tr>
-        <tr>  
+        <tr>
           <th>Сомони</th>
           <th>Доллар</th>
           <th>Евро</th>
@@ -200,42 +204,51 @@
       </thead>
       <tbody>
         <tr *ngFor="let addLots of addLotsData; let idx = index">
-          <td><span>Название лота </span>{{ addLots.title }}</td>  
+          <td><span>Название лота </span>{{ addLots.title }}</td>
           <td><span>Номер лота </span>{{ addLots.lot_number }}</td>
-          <td><span>Сумма без учета НДС </span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.total }}</p></i>
-            <i>Доллар : <p>{{ addLots.total_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.total_euro }}</p></i>
-          </div> <pre>{{ addLots.total }}</pre></td>      
-          <td class="hdd"> {{ addLots.total_dol }} </td> 
+          <td><span>Сумма без учета НДС </span>
+            <div class="currancy">
+              <i>Сомони : <p>{{ addLots.total }}</p></i>
+              <i>Доллар : <p>{{ addLots.total_dol }}</p></i>
+              <i>Евро : <p>{{ addLots.total_euro }}</p></i>
+            </div>
+            <pre>{{ addLots.total }}</pre>
+          </td>
+          <td class="hdd"> {{ addLots.total_dol }} </td>
           <td class="hdd"> {{ addLots.total_euro }} </td>
-          <td><span>Сумма с учетом НДС</span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.vat }}</p></i>
-            <i>Доллар : <p>{{ addLots.vat_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.vat_euro }}</p></i>
-          </div><pre>{{ addLots.vat }}</pre> </td>
-          <td class="hdd">{{ addLots.vat_dol }}</td>      
+          <td><span>Сумма с учетом НДС</span>
+            <div class="currancy">
+              <i>Сомони : <p>{{ addLots.vat }}</p></i>
+              <i>Доллар : <p>{{ addLots.vat_dol }}</p></i>
+              <i>Евро : <p>{{ addLots.vat_euro }}</p></i>
+            </div>
+            <pre>{{ addLots.vat }}</pre>
+          </td>
+          <td class="hdd">{{ addLots.vat_dol }}</td>
           <td class="hdd">{{ addLots.vat_euro }}</td>
-          <td><span>Сумма с учетом скидки</span><div class="currancy">
-            <i>Сомони : <p>{{ addLots.discount }}</p></i>
-            <i>Доллар : <p>{{ addLots.discount_dol }}</p></i>
-            <i>Евро : <p>{{ addLots.discount_euro }}</p></i>
-          </div><pre>{{ addLots.discount }}</pre> </td>
-          <td class="hdd">{{ addLots.discount_dol }}</td>      
+          <td><span>Сумма с учетом скидки</span>
+            <div class="currancy">
+              <i>Сомони : <p>{{ addLots.discount }}</p></i>
+              <i>Доллар : <p>{{ addLots.discount_dol }}</p></i>
+              <i>Евро : <p>{{ addLots.discount_euro }}</p></i>
+            </div>
+            <pre>{{ addLots.discount }}</pre>
+          </td>
+          <td class="hdd">{{ addLots.discount_dol }}</td>
           <td class="hdd">{{ addLots.discount_euro }}</td>
           <td>
-            <i class="fa fa-check" *ngIf="addLots.response_security_submited == true"></i>
-            <i class="fa fa-times" *ngIf="addLots.response_security_submited == false"></i>
+            <h1 style="font-size: 13px;" *ngIf="addLots.response_security_submited == false">Гарантийная деклорация</h1>
+            <h1 style="font-size: 13px;" *ngIf="addLots.response_security_submited == true">Банковская гарантия</h1>
           </td>
-          <td class="change"> 
+          <td class="change">
             <div class="trash__block" (click)="editButton(idx)">
               <i class="fas fa-pencil-alt"></i>
             </div>
-            <div class="trash__block" (click)="deleteLots(idx)"> 
-            <i class="fas fa-trash"></i>
+            <div class="trash__block" (click)="deleteLots(idx)">
+              <i class="fas fa-trash"></i>
             </div>
-          </td>  
-        </tr> 
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -256,7 +269,7 @@
           <input type="text" placeholder="Партнер" formControlName="name">
         </div>
         <div class="inp check">
-          <input type="text" placeholder="Лидер" readonly>
+          <h1>Ведущая компания</h1>
           <input type="checkbox" class="checkbox" formControlName="leader">
         </div>
         <button style="border: none; cursor: pointer;" (click)="addP()">
@@ -265,8 +278,10 @@
       </div>
     </div>
     <div class="bank-gr_block" *ngIf="checkB">
-      <h1>Банковские гарантии:</h1>
-      <input type="checkbox" formControlName="bank">
+      <select formControlName="bank">
+        <option value="0">Гарантийная деклорация</option>
+        <option value="1">Банковская гарантия</option>
+      </select>
     </div>
   </form>
   <div class="summa">
@@ -331,7 +346,6 @@
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
-      <button (click)="send()">Отправить</button>
-  </div>  
+    <button (click)="send()">Отправить</button>
+  </div>
 </div>
- 

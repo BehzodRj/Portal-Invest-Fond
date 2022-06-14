@@ -1,6 +1,6 @@
 <div class="container">
   <img class="logo" src="assets/img/weblogo_ru.png" routerLink="/announcement">
-  <img class="citat" src="assets/img/ru03.png" alt=""> 
+  <img class="citat" src="assets/img/ru03.png" alt="">
   <div class="logOut" (click)="logOut()">
     <i class="fas fa-sign-out-alt"></i>
     <h1>Выход</h1>
@@ -12,79 +12,70 @@
     <div class="material_block">
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="applications">План закупок</button>
       <mat-menu #applications="matMenu">
-        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="applicationFile" 
-        (menuOpened)="getData(adminNames.anouncer_files, 1)">{{ adminNames.name }}</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="applicationFile"
+          (menuOpened)="getData(adminNames.anouncer_files, 1)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #applicationFile="matMenu">
         <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-
-
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="shoping">Шоппинг</button>
       <mat-menu #shoping="matMenu">
-        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="shopingFiles" 
-        (menuOpened)="getData(adminNames.anouncer_files, 2)">{{ adminNames.name }}</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="shopingFiles"
+          (menuOpened)="getData(adminNames.anouncer_files, 2)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #shopingFiles="matMenu">
         <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-
-
-
-
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="tenderDoc">Тендерные документы</button>
       <mat-menu #tenderDoc="matMenu">
-        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="tenderDocFiles" 
-        (menuOpened)="getData(adminNames.anouncer_files, 3)">{{ adminNames.name }}</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="tenderDocFiles"
+          (menuOpened)="getData(adminNames.anouncer_files, 3)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #tenderDocFiles="matMenu">
         <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="contract">Контракты</button>
       <mat-menu #contract="matMenu">
-        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="contractFiles" 
-        (menuOpened)="getData(adminNames.anouncer_files, 4)">{{ adminNames.name }}</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="contractFiles"
+          (menuOpened)="getData(adminNames.anouncer_files, 4)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #contractFiles="matMenu">
         <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
-      
 
       <button class='mn_but' mat-button *ngIf="admin" [matMenuTriggerFor]="agreement">Соглашение</button>
       <mat-menu #agreement="matMenu">
-        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="agreementFiles" 
-        (menuOpened)="getData(adminNames.anouncer_files, 5)">{{ adminNames.name }}</button>
+        <button mat-menu-item *ngFor="let adminNames of adminFilesData" [matMenuTriggerFor]="agreementFiles"
+          (menuOpened)="getData(adminNames.anouncer_files, 5)">{{ adminNames.name }}</button>
       </mat-menu>
       <mat-menu #agreementFiles="matMenu">
         <button mat-menu-item *ngFor="let file of files" (click)="openFile(file.path)">{{file.name}}</button>
       </mat-menu>
 
-    <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">План закупок</h1>
-    <h1 [routerLink]="['/announcerfile', 2]" routerLinkActive="active" *ngIf="anouncer">Шоппинг</h1>
-    <h1 [routerLink]="['/announcerfile', 3]" routerLinkActive="active" *ngIf="anouncer">Тендерные документы</h1>
-    <h1 [routerLink]="['/announcerfile', 4]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
-    <h1 [routerLink]="['/announcerfile', 5]" routerLinkActive="active" *ngIf="anouncer">Соглашение</h1>
-    <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
-    <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Протокол</h1>
-    <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
-    <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
+      <h1 [routerLink]="['/announcerfile', 1]" routerLinkActive="active" *ngIf="anouncer">План закупок</h1>
+      <h1 [routerLink]="['/announcerfile', 2]" routerLinkActive="active" *ngIf="anouncer">Шоппинг</h1>
+      <h1 [routerLink]="['/announcerfile', 3]" routerLinkActive="active" *ngIf="anouncer">Тендерные документы</h1>
+      <h1 [routerLink]="['/announcerfile', 4]" routerLinkActive="active" *ngIf="anouncer">Контракты</h1>
+      <h1 [routerLink]="['/announcerfile', 5]" routerLinkActive="active" *ngIf="anouncer">Соглашение</h1>
+      <h1 routerLink="/announcerpayment" routerLinkActive="active" *ngIf="anouncer">Оплата</h1>
+      <h1 routerLink="/resultdata" routerLinkActive="active" *ngIf="anouncer">Протокол</h1>
+      <h1 routerLink="/subscribertender" routerLinkActive="active" *ngIf="subscriber">Проекты</h1>
+      <h1 routerLink="/subscriberorders" routerLinkActive="active" *ngIf="subscriber">Мои заявки</h1>
+    </div>
+    <div class="hamburger-menu">
+      <input id="menu__toggle" type="checkbox" />
+      <label class="menu__btn" for="menu__toggle">
+        <span></span>
+      </label>
+      <ul class="menu__box">
+        <li><a class="menu__item" routerLink="/admin" *ngIf="admin">Центры</a></li>
+        <li><a class="menu__item" routerLink="/announcerpayment" *ngIf="anouncer">Оплата</a></li>
+        <li><a class="menu__item" routerLink="/announcer" *ngIf="anouncer">Обявления</a></li>
+        <li><a class="menu__item" routerLink="/resultdata" *ngIf="anouncer">Результат</a></li>
+        <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
+        <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
+        <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>
+        <li><a class="menu__item signup" (click)="logOut()">Выход</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="hamburger-menu">
-    <input id="menu__toggle" type="checkbox" />
-    <label class="menu__btn" for="menu__toggle">
-      <span></span>
-    </label>
-    <ul class="menu__box">
-      <li><a class="menu__item" routerLink="/admin" *ngIf="admin">Центры</a></li>
-      <li><a class="menu__item" routerLink="/announcerpayment" *ngIf="anouncer">Оплата</a></li>
-      <li><a class="menu__item" routerLink="/announcer" *ngIf="anouncer">Обявления</a></li>
-      <li><a class="menu__item" routerLink="/resultdata" *ngIf="anouncer">Результат</a></li>
-      <li><a class="menu__item" routerLink="/profile" *ngIf="subscriber">Профиль</a></li>
-      <li><a class="menu__item" routerLink="/subscribertender" *ngIf="subscriber">Проекты</a></li>
-      <li><a class="menu__item" routerLink="/subscriberorders" *ngIf="subscriber">Мои заявки</a></li>
-      <li><a class="menu__item signup" (click)="logOut()">Выход</a></li>
-    </ul>
-
-  </div>
-</div>

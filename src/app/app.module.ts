@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +38,7 @@ import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/sub
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
 import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file-page.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,7 @@ import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file
     AnnouncerEditComponent,
     ResultDataPageComponent,
     AnnouncerFilePageComponent,
+    MessagesComponent,
   ],
   imports: [  
     FormsModule,
@@ -76,7 +80,9 @@ import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../all.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 
 @Component({
@@ -19,30 +21,40 @@ export class ProfilePageComponent implements OnInit {
   showDatas = true
   editDatas = false
   isLoading = false
+  autoCompleteCountryData: any = []
+  filteredOptions!: Observable<any[]>;
 
   constructor(private request: RequestService) { }
 
   ngOnInit() {
-    
-    this.request.getProfileRequest().subscribe(response => {
-      this.userData = response
 
-      this.editForm = new FormGroup({
-        name: new FormControl(this.userData.name),
-        last_name: new FormControl(this.userData.last_name),
-        middle_name: new FormControl(this.userData.middle_name),
-        division: new FormControl(this.userData.division),
-        company_name: new FormControl(this.userData.company_name),
-        inn: new FormControl(this.userData.inn),
-        email: new FormControl(this.userData.email, Validators.email),
-        regCompany1: new FormControl(this.userData.address_line1),
-        regCompany2: new FormControl(this.userData.address_line2),
-        regCompany3: new FormControl(this.userData.address_line3),
-        phone: new FormControl(this.userData.phone),
-        country: new FormControl(this.userData.company_country),
-        city: new FormControl(this.userData.town),
-        postalCode: new FormControl(this.userData.postal_code),
-      })
+    this.editForm = new FormGroup({
+      name: new FormControl(''),
+      last_name: new FormControl(''),
+      middle_name: new FormControl(''),
+      division: new FormControl(''),
+      company_name: new FormControl(''),
+      inn: new FormControl(''),
+      email: new FormControl('', Validators.email),
+      address_line1: new FormControl(''),
+      address_line2: new FormControl(''),
+      address_line3: new FormControl(''),
+      phone: new FormControl(''),
+      fullname: new FormControl(''),
+      town: new FormControl(''),
+      postal_code: new FormControl(''),
+    })
+
+    this.request.getCountryData().subscribe(response => {
+      this.autoCompleteCountryData = response
+    }, error => {
+      alert(error.error)
+    })
+    
+    this.request.getProfileRequest().subscribe( (response: any) => {
+      this.userData = response
+      this.editForm.patchValue(response)
+      this.editForm.controls['fullname'].patchValue(response.countrie?.name)
     }, error => {
       if(error.status == '401') {
         this.request.refreshToken().subscribe( (response: any) =>  {
@@ -54,6 +66,16 @@ export class ProfilePageComponent implements OnInit {
         alert(error.message)
       }
     })
+
+    this.filteredOptions = this.editForm.controls['fullname'].valueChanges.pipe(
+      startWith(''),
+      map( (value: any) => this._filter(value)),
+    )
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.autoCompleteCountryData.filter( (option: any) => option.name.toLowerCase().includes(filterValue));
   }
 
   // getFilePhoto(image: any) { 
@@ -82,7 +104,8 @@ export class ProfilePageComponent implements OnInit {
   change() {
     const editFormData = {...this.editForm.value}
     this.isLoading = true
-    this.request.changeProfileData(editFormData.name, editFormData.last_name, editFormData.middle_name, editFormData.division, editFormData.company_name, editFormData.inn, editFormData.email, editFormData.regCompany1, editFormData.regCompany2, editFormData.regCompany3, editFormData.phone, editFormData.country, editFormData.city, editFormData.postalCode).subscribe(response => {
+    let code =  this.autoCompleteCountryData.filter( (res: any) => res.name == editFormData.fullname)
+    this.request.changeProfileData(editFormData.name, editFormData.last_name, editFormData.middle_name, editFormData.division, editFormData.company_name, editFormData.inn, editFormData.email, editFormData.address_line1, editFormData.address_line2, editFormData.address_line3, editFormData.phone, code[0].code, editFormData.town, editFormData.postal_code).subscribe(response => {
       this.isLoading = false
       location.reload()
       this.showDatas = true
