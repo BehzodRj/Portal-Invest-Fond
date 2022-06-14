@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <app-header></app-header>
 <div class="modal_check" *ngIf="modalReportFile">
   <div class="modal_check-items_block">
@@ -10,7 +11,7 @@
         <div class="check_input-item">
           <h1 class="description">{{ reportFileName }}</h1>
           <img src="assets/img/file.svg" alt="">
-          <input type="file" accept=".pdf" (change)="getReportFile($event)">
+          <input type="file" accept=".zip" (change)="getReportFile($event)">
         </div>
       </div>
       <button (click)="modalSend()">Отправить</button>
@@ -33,7 +34,7 @@
   <div class="block_file">
     <i class="fas fa-times" (click)="closeModal()"></i>
     <h1 *ngIf="privateFilesData < 1 ? 0 : 1" (click)="download(privateDowFile)">Тендерные документы</h1>
-    <h1 *ngIf="publicFilesData < 1 ? 0 : 1" (click)="download(publicDowFile)">Обявления</h1>
+    <h1 *ngIf="publicFilesData < 1 ? 0 : 1" (click)="download(publicDowFile)">Объявления</h1>
   </div>
 </div>
 <div class="container">
@@ -41,7 +42,7 @@
     <h1>ЦЕНТР, ГРУППА, АГЕНТСТВО ПО ИСПОЛНЕНИЮ И РЕАЛИЗАЦИИ ПРОЕКТОВ</h1>
     <button routerLink="/announcertender">+</button>
   </div>
-  <h2 style="text-align: center;">Обявления и доступ к тендерним документам</h2>
+  <h2 style="text-align: center;">Объявления и доступ к тендерным документам</h2>
   <div class="navbar">
 
     <table class="resp-tab">
@@ -70,7 +71,7 @@
           <td><span>Тип проведения</span>{{announcer.type_of_procurement}}</td>
           <td><span>Метод проведения</span>{{announcer.procurement_method}}</td>
           <td><span>Лоты</span>{{announcer.number_of_lots}}</td>
-          <td><span>Стоимость тендерного документа</span>{{announcer.price}}</td>
+          <td><span>Стоимость тендерного документа</span>{{announcer.price}}$</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Время</span>{{ announcer.open_time }}</td>
           <td class="download" style="width: 10px;">

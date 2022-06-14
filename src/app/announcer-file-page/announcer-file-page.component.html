@@ -1,3 +1,4 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <app-header></app-header>
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
@@ -17,15 +18,15 @@
           <div class="form__block"> 
             <div class="inp__block">
               <div class="inp">
-                <h1>Название файл</h1>
-                <input type="text" placeholder="Название файл" formControlName="name">
+                <h1>Название файла</h1>
+                <input type="text" placeholder="Название файла" formControlName="name">
               </div>
             </div>
             <div class="inp__block"> 
               <div class="inp fileName">
                 <h1>{{ fileNames }}</h1>
                 <img src="assets/img/file.svg" alt="">
-                <input type="file" accept=".pdf, .xlsx, .xls, .docx, .doc" (change)="getFile($event)" formControlName="file">
+                <input type="file" accept=".zip" (change)="getFile($event)" formControlName="file">
               </div>
             </div>
             <div class="inp__block">
@@ -46,11 +47,11 @@
 </div>
 <div class="container">
   <div class="title_block">
-    <h1 *ngIf="pageId == 1">Файлы план закупок</h1>
-    <h1 *ngIf="pageId == 2">Файлы шоппинг</h1>
-    <h1 *ngIf="pageId == 3">Файлы тендерные документы</h1>
-    <h1 *ngIf="pageId == 4">Файлы контракты</h1>
-    <h1 *ngIf="pageId == 5">Файлы соглашение</h1>
+    <h1 *ngIf="pageId == 1">Файлы планов закупок</h1>
+    <h1 *ngIf="pageId == 2">Файлы шоппингов</h1>
+    <h1 *ngIf="pageId == 3">Файлы тендерных документов</h1>
+    <h1 *ngIf="pageId == 4">Файлы контрактов</h1>
+    <h1 *ngIf="pageId == 5">Файлы соглашений</h1>
     <div class="block__trush" (click)="openAddFileModal()">
       <i class="td_i fa fa-plus"></i>
     </div>

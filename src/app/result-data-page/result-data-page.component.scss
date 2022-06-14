@@ -164,6 +164,13 @@
                 width: 100px;
                 color: #000;
               }
+
+              &:nth-child(10) {
+                border: 1px solid #000;
+                border-left: 0;
+                width: 100px;
+                color: #000;
+              }
             }
           }
         }

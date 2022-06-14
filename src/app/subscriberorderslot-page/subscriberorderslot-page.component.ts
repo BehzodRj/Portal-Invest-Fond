@@ -11,22 +11,32 @@ export class SubscriberorderslotPageComponent implements OnInit {
   orderData: any = []
   showFileModal = false
   dowFile: any = []
+  isLoading = false
 
   constructor(private route: ActivatedRoute, private request: RequestService) { }
 
   ngOnInit() {
     this.route.params.subscribe( (params: any) => {
+      this.isLoading = true
       this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
         this.orderData = response[0]
+        this.isLoading = false
       }, error => {
+        this.isLoading = false
         if(error.status == '401') {
+          this.isLoading = false
           this.request.refreshToken().subscribe( (response: any) =>  {
             localStorage.setItem('access_token', response.access_token)
+            this.isLoading = false
             location.reload()
           }, errorToken => {
+            this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
+          this.isLoading = false
           alert(error.message)
         }
       })
@@ -39,7 +49,7 @@ export class SubscriberorderslotPageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`})
+          this.dowFile.push( {file: `https://e-td.investcom.tj/${element.path}`})
         });
     }
   }

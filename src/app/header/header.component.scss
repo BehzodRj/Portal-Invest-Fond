@@ -38,6 +38,7 @@ img {
 
     .material_block {
         display: flex;
+        align-items: center;
         .mn_but {
             margin-left: 15px;
             color: #fff;
@@ -208,7 +209,14 @@ img {
 }
 @media screen and (max-width: 925px) {
     .menu_block {
-        display: none;
+        display: block;
+
+        i {
+            display: none !important;
+        }
+    }
+    .material_block {
+        display: none !important;
     }
     .hamburger-menu{
         display: block; 

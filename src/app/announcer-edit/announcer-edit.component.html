@@ -1,4 +1,9 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="prog_bar-content" *ngIf="isLoading">
+  <div class="prog_bar-block">
+    <h1>Идет загрузка файлов на сервер. Пожалуйста не закрывайте и не обнавляйте страницу!</h1>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 <app-header></app-header>
 <div class="container">
   <div class="title_block">
@@ -13,11 +18,11 @@
 
     <div class="items_block regist_block">
       <label for="number">Номер пакета</label>
-      <input type="number" formControlName="project_center_anouncement_id">
+      <input type="text" formControlName="project_center_anouncement_id">
     </div>
 
     <div class="items_block regist_block">
-      <label for="text">Метод</label>
+      <label for="text">Метод проведения</label>
       <input type="text" formControlName="procurement_method">
     </div>
 
@@ -50,16 +55,16 @@
       <label for="file">Файл обявления</label>
       <div class="file_block">
         <h1>{{  privateFileName }}</h1>
-        <input type="file" accept=".pdf" formControlName="privateFiles" (change)="privateSelectFiles($event)">
+        <input type="file" accept=".zip" formControlName="privateFiles" (change)="privateSelectFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
 
     <div class="items_block regist_block">
-      <label for="file">Файл тендерные документы</label>
+      <label for="file">Файл тендерного документа</label>
       <div class="file_block">
         <h1>{{  publicFileName }}</h1>
-        <input type="file" accept=".pdf" formControlName="publicFiles" (change)="publicSelectFiles($event)">
+        <input type="file" accept=".zip" formControlName="publicFiles" (change)="publicSelectFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
@@ -81,7 +86,7 @@
       </select>
     </div>
 
-    <button (click)="chageEditLots()">ИЗМЕНИТЬ ЛОТ</button>
+    <button (click)="chageEditLots()">ИЗМЕНИТЬ</button>
   </form>
 </div>
 <app-footer-page></app-footer-page>

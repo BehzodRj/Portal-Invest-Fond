@@ -6,6 +6,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -82,7 +83,8 @@ import { MessagesComponent } from './messages/messages.component';
     MatMenuModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,9 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="prog_bar-content" *ngIf="isLoading">
+  <div class="prog_bar-block">
+    <h1>Идет загрузка файлов на сервер. Пожалуйста не закрывайте и не обнавляйте страницу!</h1>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 <app-header></app-header>
 <div class="container">
   <div class="title_block">
@@ -17,7 +22,7 @@
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('method').invalid && formTender.get('method').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="text">Метод</label>
+      <label for="text">Метод проведения</label>
       <input type="text" [placeholder]="showAlertMethod" formControlName="method">
     </div>
 
@@ -34,7 +39,7 @@
       <input type="date" style="text-indent: 3px;" formControlName="sendDate">
     </div>
 
-    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('sendDate').invalid && formTender.get('sendDate').touched ? '1px  solid red' : '1px  solid #000'}">
+    <div class="items_block regist_block" [ngStyle]="{border: formTender.get('open_time').invalid && formTender.get('open_time').touched ? '1px  solid red' : '1px  solid #000'}">
       <label for="date">Время</label>
       <select style="border: none; outline: none; font-family: Roboto, sans-serif; text-indent: 5px;" formControlName="open_time">
         <option>09:00</option>
@@ -42,6 +47,7 @@
         <option>11:00</option>
         <option>14:00</option>
         <option>15:00</option>
+        <option>16:00</option>
       </select>
     </div>
 
@@ -49,16 +55,16 @@
       <label for="file">Файл обявления</label>
       <div class="file_block">
         <h1>{{showAlertFile}}</h1>
-        <input type="file" accept=".pdf" (change)="getFile($event)" formControlName="file">
+        <input type="file" accept=".zip" (change)="getFile($event)" formControlName="file">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
 
     <div class="items_block regist_block" [ngStyle]="{border: formTender.get('publicFile').invalid && formTender.get('publicFile').touched ? '1px  solid red' : '1px  solid #000'}">
-      <label for="file">Файл тендерные документы</label>
+      <label for="file">Файл тендерного документа</label>
       <div class="file_block">
         <h1>{{showAlertPublicFile}}</h1>
-        <input type="file" accept=".pdf" (change)="getPublicFile($event)" formControlName="publicFile">
+        <input type="file" accept=".zip" (change)="getPublicFile($event)" formControlName="publicFile">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>

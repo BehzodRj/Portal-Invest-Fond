@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RequestService } from '../all.service';
 
 @Component({
   selector: 'app-forget-page',
@@ -13,7 +14,7 @@ export class ForgetPageComponent implements OnInit {
   modalMes = false
   showAlertEmail = "Ваш E-mail"
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private request: RequestService) { }
 
   ngOnInit(): void {
     this.formForget = new FormGroup({
@@ -28,8 +29,11 @@ export class ForgetPageComponent implements OnInit {
     } else if(value == false) {
       alert('Введите адрес электронной почты')
     } else {
-      this.modalMes = true
-      console.log(formForgetData);
+      this.request.forgetRequest(formForgetData.email).subscribe(response => {
+        this.modalMes = true
+      }, error => {
+        alert(error.message)
+      })
     }
   }
 

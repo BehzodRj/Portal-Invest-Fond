@@ -45,6 +45,8 @@ export class AnnouncerEditComponent implements OnInit {
             location.reload()
           }, errorToken => {
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           alert(error.message)
@@ -61,6 +63,8 @@ export class AnnouncerEditComponent implements OnInit {
           location.reload()
         }, errorToken => {
           alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
         })
       } else {
         alert(error.message)
@@ -103,6 +107,8 @@ export class AnnouncerEditComponent implements OnInit {
           }, errorToken => {
             this.isLoading = false
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           this.isLoading = false

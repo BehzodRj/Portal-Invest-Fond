@@ -81,8 +81,6 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     this.route.params.subscribe( (params: any) => {
       this.request.getOrderLotsRequests(params.id).subscribe( (response: any) => {
         this.orderData.push(response[0])
-        console.log(this.orderData[0]);
-        
         this.globalOrderForm.patchValue(this.orderData[0])
         this.partnersLocalData = response[0].partners
         this.editPartnerForm.patchValue(response[0])
@@ -93,6 +91,8 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
             location.reload()
           }, errorToken => {
             alert(errorToken.message)
+            localStorage.clear()
+            location.reload()
           })
         } else {
           alert(error.message)
@@ -118,7 +118,6 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
   addLot() {
     const addOrderFormData = {...this.addOrderForm.value}
     this.orderData[0].lots.push({title: addOrderFormData.title, lot_number: addOrderFormData.lot_number, total: addOrderFormData.total, total_dol: addOrderFormData.total_dol, total_euro: addOrderFormData.total_euro, vat: addOrderFormData.vat, vat_dol: addOrderFormData.vat_dol, vat_euro: addOrderFormData.vat_euro, discount: addOrderFormData.discount, discount_dol: addOrderFormData.discount_dol, discount_euro: addOrderFormData.discount_euro, response_security_submited: addOrderFormData.response_security_submited})
-    console.log(this.orderData);
     this.addOrderForm.reset()
     this.creatModalShow = false
   }
@@ -160,7 +159,7 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
     } else {
         this.showFileModal = true
         file.forEach((element:any) => {
-          this.dowFile.push( {file: `http://td.investcom.tj/${element.path}`, file_id: element.order_file_id})
+          this.dowFile.push( {file: `https://e-td.investcom.tj/${element.path}`, file_id: element.order_file_id})
         });
     }    
   }
@@ -185,6 +184,8 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
         })
       } else {
         this.isLoading = false
@@ -243,6 +244,8 @@ export class SubscriberorderslotchangePageComponent implements OnInit {
             }, errorToken => {
               this.isLoading = false
               alert(errorToken.message)
+              localStorage.clear()
+              location.reload()
             })
           } else {
             this.isLoading = false

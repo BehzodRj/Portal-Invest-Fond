@@ -170,6 +170,8 @@ export class AplicationPageComponent implements OnInit {
             }, errorToken => {
               this.isLoading = false
               alert(errorToken.message)
+              localStorage.clear()
+              location.reload()
             })
           } else {
             this.isLoading = false

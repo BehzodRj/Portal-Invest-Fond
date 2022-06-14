@@ -42,7 +42,18 @@ export class AnnouncerTenderComponent implements OnInit {
     this.request.getAnnouncerProjLots().subscribe(response => {
       this.projectsData = response
     }, error => {
-      alert(error.message)
+      if(error.status == '401') {
+        this.request.refreshToken().subscribe( (response: any) =>  {
+          localStorage.setItem('access_token', response.access_token)
+          location.reload()
+        }, errorToken => {
+          alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
+        })
+      } else {
+        alert(error.message)
+      }
     })
   }
 
@@ -83,6 +94,8 @@ export class AnnouncerTenderComponent implements OnInit {
         }, errorToken => {
           this.isLoading = false
           alert(errorToken.message)
+          localStorage.clear()
+          location.reload()
         })
       } else {
         this.isLoading = false

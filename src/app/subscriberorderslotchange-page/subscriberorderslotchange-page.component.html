@@ -1,4 +1,9 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="prog_bar-content" *ngIf="isLoading">
+  <div class="prog_bar-block">
+    <h1>Идет загрузка файлов на сервер. Пожалуйста не закрывайте и не обнавляйте страницу!</h1>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 <div class="container_file" *ngIf="showFileModal">
   <div class="block_file">
     <i class="fas fa-times" (click)="closeFileModal()"></i>
@@ -29,7 +34,7 @@
                 <input type="text" placeholder="Название лота" formControlName="title">
               </div> 
             </div>
-            <h2>Сумма без учета НДС</h2>
+            <h2>Сумма без учета налогов</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -44,7 +49,7 @@
                 <input type="number" placeholder="Описание" formControlName="total_euro">
               </div>
             </div>
-            <h2>Сумма c учетом НДС</h2>
+            <h2>Сумма c учетом налогов</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -59,7 +64,7 @@
                 <input type="number" placeholder="Описание" formControlName="vat_euro">
               </div>
             </div>
-            <h2>Сумма с учетом скидки</h2>
+            <h2>Сумма с учетом скидок</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -114,7 +119,7 @@
                 <input type="text" placeholder="Описание" formControlName="title">
               </div>
             </div>
-            <h2>Сумма без учета НДС</h2>
+            <h2>Сумма без учета налогов</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -129,7 +134,7 @@
                 <input type="number" placeholder="Описание" formControlName="total_euro">
               </div>
             </div>
-            <h2>Сумма c учетом НДС</h2>
+            <h2>Сумма c учетом налогов</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -144,7 +149,7 @@
                 <input type="number" placeholder="Описание" formControlName="vat_euro">
               </div>
             </div>
-            <h2>Сумма с учетом скидки</h2>
+            <h2>Сумма с учетом скидок</h2>
             <div class="inp__block currency">
               <div class="inp">
                 <h1>Сомони</h1>
@@ -195,9 +200,9 @@
         <tr>
           <th rowspan="2">Название лота</th>
           <th rowspan="2">Номер лота</th>
-          <th colspan="3">Сумма без учета НДС</th>
-          <th colspan="3">Сумма без учета НДС</th>
-          <th colspan="3">Сумма с учетом скидки</th>
+          <th colspan="3">Сумма без учета налогов</th>
+          <th colspan="3">Сумма без учетом налогов</th>
+          <th colspan="3">Сумма с учетом скидок</th>
           <th rowspan="2">Банковские гарантии</th>
         </tr>
         <tr>  
@@ -288,7 +293,7 @@
   <div class="summa">
     <form class="summa__nds" [formGroup]="globalOrderForm">
       <div class="inp-block">
-        <h2>Сумма без учета НДС</h2>
+        <h2>Сумма без учета налогов</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
@@ -305,7 +310,7 @@
         </div>
       </div>
       <div class="inp-block">
-        <h2>Сумма с учетом НДС</h2>
+        <h2>Сумма с учетом налогов</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
@@ -322,7 +327,7 @@
         </div>
       </div>
       <div class="inp-block">
-        <h2>Сумма с учетом скидки</h2>
+        <h2>Сумма с учетом скидок</h2>
         <div class="space-inp">
           <div class="inp">
             <h3>Сомони</h3>
@@ -343,7 +348,7 @@
       <label for="file">Файл</label>
       <div class="file_block">
         <h1>{{ fileName }}</h1>
-        <input type="file" multiple accept=".pdf" (change)="newFiles($event)">
+        <input type="file" multiple accept=".zip" (change)="newFiles($event)">
         <img src="assets/img/file.svg" alt="">
       </div>
     </div>
