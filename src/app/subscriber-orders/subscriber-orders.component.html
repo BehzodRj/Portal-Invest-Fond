@@ -34,6 +34,7 @@
             <i class="far fa-eye" [routerLink]="['/subscriberorderslot', order.order_id]"></i>
             <i class="far fa-edit" [routerLink]="['/subscriberorderslotchange', order.order_id]"></i>
             <i class="fas fa-trash" (click)="deleteOrder(order.order_id)"></i>
+            <i class="fas fa-file" style="margin-left: 8px; cursor: pointer;" [routerLink]="['/result', order.anouncement_id]" routerLinkActive="router-link-active" ></i>
           </td>
           <!-- <td>
             <span>Cтатус проверки</span>
