@@ -171,6 +171,12 @@
   }
 }
 
+.pdf_block {
+   max-width: 1066px;
+   padding: 0 30px;
+   margin: auto;
+}
+
 @media screen and (max-width: 700px) {
   .container {
     border: none !important;

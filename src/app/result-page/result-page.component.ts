@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RequestService } from '../all.service';
+import { jsPDF } from 'jspdf';
+import domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-result-page',
@@ -42,4 +44,21 @@ export class ResultPageComponent implements OnInit {
     })
   }
 
+  toPdf() {
+    const dashboard: any = document.getElementById('dashboard');
+
+    const dashboardHeight = dashboard.clientHeight;
+    const dashboardWidth = dashboard.clientWidth;
+    const options = { background: 'white', width: dashboardWidth * 2, height: dashboardHeight };
+
+    domtoimage.toPng(dashboard, options).then((imgData: any) => {
+         const doc = new jsPDF(dashboardWidth > dashboardHeight ? 'l' : 'p', 'mm', [dashboardWidth, dashboardHeight]);
+         const imgProps = doc.getImageProperties(imgData);
+         const pdfWidth = doc.internal.pageSize.getWidth();
+         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+         doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+         doc.save('Dashboard for hyperpanels.pdf');
+    });
+}
 }

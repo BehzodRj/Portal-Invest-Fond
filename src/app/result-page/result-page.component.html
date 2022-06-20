@@ -4,7 +4,7 @@
   <button class="btn">Этап 1</button>
   <button class="btn">Этап 2</button>
 </div>
-<div class="container" style="border: 1px solid #000;">
+<div class="container" id="dashboard" style="border: 1px solid #000;">
   <div class="content__opening">
     <h3>Minutes of ITT Opening</h3>
     <div class="table">
@@ -193,6 +193,9 @@
       </div>
     </div>
   </div>
+</div>
+<div class="pdf_block">
+  <button (click)="toPdf()" style="max-width: 1000px; margin: auto;">Экспортировать в PDF</button>
 </div>
 
 
