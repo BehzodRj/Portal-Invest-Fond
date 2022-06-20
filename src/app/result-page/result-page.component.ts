@@ -58,7 +58,7 @@ export class ResultPageComponent implements OnInit {
          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
          doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-         doc.save('Dashboard for hyperpanels.pdf');
+         doc.save('Протокол.pdf');
     });
 }
 }
