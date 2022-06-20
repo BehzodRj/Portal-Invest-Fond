@@ -45,6 +45,7 @@ export class ResultPageComponent implements OnInit {
   }
 
   toPdf() {
+    this.isLoading = true
     const dashboard: any = document.getElementById('dashboard');
 
     const dashboardHeight = dashboard.clientHeight;
@@ -59,6 +60,7 @@ export class ResultPageComponent implements OnInit {
 
          doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
          doc.save('Протокол.pdf');
+         this.isLoading = false
     });
-}
+  }
 }
