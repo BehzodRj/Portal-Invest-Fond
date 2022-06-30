@@ -8,12 +8,13 @@ import { RequestService } from '../all.service';
   styleUrls: ['./announcer-form.component.scss']
 })
 export class AnnouncerFormComponent implements OnInit {
+  dowFile: any  = []
+  announcerFormModalData: any
+  announcerFormData: any
   page: any
   showModal= false
-  announcerFormData: any
-  announcerFormModalData: any
   showFileModal = false
-  dowFile: any  = []
+  anouncementId: any
 
   constructor(private route: ActivatedRoute, private request: RequestService) { }
 
@@ -47,10 +48,13 @@ export class AnnouncerFormComponent implements OnInit {
     this.showModal = false
   }
 
-  openFileModal(file: any) {
+  openFileModal(file: any, id: any) {
     if(file < 1) {
       alert('Нет никаких файлов для скачивания')
     } else {
+        this.anouncementId = id
+        console.log(id);
+        
         this.showFileModal = true
         file.forEach((element:any) => {
           this.dowFile.push( {file: `https://e-td.investcom.tj/${element.path}`})
@@ -59,6 +63,7 @@ export class AnnouncerFormComponent implements OnInit {
   }
 
   download(file: any) {
+    this.request.postAnnouncementDownload(this.anouncementId).subscribe(response => {})
     window.open(file)
   }
 
