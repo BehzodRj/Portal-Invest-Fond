@@ -58,6 +58,7 @@
           <th>Стоимость тендерного <br> документа</th>
           <th>Дата <br> открытия</th>
           <th>Время</th>
+          <th>Подали заявки</th>
           <th>Действие</th>
         </tr>
       </thead>
@@ -74,12 +75,14 @@
           <td><span>Стоимость тендерного документа</span>{{announcer.price}}$</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Время</span>{{ announcer.open_time }}</td>
+          <td style="background-color: #9DBFEB; border: 1px solid #000; border-left: 0;" [routerLink]="['/announcerform', announcer.anouncement_id]">
+            <span>Подали заявки</span>
+            123
+            <i class="fas fa-search"></i>
+          </td>
           <td class="download" style="width: 10px;">
             <div class="items" style="display: flex;">
               <span>Действие</span>
-              <div class="icons_block"  [routerLink]="['/announcerform', announcer.anouncement_id]">
-                <i class="fas fa-search"></i>
-              </div>
               <div class="icons_block" (click)="openModal(announcer.anouncement_private_file, announcer.anouncement_public_file)">
                 <i class="fas fa-download"></i>
               </div>
