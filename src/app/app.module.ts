@@ -40,6 +40,7 @@ import { SubscriberorderslotchangePageComponent } from './subscriberorderslotcha
 import { ResultDataPageComponent } from './result-data-page/result-data-page.component';
 import { AnnouncerFilePageComponent } from './announcer-file-page/announcer-file-page.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SubscriberAdminPageComponent } from './subscriber-admin-page/subscriber-admin-page.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { MessagesComponent } from './messages/messages.component';
     ResultDataPageComponent,
     AnnouncerFilePageComponent,
     MessagesComponent,
+    SubscriberAdminPageComponent,
   ],
   imports: [  
     FormsModule,

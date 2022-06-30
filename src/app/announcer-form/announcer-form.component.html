@@ -73,14 +73,14 @@
     <table class="resp-tab">
       <thead class="pain">
         <tr>
-          <th>№</th>
+          <th>ID</th>
           <th>Компания</th>
           <th colspan="2">Действия</th>
         </tr>
       </thead>
       <tbody class="pains">
         <tr class="train" *ngFor="let announcerForm of announcerFormData">
-          <td><span>№</span>1</td>
+          <td><span>ID</span> {{ announcerForm.order_id }} </td>
           <td><span>Компания</span>{{announcerForm.user.subscriber.company_name}}</td>
           <td class="download">
             <span>Действие</span>

@@ -1,0 +1,34 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<app-header></app-header>
+<div class="container">
+  <div class="title_block">
+    <h1>УЧАСТНИКИ</h1>
+  </div>
+
+  <div class="navbar">
+    <table class="resp-tab">
+      <thead class="pain">
+        <tr>
+          <th>№</th>
+          <th>ИМЯ</th>
+          <th>EMAIL</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tbody class="pains">
+        <tr class="train">
+          <td><span>№</span>1</td>
+          <td><span>Имя</span>Vafo</td>
+          <td><span>Email</span>vafo.9999@mail.ru</td>
+          <td><span>ID</span>8</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="creat">
+      <!-- <button >Создать</button> -->
+      <pagination-controls></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-footer-page></app-footer-page>

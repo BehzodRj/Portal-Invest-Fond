@@ -27,6 +27,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { SubscriberorderslotPageComponent } from './subscriberorderslot-page/subscriberorderslot-page.component';
 import { SubscriberorderslotchangePageComponent } from './subscriberorderslotchange-page/subscriberorderslotchange-page.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SubscriberAdminPageComponent } from './subscriber-admin-page/subscriber-admin-page.component';
 
 const routes: Routes = [
   { path: '', component: AuthPageComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'result/:id', component: ResultPageComponent },
   { path: 'admin', component: AdminPageComponent, canActivate: [AdminGuard] },
   { path: 'adminproject/:id', component: AdminProjectComponent,  canActivate: [AdminGuard] },
+  { path: 'subscriberAdmin', component: SubscriberAdminPageComponent, canActivate: [AdminGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [SubscribeGuard] },
   { path: 'subscribertender', component: SubscriberTenderComponent, canActivate: [SubscribeGuard] },
   { path: 'announcement/:id', component: AnnouncementPageComponent, canActivate: [SubscribeGuard] },
