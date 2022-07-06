@@ -58,6 +58,7 @@
           <th>Стоимость тендерного <br> документа</th>
           <th>Дата <br> открытия</th>
           <th>Время</th>
+          <th>Количество скачиваний</th>
           <th>Подали заявки</th>
           <th>Действие</th>
         </tr>
@@ -75,9 +76,10 @@
           <td><span>Стоимость тендерного документа</span>{{announcer.price}}$</td>
           <td><span>Дата открытия </span>{{announcer.open_date}}</td>
           <td><span>Время</span>{{ announcer.open_time }}</td>
+          <td><span>Количество скачиваний</span>{{ announcer.downloads_count }}</td>
           <td style="background-color: #9DBFEB; border: 1px solid #000; border-left: 0;" [routerLink]="['/announcerform', announcer.anouncement_id]">
             <span>Подали заявки</span>
-            123
+            {{ announcer.orders_count }}
             <i class="fas fa-search"></i>
           </td>
           <td class="download" style="width: 10px;">

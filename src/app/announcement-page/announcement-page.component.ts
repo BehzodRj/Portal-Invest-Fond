@@ -94,7 +94,7 @@ export class AnnouncementPageComponent implements OnInit {
     }
   }
 
-  openModal(file1: any) {
+  openModal(file1: any, id: any) {
     if(file1 == '') {
       alert('Нет никаких файлов для скачивания')
     } else {
@@ -102,6 +102,11 @@ export class AnnouncementPageComponent implements OnInit {
         file1.split(",").forEach((element:any) => {
           this.dowFile.push( {name: 'Тендерные документы', file: `https://e-td.investcom.tj/${element}`})
         });
+        
+        this.request.getAnnouncementDownload(id).subscribe(response => {
+        }, error => {
+          alert(error.message)
+        })
     }
   }
 

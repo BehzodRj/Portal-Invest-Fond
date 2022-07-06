@@ -346,13 +346,13 @@ export class RequestService {
         return this.http.post(this.url + '/api/auth/payments', {"anouncements_id": id, "file": file}, {headers:header})
     }
 
-    postAnnouncementDownload(id: number) {
+    getAnnouncementDownload(id: number) {
         let header: HttpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'token_type': 'bearer',
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         })
-        return this.http.post(this.url + '/api/auth/anouncements_download', {"anouncements_id": id}, {headers:header})
+        return this.http.get(this.url + '/api/auth/download/' + id, {headers:header})
     }
     // End of Announcement check
 

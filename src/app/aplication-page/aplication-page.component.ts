@@ -133,7 +133,7 @@ export class AplicationPageComponent implements OnInit {
       reader.onload = () => {
         this.fileData.push(reader.result)
       }
-    })
+    })    
   }
 
   send() {

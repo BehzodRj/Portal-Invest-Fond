@@ -53,8 +53,6 @@ export class AnnouncerFormComponent implements OnInit {
       alert('Нет никаких файлов для скачивания')
     } else {
         this.anouncementId = id
-        console.log(id);
-        
         this.showFileModal = true
         file.forEach((element:any) => {
           this.dowFile.push( {file: `https://e-td.investcom.tj/${element.path}`})
@@ -63,7 +61,6 @@ export class AnnouncerFormComponent implements OnInit {
   }
 
   download(file: any) {
-    this.request.postAnnouncementDownload(this.anouncementId).subscribe(response => {})
     window.open(file)
   }
 

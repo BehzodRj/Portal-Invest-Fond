@@ -75,7 +75,6 @@
         <tr>
           <th>№</th>
           <th>Компания</th>
-          <th>Количество скачиваний</th>
           <th colspan="2">Действия</th>
         </tr>
       </thead>
@@ -83,7 +82,6 @@
         <tr class="train" *ngFor="let announcerForm of announcerFormData; let idx = index">
           <td><span>№</span> {{ idx + 1 }} </td>
           <td><span>Компания</span>{{announcerForm.user.subscriber.company_name}}</td>
-          <td><span>Количество скачиваний</span>{{announcerForm.order_id}}</td>
           <td class="download">
             <span>Действие</span>
             <div class="trash_block" (click)="openModal(announcerForm.order_id)">
