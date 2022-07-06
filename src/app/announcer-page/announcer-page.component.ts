@@ -22,6 +22,7 @@ export class AnnouncerPageComponent implements OnInit {
   privateFilesData: any
   publicFilesData: any
   date: any = new Date().toISOString()
+  time: any = new Date()
   isLoading = false
 
   constructor(private request: RequestService) { }
@@ -50,6 +51,7 @@ export class AnnouncerPageComponent implements OnInit {
       }
     })
     this.date = this.date.split('T')[0]
+    this.time = `${this.time.getHours()}:${this.time.getMinutes()}`
   }
 
   openModal(privateFile: any, publicFile: any) {
